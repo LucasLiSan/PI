@@ -1,0 +1,40 @@
+Webservice Cadastur API (1.0.0)
+	O Cadastur é o sistema de cadastro de pessoas físicas e jurídicas que atuam no setor de turismo
+	e garante diversas vantagens e oportunidades aos seus cadastrados e é também uma importante fonte
+	de consulta para o turista. Também visa promover o ordenamento, a formalização e a legalização dos
+	prestadores de serviços turísticos no Brasil, por meio do cadastro de empresas e profissionais do setor.
+
+	O programa é executado pelo Ministério do Turismo, em parceria com os órgãos oficiais de turismo,
+	nos 26 estados e no Distrito Federal.
+
+	Conforme a Lei nº 11.771, de 17 de setembro de 2008 entende-se como prestadores de serviços turísticos
+	as sociedades empresárias, sociedades simples, os empresários individuais e os serviços sociais autônomos
+	que prestem serviços turísticos remunerados e que exerçam atividades econômicas relacionadas à cadeia
+	produtiva do turismo.
+
+	Ainda conforme a Lei nº 11.771 o cadastro é gratuito, sendo obrigatório para:
+
+	Acampamentos Turísticos
+	Agências de Turismo
+	Meios de Hospedagem
+	Organizadoras de Evento
+	Parques Temáticos
+	Transportadoras Turísticas
+	E opcional para as seguintes atividades:
+	Casas de Espetáculo
+	Centros de Convenções
+	Empreendimentos de Entretenimento e Lazer e Parques Aquáticos
+	Empreendimentos de Apoio ao Turismo Náutico ou à Pesca Desportiva
+	Locadoras de Veículos para Turistas
+	Prestadoras de Serviços de Infraestrutura para Eventos
+	Prestadoras Especializadas em Segmentos Turísticos
+	Restaurantes, Cafeterias, Bares e similares
+
+	O cadastro também é obrigatório para exercer a profissão de Guia de Turismo,
+	conforme Lei nº 8.623, de 28 de janeiro de 1993.
+
+	https://www.gov.br/conecta/catalogo/apis/cadastur-cadastro-de-prestadores-de-servicos-turisticos/swagger-cadasturv1.json/swagger_view
+
+CADASTUR
+https://cadastur.turismo.gov.br/hotsite/#!/public/capa/entrar
+

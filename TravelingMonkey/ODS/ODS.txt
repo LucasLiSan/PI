@@ -1,0 +1,24 @@
+ODS 8:
+	Trabalho Decente e Crescimento Econômico: Seu aplicativo pode contribuir para o crescimento econômico ao facilitar
+	reservas para pontos turísticos, ajudando a impulsionar o setor turístico e criar oportunidades de trabalho para guias
+	locais e outros prestadores de serviços.
+
+ODS 9:
+	Indústria, Inovação e Infraestrutura: Desenvolver um aplicativo de reserva de turismo envolve inovação tecnológica
+	e pode contribuir para a melhoria da infraestrutura turística, fornecendo uma plataforma eficiente para conectar
+	viajantes a pontos turísticos, guias e outros serviços relacionados ao turismo.
+
+ODS 11:
+	Cidades e Comunidades Sustentáveis: Seu aplicativo pode promover o turismo sustentável ao fornecer informações
+	sobre pontos turísticos que valorizam a cultura local, promovendo a preservação do patrimônio cultural e
+	minimizando os impactos negativos sobre as comunidades anfitriãs.
+
+ODS 12:
+	Consumo e Produção Responsáveis: Ao incluir informações sobre valores dos pontos turísticos e promover práticas
+	de turismo responsável, seu aplicativo pode contribuir para um consumo mais consciente e sustentável dos recursos
+	naturais e culturais.
+
+ODS 16:
+	Paz, Justiça e Instituições Eficazes: Garantir a segurança e a transparência nas transações de reserva,
+	bem como promover o respeito pelos direitos dos prestadores de serviços turísticos e das comunidades locais,
+	pode contribuir para o objetivo de construir sociedades pacíficas e inclusivas.

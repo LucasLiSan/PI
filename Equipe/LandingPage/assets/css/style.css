@@ -1,17 +1,147 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #9636EB;
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    margin: 0;
+    background-image: linear-gradient(180deg, #9636EB, #65249E, #31124D) ;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: grid;
+    grid-template: 
+    "logo topMenu topMenu" 20%
+    "main main main" 60%
+    "footer footer footer" 20%
+    /20% 1fr 1fr;
 }
 
+.item {
+    margin: 10px;
+    
+}
 
-.gridTemplate2 {
+header {
+    grid-area: logo;
+}
+
+.logotype {
+    width: 100%;
+    height: 100%;
+}
+
+.topMenu {
+    grid-area: topMenu;
+}
+
+.topNavMenu {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.topNavMenu li {
+    align-content: center;
+    width: 100%;
+    text-align: center;
+    list-style: none;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.topNavMenu li {
+    border-right: 1px #ffffff;
+    border-radius: 10%;
+}
+.topNavMenu li:nth-last-child(1) {
+    border: none;
+}
+.topNavMenu li:hover {
+    background-color: #31124d6c;
+}
+.topNavMenu li:active {
+    background-color: #364beb9a;
+}
+
+main {
+    grid-area: main;
+    display: grid;
     grid-template: 
-    "article article article aside" 100px
-    "article article article aside" 100px
-    1fr / 1fr;
+    "article article mainAside" 100%
+    /1fr 1fr 20%;
+}
+
+article {
+    grid-area: article;
+    grid-template:
+    "section1 section1 aside1" 25%
+    "section2 section2 aside1" 25%
+    "section3 section3 aside1" 25%
+    "section4 section4 aside2" 25%
+    /1fr 1fr 20%;
+}
+
+.articleSection-1 {
+    grid-area:section1;
+}
+
+.articleSection-2 {
+    grid-area:section2;
+}
+
+.articleSection-3 {
+    grid-area:section3;
+}
+
+.articleSection-4 {
+    grid-area:section4;
+}
+
+.articleAside-1 {
+    grid-area: aside1;
+}
+
+.articleAside-2 {
+    grid-area: aside2;
+}
+
+.mainAside {
+    grid-area: mainAside;
+}
+
+footer {
+    grid-area: footer;
+    display: grid;
+    grid-template:
+    ". bottomMenu1 bottomMenu1 . bottomMenu2 ." 90%
+    /10% 1fr 1fr 5% 1fr 10%;
+}
+
+.bottomMenu-1 {
+    grid-area: bottomMenu1;
+}
+
+.bottomMenu-2 {
+    grid-area: bottomMenu2;
+}
+
+.bottomNavMenu-1, .bottomNavMenu-2 {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.bottomNavMenu-1 li, .bottomNavMenu-2 li {
+    align-content: center;
+    width: 100%;
+    text-align: center;
+    list-style: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
 }

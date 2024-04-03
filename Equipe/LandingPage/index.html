@@ -4,60 +4,53 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="assets/css/style.css">
+            <script src="assets/js/script.js"></script>
             <title>Aries.Inc</title>
         </head>
         <body>
-            <header class="itemLogo">
-                <img src="assets/imgs/Logomarca-Aries.png" alt="">
-            </header>
-            <nav class="item navHeader">
-                <ul class="cabecalhoMenu">
-                    <li>ÍNICIO</li>
-                    <li>QUEM SOMOS</li>
-                    <li>A EQUIPE</li>
-                    <li>PROJETOS</li>
-                    <li>CONTATO</li>
+            <header class="item">
+                <img class="logotype" src="assets/imgs/Logomarca-Aries.png" alt=""></header>
+            <nav class="item topMenu">
+                <ul class="topNavMenu">
+                    <li>INICIO</li>
+                    <li onclick="change()">QUEM SOMOS</li>
+                    <li onclick="changeV()">VALORES</li>
+                    <li>SERVIÇOS</li>
+                    <li>EQUIPE</li>
                 </ul>
             </nav>
-
-            <main class="gridTemplate2">
-                <article class="item mainArticle gridTemplate3">
-                    <section id="#quem" class="item articleSection1">
-                        MAIN - ARTICLE - SECTION - 1
-                    </section>
-                    <section id="#equipe" class="item articleSection2">
-                        MAIN - ARTICLE - SECTION - 2
-                    </section>
-                    <section id="#projetos" class="item articleSection3">
-                        MAIN - ARTICLE - SECTION - 3
-                    </section>
-                    <section id="#contato" class="item articleSection4">
-                        MAIN - ARTICLE - SECTION - 4
-                    </section>
-                    <aside class="item articleAside1">
-                        MAIN - ARTICLE - ASIDE - 1
-                    </aside>
-                    <aside class="item articleAside2">
-                        MAIN - ARTICLE - ASIDE - 2
-                    </aside>
+            <main class="item">
+                <article id="Qs" class="item" style="display: none;">
+                    <section class="item articleSection-1">QUEM SOMOS</section>
+                    <section class="item articleSection-2">VALORES</section>
+                    <section class="item articleSection-3">SERVIÇOS</section>
+                    <section class="item articleSection-4">EQUIPE</section>
+                    <aside class="item articleAside-1">ARTICLE ASIDE 1</aside>
+                    <aside class="item articleAside-2">ARTICLE ASIDE 2</aside>
                 </article>
-                <aside class="item mainAside1">
-                    MAIN - ASIDE - 1
+                <article id="V" class="item" style="display: grid;">
+                    <section class="item articleSection-1">QUEM SOMOS 2</section>
+                    <section class="item articleSection-2">VALORES 2</section>
+                    <section class="item articleSection-3">SERVIÇOS 2</section>
+                    <section class="item articleSection-4">EQUIPE 2</section>
+                    <aside class="item articleAside-1">ARTICLE ASIDE 1 2</aside>
+                    <aside class="item articleAside-2">ARTICLE ASIDE 2 2</aside>
+                </article>
+                <aside class="item mainAside">ASIDE-1</aside>
             </main>
-
-            <footer class="gridTemplate4">
-                <nav class="item footerNav1">
-                    <ul class="rodapeMenu">
-                        <li>ÍNICIO</li>
-                        <li>QUEM SOMOS</li>
-                        <li>A EQUIPE</li>
-                        <li>PROJETOS</li>
+            <footer class="item">
+                <nav class="item bottomMenu-1">
+                    <ul class="bottomNavMenu-1">
                         <li>CONTATO</li>
+                        <li>TRABALHE CONOSCO</li>
                     </ul>
                 </nav>
-                <nav class="item footerNav2">
-                    <a href="facebok">FACEBOOK</a>
-                    <a href="instagram">INSTAGRAM</a>
+                <nav class="item bottomMenu-2">
+                    <ul class="bottomNavMenu-2">
+                        <li>INSTAGRAM</li>
+                        <li>LINKEDIN</li>
+                        <li>FACEBOOK</li>
+                    </ul>
                 </nav>
             </footer>
         </body>

@@ -5,4 +5,13 @@ body {
     width: 100vw;
     height: 100vh;
     position: absolute;
+    display: grid;
+}
+
+
+.gridTemplate2 {
+    grid-template: 
+    "article article article aside" 100px
+    "article article article aside" 100px
+    1fr / 1fr;
 }

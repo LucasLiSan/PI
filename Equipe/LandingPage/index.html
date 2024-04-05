@@ -4,6 +4,8 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="assets/css/style.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"   integrity="sha512-4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
             <script src="assets/js/script.js"></script>
             <title>Aries.Inc</title>
         </head>
@@ -12,31 +14,84 @@
                 <img class="logotype" src="assets/imgs/Logomarca-Aries.png" alt=""></header>
             <nav class="item topMenu">
                 <ul class="topNavMenu">
-                    <li>INICIO</li>
-                    <li onclick="change()">QUEM SOMOS</li>
+                    <li onclick="changeI()">INICIO</li>
+                    <li onclick="changeQ()">QUEM SOMOS</li>
                     <li onclick="changeV()">VALORES</li>
-                    <li>SERVIÇOS</li>
-                    <li>EQUIPE</li>
+                    <li onclick="changeS()">SERVIÇOS</li>
+                    <li onclick="changeE()">EQUIPE</li>
                 </ul>
             </nav>
             <main class="item">
-                <article id="Qs" class="item" style="display: none;">
-                    <section class="item articleSection-1">QUEM SOMOS</section>
-                    <section class="item articleSection-2">VALORES</section>
-                    <section class="item articleSection-3">SERVIÇOS</section>
-                    <section class="item articleSection-4">EQUIPE</section>
-                    <aside class="item articleAside-1">ARTICLE ASIDE 1</aside>
-                    <aside class="item articleAside-2">ARTICLE ASIDE 2</aside>
+                <article id="inicio" class="item" style="display: grid;">
+                    <section class="item articleSection-1">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsam iste corporis harum repellendus eum explicabo, quibusdam eveniet earum praesentium sint dolorem excepturi nobis laudantium aliquam repudiandae consequatur non! Quos!</p>
+                    </section>
+                    <aside class="item articleAside-1">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore odit id fugiat nam officia et voluptatibus tempore sapiente deserunt. Iste totam alias necessitatibus ex, temporibus consectetur vitae placeat? Reiciendis, blanditiis.</p>
+                    </aside>
+                    <aside class="item articleAside-2">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur perferendis adipisci in. Porro aspernatur, nobis velit illo architecto culpa facilis tenetur, ipsam, exercitationem minus perferendis. Velit tempore corporis quas ut!</p>
+                    </aside>
                 </article>
-                <article id="V" class="item" style="display: grid;">
-                    <section class="item articleSection-1">QUEM SOMOS 2</section>
-                    <section class="item articleSection-2">VALORES 2</section>
-                    <section class="item articleSection-3">SERVIÇOS 2</section>
-                    <section class="item articleSection-4">EQUIPE 2</section>
-                    <aside class="item articleAside-1">ARTICLE ASIDE 1 2</aside>
-                    <aside class="item articleAside-2">ARTICLE ASIDE 2 2</aside>
+                <article id="quemSomos" class="item" style="display: none;">
+                    <section class="item articleSection-1">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas quidem culpa qui repudiandae odit porro voluptate? Veniam, excepturi, assumenda provident voluptatibus esse modi rerum nihil eius qui illo possimus eaque.
+                        Alias cumque voluptatum delectus officia ipsum molestias, numquam a iusto laborum, fugit nam nobis explicabo doloremque dicta neque commodi facilis, soluta tempore amet quia accusamus. Accusantium ut numquam error soluta!</p>
+                    </section>
+                    <aside class="item articleAside-1">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci sit, nemo eius quia repellat debitis et magnam, fugiat aliquam explicabo impedit earum! Laboriosam repellendus ipsam, hic incidunt numquam distinctio consectetur!</p>
+                    </aside>
+                    <aside class="item articleAside-2">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci sit, nemo eius quia repellat debitis et magnam, fugiat aliquam explicabo impedit earum! Laboriosam repellendus ipsam, hic incidunt numquam distinctio consectetur!</p>
+                    </aside>
                 </article>
-                <aside class="item mainAside">ASIDE-1</aside>
+                <article id="valores" class="item" style="display: none;">
+                    <section class="item articleSection-1">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, beatae recusandae id rerum, dignissimos repudiandae, accusantium ullam eum cum provident laudantium ut adipisci sapiente voluptate quia iure voluptatem at vero.
+                        Doloribus id, aut minus harum, quibusdam necessitatibus assumenda cupiditate impedit consectetur recusandae nulla perspiciatis! Adipisci explicabo animi consequatur, voluptates alias, deleniti vero cupiditate quibusdam nihil mollitia maiores consectetur facilis doloremque!
+                        Dignissimos obcaecati, nam quis rerum explicabo veniam minima accusamus. Alias magni qui tenetur animi autem vel dolorem. Dicta modi perspiciatis vel similique, cupiditate fugiat ab, cum quibusdam voluptas expedita quae.</p>
+                    </section>
+                    <aside class="item articleAside-1">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci sit, nemo eius quia repellat debitis et magnam, fugiat aliquam explicabo impedit earum! Laboriosam repellendus ipsam, hic incidunt numquam distinctio consectetur!</p>
+                    </aside>
+                    <aside class="item articleAside-2">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci sit, nemo eius quia repellat debitis et magnam, fugiat aliquam explicabo impedit earum! Laboriosam repellendus ipsam, hic incidunt numquam distinctio consectetur!</p>
+                    </aside>
+                </article>
+                <article id="servicos" class="item" style="display: none;">
+                    <section class="item articleSection-1">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo nisi asperiores ducimus nam sunt, quis consectetur repudiandae quo eum. Dicta delectus ipsum aspernatur facilis, omnis tempora sit! Aperiam, at maiores.
+                        Quia enim recusandae at ullam totam sed repudiandae blanditiis perferendis possimus nostrum mollitia harum, dolores est voluptate libero iure magni ducimus ipsa natus. Dolorum sed autem at laudantium sapiente aspernatur.
+                        Odit rem ducimus autem, doloribus, unde voluptatem quibusdam veniam iusto sunt magni iste id, aut sint expedita ipsam necessitatibus repudiandae repellat voluptate ad corporis fugiat? Tempora cum harum aliquid nostrum.
+                        Odit sunt non velit fugiat illo vero! Sunt qui optio fuga nam ex porro, harum et ab esse vel rerum neque amet facilis iste molestias ipsam. Esse vitae eos cupiditate.</p>
+                    </section>
+                    <aside class="item articleAside-1">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci sit, nemo eius quia repellat debitis et magnam, fugiat aliquam explicabo impedit earum! Laboriosam repellendus ipsam, hic incidunt numquam distinctio consectetur!</p>
+                    </aside>
+                    <aside class="item articleAside-2">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci sit, nemo eius quia repellat debitis et magnam, fugiat aliquam explicabo impedit earum! Laboriosam repellendus ipsam, hic incidunt numquam distinctio consectetur!</p>
+                    </aside>
+                </article>
+                <article id="equipe" class="item" style="display: none;">
+                    <section class="item articleSection-1">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum alias, mollitia voluptatibus nemo obcaecati minima porro fugit facere corrupti delectus ex rem quod! Nam quas enim, suscipit veniam molestiae aliquam.
+                        Dolore aliquam repellat voluptatibus ad debitis quos fugiat assumenda aut quam, quis perspiciatis iusto. Suscipit id doloribus porro aliquid neque sapiente, aliquam, illo dolores dolorem eveniet ex atque rerum voluptates.
+                        Dolorem quos magnam saepe doloremque ipsam eaque nisi quae earum beatae consequuntur laboriosam, nihil nemo! In itaque est eius dolorem suscipit, eos veritatis nemo nostrum nisi natus voluptas pariatur vel.
+                        Atque cum unde voluptatibus. Eligendi et odit officiis quo dolor corrupti sit, dolorum fuga aliquam quos eveniet voluptatem. Quod soluta numquam eum voluptate laboriosam quidem libero expedita quo, reprehenderit ea?
+                        Ea earum alias impedit, deserunt repudiandae vitae atque. Adipisci ut earum tempore dolor amet ipsam veritatis laboriosam aut culpa placeat officia possimus assumenda inventore, mollitia reprehenderit, exercitationem deleniti doloremque voluptate.</p>
+                    </section>
+                    <aside class="item articleAside-1">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci sit, nemo eius quia repellat debitis et magnam, fugiat aliquam explicabo impedit earum! Laboriosam repellendus ipsam, hic incidunt numquam distinctio consectetur!</p>
+                    </aside>
+                    <aside class="item articleAside-2">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci sit, nemo eius quia repellat debitis et magnam, fugiat aliquam explicabo impedit earum! Laboriosam repellendus ipsam, hic incidunt numquam distinctio consectetur!</p>
+                    </aside>
+                </article>
+                <aside class="item mainAside">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus quidem expedita, explicabo voluptatibus quaerat excepturi, eaque aspernatur dolore, nobis iure inventore velit odit veritatis dolorum eius maxime consequuntur magni at!
+                    Voluptatem unde pariatur deserunt quisquam temporibus ratione corporis soluta fuga sunt perspiciatis? Dignissimos beatae, perspiciatis labore enim, aliquid deserunt reiciendis totam, sequi incidunt neque accusamus. Deserunt culpa sequi dolores repudiandae.
+                    Pariatur laudantium commodi ut illum placeat animi aliquam magni aliquid laboriosam. Dignissimos repellendus voluptatem nulla quas minima ut nisi facilis eos, commodi saepe eligendi itaque vero recusandae voluptatum voluptatibus. Consequuntur?</p>
+                </aside>
             </main>
             <footer class="item">
                 <nav class="item bottomMenu-1">
@@ -47,9 +102,18 @@
                 </nav>
                 <nav class="item bottomMenu-2">
                     <ul class="bottomNavMenu-2">
-                        <li>INSTAGRAM</li>
-                        <li>LINKEDIN</li>
-                        <li>FACEBOOK</li>
+                        <li>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </li>
                     </ul>
                 </nav>
             </footer>

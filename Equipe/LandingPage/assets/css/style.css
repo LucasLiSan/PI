@@ -75,27 +75,13 @@ main {
 article {
     grid-area: article;
     grid-template:
-    "section1 section1 aside1" 25%
-    "section2 section2 aside1" 25%
-    "section3 section3 aside1" 25%
-    "section4 section4 aside2" 25%
-    /1fr 1fr 20%;
+    "section1 aside1" 75%
+    "section1 aside2" 25%
+    /1fr 20%;
 }
 
 .articleSection-1 {
     grid-area:section1;
-}
-
-.articleSection-2 {
-    grid-area:section2;
-}
-
-.articleSection-3 {
-    grid-area:section3;
-}
-
-.articleSection-4 {
-    grid-area:section4;
 }
 
 .articleAside-1 {

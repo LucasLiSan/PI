@@ -1,8 +1,17 @@
+:root {
+    --paletaBase: #9636EB;
+    --paletaSombra3: #65249E;
+    --paletaSombra4: #31124D;
+    --paletaTriade1: #36EB78;
+    --paletaTriade3: #775496;
+    --paletaTriade4: #4e6b59;
+}
+
 body {
     width: 100vw;
     height: 100vh;
     margin: 0;
-    background-image: linear-gradient(180deg, #9636EB, #65249E, #31124D) ;
+    background-image: linear-gradient(180deg, var(--paletaBase), var(--paletaSombra3), var(--paletaSombra4)) ;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: grid;
     grid-template: 
@@ -110,6 +119,19 @@ footer {
 
 .bottomMenu-2 {
     grid-area: bottomMenu2;
+    margin: 0;
+}
+
+.bottomMenu-2 p {
+    margin: 0;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.bottomMenu-2 ul {
+    height: 85%;
 }
 
 .bottomNavMenu-1, .bottomNavMenu-2 {
@@ -130,4 +152,53 @@ footer {
     color: #ffffff;
     font-size: 1rem;
     font-weight: bold;
+}
+
+.bottomNavMenu-2 {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.bottomNavMenu-2 li {
+    margin: 0 10px;
+    height: 100%;
+}
+
+.bottomNavMenu-2 li a {
+    font-size: 30px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    transition: 0.5s ease;
+}
+
+.bottomNavMenu-2 li a:hover{
+    background-image: linear-gradient(45deg, var(--paletaTriade1), var(--paletaTriade3), var(--paletaTriade4));
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 40px;
+}
+
+.bottomNavMenu-2 li a::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--paletaTriade1), var(--paletaTriade3), var(--paletaTriade4));
+    transform: scale(1);
+    transition: 0.5s ease-in-out;
+}
+
+.bottomNavMenu-2 li a:hover::before {
+    transform: scale(0);
 }

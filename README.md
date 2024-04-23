@@ -1,1 +1,1 @@
-Repositório pra salvar ideias.
+Repositório pra salvar ideias e atualização do PI.

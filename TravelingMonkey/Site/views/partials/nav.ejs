@@ -1,16 +1,28 @@
-<nav>
+<nav class="navTopMenu">
     <div class="logo">
-        <img src="" alt="logomarca">
+        <a href="/home"><img src="/imgs/monkey-5.jpg" alt="logomarca"></a>
     </div>
-    <div class="currency">
-        <input list="languageCurrency" type="text">
-        <datalist id="languageCurrency">
-            <option value="Brasil"></option>
-            <option value="EUA"></option>
-            <option value="Japão"></option>
-            <option value="China"></option>
-            <option value="Russia"></option>
-            <option value="Espanha"></option>
-        </datalist>
-    </div>
+    <ul class="topMenu">
+        <li class="liHover">
+            <div class="currencyLanguage">
+                <div class="language">
+                    <img src="/imgs/icons/languagesIcon.webp" alt="Icone idioma">
+                    <span>PT</span>
+                </div>
+                <div class="currency">
+                    <img src="/imgs/icons/currencyIcon.webp" alt="Icone moeda ">
+                    <span>R$</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="loginBtn">
+                <img src="/imgs/icons/iconLogin.webp" alt="">
+                <button>Login<br>Cadastrar</button>
+            </div>
+        </li>
+        <li class="liHover liHome">
+            <a href="/home">INICIO</a>
+        </li>
+    </ul>
 </nav>

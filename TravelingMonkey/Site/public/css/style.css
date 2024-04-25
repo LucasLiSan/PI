@@ -1,34 +1,235 @@
 :root {
-    --corPaleta1: #2760E6;
-    --corPaleta2: #279CE6;
-    --corPaleta3: #2A27E6;
-    --corPaleta4: #27D8E6;
-    --corPaleta5: #6827E6;
-    --corPaleta6: #E6AD27;
-    --corPaleta7: #4662A6;
-    --corPaleta8: #917B49;
-    --corPaleta9: #444E66;
-    --corPaleta10: #27C4E6;
-    --corPaleta11: #E6D327;
-    --corPaleta12: #495E91;
-    --corPaleta13: #E6C427;
-    --corPaleta14: #E69627;
-    --corPaleta15: #666044;
-    --corPaleta16: #4264B3;
-    --corPaleta17: #495980;
-    --corPaleta18: #3B404C;
-    --corPaleta19: #2A2D33;
-    --corPaleta20: #27E631;
-    --corPaleta21: #E62774;
-    --corPaleta22: #2151C2;
-    --corPaleta23: #1A4099;
-    --corPaleta24: #132F70;
-    --corPaleta25: #0C1E47;
-    --corPaleta26: #9FE627;
-    --corPaleta27: #E64827;
-    --corPaleta28: #5A6644;
+    --colorPalet1: #2760E6;
+    --colorPalet2: #279CE6;
+    --colorPalet3: #2A27E6;
+    --colorPalet4: #27D8E6;
+    --colorPalet5: #6827E6;
+    --colorPalet6: #E6AD27;
+    --colorPalet7: #4662A6;
+    --colorPalet8: #917B49;
+    --colorPalet9: #444E66;
+    --colorPalet10: #27C4E6;
+    --colorPalet11: #E6D327;
+    --colorPalet12: #495E91;
+    --colorPalet13: #E6C427;
+    --colorPalet14: #E69627;
+    --colorPalet15: #666044;
+    --colorPalet16: #4264B3;
+    --colorPalet17: #495980;
+    --colorPalet18: #3B404C;
+    --colorPalet19: #2A2D33;
+    --colorPalet20: #27E631;
+    --colorPalet21: #E62774;
+    --colorPalet22: #2151C2;
+    --colorPalet23: #1A4099;
+    --colorPalet24: #132F70;
+    --colorPalet25: #0C1E47;
+    --colorPalet26: #9FE627;
+    --colorPalet27: #E64827;
+    --colorPalet28: #5A6644;
+    --fontH1: "Bebas Neue", sans-serif;
+    --fontBodyText: "Comfortaa", sans-serif;
 }
 
 body {
-    background-color: aqua;
+    background-color: var(--colorPalet1);
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: var(--fontBodyText);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navTopMenu {
+    width: 95%;
+    height: 5rem;
+    display: grid;
+    grid-template:
+        "logo navbar" 100%
+        /30% 2fr
+    ;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--colorPalet21);
+    border-radius: 1rem;
+}
+
+.topMenu {
+    grid-area: navbar;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.topMenu li {
+    width: 20%;
+    height: 90%;
+    align-content: center;
+    text-align: center;
+    list-style: none;
+    color: #ffffff;
+    border-radius: 1rem;
+}
+
+.liHover:hover, .liHover a:hover {
+    background: var(--colorPalet11);
+    color: #000000;
+}
+
+.liHover:active, .liHover a:active {
+    background: var(--colorPalet20);
+}
+
+.logo {
+    grid-area: logo;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.logo a {
+    height: 100%;
+    width: 25%;
+    align-content: center;
+    text-align: center;
+}
+
+.logo img {
+    height: 90%;
+    border-radius: 4rem;
+}
+
+.currencyLanguage {
+    height: 100%;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.language, .currency {
+    width: 50%;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.currency {
+    justify-content: center;
+}
+
+.language img, .currency img {
+    height: 40%;
+}
+
+.loginBtn {
+    height: 100%;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.loginBtn button {
+    width: 70%;
+    height: 3rem;
+    background: var(--colorPalet3);
+    color: #ffffff;
+    font-family: var(--fontBodyText);
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 1rem;
+}
+
+.loginBtn button:hover {
+    background: var(--colorPalet11);
+    color: #000000;
+}
+
+.loginBtn button:active {
+    background: var(--colorPalet20);
+}
+
+.liHome {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.liHome a {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 1rem;
+}
+
+.indexBody {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.searchSection {
+    width: 95%;
+    height: 30rem;
+    background: var(--colorPalet2);
+    border-radius: 1rem;
+}
+
+.searchSectionTitles {
+
+}
+
+.searchSectionOptions {
+
+}
+
+.destiny {
+
+}
+
+#destinyChoice {
+
+}
+
+#destinyList {
+
+}
+
+footer {
+    width: 100%;
+    background: var(--colorPalet9);
+    height: 7rem;
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    align-content: center;
 }

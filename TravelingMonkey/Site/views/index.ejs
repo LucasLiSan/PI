@@ -1,7 +1,24 @@
 <%- include ('partials/header.ejs') %>
 <%- include ('partials/nav.ejs') %>    
 
-
-
+    <main class="indexBody">
+        <section class="searchSection">
+            <div class="searchSectionTitles">
+                <h1>Traveling Monkey</h1>
+                <h2>Te guiamos aos guias</h2>
+            </div>
+            <div class="searchSectionOptions">
+                <div class="destiny">
+                    <img src="" alt="Lupa">
+                    <input list="destinyList" id="destinyChoice" name="destinyChoice" />
+                    <datalist id="destinyList">
+                        <option value="Registro">Registro</option>
+                        <option value="Eldorado">Eldorado</option>
+                        <option value="Iguape">Iguape</option>
+                    </datalist>  
+                </div>
+            </div>
+        </section>
+    </main>
 
 <%- include ('partials/footer.ejs') %>

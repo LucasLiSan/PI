@@ -8,15 +8,31 @@
                 <h2>Te guiamos aos guias</h2>
             </div>
             <div class="searchSectionOptions">
-                <div class="destiny">
-                    <img src="" alt="Lupa">
-                    <input list="destinyList" id="destinyChoice" name="destinyChoice" />
-                    <datalist id="destinyList">
-                        <option value="Registro">Registro</option>
-                        <option value="Eldorado">Eldorado</option>
-                        <option value="Iguape">Iguape</option>
-                    </datalist>  
-                </div>
+                <form class="searchForm" action="" method="GET">
+                    <div class="destiny">
+                        <img src="/imgs/icons/searchIcon.webp" alt="Lupa">
+                        <input list="destinyList" id="destinyChoice" name="destinyChoice" />
+                        <datalist id="destinyList">
+                            <option value="Registro">Registro</option>
+                            <option value="Eldorado">Eldorado</option>
+                            <option value="Iguape">Iguape</option>
+                        </datalist>  
+                    </div>
+                    <div class="dates">
+                        <label for="dateIn"></label>
+                        <input type="date" name="dateIn" id="dateIn">
+                        <label for="dateOut"></label>
+                        <input type="date" name="dateOut" id="dateOut">
+                    </div>
+                    <div class="people">
+                        <select name="turists" id="turists">
+                            <option value="HOMEM"></option>
+                            <option value="CRIANÇAS"></option>
+                            <option value="PCDs"></option>
+                        </select>
+                    </div>
+                    <input type="submit" value="PESQUISAR">
+                </form>
             </div>
         </section>
     </main>

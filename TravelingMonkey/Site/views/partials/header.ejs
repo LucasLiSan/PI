@@ -9,3 +9,43 @@
             <title>Traveling Monkey</title>
         </head>
         <body>
+            <%- include ('nav.ejs') %> 
+            <header class="headerBody">
+                <section class="searchSection">
+                    <div class="searchSectionTitles">
+                        <h1>Traveling Monkey</h1>
+                        <h2>Te guiamos aos guias</h2>
+                    </div>
+                    <div class="searchSectionOptions">
+                        <form class="searchForm" action="" method="GET">
+                            <div class="destiny searchDivHover">
+                                <img src="/imgs/icons/searchIcon.webp" alt="Lupa">
+                                <label for="destinyList">Destino:</label>
+                                <input list="destinyList" id="destinyChoice" name="destinyChoice" />
+                                <datalist id="destinyList">
+                                    <option value="Registro">Registro</option>
+                                    <option value="Eldorado">Eldorado</option>
+                                    <option value="Iguape">Iguape</option>
+                                </datalist>  
+                            </div>
+                            <div class="dates searchDivHover">
+                                <label id="dateLabelIn" for="dateIn">Ida:</label>
+                                <input type="date" name="dateIn" id="dateIn">
+                                <label id="dateLabelOut" for="dateOut">Volta:</label>
+                                <input type="date" name="dateOut" id="dateOut">
+                            </div>
+                            <div class="people searchDivHover">
+                                <label id="peopleLabel" for="turists">Turistas:</label>
+                                <select name="turists" id="turists">
+                                    <option value="ADULTOS">ADULTOS</option>
+                                    <option value="CRIANÇAS">CRIANÇA</option>
+                                    <option value="PCDs">PCDs</option>
+                                </select>
+                            </div>
+                            <div id="searchFormSubmit">
+                                <input type="submit" value="PESQUISAR">
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </header>

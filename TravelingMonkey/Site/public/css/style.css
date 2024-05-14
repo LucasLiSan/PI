@@ -395,12 +395,99 @@ body {
 }
 
 .indexBody section {
-    width: 60%;
+    width: 80%;
+    height: 30%;
     border-radius: 1rem;
 }
 
 .quickSearch {
+    display: grid;
+    grid-template:
+        ". titleQSearch ." 40%
+        "searchCity searchLocal searchGuide" 60%
+        / 20% 20% 20%
+    ;
+    justify-content: space-evenly;
+}
 
+.quickSearch h1 {
+    grid-area: titleQSearch;
+    font-family: var(--fontH1);
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    align-content: center;
+}
+
+.quickSearch img {
+    width: 40%;
+}
+
+.citySearch {
+    grid-area: searchCity;
+}
+
+.citySearch a {
+    display: grid;
+    grid-template:
+        "imgCitySearch" 80%
+        "spanCitySearch" 20%
+        / 1fr
+    ;
+    align-items: center;
+    justify-items: center;
+}
+
+.citySearch img {
+    grid-area: imgCitySearch;
+}
+.citySearch span {
+    grid-area: spanCitySearch;
+}
+
+.localSearch {
+    grid-area: searchLocal;
+}
+
+.localSearch a {
+    display: grid;
+    grid-template:
+        "imgLocalSearch" 80%
+        "spanLocalSearch" 20%
+        / 1fr
+    ;
+    align-items: center;
+    justify-items: center;
+}
+
+.localSearch img {
+    grid-area: imgLocalSearch;
+}
+.localSearch span {
+    grid-area: spanLocalSearch;
+}
+
+.guideSearch {
+    grid-area: searchGuide;
+}
+
+.guideSearch a {
+    display: grid;
+    grid-template:
+        "imgGuideSearch" 80%
+        "spanGuideSearch" 20%
+        / 1fr
+    ;
+    align-items: center;
+    justify-items: center;
+}
+
+.guideSearch img {
+    grid-area: imgGuideSearch;
+}
+.guideSearch span {
+    grid-area: spanGuideSearch;
 }
 
 .recentReviews {

@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router();
 
-router.get('/pedidos', function(req,res){
-    res.render("pedidos")
+router.get('/cidades', function(req,res){
+    res.render("cidades")
 });
 
 export default router;

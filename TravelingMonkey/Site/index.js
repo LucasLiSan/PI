@@ -6,8 +6,13 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-import pedidosController from "./controllers/pedidosController.js";
-app.use("/", pedidosController);
+import cidadesController from "./controllers/cidadesController.js";
+import guiasController from "./controllers/guiasController.js";
+import pontosController from "./controllers/pontosController.js";
+
+app.use("/", cidadesController);
+app.use("/", guiasController);
+app.use("/", pontosController);
 
 app.get("/home", function(req,res){
     res.render("index")

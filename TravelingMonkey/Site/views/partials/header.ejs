@@ -20,8 +20,8 @@
                     </div>
                     <div class="modal-currency-body">
                         <div class="lang">
-                        <label for="languages">IDIOMAS</label>
-                            <select name="languages" data-placeholder="Choose a Language...">
+                            <label for="languages">IDIOMAS</label>
+                            <select name="languages" id="languagesList" data-placeholder="Choose a Language...">
                             <option value="AF">Afrikaans</option>
                             <option value="SQ">Albanian</option>
                             <option value="AR">Arabic</option>
@@ -69,7 +69,7 @@
                             <option value="NO">Norwegian</option>
                             <option value="FA">Persian</option>
                             <option value="PL">Polish</option>
-                            <option value="PT">Portuguese</option>
+                            <option value="PT-BR">Brazilian Portuguese</option>
                             <option value="PA">Punjabi</option>
                             <option value="QU">Quechua</option>
                             <option value="RO">Romanian</option>
@@ -264,6 +264,9 @@
                             <option value="ZMW" label="Zambian kwacha">ZMW</option>
                             <option value="ZWB" label="Zimbabwean bonds">ZWB</option>
                             </select>
+                        </div>
+                        <div class="select">
+                            <button class="btnSelect" onclick="changeCountry();">SELECIONAR</button>
                         </div>
                     </div>
                     <div class="modal-currency-footer">

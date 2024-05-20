@@ -205,8 +205,9 @@ body {
     height: 10rem;
     display: grid;
     grid-template:
-        "lang" 50%
-        "coin" 50%
+        "lang" 35%
+        "coin" 35%
+        "btnSelect" 30%
         /1fr
     ;
 }
@@ -237,6 +238,27 @@ body {
         "langLabel langSelect" 100%
         /1fr 1fr
     ;
+}
+
+.select {
+    grid-area: btnSelect;
+    display: grid;
+    grid-template:
+        ". . btn" 100%
+        /1fr 1fr 1fr
+    ;
+    align-items: center;
+    justify-items: center;
+}
+.btnSelect {
+    grid-area: btn;
+    width: 70%;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 70%;
+    background: var(--colorPalet3);
+    color: #ffffff;
+    border-radius: 1rem;
 }
 
 .lang label {
@@ -285,12 +307,12 @@ body {
     border-radius: 1rem;
 }
 
-.loginBtn button:hover, #searchFormSubmit input:hover {
+.loginBtn button:hover, #searchFormSubmit input:hover, .btnSelect:hover {
     background: var(--colorPalet11);
     color: #000000;
 }
 
-.loginBtn button:active, #searchFormSubmit input:active {
+.loginBtn button:active, #searchFormSubmit input:active, .btnSelect:active {
     background: var(--colorPalet20);
 }
 

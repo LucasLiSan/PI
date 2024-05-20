@@ -15,3 +15,13 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+function changeCountry() {
+    var moedaAtual = document.getElementById("coin");
+    var idiomaAtual = document.getElementById("lang");
+    var moedaNova = document.getElementById("currencyList");
+    var idiomaNova = document.getElementById("languagesList");
+
+    idiomaAtual.innerHTML = idiomaNova.value;
+    moedaAtual.innerHTML = moedaNova.value;
+}

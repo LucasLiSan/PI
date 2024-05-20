@@ -4,7 +4,7 @@ const connection = new Sequelize({
     host:'localhost',
     username:'root',
     password:'',
-    //database:'travelingMonkey',
+    database:'travelingMonkey',
     timezone:'-03:00'
 });
 

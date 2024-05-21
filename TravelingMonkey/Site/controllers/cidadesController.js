@@ -2,7 +2,7 @@ import express from "express";
 import Cidades from "../models/cidades.js";
 const router = express.Router();
 
-// Função de Merge Sort
+//ALGORITIMO MERGESORT
 function mergeSort(arr, key) {
     if (arr.length <= 1) {
         return arr;
@@ -18,7 +18,7 @@ function mergeSort(arr, key) {
 function merge(left, right, key) {
     let resultArray = [], leftIndex = 0, rightIndex = 0;
 
-    // Ordenar os elementos comparando as chaves
+    //FASE DE DIVISÃO
     while (leftIndex < left.length && rightIndex < right.length) {
         if (left[leftIndex][key] < right[rightIndex][key]) {
             resultArray.push(left[leftIndex]);
@@ -29,7 +29,7 @@ function merge(left, right, key) {
         }
     }
 
-    // Concatenar o resto dos elementos
+    //FASE DE CONQUISTA
     return resultArray
             .concat(left.slice(leftIndex))
             .concat(right.slice(rightIndex));
@@ -37,7 +37,9 @@ function merge(left, right, key) {
 
 router.get('/cidades', function(req, res) {
     Cidades.findAll().then(cidades => {
-        const sortedCidades = mergeSort(cidades, 'nome');
+        //const sortedCidades = mergeSort(cidades, 'pontoTuristico');
+        //const sortedCidades = mergeSort(cidades, 'nome');
+        const sortedCidades = mergeSort(cidades, 'operacao');
         res.render("cidades", {
             cidades: sortedCidades
         });

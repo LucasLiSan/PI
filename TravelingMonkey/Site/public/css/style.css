@@ -651,6 +651,34 @@ body {
     
 }*/
 
+.cidadesBody {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    background: var(--colorPalet2);
+    border-radius: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cidadesBody h1 {
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-family: var(--fontH1);
+    font-size: 4rem;
+    margin: 0 0 1rem 0;
+}
+
+.cidadesTable {
+    width: 90%;
+    text-align: center;
+}
+
+.cidadesTable tr {
+    height: 2.5rem;
+}
+
 footer {
     width: 100%;
     background: var(--colorPalet9);

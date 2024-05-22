@@ -24,10 +24,12 @@ app.use(express.json());
 import cidadesController from "./controllers/buscaController.js";
 import guiasController from "./controllers/guiasController.js";
 import pontosController from "./controllers/pontosController.js";
+import usersController from "./controllers/usersController.js";
 
 app.use("/", cidadesController);
 app.use("/", guiasController);
 app.use("/", pontosController);
+app.use("/", usersController);
 
 app.get("/home", function(req,res){
     res.render("index")

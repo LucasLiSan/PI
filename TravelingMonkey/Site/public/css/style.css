@@ -1,38 +1,18 @@
 :root {
-    --colorPalet1: #2760E6;
-    --colorPalet2: #279CE6;
-    --colorPalet3: #2A27E6;
-    --colorPalet4: #27D8E6;
-    --colorPalet5: #6827E6;
-    --colorPalet6: #E6AD27;
-    --colorPalet7: #4662A6;
-    --colorPalet8: #917B49;
-    --colorPalet9: #444E66;
-    --colorPalet10: #27C4E6;
-    --colorPalet11: #E6D327;
-    --colorPalet12: #495E91;
-    --colorPalet13: #E6C427;
-    --colorPalet14: #E69627;
-    --colorPalet15: #666044;
-    --colorPalet16: #4264B3;
-    --colorPalet17: #495980;
-    --colorPalet18: #3B404C;
-    --colorPalet19: #2A2D33;
-    --colorPalet20: #27E631;
-    --colorPalet21: #E62774;
-    --colorPalet22: #2151C2;
-    --colorPalet23: #1A4099;
-    --colorPalet24: #132F70;
-    --colorPalet25: #0C1E47;
-    --colorPalet26: #9FE627;
-    --colorPalet27: #E64827;
-    --colorPalet28: #5A6644;
-    --fontH1: "Bebas Neue", sans-serif;
+    --colorStandart: #2760E6;
+    --colorSecond: #27D8E6;
+    --colorThird: #6827E6;
+    --colorShadow: #0C1E47;
+    --colorBtns: #E6AD27;
+    --colorBtnsHover: #E62774;
+    --colorBtnsActive: #27E631;
+    --colorBackGround: #495E91;
+    --fontTitles: "Bebas Neue", sans-serif;
     --fontBodyText: "Comfortaa", sans-serif;
 }
 
 body {
-    background-color: var(--colorPalet17);
+    background-color: var(--colorBackGround);
     margin: 0;
     padding: 0;
     width: 99vw;
@@ -55,7 +35,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
-    background: var(--colorPalet21);
+    background: var(--colorThird);
     border-radius: 1rem;
 }
 
@@ -83,13 +63,13 @@ body {
 }
 
 .liHover:hover, .liHover a:hover, .searchDivHover:hover, .quickSearch a:hover {
-    background: var(--colorPalet11);
+    background: var(--colorBtnsHover);
     color: #000000;
     border-radius: 1rem;
 }
 
 .liHover:active, .liHover a:active, .quickSearch a:active {
-    background: var(--colorPalet20);
+    background: var(--colorBtnsActive);
 }
 
 .logo {
@@ -256,7 +236,7 @@ body {
     font-size: 1rem;
     font-weight: bold;
     height: 70%;
-    background: var(--colorPalet3);
+    background: var(--colorBtns);
     color: #ffffff;
     border-radius: 1rem;
 }
@@ -299,21 +279,32 @@ body {
 .loginBtn button {
     width: 70%;
     height: 3rem;
-    background: var(--colorPalet3);
+    background: var(--colorBtns);
     color: #ffffff;
     font-family: var(--fontBodyText);
     text-transform: uppercase;
     font-weight: bold;
     border-radius: 1rem;
+    display: flex;
 }
 
-.loginBtn button:hover, #searchFormSubmit input:hover, .btnSelect:hover {
-    background: var(--colorPalet11);
-    color: #000000;
+.loginBtn a {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-decoration: none;
+    color: #ffffff;
 }
 
-.loginBtn button:active, #searchFormSubmit input:active, .btnSelect:active {
-    background: var(--colorPalet20);
+.loginBtn button:hover, #searchFormSubmit input:hover,
+.btnSelect:hover, .loginBtn a:hover {
+    background: var(--colorBtnsHover);
+    color: #ffffff;
+}
+
+.loginBtn button:active, #searchFormSubmit input:active,
+.btnSelect:active, .loginBtn a:active {
+    background: var(--colorBtnsActive);
 }
 
 .liHome {
@@ -345,7 +336,7 @@ body {
     margin-top: 1rem;
     width: 60%;
     height: 10rem;
-    background: var(--colorPalet2);
+    background: var(--colorStandart);
     border-radius: 1rem;
 }
 
@@ -521,10 +512,11 @@ body {
     grid-area: searchFormSubmit;
     height: 95%;
     width: 95%;
-    background: var(--colorPalet3);
-    color: #ffffff;
+    background: var(--colorBtns);
+    color: #000000;
     font-weight: bold;
     border-radius: 1rem;
+    border: solid 2px #000000;
 }
 
 .indexBody {
@@ -542,7 +534,7 @@ body {
     width: 80%;
     height: 30%;
     border-radius: 1rem;
-    background: var(--colorPalet10);
+    background: var(--colorStandart);
 }
 
 .quickSearch {
@@ -557,7 +549,7 @@ body {
 
 .quickSearch h1 {
     grid-area: titleQSearch;
-    font-family: var(--fontH1);
+    font-family: var(--fontTitles);
     font-size: 3.5rem;
     color: #ffffff;
     margin: 0;
@@ -569,7 +561,7 @@ body {
     text-decoration: none;
     color: #ffffff;
     font-weight: bolder;
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -655,7 +647,7 @@ body {
     width: 80%;
     display: flex;
     flex-direction: column;
-    background: var(--colorPalet2);
+    background: var(--colorStandart);
     border-radius: 1rem;
     flex-wrap: wrap;
     align-items: center;
@@ -665,7 +657,7 @@ body {
     width: 100%;
     text-align: center;
     color: #ffffff;
-    font-family: var(--fontH1);
+    font-family: var(--fontTitles);
     font-size: 4rem;
     margin: 0 0 1rem 0;
 }
@@ -681,7 +673,7 @@ body {
 
 footer {
     width: 100%;
-    background: var(--colorPalet9);
+    background: var(--colorShadow);
     height: 7rem;
     color: #ffffff;
     font-size: 1.3rem;

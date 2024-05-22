@@ -1,5 +1,7 @@
 import express from "express";
-import Cidades from "../models/cidades.js";
+import PontosTuristicos from "../models/pontos.js";
+import Guias from "../models/guias.js";
+
 const router = express.Router();
 
 //ALGORITIMO MERGESORT
@@ -35,16 +37,34 @@ function merge(left, right, key) {
             .concat(right.slice(rightIndex));
 }
 
+//ROTA BUSCA RAPIDA CIDADES
 router.get('/cidades', function(req, res) {
-    Cidades.findAll().then(cidades => {
-        //const sortedCidades = mergeSort(cidades, 'pontoTuristico');
-        //const sortedCidades = mergeSort(cidades, 'nome');
-        const sortedCidades = mergeSort(cidades, 'operacao');
+    PontosTuristicos.findAll().then(cidades => {
+        const sortedCidades = mergeSort(cidades, 'nome');
         res.render("cidades", {
             cidades: sortedCidades
         });
     });
 });
 
+//ROTA BUSCA RAPIDA PONTOS
+router.get('/pontos', function(req, res) {
+    PontosTuristicos.findAll().then(pontos => {
+        const sortedPontos = mergeSort(pontos, 'pontoTuristico');
+        res.render("pontos", {
+            pontos: sortedPontos
+        });
+    });
+});
+
+//ROTA BUSCA RAPIDA GUIAS
+router.get('/guias', function(req, res) {
+    PontosTuristicos.findAll().then(guias => {
+        const sortedGuias = mergeSort(guias, 'operacao');
+        res.render("guias", {
+            guias: sortedGuias
+        });
+    });
+});
 
 export default router;

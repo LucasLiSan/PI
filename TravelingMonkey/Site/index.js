@@ -21,7 +21,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-import cidadesController from "./controllers/cidadesController.js";
+import cidadesController from "./controllers/buscaController.js";
 import guiasController from "./controllers/guiasController.js";
 import pontosController from "./controllers/pontosController.js";
 

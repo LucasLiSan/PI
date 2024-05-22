@@ -1,22 +1,22 @@
 import Sequelize from "sequelize";
 import connection from "../config/sequelize-config.js";
 
-const Cidades = connection.define('cidades', 
+const Turistas = connection.define('turistas', 
 {
-    nome:{
+    nomeTurista:{
         type: Sequelize.STRING,
         allowNull:false
     },
-    pontoTuristico:{
+    emailTurista:{
         type: Sequelize.STRING,
         allowNull:false
     },
-    operacao:{
+    passwordTurista:{
         type: Sequelize.STRING,
         allowNull:false
     }
 });
 
-Cidades.sync({force:false});
+Turistas.sync({force:false});
 
-export default Cidades;
+export default Turistas;

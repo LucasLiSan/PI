@@ -13,7 +13,31 @@
         </head>
         <body>
             <%- include ('partials/nav.ejs') %>
+            <% if(messages.danger) { %>
+                <div class="alert alert-danger">
+                    <%= messages.danger %>
+                </div>
+            <% } %>
+            <section class="login-form">
+                <div class="containerLoginForm">
+                    <div class="cardLoginForm">
+                        <div class="form-img">
+                            <img src="/imgs/monkey-5.jpg" alt="">
+                        </div>
+                        <h2>Login</h2>
+                        <form action="/auth">
+                            <div class="userPatch">
+                                <input type="radio" name="user" value="Cidade" required>Cidade
+                                <input type="radio" name="user" value="Guia" required>Guia
+                                <input type="radio" name="user" value="Turista" required>Turista
+                            </div>
+                            <input type="email" id="email" name="email" placeholder="E-mail" required>
+                            <input type="password" id="password" name="password" placeholder="Senha" required>
+                            <button type="submit">Entrar</button>
+                        </form>
+                        <span>Ainda não é cadastrado? <a href="/cadastro">Cadastre-se</a></span>
+                    </div>
+                </div>
+            </section>
 
-            <h1>tela de login</h1>
-
-    <%- include ('partials/footer.ejs') %>
+        <%- include ('partials/footer.ejs') %>

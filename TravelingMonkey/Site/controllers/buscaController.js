@@ -1,5 +1,5 @@
 import express from "express";
-import PontosTuristicos from "../models/pontos.js";
+import { PontosTuristicos, Cidades } from "../models/pontos.js";
 import Guias from "../models/guias.js";
 
 const router = express.Router();

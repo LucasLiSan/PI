@@ -7,6 +7,10 @@ const Turistas = connection.define('turistas',
         type: Sequelize.STRING,
         allowNull:false
     },
+    nascTurista:{
+        type:Sequelize.DATE,
+        allowNull: false
+    },
     emailTurista:{
         type: Sequelize.STRING,
         allowNull:false

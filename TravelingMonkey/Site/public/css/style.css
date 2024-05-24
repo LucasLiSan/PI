@@ -24,6 +24,31 @@ body {
     align-content: space-between;
 }
 
+.alertDanger {
+    width: 80%;
+    padding: 1rem;
+    margin-bottom: 0.6rem;
+    text-align: center;
+    color: var(--colorBtnsHover);
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+    background: var(--colorThird);
+    border-radius: 1rem;
+}
+
+.alertSuccess {
+    width: 50%;
+    padding: 0.4rem;
+    text-align: center;
+    color: var(--colorBtnsActive);
+    font-size: 1rem;
+    text-transform: uppercase;
+    background: var(--colorThird);
+    border-radius: 2rem;
+    font-weight: bold;
+}
+
 .navTopMenu {
     width: 95%;
     height: 5rem;
@@ -62,13 +87,15 @@ body {
     border-radius: 1rem;
 }
 
-.liHover:hover, .liHover a:hover, .searchDivHover:hover, .quickSearch a:hover {
+.liHover:hover, .liHover a:hover,
+.searchDivHover:hover, .quickSearch a:hover {
     background: var(--colorBtnsHover);
     color: #000000;
     border-radius: 1rem;
 }
 
-.liHover:active, .liHover a:active, .quickSearch a:active {
+.liHover:active, .liHover a:active,
+.quickSearch a:active {
     background: var(--colorBtnsActive);
 }
 
@@ -204,7 +231,8 @@ body {
     justify-items: center;
 }
 
-.lang select, .lang label, .coin label, .coin select {
+.lang select, .lang label,
+.coin label, .coin select {
     width: 100%;
     height: 50%;
     font-size: 1.5rem;
@@ -683,6 +711,7 @@ footer {
 }
 
 .demo_3 {
+    width: 80%;
     padding: 0em 4em 4em;
     text-align: center;
 }
@@ -747,6 +776,51 @@ footer {
 	-ms-transition: background 0.4s 0.5s;
 	transition: background 0.4s 0.5s;
 	margin-bottom:10px;
+
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.box.expanded {
+    width: 100%;
+}
+
+.box.hidden {
+    display: none;
+}
+
+.specific-form {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--colorBackGround);
+    padding: 20px;
+    box-sizing: border-box;
+    border: solid 1px var(--colorBtnsActive);
+}
+.box.expanded .specific-form {
+    display: block;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    color: var(--colorBtns);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1;
+}
+.close-btn:hover {
+    color: var(--colorBtnsHover);
+}
+.close-btn:active {
+    color: var(--colorBtnsActive);
 }
 
 .box:hover {
@@ -767,7 +841,7 @@ footer {
 
 .box span {
     display: block;
-    font-weight: 300;
+    font-weight: bold;
     letter-spacing: 1px;
     font-size: 25px;
     padding: 5px 10px;
@@ -916,8 +990,11 @@ footer {
     max-width: 400px;
     padding: 0 20px;
     box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-  
+
 .cardLoginForm {
     width: 85%;
     display: flex;

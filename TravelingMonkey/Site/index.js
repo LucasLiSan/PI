@@ -36,13 +36,15 @@ app.use(session({
 }));
 
 //IMPORTANDO OS CONTROLLERS E DEFININDO O USO DAS ROTAS
-import cidadesController from "./controllers/buscaController.js";
+import buscaRapidaController from "./controllers/buscaRapidaController.js";
+import buscaController from "./controllers/buscaController.js";
 import guiasController from "./controllers/guiasController.js";
 import pontosController from "./controllers/pontosController.js";
 import usersController from "./controllers/usersController.js";
 import reservasController from "./controllers/reservasController.js";
 
-app.use("/", cidadesController);
+app.use("/", buscaRapidaController);
+app.use("/", buscaController);
 app.use("/", guiasController);
 app.use("/", pontosController);
 app.use("/", usersController);

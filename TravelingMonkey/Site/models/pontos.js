@@ -19,25 +19,4 @@ const PontosTuristicos = connection.define('pontos',
 
 PontosTuristicos.sync({force:false});
 
-const Cidades = connection.define('cidades', 
-{
-    nomeCidade:{
-        type: Sequelize.STRING,
-        allowNull:false
-    },
-    cnpjCidade:{
-        type: Sequelize.STRING,
-        allowNull:false
-    },
-    email:{
-        type: Sequelize.STRING,
-        allowNull:false
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull:false
-    }
-});
-
-Cidades.sync({force:false});
-export {PontosTuristicos, Cidades};
+export default PontosTuristicos;

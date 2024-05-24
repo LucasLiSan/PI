@@ -13,13 +13,13 @@
         </head>
         <body>
             <%- include ('partials/nav.ejs') %>
-            <% if(messages.danger) { %>
-                <div class="alert alert-danger">
-                    <%= messages.danger %>
-                </div>
-            <% } %>
             <section class="login-form">
                 <div class="containerLoginForm">
+                    <% if(messages.danger) { %>
+                        <div class="alertDanger">
+                            <%= messages.danger %>
+                        </div>
+                    <% } %>
                     <div class="cardLoginForm">
                         <div class="form-img">
                             <img src="/imgs/monkey-5.jpg" alt="">

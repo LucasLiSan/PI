@@ -1,5 +1,13 @@
-<%- include ('partials/header.ejs') %>
+<!-- balão https://codepen.io/mblase75/pen/JYpwGJ 
+welcome https://codepen.io/thebabydino/pen/DmVqBM
+-->
 
+<%- include ('partials/header.ejs') %>
+<% if(messages.success) { %>
+    <div class="alertSuccess">
+        <%= messages.success %>
+    </div>
+<% } %>
 <main class="indexBody">
     <section class="quickSearch">
         <h1>BUSCA RÁPIDA</h1>

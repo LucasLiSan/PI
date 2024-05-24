@@ -14,7 +14,7 @@
         </head>
         <body>
             <%- include ('partials/nav.ejs') %>
-            <section class="demo_3">
+            <!--<section class="demo_3">
                 <h1>CADASTRE-SE</h1>
                 <div class="grid">
                     <a href="#">
@@ -58,6 +58,7 @@
                 </div>
             </section>
             <form action="/createUser" method="post">
+                <input type="text" value="cidade" hidden>
                 <label for="nomeCidade">CIDADE</label>
                 <input class="form-control" name="nomeCidade" type="text" placeholder="NOME DA CIDADE" required><br>
                 <label for="cnpj">CNPJ</label>
@@ -67,5 +68,104 @@
                 <label for="password">Senha:</label>
                 <input class="form-control" name="password" type="password" placeholder="Insira uma senha de no mínimo 8 caracteres" required><br>
                 <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
-            </form>
+            </form>-->
+            <section class="demo_3">
+                <h1>CADASTRE-SE</h1>
+                <div class="grid">
+                    <div class="box" id="box1">
+                        <button class="close-btn">&times;</button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <line class="top" x1="0" y1="0" x2="900" y2="0"/>
+                            <line class="left" x1="0" y1="460" x2="0" y2="-920"/>
+                            <line class="bottom" x1="300" y1="460" x2="-600" y2="460"/>
+                            <line class="right" x1="300" y1="0" x2="300" y2="1380"/>
+                        </svg>
+                        <h3>
+                            <img src="imgs/icons/iconCidade.webp" alt="Icone ponto turistico">
+                        </h3>
+                        <span>Cidade <br>(Ponto turistico)</span>
+                        <form class="specific-form" action="/createUser" method="post">
+                            <input type="text" value="cidade" hidden>
+
+                            <label for="nomeCidade">Cidade:</label>
+                            <input name="nomeCidade" type="text" placeholder="Nome da cidade" required><br>
+
+                            <label for="cnpjCidade">CNPJ:</label>
+                            <input name="cnpjCidade" type="text" placeholder="CNPJ da Cidade" required><br>
+
+                            <label for="ufCidade">UF:</label>
+                            <input name="ufCidade" type="text" placeholder="Estado" required><br>
+
+                            <label for="orgRespCidade">Orgão responsável:</label>
+                            <input name="orgRespCidade" type="text" placeholder="Secretária/Diretoria responsável pelo Turismo local" required><br>
+
+                            <label for="cnpjOrgRespCidade">CNPJ orgão responsável:</label>
+                            <input name="cnpjOrgRespCidade" type="text" placeholder="CNPJ da Secretária/Diretoria responsável pelo Turismo local" required><br>
+                            
+                            <fieldset>
+                                <legend>Endereço:</legend>
+                                <label for="endRuaOrgRespCidade">Rua:</label>
+                                <input name="endRuaOrgRespCidade" type="text" placeholder="Logradouro Secretária/Diretoria responsável pelo Turismo local" required><br>
+
+                                <label for="endBairroOrgRespCidade">Bairro:</label>
+                                <input name="endBairroOrgRespCidade" type="text" placeholder="Bairro Secretária/Diretoria responsável pelo Turismo local" required><br>
+                                
+                                <label for="endNumOrgRespCidade">Número:</label>
+                                <input name="endNumOrgRespCidade" type="text" placeholder="Numero Secretária/Diretoria responsável pelo Turismo local" required><br>
+                                
+                                <label for="endCepOrgRespCidade">CEP:</label>
+                                <input name="endCepOrgRespCidade" type="text" placeholder="CEP Secretária/Diretoria responsável pelo Turismo local" required><br>
+                            </fieldset>
+                            
+                            <label for="telOrgRespCidade">Telefone:</label>
+                            <input name="telOrgRespCidade" type="text" placeholder="Telefon Secretária/Diretoria responsável pelo Turismo local" required><br>
+                            
+                            <label for="emailOrgRespCidade">Email:</label>
+                            <input name="emailOrgRespCidade" type="text" placeholder="EMAIL Secretária/Diretoria responsável pelo Turismo local" required><br>
+
+                            <button type="submit" class="btnCadastro">CADASTRAR</button>
+                        </form>
+                    </div>
+                    <div class="box" id="box1">
+                        <button class="close-btn">&times;</button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <line class="top" x1="0" y1="0" x2="900" y2="0"/>
+                            <line class="left" x1="0" y1="460" x2="0" y2="-920"/>
+                            <line class="bottom" x1="300" y1="460" x2="-600" y2="460"/>
+                            <line class="right" x1="300" y1="0" x2="300" y2="1380"/>
+                        </svg>
+                        <h3>
+                            <img src="imgs/icons/iconGuia.webp" alt="Icone ponto turistico">
+                        </h3>
+                        <span>Guia</span>
+                        <form class="specific-form" action="/createUser" method="post">
+                            <label for="spotName">Nome do Ponto Turístico:</label>
+                            <input name="spotName" type="text" placeholder="Nome do Ponto Turístico" required><br>
+                            <label for="spotDescription">Descrição:</label>
+                            <input name="spotDescription" type="text" placeholder="Descrição" required><br>
+                            <button type="submit" class="btn btn-success btn-block">Cadastrar Ponto Turístico</button>
+                        </form>
+                    </div>
+                    <div class="box" id="box1">
+                        <button class="close-btn">&times;</button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <line class="top" x1="0" y1="0" x2="900" y2="0"/>
+                            <line class="left" x1="0" y1="460" x2="0" y2="-920"/>
+                            <line class="bottom" x1="300" y1="460" x2="-600" y2="460"/>
+                            <line class="right" x1="300" y1="0" x2="300" y2="1380"/>
+                        </svg>
+                        <h3>
+                            <img src="imgs/icons/iconTurista.webp" alt="Icone ponto turistico">
+                        </h3>
+                        <span>Turista</span>
+                        <form class="specific-form" action="/createUser" method="post">
+                            <label for="spotName">Nome do Ponto Turístico:</label>
+                            <input name="spotName" type="text" placeholder="Nome do Ponto Turístico" required><br>
+                            <label for="spotDescription">Descrição:</label>
+                            <input name="spotDescription" type="text" placeholder="Descrição" required><br>
+                            <button type="submit" class="btn btn-success btn-block">Cadastrar Turista</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
             <%- include ('partials/footer.ejs') %>

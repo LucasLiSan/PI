@@ -3,15 +3,15 @@ import connection from "../config/sequelize-config.js";
 
 const GuiasDeTurismo = connection.define('guiasDeTurismo', 
 {
-    nomeGuia:{
+    nome:{
         type: Sequelize.STRING,
         allowNull:false
     },
-    emailGuia:{
+    email:{
         type: Sequelize.STRING,
         allowNull:false
     },
-    passwordGuia:{
+    password:{
         type: Sequelize.STRING,
         allowNull:false
     }

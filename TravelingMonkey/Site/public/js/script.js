@@ -25,3 +25,47 @@ function changeCountry() {
     idiomaAtual.innerHTML = idiomaNova.value;
     moedaAtual.innerHTML = moedaNova.value;
 }
+
+
+//MENUS CADASTRO
+document.querySelectorAll('.box').forEach(box => {
+    box.addEventListener('click', function(event) {
+        event.stopPropagation(); // Impedir que o clique na caixa propague para o documento
+
+        // Ocultar outras caixas
+        document.querySelectorAll('.box').forEach(otherBox => {
+            if (otherBox !== box) {
+                otherBox.classList.add('hidden');
+            }
+        });
+
+        // Expandir a caixa clicada
+        box.classList.add('expanded');
+    });
+});
+
+// Evento para fechar a caixa expandida ao clicar no "x"
+document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', function(event) {
+        event.stopPropagation(); // Impedir que o clique no botão propague para a caixa
+
+        // Fechar a caixa expandida
+        let box = btn.parentElement;
+        box.classList.remove('expanded');
+
+        // Mostrar todas as caixas
+        document.querySelectorAll('.box').forEach(box => {
+            box.classList.remove('hidden');
+        });
+    });
+});
+
+// Evento para fechar a caixa expandida ao clicar fora dela
+document.addEventListener('click', function() {
+    document.querySelectorAll('.box.expanded').forEach(box => {
+        box.classList.remove('expanded');
+    });
+    document.querySelectorAll('.box.hidden').forEach(box => {
+        box.classList.remove('hidden');
+    });
+});

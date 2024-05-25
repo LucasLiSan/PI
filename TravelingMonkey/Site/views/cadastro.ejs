@@ -84,44 +84,47 @@
                             <img src="imgs/icons/iconCidade.webp" alt="Icone ponto turistico">
                         </h3>
                         <span>Cidade <br>(Ponto turistico)</span>
-                        <form class="specific-form" action="/createUser" method="post">
+                        <form class="specific-form citys" action="/createUser" method="post">
                             <input type="text" value="cidade" hidden>
 
-                            <label for="nomeCidade">Cidade:</label>
-                            <input name="nomeCidade" type="text" placeholder="Nome da cidade" required><br>
+                            <label class="lb1" for="nomeCidade">Cidade:</label>
+                            <input class="inpt1" name="nomeCidade" type="text" placeholder="Nome da cidade" required>
 
-                            <label for="cnpjCidade">CNPJ:</label>
-                            <input name="cnpjCidade" type="text" placeholder="CNPJ da Cidade" required><br>
+                            <label class="lb2" for="ufCidade">UF:</label>
+                            <input class="inpt2" name="ufCidade" type="text" placeholder="UF" required>
 
-                            <label for="ufCidade">UF:</label>
-                            <input name="ufCidade" type="text" placeholder="Estado" required><br>
+                            <label class="lb3" for="cnpjCidade">CNPJ:</label>
+                            <input class="inpt3" name="cnpjCidade" type="text" placeholder="CNPJ da Cidade" required>
 
-                            <label for="orgRespCidade">Orgão responsável:</label>
-                            <input name="orgRespCidade" type="text" placeholder="Secretária/Diretoria responsável pelo Turismo local" required><br>
+                            <label class="lb4" for="orgRespCidade">Orgão responsável:</label>
+                            <input class="inpt4" name="orgRespCidade" type="text" placeholder="Secretária/Diretoria responsável pelo Turismo local" required>
 
-                            <label for="cnpjOrgRespCidade">CNPJ orgão responsável:</label>
-                            <input name="cnpjOrgRespCidade" type="text" placeholder="CNPJ da Secretária/Diretoria responsável pelo Turismo local" required><br>
+                            <label class="lb5" for="cnpjOrgRespCidade">CNPJ orgão responsável:</label>
+                            <input class="inpt5" name="cnpjOrgRespCidade" type="text" placeholder="CNPJ da Secretária/Diretoria responsável pelo Turismo local" required>
                             
-                            <fieldset>
+                            <fieldset class="field1">
                                 <legend>Endereço:</legend>
-                                <label for="endRuaOrgRespCidade">Rua:</label>
-                                <input name="endRuaOrgRespCidade" type="text" placeholder="Logradouro Secretária/Diretoria responsável pelo Turismo local" required><br>
+                                <label class="lb6" for="endRuaOrgRespCidade">Rua:</label>
+                                <input class="inpt6" name="endRuaOrgRespCidade" type="text" placeholder="Logradouro Secretária/Diretoria responsável pelo Turismo local" required>
 
-                                <label for="endBairroOrgRespCidade">Bairro:</label>
-                                <input name="endBairroOrgRespCidade" type="text" placeholder="Bairro Secretária/Diretoria responsável pelo Turismo local" required><br>
+                                <label class="lb7" for="endNumOrgRespCidade">Número:</label>
+                                <input class="inpt7" name="endNumOrgRespCidade" type="text" placeholder="Numero Secretária/Diretoria responsável pelo Turismo local" required>
+
+                                <label class="lb8" for="endBairroOrgRespCidade">Bairro:</label>
+                                <input class="inpt8" name="endBairroOrgRespCidade" type="text" placeholder="Bairro Secretária/Diretoria responsável pelo Turismo local" required>
                                 
-                                <label for="endNumOrgRespCidade">Número:</label>
-                                <input name="endNumOrgRespCidade" type="text" placeholder="Numero Secretária/Diretoria responsável pelo Turismo local" required><br>
-                                
-                                <label for="endCepOrgRespCidade">CEP:</label>
-                                <input name="endCepOrgRespCidade" type="text" placeholder="CEP Secretária/Diretoria responsável pelo Turismo local" required><br>
+                                <label class="lb9" for="endCepOrgRespCidade">CEP:</label>
+                                <input class="inpt9" name="endCepOrgRespCidade" type="text" placeholder="CEP Secretária/Diretoria responsável pelo Turismo local" required>
                             </fieldset>
                             
-                            <label for="telOrgRespCidade">Telefone:</label>
-                            <input name="telOrgRespCidade" type="text" placeholder="Telefon Secretária/Diretoria responsável pelo Turismo local" required><br>
+                            <label class="lb10" for="telOrgRespCidade">Telefone:</label>
+                            <input class="inpt10" name="telOrgRespCidade" type="text" placeholder="Telefon Secretária/Diretoria responsável pelo Turismo local" required>
                             
-                            <label for="emailOrgRespCidade">Email:</label>
-                            <input name="emailOrgRespCidade" type="text" placeholder="EMAIL Secretária/Diretoria responsável pelo Turismo local" required><br>
+                            <label class="lb11" for="emailOrgRespCidade">Email:</label>
+                            <input class="inpt11" name="emailOrgRespCidade" type="text" placeholder="EMAIL Secretária/Diretoria responsável pelo Turismo local" required>
+
+                            <label class="lb12" for="passwordCidade">Senha:</label>
+                            <input class="inpt12" name="passwordCidade" type="password" placeholder="Defina uma senha" required>
 
                             <button type="submit" class="btnCadastro">CADASTRAR</button>
                         </form>
@@ -138,12 +141,45 @@
                             <img src="imgs/icons/iconGuia.webp" alt="Icone ponto turistico">
                         </h3>
                         <span>Guia</span>
-                        <form class="specific-form" action="/createUser" method="post">
-                            <label for="spotName">Nome do Ponto Turístico:</label>
-                            <input name="spotName" type="text" placeholder="Nome do Ponto Turístico" required><br>
-                            <label for="spotDescription">Descrição:</label>
-                            <input name="spotDescription" type="text" placeholder="Descrição" required><br>
-                            <button type="submit" class="btn btn-success btn-block">Cadastrar Ponto Turístico</button>
+                        <form class="specific-form guides" action="/createUser" method="post">
+                            <input type="text" value="guia" hidden>
+
+                            <label for="nomeGuia">Nome:</label>
+                            <input name="nomeGuia" type="text" placeholder="Insira seu nome" required><br>
+
+                            <label for="cadGuia">Número de Cadastro:</label>
+                            <input name="cadGuia" type="text" placeholder="Insira seu Cadastro de Guia de Turismo" required><br>
+
+                            <label for="motorGuia">Motorista:</label>
+                            <input name="motorGuia" type="radio" value="Sim" required><br>
+                            <input name="motorGuia" type="radio" value="Não" required><br>
+
+                            <label for="telGuia">Telefone:</label>
+                            <input name="telGuia" type="text" placeholder="Telefone" required><br>
+
+                            <label for="idiomaGuia">Idioma Principal</label>
+                            <select name="idiomaGuia" required>
+                                <option value="">Escolha seu idioma...</option>
+                                <option value="DE">Alemão</option>
+                                <option value="AR">Árabe</option>
+                                <option value="BN">Bengali</option>
+                                <option value="ZH">Chines (Mandarin)</option>
+                                <option value="ES">Espanhol</option>
+                                <option value="FR">Frances</option>
+                                <option value="HI">Hindi</option>
+                                <option value="EN">Inglês</option>
+                                <option value="JA">Japones</option>
+                                <option value="PT-BR">Portugues</option>
+                                <option value="RU">Russo</option>
+                            </select>
+                            
+                            <label for="emailGuia">Email:</label>
+                            <input name="emailGuia" type="text" placeholder="EMAIL" required><br>
+
+                            <label for="passwordGuia">Senha:</label>
+                            <input name="passwordGuia" type="password" placeholder="Defina uma senha" required><br>
+
+                            <button type="submit" class="btnCadastro">CADASTRAR</button>
                         </form>
                     </div>
                     <div class="box" id="box1">
@@ -158,12 +194,59 @@
                             <img src="imgs/icons/iconTurista.webp" alt="Icone ponto turistico">
                         </h3>
                         <span>Turista</span>
-                        <form class="specific-form" action="/createUser" method="post">
-                            <label for="spotName">Nome do Ponto Turístico:</label>
-                            <input name="spotName" type="text" placeholder="Nome do Ponto Turístico" required><br>
-                            <label for="spotDescription">Descrição:</label>
-                            <input name="spotDescription" type="text" placeholder="Descrição" required><br>
-                            <button type="submit" class="btn btn-success btn-block">Cadastrar Turista</button>
+                        <form class="specific-form turists" action="/createUser" method="post">
+                            <input type="text" value="turista" hidden>
+
+                            <label for="nomeTurista">Nome:</label>
+                            <input name="nomeTurista" type="text" placeholder="Insira seu nome" required><br>
+
+                            <label for="cpfTurista">CPF:</label>
+                            <input name="cpfTurista" type="text" placeholder="Insira seu CPF" required><br>
+
+                            <label for="nascTurista">Data de nascimento:</label>
+                            <input name="nascTurista" type="date" placeholder="Data de nascimento" required><br>
+
+                            <fieldset>
+                                <legend>Endereço:</legend>
+                                <label for="endRuaTurista">Rua:</label>
+                                <input name="endRuaTurista" type="text" placeholder="Logradouro" required><br>
+
+                                <label for="endBairroTurista">Bairro:</label>
+                                <input name="endBairroTurista" type="text" placeholder="Bairro" required><br>
+                                
+                                <label for="endNumTurista">Número:</label>
+                                <input name="endNumTurista" type="text" placeholder="Numero" required><br>
+                                
+                                <label for="endCepTurista">CEP:</label>
+                                <input name="endCepTurista" type="text" placeholder="CEP" required><br>
+                            </fieldset>
+                            
+                            <label for="telTurista">Telefone:</label>
+                            <input name="telTurista" type="text" placeholder="Telefone" required><br>
+
+                            <label for="idiomaTurista">Idioma de Preferência</label>
+                            <select name="idiomaTurista" required>
+                                <option value="">Escolha seu idioma...</option>
+                                <option value="DE">Alemão</option>
+                                <option value="AR">Árabe</option>
+                                <option value="BN">Bengali</option>
+                                <option value="ZH">Chines (Mandarin)</option>
+                                <option value="ES">Espanhol</option>
+                                <option value="FR">Frances</option>
+                                <option value="HI">Hindi</option>
+                                <option value="EN">Inglês</option>
+                                <option value="JA">Japones</option>
+                                <option value="PT-BR">Portugues</option>
+                                <option value="RU">Russo</option>
+                            </select>
+                            
+                            <label for="emailTurista">Email:</label>
+                            <input name="emailTurista" type="text" placeholder="EMAIL" required><br>
+
+                            <label for="passwordTurista">Senha:</label>
+                            <input name="passwordTurista" type="password" placeholder="Defina uma senha" required><br>
+
+                            <button type="submit" class="btnCadastro">CADASTRAR</button>
                         </form>
                     </div>
                 </div>

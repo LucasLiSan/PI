@@ -88,7 +88,7 @@
                             <input type="text" value="cidade" hidden>
 
                             <label class="lb1" for="nomeCidade">Cidade:</label>
-                            <input class="inpt1" name="nomeCidade" type="text" placeholder="Nome da cidade" required>
+                            <input class="inpt1" name="nomeCidade" type="text" placeholder="Nome da cidade">
 
                             <label class="lb2" for="ufCidade">UF:</label>
                             <input class="inpt2" name="ufCidade" type="text" placeholder="UF" required>
@@ -99,29 +99,29 @@
                             <label class="lb4" for="orgRespCidade">Orgão responsável:</label>
                             <input class="inpt4" name="orgRespCidade" type="text" placeholder="Secretária/Diretoria responsável pelo Turismo local" required>
 
-                            <label class="lb5" for="cnpjOrgRespCidade">CNPJ orgão responsável:</label>
-                            <input class="inpt5" name="cnpjOrgRespCidade" type="text" placeholder="CNPJ da Secretária/Diretoria responsável pelo Turismo local" required>
+                            <label class="lb5" for="cnpjOrgRespCidade">CNPJ:</label>
+                            <input class="inpt5" name="cnpjOrgRespCidade" type="text" placeholder="CNPJ do órgão responsável" required>
                             
                             <fieldset class="field1">
-                                <legend>Endereço:</legend>
-                                <label class="lb6" for="endRuaOrgRespCidade">Rua:</label>
-                                <input class="inpt6" name="endRuaOrgRespCidade" type="text" placeholder="Logradouro Secretária/Diretoria responsável pelo Turismo local" required>
+                                <legend>Endereço do órgão responsável pelo turismo:</legend>
+                                <label class="lb6" for="endRuaOrgRespCidade">Logradouro:</label>
+                                <input class="inpt6" name="endRuaOrgRespCidade" type="text" placeholder="Rua/Avenida/Travessa/Viela" required>
 
                                 <label class="lb7" for="endNumOrgRespCidade">Número:</label>
-                                <input class="inpt7" name="endNumOrgRespCidade" type="text" placeholder="Numero Secretária/Diretoria responsável pelo Turismo local" required>
+                                <input class="inpt7" name="endNumOrgRespCidade" type="text" placeholder="Número" required>
 
                                 <label class="lb8" for="endBairroOrgRespCidade">Bairro:</label>
-                                <input class="inpt8" name="endBairroOrgRespCidade" type="text" placeholder="Bairro Secretária/Diretoria responsável pelo Turismo local" required>
+                                <input class="inpt8" name="endBairroOrgRespCidade" type="text" placeholder="Bairro" required>
                                 
                                 <label class="lb9" for="endCepOrgRespCidade">CEP:</label>
-                                <input class="inpt9" name="endCepOrgRespCidade" type="text" placeholder="CEP Secretária/Diretoria responsável pelo Turismo local" required>
+                                <input class="inpt9" name="endCepOrgRespCidade" type="text" placeholder="CEP" required>
                             </fieldset>
                             
                             <label class="lb10" for="telOrgRespCidade">Telefone:</label>
-                            <input class="inpt10" name="telOrgRespCidade" type="text" placeholder="Telefon Secretária/Diretoria responsável pelo Turismo local" required>
+                            <input class="inpt10" name="telOrgRespCidade" type="text" placeholder="Telefone" required>
                             
                             <label class="lb11" for="emailOrgRespCidade">Email:</label>
-                            <input class="inpt11" name="emailOrgRespCidade" type="text" placeholder="EMAIL Secretária/Diretoria responsável pelo Turismo local" required>
+                            <input class="inpt11" name="emailOrgRespCidade" type="text" placeholder="EMAIL" required>
 
                             <label class="lb12" for="passwordCidade">Senha:</label>
                             <input class="inpt12" name="passwordCidade" type="password" placeholder="Defina uma senha" required>
@@ -144,21 +144,25 @@
                         <form class="specific-form guides" action="/createUser" method="post">
                             <input type="text" value="guia" hidden>
 
-                            <label for="nomeGuia">Nome:</label>
-                            <input name="nomeGuia" type="text" placeholder="Insira seu nome" required><br>
+                            <label class="gLb1" for="nomeGuia">Nome:</label>
+                            <input class="gInpt1" name="nomeGuia" type="text" placeholder="Insira seu nome" required>
 
-                            <label for="cadGuia">Número de Cadastro:</label>
-                            <input name="cadGuia" type="text" placeholder="Insira seu Cadastro de Guia de Turismo" required><br>
+                            <label class="gLb2" for="cadGuia">Número de Cadastro:</label>
+                            <input class="gInpt2" name="cadGuia" type="text" placeholder="Insira seu Cadastro" required>
 
-                            <label for="motorGuia">Motorista:</label>
-                            <input name="motorGuia" type="radio" value="Sim" required><br>
-                            <input name="motorGuia" type="radio" value="Não" required><br>
+                            <div class="motorista">
+                                <label class="gLb3" for="motorGuia">Motorista:</label>
+                                <label class="mLb1">SIM</label>
+                                <input class="gInpt3" name="motorGuia" type="radio" value="Sim" required>
+                                <label class="mLb2">NÃO</label>
+                                <input class="gInpt4" name="motorGuia" type="radio" value="Não" required>
+                            </div>
 
-                            <label for="telGuia">Telefone:</label>
-                            <input name="telGuia" type="text" placeholder="Telefone" required><br>
+                            <label class="gLb4" for="telGuia">Telefone:</label>
+                            <input class="gInpt5" name="telGuia" type="text" placeholder="Telefone" required>
 
-                            <label for="idiomaGuia">Idioma Principal</label>
-                            <select name="idiomaGuia" required>
+                            <label class="gLb5" for="idiomaGuia">Idioma Principal</label>
+                            <select class="gInpt6" name="idiomaGuia" required>
                                 <option value="">Escolha seu idioma...</option>
                                 <option value="DE">Alemão</option>
                                 <option value="AR">Árabe</option>
@@ -173,13 +177,13 @@
                                 <option value="RU">Russo</option>
                             </select>
                             
-                            <label for="emailGuia">Email:</label>
-                            <input name="emailGuia" type="text" placeholder="EMAIL" required><br>
+                            <label class="gLb6" for="emailGuia">Email:</label>
+                            <input class="gInpt7" name="emailGuia" type="text" placeholder="EMAIL" required>
 
-                            <label for="passwordGuia">Senha:</label>
-                            <input name="passwordGuia" type="password" placeholder="Defina uma senha" required><br>
+                            <label class="gLb7" for="passwordGuia">Senha:</label>
+                            <input class="gInpt8" name="passwordGuia" type="password" placeholder="Defina uma senha" required>
 
-                            <button type="submit" class="btnCadastro">CADASTRAR</button>
+                            <button type="submit" class="btnCadastro btnGuide">CADASTRAR</button>
                         </form>
                     </div>
                     <div class="box" id="box1">
@@ -197,35 +201,32 @@
                         <form class="specific-form turists" action="/createUser" method="post">
                             <input type="text" value="turista" hidden>
 
-                            <label for="nomeTurista">Nome:</label>
-                            <input name="nomeTurista" type="text" placeholder="Insira seu nome" required><br>
+                            <label class="tLb1" for="nomeTurista">Nome:</label>
+                            <input class="tInpt1" name="nomeTurista" type="text" placeholder="Insira seu nome" required>
 
-                            <label for="cpfTurista">CPF:</label>
-                            <input name="cpfTurista" type="text" placeholder="Insira seu CPF" required><br>
+                            <label class="tLb2" for="cpfTurista">CPF:</label>
+                            <input class="tInpt2" name="cpfTurista" type="text" placeholder="Insira seu CPF" required>
 
-                            <label for="nascTurista">Data de nascimento:</label>
-                            <input name="nascTurista" type="date" placeholder="Data de nascimento" required><br>
+                            <label class="tLb3" for="nascTurista">Data de nascimento:</label>
+                            <input class="tInpt3" name="nascTurista" type="date" placeholder="Data de nascimento" required>
 
-                            <fieldset>
+                            <fieldset class="field2">
                                 <legend>Endereço:</legend>
-                                <label for="endRuaTurista">Rua:</label>
-                                <input name="endRuaTurista" type="text" placeholder="Logradouro" required><br>
+                                <label class="tLb4" for="endRuaTurista">Rua:</label>
+                                <input class="tInpt4" name="endRuaTurista" type="text" placeholder="Logradouro" required>
 
-                                <label for="endBairroTurista">Bairro:</label>
-                                <input name="endBairroTurista" type="text" placeholder="Bairro" required><br>
+                                <label class="tLb5" for="endBairroTurista">Bairro:</label>
+                                <input class="tInpt5" name="endBairroTurista" type="text" placeholder="Bairro" required>
                                 
-                                <label for="endNumTurista">Número:</label>
-                                <input name="endNumTurista" type="text" placeholder="Numero" required><br>
+                                <label class="tLb6" for="endNumTurista">Número:</label>
+                                <input class="tInpt6" name="endNumTurista" type="text" placeholder="Numero" required>
                                 
-                                <label for="endCepTurista">CEP:</label>
-                                <input name="endCepTurista" type="text" placeholder="CEP" required><br>
+                                <label class="tLb7" for="endCepTurista">CEP:</label>
+                                <input class="tInpt7" name="endCepTurista" type="text" placeholder="CEP" required>
                             </fieldset>
-                            
-                            <label for="telTurista">Telefone:</label>
-                            <input name="telTurista" type="text" placeholder="Telefone" required><br>
 
-                            <label for="idiomaTurista">Idioma de Preferência</label>
-                            <select name="idiomaTurista" required>
+                            <label class="tLb8" for="idiomaTurista">Idioma de Preferência</label>
+                            <select class="tInpt8" name="idiomaTurista" required>
                                 <option value="">Escolha seu idioma...</option>
                                 <option value="DE">Alemão</option>
                                 <option value="AR">Árabe</option>
@@ -240,13 +241,16 @@
                                 <option value="RU">Russo</option>
                             </select>
                             
-                            <label for="emailTurista">Email:</label>
-                            <input name="emailTurista" type="text" placeholder="EMAIL" required><br>
+                            <label class="tLb9" for="telTurista">Telefone:</label>
+                            <input class="tInpt9" name="telTurista" type="text" placeholder="Telefone" required>
 
-                            <label for="passwordTurista">Senha:</label>
-                            <input name="passwordTurista" type="password" placeholder="Defina uma senha" required><br>
+                            <label class="tLb10" for="emailTurista">Email:</label>
+                            <input class="tInpt10" name="emailTurista" type="text" placeholder="EMAIL" required>
 
-                            <button type="submit" class="btnCadastro">CADASTRAR</button>
+                            <label class="tLb11" for="passwordTurista">Senha:</label>
+                            <input class="tInpt11" name="passwordTurista" type="password" placeholder="Defina uma senha" required>
+
+                            <button type="submit" class="btnCadastro turistBtn">CADASTRAR</button>
                         </form>
                     </div>
                 </div>

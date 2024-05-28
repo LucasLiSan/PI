@@ -127,85 +127,102 @@ router.post("/createUser", (req, res) => {
 });
 
 //ROTA AUTENTICAÇÃO
-
-const profileModels = {
-    'Cidade': {
-        model: Cidades,
-        emailField: 'emailOrgRespCidade',
-        passwordField: 'passwordCidade',
-        sessionKey: 'cidade',
-        sessionNameField: 'nomeCidade',
-        sessionFields: ['id', 'emailOrgRespCidade', 'nomeCidade']
-    },
-    'Guia': {
-        model: GuiasDeTurismo,
-        emailField: 'emailGuia',
-        passwordField: 'passwordGuia',
-        sessionKey: 'guia',
-        sessionNameField: 'nomeGuia',
-        sessionFields: ['id', 'emailGuia', 'nomeGuia']
-    },
-    'Turista': {
-        model: Turistas,
-        emailField: 'emailTurista',
-        passwordField: 'passwordTurista',
-        sessionKey: 'turista',
-        sessionNameField: 'nomeTurista',
-        sessionFields: ['id', 'emailTurista', 'nomeTurista']
-    }
-};
-
 router.post("/auth", (req, res) => {
     const profile = req.body.user;
-    const email = req.body.email;
-    const password = req.body.password;
+    const LoginEmail = req.body.email;
+    const LoginPassword = req.body.password;
 
-    // Obter o mapeamento correto com base no perfil
-    const profileData = profileModels[profile];
-
-    if (!profileData) {
-        req.flash('danger', 'Perfil inválido!');
-        return res.redirect("/login");
-    }
-
-    const Model = profileData.model;
-    const emailField = profileData.emailField;
-    const passwordField = profileData.passwordField;
-    const sessionKey = profileData.sessionKey;
-    const sessionNameField = profileData.sessionNameField;
-    const sessionFields = profileData.sessionFields;
-
-    // BUSCA O USUÁRIO NO BANCO
-    Model.findOne({ where: { [emailField]: email } }).then(user => {
-        // SE O USUÁRIO EXISTIR
-        if (user != undefined) {
-            // VALIDA A SENHA
-            const correct = bcrypt.compareSync(password, user[passwordField]);
-            // SE A SENHA FOR VÁLIDA
-            if (correct) {
+    //BUSCA NO BANCO ESPECIFICO
+    if (profile ==="Cidade"){
+        Cidades.findOne({where: {emailOrgRespCidade : LoginEmail}}).then(userCidade => {
+            // SE O USUÁRIO EXISTIR
+            if (userCidade != undefined) { 
+              // VALIDA A SENHA
+              const correct = bcrypt.compareSync(LoginPassword, userCidade.passwordCidade);
+              // SE A SENHA FOR VÁLIDA
+              if(correct){
                 // AUTORIZA O LOGIN - CRIAREMOS A SESSAO DO USUARIO
-                req.session[sessionKey] = {};
-                sessionFields.forEach(field => {
-                    req.session[sessionKey][field] = user[field];
-                });
-
-                req.flash('success', `Login efetuado com sucesso! Bem-vindo ${user[sessionNameField]}`);
+                req.session.userCidade = {
+                  id : userCidade.id,
+                  email : userCidade.emailOrgRespCidade,
+                  nome : userGuia.nomeCidade,
+                }
+                //res.send(`Usuario logado: <br> ID : ${req.session.user['id']}<br> E-mail: ${req.session.user['email']}`)
+                req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userCidade['nome']}`);
                 res.redirect("/home");
-            } else {
-                // SE A SENHA NÃO FOR VÁLIDA
+              // SE A SENHA NÃO FOR VÁLIDA
+              } else {
+                // EXIBE A MENSAGEM
                 req.flash('danger', 'Senha incorreta! Tente novamente.');
                 res.redirect("/login");
+              }
             }
-        } else {
-            // SE O USUÁRIO NÃO EXISTIR
-            req.flash('danger', 'Usuário não cadastrado!');
-            res.redirect("/login");
-        }
-    }).catch(err => {
-        console.error(err);
-        req.flash('danger', 'Ocorreu um erro. Tente novamente.');
-        res.redirect("/login");
-    });
+        });
+    } else if (profile === "Guia") {
+        GuiasDeTurismo.findOne({where: {emailGuia : LoginEmail}}).then(userGuia => {
+            // SE O USUÁRIO EXISTIR
+            if (userGuia != undefined) { 
+              // VALIDA A SENHA
+              const correct = bcrypt.compareSync(LoginPassword, userGuia.passwordGuia);
+              // SE A SENHA FOR VÁLIDA
+              if(correct){
+                // AUTORIZA O LOGIN - CRIAREMOS A SESSAO DO USUARIO
+                req.session.userGuia = {
+                  id : userGuia.id,
+                  email : userGuia.emailGuia,
+                  nome : userGuia.nomeGuia,
+                }
+                //res.send(`Usuario logado: <br> ID : ${req.session.user['id']}<br> E-mail: ${req.session.user['email']}`)
+                req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userGuia['nome']}`);
+                res.redirect("/home");
+              // SE A SENHA NÃO FOR VÁLIDA
+              } else {
+                // EXIBE A MENSAGEM
+                req.flash('danger', 'Senha incorreta! Tente novamente.');
+                res.redirect("/login");
+              }
+            }
+        });
+    } else if (profile === "Turista") {
+        Turistas.findOne({where: {emailTurista : LoginEmail}}).then(userTurista => {
+            // SE O USUÁRIO EXISTIR
+            if (userTurista != undefined) { 
+              // VALIDA A SENHA
+              const correct = bcrypt.compareSync(LoginPassword, userTurista.passwordTurista);
+              // SE A SENHA FOR VÁLIDA
+              if(correct){
+                // AUTORIZA O LOGIN - CRIAREMOS A SESSAO DO USUARIO
+                req.session.userTurista = {
+                  id : userTurista.id,
+                  email : userTurista.emailTurista,
+                  nome : userTurista.nomeTurista,
+                }
+                //res.send(`Usuario logado: <br> ID : ${req.session.user['id']}<br> E-mail: ${req.session.user['email']}`)
+                req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userTurista['nome']}`);
+                res.redirect("/profileUser");
+              // SE A SENHA NÃO FOR VÁLIDA
+              } else {
+                // EXIBE A MENSAGEM
+                req.flash('danger', 'Senha incorreta! Tente novamente.');
+                res.redirect("/login");
+              }
+            }
+        });
+    //SE O USUARIO NÃO EXISTIR
+    } else {
+        // EXIBE A MENSAGEM
+        req.flash('danger', 'Usuario não cadastrado!')
+        res.redirect("/login")
+    }
 });
-
-export default router;
+  
+//ROTA LOGOUT
+router.get("/logout", (req, res) => {
+    req.session.userCidade = undefined
+    req.session.userGuia = undefined
+    req.session.userTurista = undefined
+    req.flash('danger', 'Logout completo!');
+    res.redirect("/home");
+});
+  
+  export default router;

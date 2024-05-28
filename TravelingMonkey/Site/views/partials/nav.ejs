@@ -16,10 +16,18 @@
             </div>
         </li>
         <li>
-            <div class="loginBtn">
-                <img src="/imgs/icons/iconLogin.webp" alt="">
-                <button><a href="/login">Login<br>Cadastrar</a></button>
-            </div>
+            <% if (typeof loggedOut === "true")
+                { %>
+                <div class="loginBtn">
+                    <img src="/imgs/icons/iconLogin.webp" alt="">
+                    <button><a href="/logout">Logout</a></button>
+                </div>
+            <% } else { %>
+                <div class="loginBtn">
+                    <img src="/imgs/icons/iconLogin.webp" alt="">
+                    <button><a href="/login">Login<br>Cadastrar</a></button>
+                </div>
+            <% } %>
         </li>
         <li class="liHover liHome">
             <a href="/home">INICIO</a>

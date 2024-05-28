@@ -42,6 +42,7 @@ import guiasController from "./controllers/guiasController.js";
 import pontosController from "./controllers/pontosController.js";
 import usersController from "./controllers/usersController.js";
 import reservasController from "./controllers/reservasController.js";
+import profileController from "./controllers/profileController.js";
 
 app.use("/", buscaRapidaController);
 app.use("/", buscaController);
@@ -49,6 +50,7 @@ app.use("/", guiasController);
 app.use("/", pontosController);
 app.use("/", usersController);
 app.use("/", reservasController);
+app.use("/", profileController);
 
 //ROTA PRINCIPAL
 app.get("/home", function(req,res){
@@ -56,7 +58,7 @@ app.get("/home", function(req,res){
 });
 
 //INICIANDO O SERVIDOR
-app.listen(8080, function(erro){
+app.listen(8080, '192.168.9.23', function(erro){
     if(erro){
         console.log("Ocorreu um erro!")
     } else {

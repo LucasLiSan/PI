@@ -2,6 +2,7 @@ import express from "express";
 import PontosTuristicos from "../models/pontos.js";
 import Cidades from "../models/cidades.js";
 import Guias from "../models/guias.js";
+import Auth from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -39,7 +40,7 @@ function merge(left, right, key) {
 }
 
 //ROTA BUSCA RAPIDA CIDADES
-router.get('/cidades', function(req, res) {
+router.get('/cidades', Auth, function(req, res) {
     PontosTuristicos.findAll().then(cidades => {
         const sortedCidades = mergeSort(cidades, 'nome');
         res.render("cidades", {
@@ -49,7 +50,7 @@ router.get('/cidades', function(req, res) {
 });
 
 //ROTA BUSCA RAPIDA PONTOS
-router.get('/pontos', function(req, res) {
+router.get('/pontos', Auth, function(req, res) {
     PontosTuristicos.findAll().then(pontos => {
         const sortedPontos = mergeSort(pontos, 'pontoTuristico');
         res.render("pontos", {
@@ -59,7 +60,7 @@ router.get('/pontos', function(req, res) {
 });
 
 //ROTA BUSCA RAPIDA GUIAS
-router.get('/guias', function(req, res) {
+router.get('/guias', Auth, function(req, res) {
     PontosTuristicos.findAll().then(guias => {
         const sortedGuias = mergeSort(guias, 'operacao');
         res.render("guias", {

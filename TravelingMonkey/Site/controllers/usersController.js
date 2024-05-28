@@ -32,46 +32,127 @@ router.get("/cadastro", (req,res) => {
 
 // ROTA DE CRIAÇÃO DE USUÁRIO NO BANCO
 router.post("/createUser", (req, res) => {
-    
-    // COLETANDO INFORMAÇÕES DO CORPO DA REQUISIÇÃO
+    const profile = req.body.profile;
+    console.log("Profile:", profile);
 
-    const email = req.body.email;
-    const password = req.body.password;
-    const nome = req.body.nomeCidade;
-    //const nomeCidade = req.body.nomeCidade;
-    //const cnpj = req.body.cnpj;
-    //const formattedDate = formatDate(dataNascimento);
+    if (profile === 'cidade') {
+        const {
+            nomeCidade, ufCidade, cnpjCidade, orgRespCidade, cnpjOrgRespCidade,
+            endRuaOrgRespCidade, endNumOrgRespCidade, endBairroOrgRespCidade, endCepOrgRespCidade,
+            telOrgRespCidade, emailOrgRespCidade, passwordCidade
+        } = req.body;
+        console.log("Cidade:", emailOrgRespCidade);
 
-    // VERIFICA SE O USUÁRIO JÁ ESTÁ CADASTRADO NO BANCO
-    Cidades.findOne({where: {email : email}}).then(cidades => {
-        // SE NÃO HOUVER
-        if(cidades == undefined){
-            // AQUI SERÁ FEITO O CADASTRO
-            const salt = bcrypt.genSaltSync(10)
-            const hash = bcrypt.hashSync(password, salt)
-            Cidades.create({
-                nome : nome,
-                //cnpjCidade : cnpj,
-                email : email,
-                password : hash,
-            }).then(() => {
-                res.redirect("/login")
-            })
+        Cidades.findOne({ where: { emailOrgRespCidade: emailOrgRespCidade } }).then(cidades => {
+            console.log("Cidade encontrada:", cidades);
+            if (cidades === null) {
+                const saltCidade = bcrypt.genSaltSync(10);
+                const hashCidade = bcrypt.hashSync(passwordCidade, saltCidade);
+                Cidades.create({
+                    nomeCidade, ufCidade, cnpjCidade, orgRespCidade, cnpjOrgRespCidade,
+                    endRuaOrgRespCidade, endNumOrgRespCidade, endBairroOrgRespCidade, endCepOrgRespCidade,
+                    telOrgRespCidade, emailOrgRespCidade, passwordCidade: hashCidade
+                }).then(() => {
+                    req.flash('success', 'Usuário cadastrado.');
+                    res.redirect("/login");
+                });
+            } else {
+                req.flash('danger', 'Usuário já cadastrado.');
+                res.redirect("/login");
+            }
+        }).catch(error => {
+            console.error("Erro ao buscar cidade:", error);
+            res.status(500).send("Erro no servidor");
+        });
 
-            // CASO JÁ EXISTA UM USUÁRIO CADASTRADO COM O MESMO E-MAIL
-        } else {
-            req.flash('danger', 'Usuario já cadastrado.')
-            res.redirect("/login")
-        }
-    })
-})
+    } else if (profile === 'guia') {
+        const {
+            nomeGuia, cadGuia, motorGuia, idiomaGuia, emailGuia, passwordGuia
+        } = req.body;
+        console.log("Guia:", emailGuia);
+
+        GuiasDeTurismo.findOne({ where: { emailGuia: emailGuia } }).then(guias => {
+            console.log("Guia encontrado:", guias);
+            if (guias === null) {
+                const saltGuia = bcrypt.genSaltSync(10);
+                const hashGuia = bcrypt.hashSync(passwordGuia, saltGuia);
+                GuiasDeTurismo.create({
+                    nomeGuia, cadGuia, motorGuia, idiomaGuia, emailGuia, passwordGuia: hashGuia
+                }).then(() => {
+                    req.flash('success', 'Usuário cadastrado.');
+                    res.redirect("/login");
+                });
+            } else {
+                req.flash('danger', 'Usuário já cadastrado.');
+                res.redirect("/login");
+            }
+        }).catch(error => {
+            console.error("Erro ao buscar guia:", error);
+            res.status(500).send("Erro no servidor");
+        });
+
+    } else if (profile === 'turista') {
+        const {
+            nomeTurista, cpfTurista, nascTurista, endRuaTurista, endBairroTurista,
+            endNumTurista, endCepTurista, idiomaTurista, telTurista, emailTurista, passwordTurista
+        } = req.body;
+        const formattedNascTurista = formatDate(nascTurista);
+        console.log("Turista:", emailTurista);
+
+        Turistas.findOne({ where: { emailTurista: emailTurista } }).then(user => {
+            console.log("Turista encontrado:", user);
+            if (user === null) {
+                const saltTurista = bcrypt.genSaltSync(10);
+                const hashTurista = bcrypt.hashSync(passwordTurista, saltTurista);
+                Turistas.create({
+                    nomeTurista, cpfTurista, nascTurista: formattedNascTurista, endRuaTurista,
+                    endBairroTurista, endNumTurista, endCepTurista, idiomaTurista, telTurista,
+                    emailTurista, passwordTurista: hashTurista
+                }).then(() => {
+                    req.flash('success', 'Usuário cadastrado.');
+                    res.redirect("/login");
+                });
+            } else {
+                req.flash('danger', 'Usuário já cadastrado.');
+                res.redirect("/login");
+            }
+        }).catch(error => {
+            console.error("Erro ao buscar turista:", error);
+            res.status(500).send("Erro no servidor");
+        });
+
+    } else {
+        res.status(400).send('Tipo de cadastro inválido');
+    }
+});
 
 //ROTA AUTENTICAÇÃO
 
 const profileModels = {
-    'Cidade': Cidades,
-    'Guia': GuiasDeTurismo,
-    'Turista': Turistas
+    'Cidade': {
+        model: Cidades,
+        emailField: 'emailOrgRespCidade',
+        passwordField: 'passwordCidade',
+        sessionKey: 'cidade',
+        sessionNameField: 'nomeCidade',
+        sessionFields: ['id', 'emailOrgRespCidade', 'nomeCidade']
+    },
+    'Guia': {
+        model: GuiasDeTurismo,
+        emailField: 'emailGuia',
+        passwordField: 'passwordGuia',
+        sessionKey: 'guia',
+        sessionNameField: 'nomeGuia',
+        sessionFields: ['id', 'emailGuia', 'nomeGuia']
+    },
+    'Turista': {
+        model: Turistas,
+        emailField: 'emailTurista',
+        passwordField: 'passwordTurista',
+        sessionKey: 'turista',
+        sessionNameField: 'nomeTurista',
+        sessionFields: ['id', 'emailTurista', 'nomeTurista']
+    }
 };
 
 router.post("/auth", (req, res) => {
@@ -79,29 +160,36 @@ router.post("/auth", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    // Obter o modelo correto com base no perfil
-    const Model = profileModels[profile];
+    // Obter o mapeamento correto com base no perfil
+    const profileData = profileModels[profile];
 
-    if (!Model) {
+    if (!profileData) {
         req.flash('danger', 'Perfil inválido!');
         return res.redirect("/login");
     }
 
+    const Model = profileData.model;
+    const emailField = profileData.emailField;
+    const passwordField = profileData.passwordField;
+    const sessionKey = profileData.sessionKey;
+    const sessionNameField = profileData.sessionNameField;
+    const sessionFields = profileData.sessionFields;
+
     // BUSCA O USUÁRIO NO BANCO
-    Model.findOne({where: {email : email}}).then(user => {
+    Model.findOne({ where: { [emailField]: email } }).then(user => {
         // SE O USUÁRIO EXISTIR
         if (user != undefined) {
             // VALIDA A SENHA
-            const correct = bcrypt.compareSync(password, user.password);
+            const correct = bcrypt.compareSync(password, user[passwordField]);
             // SE A SENHA FOR VÁLIDA
             if (correct) {
                 // AUTORIZA O LOGIN - CRIAREMOS A SESSAO DO USUARIO
-                req.session.user = {
-                    id: user.id,
-                    email: user.email,
-                    nome: user.nome
-                };
-                req.flash('success', `Login efetuado com sucesso! Bem-vindo ${req.session.user['nome']}`);
+                req.session[sessionKey] = {};
+                sessionFields.forEach(field => {
+                    req.session[sessionKey][field] = user[field];
+                });
+
+                req.flash('success', `Login efetuado com sucesso! Bem-vindo ${user[sessionNameField]}`);
                 res.redirect("/home");
             } else {
                 // SE A SENHA NÃO FOR VÁLIDA

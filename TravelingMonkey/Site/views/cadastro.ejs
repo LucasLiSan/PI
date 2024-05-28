@@ -84,8 +84,8 @@
                             <img src="imgs/icons/iconCidade.webp" alt="Icone ponto turistico">
                         </h3>
                         <span>Cidade <br>(Ponto turistico)</span>
-                        <form class="specific-form citys" action="/createUser" method="post">
-                            <input type="text" value="cidade" hidden>
+                        <form class="specific-form citys" action="/createUser" method="POST">
+                            <input type="text" name="profile" value="cidade" hidden>
 
                             <label class="lb1" for="nomeCidade">Cidade:</label>
                             <input class="inpt1" name="nomeCidade" type="text" placeholder="Nome da cidade">
@@ -141,8 +141,8 @@
                             <img src="imgs/icons/iconGuia.webp" alt="Icone ponto turistico">
                         </h3>
                         <span>Guia</span>
-                        <form class="specific-form guides" action="/createUser" method="post">
-                            <input type="text" value="guia" hidden>
+                        <form class="specific-form guides" action="/createUser" method="POST">
+                            <input type="text" name="profile" value="guia" hidden>
 
                             <label class="gLb1" for="nomeGuia">Nome:</label>
                             <input class="gInpt1" name="nomeGuia" type="text" placeholder="Insira seu nome" required>
@@ -198,8 +198,8 @@
                             <img src="imgs/icons/iconTurista.webp" alt="Icone ponto turistico">
                         </h3>
                         <span>Turista</span>
-                        <form class="specific-form turists" action="/createUser" method="post">
-                            <input type="text" value="turista" hidden>
+                        <form class="specific-form turists" action="/createUser" method="POST">
+                            <input type="text" name="profile" value="turista" hidden>
 
                             <label class="tLb1" for="nomeTurista">Nome:</label>
                             <input class="tInpt1" name="nomeTurista" type="text" placeholder="Insira seu nome" required>

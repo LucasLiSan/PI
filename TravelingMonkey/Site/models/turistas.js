@@ -3,19 +3,47 @@ import connection from "../config/sequelize-config.js";
 
 const Turistas = connection.define('turistas', 
 {
-    nome:{
+    nomeTurista:{
         type: Sequelize.STRING,
         allowNull:false
     },
-    nascimento:{
-        type:Sequelize.DATE,
+    cpfTurista:{
+        type:Sequelize.STRING,
         allowNull: true
     },
-    email:{
+    nascTurista:{
         type: Sequelize.STRING,
         allowNull:false
     },
-    password:{
+    endRuaTurista:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endBairroTurista:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endNumTurista:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endCepTurista:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    idiomaTurista:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    telTurista:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    emailTurista:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    passwordTurista:{
         type: Sequelize.STRING,
         allowNull:false
     }

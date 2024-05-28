@@ -3,21 +3,53 @@ import connection from "../config/sequelize-config.js";
 
 const Cidades = connection.define('cidades', 
 {
-    nome:{
+    nomeCidade:{
         type: Sequelize.STRING,
         allowNull:false
     },
-    cnpj:{
+    ufCidade:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    cnpjCidade:{
         type: Sequelize.STRING,
         allowNull:true
     },
-    email:{
+    orgRespCidade:{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull: false
     },
-    password: {
+    cnpjOrgRespCidade:{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull: false
+    },
+    endRuaOrgRespCidade:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    endNumOrgRespCidade:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    endBairroOrgRespCidade:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    endCepOrgRespCidade:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    telOrgRespCidade:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    emailOrgRespCidade:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    passwordCidade:{
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
 

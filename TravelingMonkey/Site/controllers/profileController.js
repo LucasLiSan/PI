@@ -8,12 +8,13 @@ import Atracoes from "../models/atracoes.js";
 import Auth from "../middleware/auth.js";
 const router = express.Router();
 
-router.get("/profileUser", Auth, (req, res) => {
+router.get("/profileUser", (req, res) => {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
+    const loggedOut = !user;
         res.render("profileUser", {
             session: req.session, // Passando a sessão para a view
             user: user,
-            loggedOut: true,
+            loggedOut: loggedOut,
             messages: req.flash()
         });
 });

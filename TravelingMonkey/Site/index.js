@@ -10,7 +10,7 @@ import flash from "express-flash";
 const app = express();
 
 app.use((req, res, next) => {
-    console.log("Middleware: Tornando a sessão disponível em todas as views...");
+    //console.log("Middleware: Tornando a sessão disponível em todas as views...");
     res.locals.session = req.session;
     next();
 });
@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(flash());
 app.use(session({
     secret: "Iwazaru",
-    cookie: {maxAge: 120000},
+    cookie: {maxAge: 600000},
     saveUninitialized: false,
     resave: false
 }));
@@ -60,7 +60,11 @@ app.use("/", profileController);
 
 //ROTA PRINCIPAL
 app.get("/home", function(req,res){
-    res.render("index")
+    const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
+    const loggedOut = !user;
+    res.render("index", {
+        loggedOut: loggedOut
+    });
 });
 
 //INICIANDO O SERVIDOR

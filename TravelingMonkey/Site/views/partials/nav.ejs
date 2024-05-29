@@ -16,16 +16,20 @@
             </div>
         </li>
         <li>
-            <% if (typeof loggedOut === "true")
-                { %>
+            <% if (!loggedOut) { %>
                 <div class="loginBtn">
-                    <img src="/imgs/icons/iconLogin.webp" alt="">
-                    <button><a href="/logout">Logout</a></button>
+                    <a href="/profileUser"><img src="/imgs/icons/iconLogin.webp" alt=""></a>
+                    <div class="buttonOut">
+                        <a href="/logout">Logout</a>
+                    </div>
                 </div>
             <% } else { %>
                 <div class="loginBtn">
-                    <img src="/imgs/icons/iconLogin.webp" alt="">
-                    <button><a href="/login">Login<br>Cadastrar</a></button>
+                    <a href="/profileUser"><img src="/imgs/icons/iconLogin.webp" alt=""></a>
+                    <div class="buttonIn">
+                        <a class="login" href="/login">Login</a>
+                        <a class="cadastrar" href="/cadastro">Cadastrar</a>
+                    </div>
                 </div>
             <% } %>
         </li>

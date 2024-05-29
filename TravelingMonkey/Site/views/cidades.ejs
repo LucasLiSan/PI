@@ -15,27 +15,15 @@
                     <th>SITUAÇÃO 
                         <span class="material-symbols-outlined">swap_vert</span>
                     </th>
-                    <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <% cidades.forEach(function(cidade){ %>
+                <% pontos.forEach(function(ponto){ %>
                     <tr>
                         <!--<td><img src="<%= cidade.profilePic %>" alt=""></td>-->
-                        <td><%= cidade.nome %></td>
-                        <td><%= cidade.pontoTuristico %></td>
-                        <td><%= cidade.operacao %></td>
-                        <td>
-                            <div class="btnsActionscidades">
-                                <a class="editarcidade" href="/cidades/edit/<%= cidade.id %>">EDITAR</a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btnsActionscidades">
-                                <a class="deletarcidade" href="/cidades/delete/<%= cidade.id %>" onclick="return confirm('Tem certeza que deseja excluir o cadastro do cidade: <%= cidade.nome %>?')">EXCLUIR</a>
-                            </div>
-                        </td>
+                        <td><%= ponto.nomePonto %></td>
+                        <td><%= ponto.endCidadePonto %></td>
+                        <td><%= ponto.valorEntrada %></td>
                     </tr>
                 <% }) %>
             </tbody>

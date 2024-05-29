@@ -8,11 +8,14 @@ import Atracoes from "../models/atracoes.js";
 import Auth from "../middleware/auth.js";
 const router = express.Router();
 
-router.get("/profileUser", Auth, (req,res) => {
-    res.render("profileUser", {
-        loggedOut: true,
-        messages: req.flash()
-    });
+router.get("/profileUser", Auth, (req, res) => {
+    const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
+        res.render("profileUser", {
+            session: req.session, // Passando a sessão para a view
+            user: user,
+            loggedOut: true,
+            messages: req.flash()
+        });
 });
 
 export default router;

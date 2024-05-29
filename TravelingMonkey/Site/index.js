@@ -9,6 +9,12 @@ import flash from "express-flash";
 //INICIANDO O EXPRESS
 const app = express();
 
+app.use((req, res, next) => {
+    console.log("Middleware: Tornando a sessão disponível em todas as views...");
+    res.locals.session = req.session;
+    next();
+});
+
 //CRIANDO AS CONEXÕES E CRIANDO O BANCO
 connection.authenticate().then(() => {
     console.log("Conexão com o banco realizada com sucesso!")
@@ -58,7 +64,7 @@ app.get("/home", function(req,res){
 });
 
 //INICIANDO O SERVIDOR
-app.listen(8080, '192.168.9.23', function(erro){
+app.listen(8080, function(erro){
     if(erro){
         console.log("Ocorreu um erro!")
     } else {

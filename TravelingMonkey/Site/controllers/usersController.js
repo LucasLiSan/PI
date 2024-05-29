@@ -145,11 +145,10 @@ router.post("/auth", (req, res) => {
                 req.session.userCidade = {
                   id : userCidade.id,
                   email : userCidade.emailOrgRespCidade,
-                  nome : userGuia.nomeCidade,
+                  nome : userCidade.nomeCidade,
                 }
-                //res.send(`Usuario logado: <br> ID : ${req.session.user['id']}<br> E-mail: ${req.session.user['email']}`)
                 req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userCidade['nome']}`);
-                res.redirect("/home");
+                res.redirect("/profileUser");
               // SE A SENHA NÃO FOR VÁLIDA
               } else {
                 // EXIBE A MENSAGEM
@@ -172,9 +171,8 @@ router.post("/auth", (req, res) => {
                   email : userGuia.emailGuia,
                   nome : userGuia.nomeGuia,
                 }
-                //res.send(`Usuario logado: <br> ID : ${req.session.user['id']}<br> E-mail: ${req.session.user['email']}`)
                 req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userGuia['nome']}`);
-                res.redirect("/home");
+                res.redirect("/profileUser");
               // SE A SENHA NÃO FOR VÁLIDA
               } else {
                 // EXIBE A MENSAGEM
@@ -197,7 +195,6 @@ router.post("/auth", (req, res) => {
                   email : userTurista.emailTurista,
                   nome : userTurista.nomeTurista,
                 }
-                //res.send(`Usuario logado: <br> ID : ${req.session.user['id']}<br> E-mail: ${req.session.user['email']}`)
                 req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userTurista['nome']}`);
                 res.redirect("/profileUser");
               // SE A SENHA NÃO FOR VÁLIDA

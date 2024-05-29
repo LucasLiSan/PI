@@ -16,70 +16,75 @@
 
             <div class="sidenav">
                 <div class="profile">
-                    <img src="https://imdezcode.files.wordpress.com/2020/02/imdezcode-logo.png" alt="" width="100" height="100">
+                    <img src="/imgs/monkey-5.jpg" alt="" width="100" height="100">
         
-                    <div class="name">
-                        ImDezCode
-                    </div>
+                    <% if (session.userCidade) { %>
+                        <div class="name">
+                            <%= session.userCidade.nome %>
+                        </div>
+                    <% } else if (session.userGuia) { %>
+                        <div class="name">
+                            <%= session.userGuia.nome %>
+                        </div>
+                    <% } else if (session.userTurista) { %>
+                        <div class="name">
+                            <%= session.userTurista.nome %>
+                        </div>
+                    <% } %>
                     <div class="job">
-                        Web Developer
+                        Viajante
                     </div>
                 </div>
         
                 <div class="sidenav-url">
                     <div class="url">
-                        <a href="#profile" class="active">Profile</a>
+                        <a href="#profile" class="active">Perfil</a>
                         <hr align="center">
                     </div>
                     <div class="url">
-                        <a href="#settings">Settings</a>
+                        <a href="#settings">Configurações</a>
                         <hr align="center">
                     </div>
                 </div>
             </div>
             <div class="main">
-                <h2>IDENTITY</h2>
+                <% if(messages.success) { %>
+                    <div class="alertSuccess">
+                        <%= messages.success %>
+                    </div>
+                <% } %>
+                <h2>Lucas Lima</h2>
                 <div class="card">
                     <div class="card-body">
                         <i class="fa fa-pen fa-xs edit"></i>
                         <table>
                             <tbody>
                                 <tr>
-                                    <td>Name</td>
+                                    <td>Nome</td>
                                     <td>:</td>
-                                    <td>ImDezCode</td>
+                                    <td>Lucas</td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
                                     <td>:</td>
-                                    <td>imdezcode@gmail.com</td>
+                                    <td>lucas@email.com</td>
                                 </tr>
                                 <tr>
-                                    <td>Address</td>
+                                    <td>Endereço</td>
                                     <td>:</td>
-                                    <td>Bali, Indonesia</td>
+                                    <td>Rua 1, 2, Bairro 2</td>
                                 </tr>
                                 <tr>
-                                    <td>Hobbies</td>
+                                    <td>Preferencias</td>
                                     <td>:</td>
-                                    <td>Diving, Reading Book</td>
-                                </tr>
-                                <tr>
-                                    <td>Job</td>
-                                    <td>:</td>
-                                    <td>Web Developer</td>
-                                </tr>
-                                <tr>
-                                    <td>Skill</td>
-                                    <td>:</td>
-                                    <td>PHP, HTML, CSS, Java</td>
+                                    <td>Trilha, Rafting</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
         
-                <h2>SOCIAL MEDIA</h2>
+                <h2>Conecte-se</h2>
                 <div class="card">
                     <div class="card-body">
                         <i class="fa fa-pen fa-xs edit"></i>

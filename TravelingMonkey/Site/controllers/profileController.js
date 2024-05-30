@@ -20,11 +20,11 @@ router.get("/profileUser", (req, res) => {
 });
 
 router.post("/profileUser/update/:id", (req, res) => {
-    const id = req.body.id
-    const nome = req.body.nome
-    const cpf = req.body.cpf
-    const endereco = req.body.endereco
-    Cliente.update(
+    const id = req.body.id;
+    const nome = req.body.nome;
+    const cpf = req.body.cpf;
+    const endereco = req.body.endereco;
+    Turistas.update(
         {
             nome : nome,
             cpf : cpf,
@@ -32,8 +32,8 @@ router.post("/profileUser/update/:id", (req, res) => {
         },
         {where: {id : id}}
     ).then(() => {
-        res.redirect("/clientes")
-    })
-})
+        res.redirect("/profileUser")
+    });
+});
 
 export default router;

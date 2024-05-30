@@ -1,3 +1,4 @@
+//MODAL MOEDA E IDIOMA
 var modal = document.getElementById("myModalCurrency");
 var btn = document.getElementById("myBtnCurrency");
 var span = document.getElementsByClassName("close")[0];
@@ -67,5 +68,21 @@ document.addEventListener('click', function() {
     });
     document.querySelectorAll('.box.hidden').forEach(box => {
         box.classList.remove('hidden');
+    });
+});
+
+//BOTAO EDITS
+document.getElementById('editBtnPersonal').addEventListener('click', function() {
+    // Seleciona todas as divs que contêm os inputs dos perfis
+    var profileDivs = document.querySelectorAll('.cardProfileTuristas');
+
+    profileDivs.forEach(function(div) {
+        // Seleciona todos os inputs dentro da div atual
+        var inputs = div.querySelectorAll('input');
+
+        inputs.forEach(function(input) {
+            // Habilita o input
+            input.disabled = false;
+        });
     });
 });

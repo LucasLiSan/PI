@@ -68,7 +68,7 @@
                 <div class="cardProfile">
                     <div class="cardProfileBody-Personal">
                         <div class="cardProfileTitle">
-                            <i class="fa fa-pen fa-xs edit"></i>
+                            <i id="editBtnPersonal" class="fa fa-pen fa-xs edit"></i>
                             <% if (session.userCidade) { %>
                                 <h2>Infos: <%= session.userCidade.nome %></h2>
                             <% } else if (session.userGuia) { %>
@@ -80,12 +80,74 @@
                         <div class="cardProfileBody-Inputs">
                             <% Object.keys(session).forEach(key => { %>
                                 <% if (key.startsWith('user')) { %>
-                                    <label>Nome:</label>
-                                    <span><%= session[key].nome %></span>
-                                    <label>E-mail:</label>
-                                    <span><%= session[key].email %></span>
-                                    <label>E-mail:</label>
-                                    <span><%= session[key].email %></span>  
+                                    <div class="cardProfileTuristas">
+                                        <% if (session.userCidade) { %>
+                                            <form method="POST" action="/profileUser/update/<%= session.userCidade.id %>"></form>
+                                        <% } else if (session.userGuia) { %>
+                                            <form method="POST" action="/profileUser/update/<%= session.userGuia.id %>"></form>
+                                        <% } else if (session.userTurista) { %>
+                                            <form method="POST" action="/profileUser/update/<%= session.userTurista.id %>"></form>
+                                        <% } %>
+                                        
+                                            <input type="text" name="id" value="<%= session[key].id %>" hidden>
+                                            <fieldset>
+                                                <legend>Principais</legend>
+                                                <label >Nome:</label>
+                                                <input class="editable" type="text" name="nome" id="" value="<%= session[key].nome %>" disabled>
+
+                                                <label>CPF:</label>
+                                                <input class="editable" type="text" name="cpf" id="" value="<%= session[key].cpf %>" disabled>
+
+                                                <label >NASCIMENTO:</label>
+                                                <input class="editable" type="date" name="nascimento" id="" value="<%= session[key].nasc %>" disabled>
+
+                                                <label >IDADE:</label>
+                                                <input type="text" value="<%= session[key].age %>" disabled>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>Endereço:</legend>
+
+                                                <label>Rua:</label>
+                                                <input class="editable" type="text" name="rua" value="<%= session[key].rua %>" disabled>
+
+                                                <label>Bairro:</label>
+                                                <input class="editable" type="text" name="bairro" value="<%= session[key].bairro %>" disabled>
+
+                                                <label>Nº:</label>
+                                                <input class="editable" type="text" name="numero" value="<%= session[key].numero %>" disabled>
+
+                                                <label>Cidade:</label>
+                                                <input class="editable" type="text" name="cidade" value="<%= session[key].cidade %>" disabled>
+
+                                                <label>Estado:</label>
+                                                <input class="editable" type="text" name="uf" value="<%= session[key].uf %>" disabled>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>Contato</legend>
+
+                                                <label>E-mail:</label>
+                                                <input type="email" name="email" value="<%= session[key].email %>" disabled>
+                                                
+                                                <label>Telefone Principal:</label>
+                                                <input type="text" name="" id="" value="<%= session[key].foneP %>" disabled>
+                                            </fieldset>                          
+                                            <fieldset>
+                                                <legend>Adicionais</legend>
+
+                                                <label>Idioma padrão:</label>
+                                                <input type="text" name="" id="" value="<%= session[key].language %>" disabled>
+
+                                                <label>Idiomas adicionais:</label>
+                                                <input type="text" name="" id="" value="" disabled>
+
+                                                <label>Comorbidades:</label>
+                                                <input type="text" name="" id="" value="" disabled>
+
+                                                <label>Interesses:</label>
+                                                <input type="text" name="" id="" value="" disabled>
+                                            </fieldset>
+                                        </form>
+                                    </div>
                                 <% } %>
                             <% }); %>
                         </div>
@@ -93,7 +155,7 @@
                     </div>
                     <div class="cardProfileBody-Infos">
                         <div class="cardProfileTitle">
-                            <i class="fa fa-pen fa-xs edit"></i>
+                            <i id="editBtn-Infos" class="fa fa-pen fa-xs edit"></i>
                             <% if (session.userCidade) { %>
                                 <h2>Pontos túristicos Cadastrados:</h2>
                             <% } else if (session.userGuia) { %>
@@ -107,7 +169,7 @@
         
                 <div class="cardSocialMedia">
                     <div class="cardProfileTitle">
-                        <i class="fa fa-pen fa-xs edit"></i>
+                        <i id="editBtn-Social" class="fa fa-pen fa-xs edit"></i>
                         <h2>Conecte-se</h2>
                     </div>
                     <div class="social-media">

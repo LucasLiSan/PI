@@ -19,4 +19,21 @@ router.get("/profileUser", (req, res) => {
         });
 });
 
+router.post("/profileUser/update/:id", (req, res) => {
+    const id = req.body.id
+    const nome = req.body.nome
+    const cpf = req.body.cpf
+    const endereco = req.body.endereco
+    Cliente.update(
+        {
+            nome : nome,
+            cpf : cpf,
+            endereco : endereco
+        },
+        {where: {id : id}}
+    ).then(() => {
+        res.redirect("/clientes")
+    })
+})
+
 export default router;

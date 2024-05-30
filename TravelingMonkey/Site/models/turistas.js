@@ -27,6 +27,14 @@ const Turistas = connection.define('turistas',
         type: Sequelize.STRING,
         allowNull:false
     },
+    endCidadeTurista:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endUfTurista:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
     endCepTurista:{
         type: Sequelize.STRING,
         allowNull:false

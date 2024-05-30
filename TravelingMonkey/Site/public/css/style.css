@@ -10,6 +10,44 @@
     --fontBodyText: "Comfortaa", sans-serif;
 }
 
+/* ESTILIZAÇÃO DA BARRA DE SCROLL */
+
+/* Customiza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 12px;  /* Largura da barra de rolagem vertical */
+    height: 12px; /* Altura da barra de rolagem horizontal */
+}
+
+/* Customiza o "polegar" da barra de rolagem, que é a parte que se move */
+::-webkit-scrollbar-thumb {
+    background-color: var(--colorBtns);  /* Cor do polegar */
+    border-radius: 1rem;      /* Bordas arredondadas */
+}
+
+/* Customiza a faixa de rolagem, que é a área em que o polegar se move */
+::-webkit-scrollbar-track {
+    background: var(--colorBackGround); /* Cor da faixa */
+}
+
+/* Customiza a faixa de rolagem quando está ativa (quando está sendo rolada) */
+::-webkit-scrollbar-track-piece {
+    background: var(--colorStandart);
+}
+
+/* Customiza os botões de incremento/decremento da barra de rolagem (não visível na maioria dos navegadores) */
+::-webkit-scrollbar-button {
+    background-color: var(--colorBtns);
+    border-radius: 1rem;
+}
+
+/* Customiza a barra de rolagem quando está em modo "hover" (quando o mouse está sobre ela) */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--colorBtnsHover); /* Cor do polegar em modo hover */
+}
+
+/* ESTILIZAÇÃO DA BARRA DE SCROLL */
+
+
 body {
     background-color: var(--colorBackGround);
     margin: 0;
@@ -25,6 +63,7 @@ body {
 }
 
 .alertDanger {
+    position: absolute;
     width: 80%;
     padding: 1rem;
     margin-bottom: 0.6rem;
@@ -38,6 +77,7 @@ body {
 }
 
 .alertSuccess {
+    position: absolute;
     width: 50%;
     padding: 0.4rem;
     text-align: center;
@@ -47,6 +87,12 @@ body {
     background: var(--colorThird);
     border-radius: 2rem;
     font-weight: bold;
+}
+
+legend {
+    font-family: var(--fontTitles);
+    color: #ffffff;
+    font-size: 1.5rem;
 }
 
 .navTopMenu {
@@ -140,9 +186,7 @@ body {
     align-items: center;
 }
 
-.currency {
-    justify-content: center;
-}
+.currency { justify-content: center;}
 
 .language img, .currency img {
     height: 40%;
@@ -270,12 +314,8 @@ body {
     border-radius: 1rem;
 }
 
-.lang label {
-    grid-area: langLabel;
-}
-.lang select {
-    grid-area: langSelect;
-}
+.lang label { grid-area: langLabel;}
+.lang select { grid-area: langSelect;}
 
 .coin {
     grid-area: coin;
@@ -286,12 +326,8 @@ body {
     ;
 }
 
-.coin label {
-    grid-area: coinLabel;
-}
-.coin select {
-    grid-area: coinSelect;
-}
+.coin label { grid-area: coinLabel;}
+.coin select { grid-area: coinSelect;}
 
 .loginBtn {
     height: 100%;
@@ -359,12 +395,8 @@ body {
     text-decoration: none;
 }
 
-.buttonIn a:nth-child(1) {
-    border-radius: 1rem 1rem 0 0;
-}
-.buttonIn a:nth-child(2) {
-    border-radius: 0 0 1rem 1rem;
-}
+.buttonIn a:nth-child(1) { border-radius: 1rem 1rem 0 0;}
+.buttonIn a:nth-child(2) { border-radius: 0 0 1rem 1rem;}
 
 
 .loginBtn button:hover, #searchFormSubmit input:hover,
@@ -521,21 +553,13 @@ body {
     height: 1.5rem;
 }
 
-#dateLabelIn {
-    grid-area: dateLabelIn;
-}
+#dateLabelIn { grid-area: dateLabelIn;}
 
-#dateIn {
-    grid-area: dateInputIn;
-}
+#dateIn { grid-area: dateInputIn;}
 
-#dateLabelOut {
-    grid-area: dateLabelOut;
-}
+#dateLabelOut { grid-area: dateLabelOut;}
 
-#dateOut {
-    grid-area: dateInputOut;
-}
+#dateOut { grid-area: dateInputOut;}
 
 .people {
     display: grid;
@@ -636,13 +660,9 @@ body {
     text-align: center;
 }
 
-.quickSearch img {
-    width: 40%;
-}
+.quickSearch img { width: 40%;}
 
-.citySearch {
-    grid-area: searchCity;
-}
+.citySearch { grid-area: searchCity;}
 
 .citySearch a {
     display: grid;
@@ -655,16 +675,10 @@ body {
     justify-items: center;
 }
 
-.citySearch img {
-    grid-area: imgCitySearch;
-}
-.citySearch span {
-    grid-area: spanCitySearch;
-}
+.citySearch img { grid-area: imgCitySearch;}
+.citySearch span { grid-area: spanCitySearch;}
 
-.localSearch {
-    grid-area: searchLocal;
-}
+.localSearch { grid-area: searchLocal;}
 
 .localSearch a {
     display: grid;
@@ -677,16 +691,10 @@ body {
     justify-items: center;
 }
 
-.localSearch img {
-    grid-area: imgLocalSearch;
-}
-.localSearch span {
-    grid-area: spanLocalSearch;
-}
+.localSearch img { grid-area: imgLocalSearch;}
+.localSearch span { grid-area: spanLocalSearch;}
 
-.guideSearch {
-    grid-area: searchGuide;
-}
+.guideSearch { grid-area: searchGuide;}
 
 .guideSearch a {
     display: grid;
@@ -699,20 +707,8 @@ body {
     justify-items: center;
 }
 
-.guideSearch img {
-    grid-area: imgGuideSearch;
-}
-.guideSearch span {
-    grid-area: spanGuideSearch;
-}
-
-/*.recentReviews {
-    
-}
-
-.aboutUs {
-    
-}*/
+.guideSearch img { grid-area: imgGuideSearch;}
+.guideSearch span { grid-area: spanGuideSearch;}
 
 .cidadesBody {
     width: 80%;
@@ -738,9 +734,7 @@ body {
     text-align: center;
 }
 
-.cidadesTable tr {
-    height: 2.5rem;
-}
+.cidadesTable tr { height: 2.5rem;}
 
 footer {
     width: 100%;
@@ -760,9 +754,7 @@ footer {
     text-align: center;
 }
 
-.related p {
-    font-size: 1.5em;
-}
+.related p { font-size: 1.5em;}
 
 .related > a {
     background: rgba(0,0,0,0.05);
@@ -775,9 +767,7 @@ footer {
 	transition: color 0.3s, background-color 0.3s;
 }
 
-.related a:hover {
-    background-color: rgba(0, 0, 0, 0.4);
-}
+.related a:hover { background-color: rgba(0, 0, 0, 0.4);}
 
 .related a img {
     max-width: 100%;
@@ -824,13 +814,9 @@ footer {
     transition: all 0.5s ease-in-out;
 }
 
-.box.expanded {
-    width: 55%;
-}
+.box.expanded { width: 55%;}
 
-.box.hidden {
-    display: none;
-}
+.box.hidden { display: none;}
 
 .specific-form {
     display: none;
@@ -885,36 +871,20 @@ footer {
     text-align: center;
 }
 
-.lb1 {
-    grid-area: A1;
-}
-.inpt1 {
-    grid-area: A2;
-}
-.lb2 {
-    grid-area: B1;
-}
-.inpt2 {
-    grid-area: B2;
-}
-.lb3 {
-    grid-area: C1;
-}
-.inpt3 {
-    grid-area: C2;
-}
-.lb4 {
-    grid-area: A3;
-}
-.inpt4 {
-    grid-area: A4;
-}
-.lb5 {
-    grid-area: B3;
-}
-.inpt5 {
-    grid-area: B4;
-}
+.lb1 { grid-area: A1;}
+.inpt1 { grid-area: A2;}
+
+.lb2 { grid-area: B1;}
+.inpt2 { grid-area: B2;}
+
+.lb3 { grid-area: C1;}
+.inpt3 { grid-area: C2;}
+
+.lb4 { grid-area: A3;}
+.inpt4 { grid-area: A4;}
+
+.lb5 { grid-area: B3;}
+.inpt5 { grid-area: B4;}
 
 .field1 {
     height: 90%;
@@ -931,48 +901,26 @@ footer {
     align-content: center;
 }
 
-.lb6 {
-    grid-area: fa1;
-}
-.inpt6 {
-    grid-area: fa2;
-}
-.lb7 {
-    grid-area: fb1;
-}
-.inpt7 {
-    grid-area: fb2;
-}
-.lb8 {
-    grid-area: fa3;
-}
-.inpt8 {
-    grid-area: fa4;
-}
-.lb9 {
-    grid-area: fb3;
-}
-.inpt9 {
-    grid-area: fb4;
-}
-.lb10 {
-    grid-area: A6;
-}
-.inpt10 {
-    grid-area: A7;
-}
-.lb11 {
-    grid-area: B6;
-}
-.inpt11 {
-    grid-area: B7;
-}
-.lb12 {
-    grid-area: C6;
-}
-.inpt12 {
-    grid-area: C7;
-}
+.lb6 { grid-area: fa1;}
+.inpt6 { grid-area: fa2;}
+
+.lb7 { grid-area: fb1;}
+.inpt7 { grid-area: fb2;}
+
+.lb8 { grid-area: fa3;}
+.inpt8 { grid-area: fa4;}
+
+.lb9 { grid-area: fb3;}
+.inpt9 { grid-area: fb4;}
+
+.lb10 { grid-area: A6;}
+.inpt10 { grid-area: A7;}
+
+.lb11 { grid-area: B6;}
+.inpt11 { grid-area: B7;}
+
+.lb12 { grid-area: C6;}
+.inpt12 { grid-area: C7;}
 
 .btnCadastro {
     grid-area: B8;
@@ -1005,18 +953,12 @@ footer {
     ;
 }
 
-.gLb1 {
-    grid-area: A1;
-}
-.gInpt1 {
-    grid-area: A2;
-}
-.gLb2 {
-    grid-area: B1;
-}
-.gInpt2 {
-    grid-area: B2;
-}
+.gLb1 { grid-area: A1;}
+.gInpt1 { grid-area: A2;}
+
+.gLb2 { grid-area: B1;}
+.gInpt2 { grid-area: B2;}
+
 .motorista {
     width: 100%;
     height: 100%;
@@ -1033,50 +975,28 @@ footer {
     justify-content: center;
 
 }
-.gLb3 {
-    grid-area: ma1;
-}
+.gLb3 { grid-area: ma1;}
 
-.mLb1 {
-    grid-area: ma2;
-}
-.mLb2 {
-    grid-area: mb2;
-}
-.gInpt3 {
-    grid-area: ma3;
-}
-.gInpt4 {
-    grid-area: mb3;
-}
+.mLb1 { grid-area: ma2;}
+.mLb2 { grid-area: mb2;}
 
-.gLb4 {
-    grid-area: B3;
-}
-.gInpt5 {
-    grid-area: B4;
-}
-.gLb5 {
-    grid-area: A5;
-}
-.gInpt6 {
-    grid-area: A6;
-}
-.gLb6 {
-    grid-area: B5;
-}
-.gInpt7 {
-    grid-area: B6;
-}
-.gLb7 {
-    grid-area: C5;
-}
-.gInpt8 {
-    grid-area: C6;
-}
-.btnGuide {
-    grid-area: B7;
-}
+.gInpt3 { grid-area: ma3;}
+
+.gInpt4 { grid-area: mb3;}
+.gLb4 { grid-area: B3;}
+
+.gInpt5 { grid-area: B4;}
+.gLb5 { grid-area: A5;}
+
+.gInpt6 { grid-area: A6;}
+.gLb6 { grid-area: B5;}
+
+.gInpt7 { grid-area: B6;}
+.gLb7 { grid-area: C5;}
+
+.gInpt8 { grid-area: C6;}
+
+.btnGuide { grid-area: B7;}
 
 .turists {
     grid-template:
@@ -1093,93 +1013,62 @@ footer {
     ;
 }
 
-.tLb1 {
-    grid-area: A1;
-}
-.tInpt1 {
-    grid-area: A2;
-}
-.tLb2 {
-    grid-area: B1;
-}
-.tInpt2 {
-    grid-area: B2;
-}
-.tLb3 {
-    grid-area: C1;
-}
-.tInpt3 {
-    grid-area: C2;
-}
+.tLb1 { grid-area: A1;}
+.tInpt1 { grid-area: A2;}
+
+.tLb2 { grid-area: B1;}
+.tInpt2 { grid-area: B2;}
+
+.tLb3 { grid-area: C1;}
+.tInpt3 { grid-area: C2;}
+
 .field2  {
     width: 95%;
     height: 85%;
     grid-area: A3;
     display: grid;
     grid-template:
-        "f2a1 f2b1" 15%
-        "f2a2 f2b2" 20%
-        "f2a3 f2b3" 15%
-        "f2a4 f2b4" 20%
-        / 1fr 1fr
+        "f2a1 f2a1 f2a1 f2b1 f2b1" 15%
+        "f2a2 f2a2 f2a2 f2b2 f2b2" 20%
+        "f2a3 f2c3 f2c3 f2d3 f2b3" 15%
+        "f2a4 f2c4 f2c4 f2d4 f2b4" 20%
+        / 1fr 1fr 1fr 1fr 1fr
     ;
     align-items: center;
     justify-items: center;
     align-content: space-evenly;
 }
-.tLb4 {
-    grid-area: f2a1;
-}
-.tInpt4 {
-    grid-area: f2a2;
-}
-.tLb5 {
-    grid-area: f2b1;
-}
-.tInpt5 {
-    grid-area: f2b2;
-}
-.tLb6 {
-    grid-area: f2a3;
-}
-.tInpt6 {
-    grid-area: f2a4;
-}
-.tLb7 {
-    grid-area: f2b3;
-}
-.tInpt7 {
-    grid-area: f2b4;
-}
+.tLb4 { grid-area: f2a1;}
+.tInpt4 { grid-area: f2a2;}
 
-.tLb8 {
-    grid-area: B5;
-}
-.tInpt8 {
-    grid-area: B6;
-}
-.tLb9 {
-    grid-area: A7;
-}
-.tInpt9 {
-    grid-area: A8;
-}
-.tLb10 {
-    grid-area: B7;
-}
-.tInpt10 {
-    grid-area: B8;
-}
-.tLb11 {
-    grid-area: C7;
-}
-.tInpt11 {
-    grid-area: C8;
-}
+.tLb5 { grid-area: f2b1;}
+.tInpt5 { grid-area: f2b2;}
 
-.turistBtn {
-    grid-area: A9;
-}
+.tLb6 { grid-area: f2a3;}
+.tInpt6 { grid-area: f2a4;}
+
+.tLb7 { grid-area: f2b3;}
+.tInpt7 { grid-area: f2b4;}
+
+.tLb12 { grid-area: f2c3;}
+.tInpt12 { grid-area: f2c4;}
+
+.tLb13 { grid-area: f2d3;}
+.tInpt13 { grid-area: f2d4;}
+
+.tLb8 { grid-area: B5;}
+.tInpt8 { grid-area: B6;}
+
+.tLb9 { grid-area: A7;}
+.tInpt9 { grid-area: A8;}
+
+.tLb10 { grid-area: B7;}
+.tInpt10 { grid-area: B8;}
+
+.tLb11 { grid-area: C7;}
+.tInpt11 { grid-area: C8;}
+
+.turistBtn { grid-area: A9;}
 
 .close-btn {
     position: absolute;
@@ -1192,12 +1081,8 @@ footer {
     cursor: pointer;
     z-index: 1;
 }
-.close-btn:hover {
-    color: var(--colorBtnsHover);
-}
-.close-btn:active {
-    color: var(--colorBtnsActive);
-}
+.close-btn:hover { color: var(--colorBtnsHover);}
+.close-btn:active { color: var(--colorBtnsActive);}
 
 .box:hover {
     background: rgba(255,255,255,0);
@@ -1424,9 +1309,7 @@ footer {
     color: #000000;
 }
   
-.cardLoginForm input:focus {
-    border-color: #3498db;
-}
+.cardLoginForm input:focus { border-color: #3498db;}
   
 .cardLoginForm button {
     background-color: var(--colorBtns);
@@ -1455,15 +1338,9 @@ footer {
     text-align: center;
 }
 
-.cardLoginForm a {
-    color: var(--colorBtns);
-}
-.cardLoginForm a:hover {
-    color: var(--colorBtnsHover);
-}
-.cardLoginForm a:active {
-    color: var(--colorBtnsActive);
-}
+.cardLoginForm a { color: var(--colorBtns);}
+.cardLoginForm a:hover { color: var(--colorBtnsHover);}
+.cardLoginForm a:active { color: var(--colorBtnsActive);}
 
 .sidenav {
     background-color: var(--colorSecond);
@@ -1503,13 +1380,9 @@ footer {
     padding-top: 10px;
 }
 
-.sidenav-url {
-    width: 100%;
-}
+.sidenav-url { width: 100%;}
 
-.url, hr {
-    text-align: center;
-}
+.url, hr { text-align: center;}
 
 .url hr {
     margin-left: 20%;
@@ -1572,6 +1445,7 @@ footer {
 
 .cardProfileTitle {
     width: 95%;
+    height: 5%;
     padding: 10px 0px 10px 10px;
     display: inline-flex;
     flex-direction: row-reverse;
@@ -1581,13 +1455,9 @@ footer {
     align-items: center;
 }
 
-.cardSocialTitle {
-    padding-left: 10px;
-}
+.cardSocialTitle { padding-left: 10px;}
 
-.cardProfileTitle h2 {
-    width: 44%;
-}
+.cardProfileTitle h2 { width: 44%;}
 
 .cardProfileTitle i {
     font-size: 1.5rem;
@@ -1607,9 +1477,29 @@ footer {
     background: var(--colorThird);
 }
 
-.cardSocialMedia {
+.cardProfileBody-Inputs {
     width: 100%;
+    height: 95%;
+    overflow: auto;
+}
+
+.cardProfileTuristas {
+    width: 100%;
+    height: 95%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cardSocialMedia {
+    width: 90%;
     height: 15%;
+    left: 5%;
+    border-radius: 1rem;
+    position: relative;
+    background: var(--colorThird);
 }
 
 .social-media {

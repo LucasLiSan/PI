@@ -1,9 +1,12 @@
 import express from "express";
-import bcrypt from "bcrypt";
 import session from "express-session";
+import bcrypt from "bcrypt";
 import Turistas from "../models/turistas.js";
 import GuiasDeTurismo from "../models/guias.js";
 import Cidades from "../models/cidades.js";
+import PontosTuristicos from "../models/pontos.js";
+import Atracoes from "../models/atracoes.js";
+import Auth from "../middleware/auth.js";
 const router = express.Router();
 
 function formatDate(date) {
@@ -16,10 +19,14 @@ function formatDate(date) {
 
 //ROTA LOGIN
 router.get('/login', function(req,res){
-    res.render("login", {
-        loggedOut: true,
-        messages: req.flash()
-    });
+    const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
+    const loggedOut = !user;
+        res.render("login", {
+            session: req.session, // Passando a sessão para a view
+            user: user,
+            loggedOut: loggedOut,
+            messages: req.flash()
+        });
 });
 
 //ROTA CADASTRO
@@ -34,6 +41,8 @@ router.get("/cadastro", (req,res) => {
 router.post("/createUser", (req, res) => {
     const profile = req.body.profile;
     console.log("Profile:", profile);
+
+    const defaultProfilePic = "/imgs/monkey-5.jpg"; // Imagem padrão
 
     if (profile === 'cidade') {
         const {
@@ -51,7 +60,7 @@ router.post("/createUser", (req, res) => {
                 Cidades.create({
                     nomeCidade, ufCidade, cnpjCidade, orgRespCidade, cnpjOrgRespCidade,
                     endRuaOrgRespCidade, endNumOrgRespCidade, endBairroOrgRespCidade, endCepOrgRespCidade,
-                    telOrgRespCidade, emailOrgRespCidade, passwordCidade: hashCidade
+                    telOrgRespCidade, emailOrgRespCidade, passwordCidade: hashCidade,profilePicCidade: defaultProfilePic
                 }).then(() => {
                     req.flash('success', 'Usuário cadastrado.');
                     res.redirect("/login");
@@ -77,7 +86,7 @@ router.post("/createUser", (req, res) => {
                 const saltGuia = bcrypt.genSaltSync(10);
                 const hashGuia = bcrypt.hashSync(passwordGuia, saltGuia);
                 GuiasDeTurismo.create({
-                    nomeGuia, cadGuia, motorGuia, idiomaGuia, emailGuia, passwordGuia: hashGuia
+                    nomeGuia, cadGuia, motorGuia, idiomaGuia, emailGuia, passwordGuia: hashGuia, profilePicGuia: defaultProfilePic
                 }).then(() => {
                     req.flash('success', 'Usuário cadastrado.');
                     res.redirect("/login");
@@ -107,7 +116,7 @@ router.post("/createUser", (req, res) => {
                 Turistas.create({
                     nomeTurista, cpfTurista, nascTurista: formattedNascTurista, endRuaTurista,
                     endBairroTurista, endNumTurista, endCepTurista, idiomaTurista, telTurista,
-                    emailTurista, passwordTurista: hashTurista
+                    emailTurista, passwordTurista: hashTurista, profilePicTurista: defaultProfilePic
                 }).then(() => {
                     req.flash('success', 'Usuário cadastrado.');
                     res.redirect("/login");
@@ -146,6 +155,7 @@ router.post("/auth", (req, res) => {
                   id : userCidade.id,
                   email : userCidade.emailOrgRespCidade,
                   nome : userCidade.nomeCidade,
+                  pic: userCidade.profilePicCidade
                 }
                 req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userCidade['nome']}`);
                 res.redirect("/profileUser");
@@ -170,6 +180,7 @@ router.post("/auth", (req, res) => {
                   id : userGuia.id,
                   email : userGuia.emailGuia,
                   nome : userGuia.nomeGuia,
+                  pic: userGuia.profilePicGuia
                 }
                 req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userGuia['nome']}`);
                 res.redirect("/profileUser");
@@ -194,6 +205,7 @@ router.post("/auth", (req, res) => {
                   id : userTurista.id,
                   email : userTurista.emailTurista,
                   nome : userTurista.nomeTurista,
+                  pic: userTurista.profilePicTurista
                 }
                 req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userTurista['nome']}`);
                 res.redirect("/profileUser");

@@ -50,6 +50,10 @@ const Cidades = connection.define('cidades',
     passwordCidade:{
         type: Sequelize.STRING,
         allowNull: false
+    },
+    profilePicCidade:{
+        type: Sequelize.STRING,
+        allowNull:true
     }
 });
 

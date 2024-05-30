@@ -17,16 +17,18 @@
 
             <div class="sidenav">
                 <div class="profile">
-                    <img src="/imgs/monkey-5.jpg" alt="" width="100" height="100">
                     <% if (session.userCidade) { %>
+                        <img src="<%= session.userCidade.pic %>" alt="" width="100" height="100">
                         <div class="name">
                             <%= session.userCidade.nome %>
                         </div>
                     <% } else if (session.userGuia) { %>
+                        <img src="<%= session.userGuia.pic %>" alt="" width="100" height="100">
                         <div class="name">
                             <%= session.userGuia.nome %>
                         </div>
                     <% } else if (session.userTurista) { %>
+                        <img src="<%= session.userTurista.pic %>" alt="" width="100" height="100">
                         <div class="name">
                             <%= session.userTurista.nome %>
                         </div>
@@ -75,6 +77,19 @@
                                 <h2>Infos: <%= session.userTurista.nome %></h2>
                             <% } %>
                         </div>
+                        <div class="cardProfileBody-Inputs">
+                            <% Object.keys(session).forEach(key => { %>
+                                <% if (key.startsWith('user')) { %>
+                                    <label>Nome:</label>
+                                    <span><%= session[key].nome %></span>
+                                    <label>E-mail:</label>
+                                    <span><%= session[key].email %></span>
+                                    <label>E-mail:</label>
+                                    <span><%= session[key].email %></span>  
+                                <% } %>
+                            <% }); %>
+                        </div>
+                        
                     </div>
                     <div class="cardProfileBody-Infos">
                         <div class="cardProfileTitle">

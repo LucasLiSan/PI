@@ -54,6 +54,10 @@ const PontosTuristicos = connection.define('pontos',
     endGeoLongePonto:{
         type: Sequelize.DECIMAL(11, 8),
         allowNull:false
+    },
+    profilePicPonto:{
+        type: Sequelize.STRING,
+        allowNull:true
     }
 });
 

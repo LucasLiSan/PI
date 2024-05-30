@@ -26,6 +26,10 @@ const GuiasDeTurismo = connection.define('guias',
     passwordGuia:{
         type: Sequelize.STRING,
         allowNull:false
+    },
+    profilePicGuia:{
+        type: Sequelize.STRING,
+        allowNull:true
     }
 });
 

@@ -46,6 +46,10 @@ const Turistas = connection.define('turistas',
     passwordTurista:{
         type: Sequelize.STRING,
         allowNull:false
+    },
+    profilePicTurista:{
+        type: Sequelize.STRING,
+        allowNull:true
     }
 });
 

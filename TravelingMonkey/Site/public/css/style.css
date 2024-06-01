@@ -47,6 +47,38 @@
 
 /* ESTILIZAÇÃO DA BARRA DE SCROLL */
 
+/*ESTILIZAÇÃO DE SUBMIT BUTTON COM DISABLED-ENABLED*/
+
+/* Estilo para o botão desativado */
+input[type="submit"].btnAtt.editable:disabled {
+    background-color: #d3d3d3; /* Cor de fundo para o estado desativado */
+    color: #888; /* Cor do texto para o estado desativado */
+    cursor: not-allowed; /* Cursor indicando que não está clicável */
+    border: 1px solid #ccc; /* Bordas mais claras */
+}
+
+/* Estilo para o botão ativado */
+input[type="submit"].btnAtt.editable:enabled {
+    background-color: var(--colorBtns); /* Cor de fundo para o estado ativado */
+    color: #000000; /* Cor do texto para o estado ativado */
+    cursor: pointer; /* Cursor indicando que é clicável */
+    transition: background-color 0.3s ease; /* Transição suave ao mudar de estado */
+}
+
+/* Estilo adicional ao passar o mouse sobre o botão ativado */
+input[type="submit"].btnAtt.editable:enabled:hover {
+    background-color: var(--colorBtnsHover); /* Cor de fundo ao passar o mouse */
+    color: #ffffff; /* Cor do texto ao passar o mouse */
+}
+/* Estilo adicional click do mouse sobre o botão ativado */
+input[type="submit"].btnAtt.editable:enabled:active {
+    background-color: var(--colorBtnsActive); /* Cor de fundo ao passar o mouse */
+}
+
+/*ESTILIZAÇÃO DE SUBMIT BUTTON COM DISABLED-ENABLED*/
+
+
+
 
 body {
     background-color: var(--colorBackGround);
@@ -400,13 +432,13 @@ legend {
 
 
 .loginBtn button:hover, #searchFormSubmit input:hover,
-.btnSelect:hover, .loginBtn a:hover {
+.btnSelect:hover, .loginBtn a:hover, .btnAtt:hover {
     background: var(--colorBtnsHover);
     color: #ffffff;
 }
 
 .loginBtn button:active, #searchFormSubmit input:active,
-.btnSelect:active, .loginBtn a:active {
+.btnSelect:active, .loginBtn a:active, .btnAtt:active {
     background: var(--colorBtnsActive);
 }
 
@@ -1483,7 +1515,7 @@ footer {
     overflow: auto;
 }
 
-.cardProfileTuristas {
+.cardProfileTuristas, .cardProfileTuristas form {
     width: 100%;
     height: 95%;
     overflow: auto;
@@ -1491,6 +1523,24 @@ footer {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.submitEdit {
+    width: 100%;
+    text-align: center;
+}
+
+.btnAtt {
+    width: 25%;
+    background-color: var(--colorBtns);
+    color: #000000;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .cardSocialMedia {

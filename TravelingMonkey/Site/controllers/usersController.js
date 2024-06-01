@@ -11,10 +11,10 @@ const router = express.Router();
 
 function formatDate(date) {
     const d = new Date(date);
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    const utcYear = d.getUTCFullYear();
+    const utcMonth = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const utcDay = String(d.getUTCDate()).padStart(2, '0');
+    return `${utcYear}-${utcMonth}-${utcDay}`;
 }
 
 function calculateAge(dateOfBirth) {
@@ -53,7 +53,9 @@ router.post("/createUser", (req, res) => {
     const profile = req.body.profile;
     console.log("Profile:", profile);
 
-    const defaultProfilePic = "/imgs/monkey-5.jpg"; // Imagem padrão
+    const defaultProfilePicA = "/imgs/iwazaru.webp"; // Imagem padrão1
+    const defaultProfilePicB = "/imgs/kikazaru.webp"; // Imagem padrão2
+    const defaultProfilePicC = "/imgs/mizaru.webp"; // Imagem padrão3
 
     if (profile === 'cidade') {
         const {
@@ -71,7 +73,7 @@ router.post("/createUser", (req, res) => {
                 Cidades.create({
                     nomeCidade, ufCidade, cnpjCidade, orgRespCidade, cnpjOrgRespCidade,
                     endRuaOrgRespCidade, endNumOrgRespCidade, endBairroOrgRespCidade, endCepOrgRespCidade,
-                    telOrgRespCidade, emailOrgRespCidade, passwordCidade: hashCidade,profilePicCidade: defaultProfilePic
+                    telOrgRespCidade, emailOrgRespCidade, passwordCidade: hashCidade,profilePicCidade: defaultProfilePicA
                 }).then(() => {
                     req.flash('success', 'Usuário cadastrado.');
                     res.redirect("/login");
@@ -97,7 +99,7 @@ router.post("/createUser", (req, res) => {
                 const saltGuia = bcrypt.genSaltSync(10);
                 const hashGuia = bcrypt.hashSync(passwordGuia, saltGuia);
                 GuiasDeTurismo.create({
-                    nomeGuia, cadGuia, motorGuia, idiomaGuia, emailGuia, passwordGuia: hashGuia, profilePicGuia: defaultProfilePic
+                    nomeGuia, cadGuia, motorGuia, idiomaGuia, emailGuia, passwordGuia: hashGuia, profilePicGuia: defaultProfilePicB
                 }).then(() => {
                     req.flash('success', 'Usuário cadastrado.');
                     res.redirect("/login");
@@ -113,19 +115,7 @@ router.post("/createUser", (req, res) => {
 
     } else if (profile === 'turista') {
         const {
-            nomeTurista,
-            cpfTurista,
-            nascTurista,
-            endRuaTurista,
-            endBairroTurista,
-            endNumTurista,
-            endCidadeTurista,
-            endUfTurista,
-            endCepTurista,
-            idiomaTurista,
-            telTurista,
-            emailTurista,
-            passwordTurista
+            nomeTurista, cpfTurista, nascTurista, endRuaTurista, endBairroTurista, endNumTurista, endCidadeTurista, endUfTurista, endCepTurista, idiomaTurista, telTurista, emailTurista, passwordTurista
         } = req.body;
         const formattedNascTurista = formatDate(nascTurista);
         console.log("Turista:", emailTurista);
@@ -136,20 +126,7 @@ router.post("/createUser", (req, res) => {
                 const saltTurista = bcrypt.genSaltSync(10);
                 const hashTurista = bcrypt.hashSync(passwordTurista, saltTurista);
                 Turistas.create({
-                    nomeTurista,
-                    cpfTurista,
-                    nascTurista: formattedNascTurista,
-                    endRuaTurista,
-                    endBairroTurista,
-                    endNumTurista,
-                    endCidadeTurista,
-                    endUfTurista,
-                    endCepTurista,
-                    idiomaTurista,
-                    telTurista,
-                    emailTurista,
-                    passwordTurista: hashTurista,
-                    profilePicTurista: defaultProfilePic
+                    nomeTurista, cpfTurista, nascTurista: formattedNascTurista, endRuaTurista, endBairroTurista, endNumTurista, endCidadeTurista, endUfTurista, endCepTurista, idiomaTurista, telTurista, emailTurista, passwordTurista: hashTurista, profilePicTurista: defaultProfilePicC
                 }).then(() => {
                     req.flash('success', 'Usuário cadastrado.');
                     res.redirect("/login");
@@ -186,8 +163,16 @@ router.post("/auth", (req, res) => {
                 // AUTORIZA O LOGIN - CRIAREMOS A SESSAO DO USUARIO
                 req.session.userCidade = {
                   id : userCidade.id,
-                  email : userCidade.emailOrgRespCidade,
                   nome : userCidade.nomeCidade,
+                  cnpj : userCidade.cnpjCidade,
+                  orgResp : userCidade.orgRespCidade,
+                  cnpjOrgResp : userCidade.cnpjOrgRespCidade,
+                  rua : userCidade.endRuaOrgRespCidade,
+                  numero : userCidade.endNumOrgRespCidade,
+                  bairro : userCidade.endBairroOrgRespCidade,
+                  uf : userCidade.ufCidade,
+                  telefone : userCidade.telOrgRespCidade,
+                  email : userCidade.emailOrgRespCidade,
                   pic: userCidade.profilePicCidade
                 }
                 req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userCidade['nome']}`);
@@ -212,6 +197,9 @@ router.post("/auth", (req, res) => {
                 req.session.userGuia = {
                   id : userGuia.id,
                   email : userGuia.emailGuia,
+                  cadastro : userGuia.cadGuia,
+                  motorista : userGuia.motorGuia,
+                  language : userGuia.idiomaGuia,
                   nome : userGuia.nomeGuia,
                   pic: userGuia.profilePicGuia
                 }
@@ -234,13 +222,14 @@ router.post("/auth", (req, res) => {
               // SE A SENHA FOR VÁLIDA
               if(correct){
                 // AUTORIZA O LOGIN - CRIAREMOS A SESSAO DO USUARIO
+                const formattedNascTurista = formatDate(userTurista.nascTurista);
                 req.session.userTurista = {
                   id : userTurista.id,
                   nome : userTurista.nomeTurista,
                   email : userTurista.emailTurista,
                   foneP : userTurista.telTurista,
                   cpf : userTurista.cpfTurista,
-                  nasc : userTurista.nascTurista,
+                  nasc : formattedNascTurista,
                   age: calculateAge(userTurista.nascTurista),
                   rua : userTurista.endRuaTurista,
                   bairro : userTurista.endBairroTurista,

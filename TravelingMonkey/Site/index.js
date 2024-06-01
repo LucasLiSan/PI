@@ -45,7 +45,6 @@ app.use(session({
 import buscaRapidaController from "./controllers/buscaRapidaController.js";
 import buscaController from "./controllers/buscaController.js";
 import guiasController from "./controllers/guiasController.js";
-import pontosController from "./controllers/pontosController.js";
 import usersController from "./controllers/usersController.js";
 import reservasController from "./controllers/reservasController.js";
 import profileController from "./controllers/profileController.js";
@@ -53,7 +52,6 @@ import profileController from "./controllers/profileController.js";
 app.use("/", buscaRapidaController);
 app.use("/", buscaController);
 app.use("/", guiasController);
-app.use("/", pontosController);
 app.use("/", usersController);
 app.use("/", reservasController);
 app.use("/", profileController);

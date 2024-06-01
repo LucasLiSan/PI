@@ -77,12 +77,40 @@ document.getElementById('editBtnPersonal').addEventListener('click', function() 
     var profileDivs = document.querySelectorAll('.cardProfileTuristas');
 
     profileDivs.forEach(function(div) {
-        // Seleciona todos os inputs dentro da div atual
-        var inputs = div.querySelectorAll('input');
+        // Seleciona apenas os inputs e o botão de submit com a classe 'editable' dentro da div atual
+        var editableElements = div.querySelectorAll('.editable');
 
-        inputs.forEach(function(input) {
-            // Habilita o input
-            input.disabled = false;
+        editableElements.forEach(function(element) {
+            // Habilita o input ou botão de submit
+            element.disabled = false;
         });
     });
 });
+
+//EXPANDIR DIV
+function toggleDiv(divid){
+    if(document.getElementById(divid).style.display == 'none'){
+        document.getElementById(divid).style.display = 'block';
+    }else{
+        document.getElementById(divid).style.display = 'none';
+    }
+}
+
+//MODAL FORM CADASTRO NOVO PONTO
+var modalPonto = document.getElementById("myModalNewPonto");
+var btnNewPonto = document.getElementById("btnNewPonto");
+var spanNewPonto = document.getElementsByClassName("closeModalPonto")[0];
+
+btnNewPonto.onclick = function() {
+    modalPonto.style.display = "block";
+}
+
+spanNewPonto.onclick = function() {
+    modalPonto.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modalPonto) {
+        modalPonto.style.display = "none";
+    }
+}

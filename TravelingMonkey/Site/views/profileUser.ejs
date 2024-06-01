@@ -82,76 +82,155 @@
                                 <% if (key.startsWith('user')) { %>
                                     <div class="cardProfileTuristas">
                                         <% if (session.userCidade) { %>
-                                            <form method="POST" action="/profileUser/update/<%= session.userCidade.id %>"></form>
+                                            <form method="POST" action="/profileUser/update/<%= session.userCidade.id %>">
+                                                <input type="text" name="user" value="cidade" hidden>
+                                                <input type="text" name="id" value="<%= session[key].id %>" hidden>
+
+                                                <fieldset>
+                                                    <legend>Cidade:</legend>
+                                                    <label>Nome:</label>
+                                                    <input class="editable" type="text" name="nome" value="<%= session[key].nome %>" disabled>
+                                                    
+                                                    <label>CNPJ:</label>
+                                                    <input class="editable" type="text" name="cnpj" value="<%= session[key].cnpj %>" disabled>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend>Orgão Responsável:</legend>
+                                                    <label>Nome:</label>
+                                                    <input class="editable" type="text" name="orgResp" value="<%= session[key].orgResp %>" disabled>
+                                                    
+                                                    <label>CNPJ:</label>
+                                                    <input class="editable" type="text" name="cnpjOrgResp" value="<%= session[key].cnpjOrgResp %>" disabled>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend>Endereço Orgão Responsável:</legend>
+                                                    <label>Rua:</label>
+                                                    <input class="editable" type="text" name="rua" value="<%= session[key].rua %>" disabled>
+                        
+                                                    <label>Bairro:</label>
+                                                    <input class="editable" type="text" name="bairro" value="<%= session[key].bairro %>" disabled>
+                        
+                                                    <label>Nº:</label>
+                                                    <input class="editable" type="text" name="numero" value="<%= session[key].numero %>" disabled>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend>Contato</legend>
+                                                    <label>E-mail:</label>
+                                                    <input type="email" name="email" value="<%= session[key].email %>" disabled>
+                                                    
+                                                    <label>Telefone Principal:</label>
+                                                    <input type="text" name="foneP" value="<%= session[key].telefone %>" disabled>
+                                                </fieldset>                          
                                         <% } else if (session.userGuia) { %>
-                                            <form method="POST" action="/profileUser/update/<%= session.userGuia.id %>"></form>
+                                            <form method="POST" action="/profileUser/update/<%= session.userGuia.id %>">
+                                                <input type="text" name="user" value="guia" hidden>
+                                                <input type="text" name="id" value="<%= session[key].id %>" hidden>
+
+                                                <fieldset>
+                                                    <legend>Principais</legend>
+
+                                                    <label>Nome:</label>
+                                                    <input class="editable" type="text" name="nome" value="<%= session[key].nome %>" disabled>
+                                                    
+                                                    <label>Cadastro:</label>
+                                                    <input class="editable" type="text" name="cadastro" value="<%= session[key].cadastro %>" disabled>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend>Contato</legend>
+
+                                                    <label>E-mail:</label>
+                                                    <input type="email" name="email" value="<%= session[key].email %>" disabled>
+                                                    
+                                                    <label>Telefone Principal:</label>
+                                                    <input type="text" name="foneP" value="" disabled>
+                                                </fieldset>                          
+                                                <fieldset>
+                                                    <legend>Adicionais</legend>
+
+                                                    <div class="motorista">
+                                                        <label class="gLb3" for="motorGuia">Motorista:</label>
+                                                        <label>SIM</label>
+                                                        <input name="motorGuia" type="radio" value="Sim" disabled>
+                                                        <label>NÃO</label>
+                                                        <input name="motorGuia" type="radio" value="Não" disabled>
+                                                    </div>
+                                                    <label>Motorista:</label>
+                                                    <input type="text" name="language" value="<%= session[key].motorista %>" disabled>
+
+                                                    <label>Idioma padrão:</label>
+                                                    <input type="text" name="language" value="<%= session[key].language %>" disabled>
+                        
+                                                    <label>Idiomas adicionais:</label>
+                                                    <input type="text" name="idiomasAdicionais" value="" disabled>
+                        
+                                                    <label>Categoria:</label>
+                                                    <input type="text" name="categoria" value="" disabled>
+                                                </fieldset>
                                         <% } else if (session.userTurista) { %>
-                                            <form method="POST" action="/profileUser/update/<%= session.userTurista.id %>"></form>
-                                        <% } %>
-                                        
-                                            <input type="text" name="id" value="<%= session[key].id %>" hidden>
-                                            <fieldset>
-                                                <legend>Principais</legend>
-                                                <label >Nome:</label>
-                                                <input class="editable" type="text" name="nome" id="" value="<%= session[key].nome %>" disabled>
+                                            <form method="POST" action="/profileUser/update/<%= session.userTurista.id %>">
+                                                <input type="text" name="user" value="turista" hidden>
+                                                <input type="text" name="id" value="<%= session[key].id %>" hidden>
 
-                                                <label>CPF:</label>
-                                                <input class="editable" type="text" name="cpf" id="" value="<%= session[key].cpf %>" disabled>
-
-                                                <label >NASCIMENTO:</label>
-                                                <input class="editable" type="date" name="nascimento" id="" value="<%= session[key].nasc %>" disabled>
-
-                                                <label >IDADE:</label>
-                                                <input type="text" value="<%= session[key].age %>" disabled>
-                                            </fieldset>
-                                            <fieldset>
-                                                <legend>Endereço:</legend>
-
-                                                <label>Rua:</label>
-                                                <input class="editable" type="text" name="rua" value="<%= session[key].rua %>" disabled>
-
-                                                <label>Bairro:</label>
-                                                <input class="editable" type="text" name="bairro" value="<%= session[key].bairro %>" disabled>
-
-                                                <label>Nº:</label>
-                                                <input class="editable" type="text" name="numero" value="<%= session[key].numero %>" disabled>
-
-                                                <label>Cidade:</label>
-                                                <input class="editable" type="text" name="cidade" value="<%= session[key].cidade %>" disabled>
-
-                                                <label>Estado:</label>
-                                                <input class="editable" type="text" name="uf" value="<%= session[key].uf %>" disabled>
-                                            </fieldset>
-                                            <fieldset>
-                                                <legend>Contato</legend>
-
-                                                <label>E-mail:</label>
-                                                <input type="email" name="email" value="<%= session[key].email %>" disabled>
-                                                
-                                                <label>Telefone Principal:</label>
-                                                <input type="text" name="" id="" value="<%= session[key].foneP %>" disabled>
-                                            </fieldset>                          
-                                            <fieldset>
-                                                <legend>Adicionais</legend>
-
-                                                <label>Idioma padrão:</label>
-                                                <input type="text" name="" id="" value="<%= session[key].language %>" disabled>
-
-                                                <label>Idiomas adicionais:</label>
-                                                <input type="text" name="" id="" value="" disabled>
-
-                                                <label>Comorbidades:</label>
-                                                <input type="text" name="" id="" value="" disabled>
-
-                                                <label>Interesses:</label>
-                                                <input type="text" name="" id="" value="" disabled>
-                                            </fieldset>
-                                        </form>
+                                                <fieldset>
+                                                    <legend>Principais</legend>
+                                                    <label>Nome:</label>
+                                                    <input class="editable" type="text" name="nome" value="<%= session[key].nome %>" disabled>
+                                                    
+                                                    <label>CPF:</label>
+                                                    <input class="editable" type="text" name="cpf" value="<%= session[key].cpf %>" disabled>
+                        
+                                                    <label>NASCIMENTO:</label>
+                                                    <input class="editable" type="date" name="nascimento" value="<%= session[key].nasc %>" disabled>
+                        
+                                                    <label>IDADE:</label>
+                                                    <input type="text" value="<%= session[key].age %>" disabled>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend>Endereço:</legend>
+                                                    <label>Rua:</label>
+                                                    <input class="editable" type="text" name="rua" value="<%= session[key].rua %>" disabled>
+                        
+                                                    <label>Bairro:</label>
+                                                    <input class="editable" type="text" name="bairro" value="<%= session[key].bairro %>" disabled>
+                        
+                                                    <label>Nº:</label>
+                                                    <input class="editable" type="text" name="numero" value="<%= session[key].numero %>" disabled>
+                        
+                                                    <label>Cidade:</label>
+                                                    <input class="editable" type="text" name="cidade" value="<%= session[key].cidade %>" disabled>
+                        
+                                                    <label>Estado:</label>
+                                                    <input class="editable" type="text" name="uf" value="<%= session[key].uf %>" disabled>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend>Contato</legend>
+                                                    <label>E-mail:</label>
+                                                    <input type="email" name="email" value="<%= session[key].email %>" disabled>
+                                                    
+                                                    <label>Telefone Principal:</label>
+                                                    <input type="text" name="foneP" value="<%= session[key].foneP %>" disabled>
+                                                </fieldset>                          
+                                                <fieldset>
+                                                    <legend>Adicionais</legend>
+                                                    <label>Idioma padrão:</label>
+                                                    <input type="text" name="language" value="<%= session[key].language %>" disabled>
+                        
+                                                    <label>Idiomas adicionais:</label>
+                                                    <input type="text" name="idiomasAdicionais" value="" disabled>
+                        
+                                                    <label>Comorbidades:</label>
+                                                    <input type="text" name="comorbidades" value="" disabled>
+                        
+                                                    <label>Interesses:</label>
+                                                    <input type="text" name="interesses" value="" disabled>
+                                                </fieldset>
+                                            <% } %>
+                                                <input class="btnAtt editable" type="submit" value="ATUALIZAR" onclick="return confirm('Tem certezaque deseja fazer essas alterações?')" disabled>
+                                            </form>
                                     </div>
                                 <% } %>
                             <% }); %>
-                        </div>
-                        
+                        </div>                     
                     </div>
                     <div class="cardProfileBody-Infos">
                         <div class="cardProfileTitle">
@@ -163,6 +242,65 @@
                             <% } else if (session.userTurista) { %>
                                 <h2>Histórico de reservas:</h2>
                             <% } %>
+                        </div>
+                        <div class="cardHistory">
+                            <div class="newPonto">
+                                <button id="btnNewPonto" class="btnCadastro">NOVO PONTO</button>
+                                <div id="myModalNewPonto" class="modalCurrency">
+                                    <div class="modal-newPonto-content">
+                                        <div class="modal-newPonto-header">
+                                            <span class="closeModalPonto">&times;</span>
+                                            <h2>NOVO PONTO TURISTICO</h2>
+                                        </div>
+                                        <div class="modal-newPonto-body">
+                                           <form action="">
+                                               <label for="nomePonto">Nome</label>
+                                           </form> 
+                                        </div>
+                                        <div class="modal-newPonto-footer">
+                                            <h3>Traveling Monkey - Todos os direitos reservados -</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Nome:</th>
+                                        <th>CPF:</th>
+                                        <th>Endereço:</th>
+                                        <th style="text-align: center;" colspan="2">Ações:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% PontosTuristicos.forEach(pontos => { %>
+                                        <tr>
+                                            <td><img src="imgs/avatar.png" width="30px"></td>
+                                            <td>
+                                                <%= pontos.nomePonto %>
+                                            </td>
+                                            <td>
+                                                <%= pontos.valorEntrada %>
+                                            </td>
+                                            <td>
+                                                <%= pontos.profilePicPonto %>
+                                            </td>
+                                            <td><a style="color: orange;">Editar</a></td>
+                                            <td><a style="color: red;">Excluir</a></td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                            
+                            <!--<div onmousedown="toggleDiv('minha-div-1');"><h3>Toggle Div 1 Visibility</h3></div>
+                            <div id="minha-div-1" style="display:none">
+                                <h3>This is a test!<br>Can you see me?</h3>
+                            </div><br />
+                                <a href="javascript:;" onmousedown="toggleDiv('minha-div-2');">Toggle Div 2 Visibility</a>
+                            <div id="minha-div-2" style="display:none">
+                                <h3>This is a test!<br>Can you see me?</h3>
+                            </div>-->
                         </div>
                     </div>
                 </div>

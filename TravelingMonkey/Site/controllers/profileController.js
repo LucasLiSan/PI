@@ -24,9 +24,14 @@ router.get("/profileUser", (req, res) => {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
 
-    PontosTuristicos.findAll().then(pontosTuristicos => {
+    PontosTuristicos.findAll({
+        include: {
+            model: HorarioFuncionamento,
+            as: 'horarios' // Alias para os horários de funcionamento
+        }
+    }).then(pontosTuristicos => {
         res.render("profileUser", {
-            session: req.session, // Passando a sessão para a view
+            session: req.session,
             user: user,
             loggedOut: loggedOut,
             messages: req.flash(),

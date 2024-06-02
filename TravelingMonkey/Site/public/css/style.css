@@ -51,7 +51,8 @@
 /*ESTILIZAÇÃO DE SUBMIT BUTTON COM DISABLED-ENABLED*/
 
 /* Estilo para o botão desativado */
-input[type="submit"].btnAtt.editable:disabled {
+input[type="submit"].btnAtt.editable:disabled, 
+input[type="submit"].editable.btnAtualizar:disabled {
     background-color: #d3d3d3; /* Cor de fundo para o estado desativado */
     color: #888; /* Cor do texto para o estado desativado */
     cursor: not-allowed; /* Cursor indicando que não está clicável */
@@ -59,7 +60,8 @@ input[type="submit"].btnAtt.editable:disabled {
 }
 
 /* Estilo para o botão ativado */
-input[type="submit"].btnAtt.editable:enabled {
+input[type="submit"].btnAtt.editable:enabled,
+input[type="submit"].editable.btnAtualizar:enabled {
     background-color: var(--colorBtns); /* Cor de fundo para o estado ativado */
     color: #000000; /* Cor do texto para o estado ativado */
     cursor: pointer; /* Cursor indicando que é clicável */
@@ -67,12 +69,14 @@ input[type="submit"].btnAtt.editable:enabled {
 }
 
 /* Estilo adicional ao passar o mouse sobre o botão ativado */
-input[type="submit"].btnAtt.editable:enabled:hover {
+input[type="submit"].btnAtt.editable:enabled:hover,
+input[type="submit"].btnAtualizar.editable:enabled:hover {
     background-color: var(--colorBtnsHover); /* Cor de fundo ao passar o mouse */
     color: #ffffff; /* Cor do texto ao passar o mouse */
 }
 /* Estilo adicional click do mouse sobre o botão ativado */
-input[type="submit"].btnAtt.editable:enabled:active {
+input[type="submit"].btnAtt.editable:enabled:active,
+input[type="submit"].editable.btnAtualizar:enabled:active {
     background-color: var(--colorBtnsActive); /* Cor de fundo ao passar o mouse */
 }
 
@@ -763,6 +767,8 @@ legend {
     border-radius: 1rem;
     flex-wrap: wrap;
     align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .cidadesBody h1 {
@@ -777,9 +783,18 @@ legend {
 .cidadesTable {
     width: 90%;
     text-align: center;
+    color: #ffffff;
 }
 
 .cidadesTable tr { height: 2.5rem;}
+
+.cidadesTable tr:nth-child(odd) {
+    background: var(--colorFourth);
+}
+
+#cidadesTableHead {
+    background: var(--colorBtnsHover);
+}
 
 footer {
     width: 100%;
@@ -1581,6 +1596,7 @@ footer {
     height: 60%;
     text-transform: uppercase;
     text-align: center;
+    align-content: center;
 }
 
 .descPontosList select {
@@ -1605,36 +1621,79 @@ footer {
 }
 
 .formcardVerMais {
-    height: 70%;
+    height: auto;
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.verMaisFieldSet {
-    width: 95%;
-    height: 75%;
-    border-radius: 1rem;
+.blocoVerMais {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.verMaisFieldSetAdicionais {
+    width: 100%;
     display: grid;
     grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+}
+
+.verMaisFieldSetAdicionais label {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.verMaisFieldSetHora {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+}
+
+.diasDeFuncionamento {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
     grid-gap: 10px;
     align-items: center;
 }
 
-.verMaisFieldSet label {
+.diasDeFuncionamentoField {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;    
+}
+
+.diasDeFuncionamentoField label {
     color: #ffffff;
     text-transform: uppercase;
-    font-size: 1rem;
     font-weight: bold;
-    width: 100%;
-    height: 100%;
-    text-align: end;
-    align-content: center;
+    font-size: 1rem;
 }
 
 .btnAttPontos {
     width: 100%;
-    height: 15%;
+    height: auto;
+    align-content: center;
+    text-align: center;
+}
+
+.btnAtualizar {
+    width: 25%;
+    background-color: var(--colorBtns);
+    color: #000000;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .btnCadastroNew {

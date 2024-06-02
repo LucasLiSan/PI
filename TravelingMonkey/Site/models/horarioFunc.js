@@ -3,7 +3,11 @@ import connection from "../config/sequelize-config.js";
 
 const HorarioFuncionamento = connection.define('horarioFuncionas', 
 {
-
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
     diaDaSemana: {
         type: Sequelize.STRING,
         allowNull: false

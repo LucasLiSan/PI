@@ -5,6 +5,9 @@ import express from "express";
 import connection from "./config/sequelize-config.js";
 import session from "express-session";
 import flash from "express-flash";
+import PontosTuristicos from "./models/pontos.js";
+import HorarioFuncionamento from "./models/horarioFunc.js";
+import HorarioPonto from "./models/horarioXponto.js";
 
 //INICIANDO O EXPRESS
 const app = express();
@@ -55,6 +58,18 @@ app.use("/", guiasController);
 app.use("/", usersController);
 app.use("/", reservasController);
 app.use("/", profileController);
+
+PontosTuristicos.belongsToMany(HorarioFuncionamento, {
+    through: HorarioPonto,
+    foreignKey: 'idPontoTuristico',
+    as: 'horarios'
+});
+
+HorarioFuncionamento.belongsToMany(PontosTuristicos, {
+    through: HorarioPonto,
+    foreignKey: 'idHorario',
+    as: 'pontos'
+});
 
 //ROTA PRINCIPAL
 app.get("/home", function(req,res){

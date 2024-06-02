@@ -277,9 +277,9 @@
 														<input type="text" name="horaAbre">
 														<label for="horaFecha">Horario Fecha</label>
 														<input type="text" name="horaFecha">
-														<label for="horaAlmocoIda">Horario Almoço (Ida)</label>
+														<label for="horaAlmocoIda">Almoço (Ida)</label>
 														<input type="text" name="horaAlmocoIda">
-														<label for="horaAlmocoFecha">Horario Almoço (Fecha)</label>
+														<label for="horaAlmocoFecha">Almoço (Volta)</label>
 														<input type="text" name="horaAlmocoFecha">
 													</div>
 													<fieldset class="fieldNewPonto">
@@ -370,39 +370,50 @@
 										<a class="verMais" href="javascript:;" onmousedown="toggleDiv('cardPontosCadastrados-<%= pontos.id %>');">Ver mais</a>
 									</div>
 									<form class="formcardVerMais" id="cardPontosCadastrados-<%= pontos.id %>" style="display:none" action="">
-										<fieldset class="verMaisFieldSet">
-											<legend>ADICIONAIS: <%= pontos.nomePonto %></legend>
-											<label for="valorEntrada">VALOR DA ENTRADA:</label>
-											<input class="editable" type="text" name="valorEntrada" value="<%= pontos.valorEntrada %>" disabled>
-											<label for="endRuaPonto">Rua:</label>
-											<input class="editable"type="text" name="endRuaPonto" value="<%= pontos.endRuaPonto %>" disabled>
-											<label for="endBairroPonto">Bairro:</label>
-											<input class="editable"type="text" name="endBairroPonto" value="<%= pontos.endBairroPonto %>" disabled>
-											<label for="endNumPonto">Número:</label>
-											<input class="editable"type="text" name="endNumPonto" value="<%= pontos.endNumPonto %>" disabled>
-											<label for="endCidadePonto">Cidade:</label>
-											<input class="editable"type="text" name="endCidadePonto" value="<%= pontos.endCidadePonto %>" disabled>
-											<label for="endUfPonto">UF:</label>
-											<input class="editable"type="text" name="endUfPonto" value="<%= pontos.endUfPonto %>" disabled>
-											<label for="endCepPonto">CEP:</label>
-											<input class="editable"type="text" name="endCepPonto" value="<%= pontos.endCepPonto %>" disabled>
-											<label for="endReferenciaPonto">Referencia:</label>
-											<input class="editable"type="text" name="endReferenciaPonto" value="<%= pontos.endReferenciaPonto %>" disabled>
-											<label for="endGeoLatPonto">Latitude (opicional)</label>
-											<input class="editable"type="text" name="endGeoLatPonto" value="<%= pontos.endGeoLatPonto %>" disabled>
-											<label for="endGeoLongePonto">Longitude (opicional)</label>
-											<input class="editable"type="text" name="endGeoLongePonto" value="<%= pontos.endGeoLongePonto %>" disabled>
-											<label for="horaAbre">Horario Abertura</label>
-											<input class="editable"type="text" name="horaAbre" value="<%= pontos.horaAbre %>" disabled>
-											<label for="horaFecha">Horario Fecha</label>
-											<input class="editable"type="text" name="horaFecha" value="<%= pontos.horaFecha %>" disabled>
-											<label for="horaAlmocoIda">Horario Almoço (Ida)</label>
-											<input class="editable"type="text" name="horaAlmocoIda" value="<%= pontos.horaAlmocoIda %>" disabled>
-											<label for="horaAlmocoFecha">Horario Almoço (Fecha)</label>
-											<input class="editable"type="text" name="horaAlmocoFecha" value="<%= pontos.horaAlmocoFecha %>" disabled>
-										</fieldset>
+										<div class="blocoVerMais">
+											<fieldset class="verMaisFieldSetAdicionais">
+												<legend>ADICIONAIS: <%= pontos.nomePonto %></legend>
+													<label for="valorEntrada">VALOR DA ENTRADA:</label>
+													<input class="editable" type="text" name="valorEntrada" value="<%= pontos.valorEntrada %>" disabled>
+													<label for="endRuaPonto">Rua:</label>
+													<input class="editable"type="text" name="endRuaPonto" value="<%= pontos.endRuaPonto %>" disabled>
+													<label for="endBairroPonto">Bairro:</label>
+													<input class="editable"type="text" name="endBairroPonto" value="<%= pontos.endBairroPonto %>" disabled>
+													<label for="endNumPonto">Número:</label>
+													<input class="editable"type="text" name="endNumPonto" value="<%= pontos.endNumPonto %>" disabled>
+													<label for="endCidadePonto">Cidade:</label>
+													<input class="editable"type="text" name="endCidadePonto" value="<%= pontos.endCidadePonto %>" disabled>
+													<label for="endUfPonto">UF:</label>
+													<input class="editable"type="text" name="endUfPonto" value="<%= pontos.endUfPonto %>" disabled>
+													<label for="endCepPonto">CEP:</label>
+													<input class="editable"type="text" name="endCepPonto" value="<%= pontos.endCepPonto %>" disabled>
+													<label for="endReferenciaPonto">Referencia:</label>
+													<input class="editable"type="text" name="endReferenciaPonto" value="<%= pontos.endReferenciaPonto %>" disabled>
+													<label for="endGeoLatPonto">Latitude (opicional)</label>
+													<input class="editable"type="text" name="endGeoLatPonto" value="<%= pontos.endGeoLatPonto %>" disabled>
+													<label for="endGeoLongePonto">Longitude (opicional)</label>
+													<input class="editable"type="text" name="endGeoLongePonto" value="<%= pontos.endGeoLongePonto %>" disabled>
+											</fieldset>
+											<div class="diasDeFuncionamento">
+												<% pontos.horarios.forEach(horario => { %>
+													<fieldset class="diasDeFuncionamentoField">
+														<legend><%= horario.diaDaSemana %>:</legend>
+														<label for="horaAbre">Situação</label>
+														<input class="editable"type="text" name="situacao" value="<%= horario.situacao %>" disabled>
+														<label for="horaAbre">Horario Abertura</label>
+														<input class="editable"type="text" name="horaAbre" value="<%= horario.horaAbre %>" disabled>
+														<label for="horaFecha">Horario Fecha</label>
+														<input class="editable"type="text" name="horaFecha" value="<%= horario.horaFecha %>" disabled>
+														<label for="horaAlmocoIda">Almoço (Ida)</label>
+														<input class="editable"type="text" name="horaAlmocoIda" value="<%= horario.horaAlmocoIda %>" disabled>
+														<label for="horaAlmocoVolta">Almoço (Fecha)</label>
+														<input class="editable"type="text" name="horaAlmocoVolta" value="<%= horario.horaAlmocoVolta %>" disabled>
+													</fieldset>
+												<% }) %>
+											</div>
+										</div>
 										<div class="btnAttPontos">
-											<input class="btnCadastro btnCadastroNew editable btnAtt" type="submit" value="ATUALIZAR" disabled>
+											<input class="btnAtualizar editable" type="submit" value="ATUALIZAR" disabled>
 										</div>
 									</form>
 								<% }) %>

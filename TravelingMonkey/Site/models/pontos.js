@@ -7,11 +7,7 @@ const PontosTuristicos = connection.define('pontos',
         type: Sequelize.STRING,
         allowNull:false
     },
-    descricaoPonto:{
-        type: Sequelize.STRING,
-        allowNull:false
-    },
-    idCategoria:{
+    modalidade:{
         type: Sequelize.INTEGER,
         allowNull:false
     },
@@ -49,11 +45,11 @@ const PontosTuristicos = connection.define('pontos',
     },
     endGeoLatPonto:{
         type: Sequelize.DECIMAL(10, 8),
-        allowNull:false
+        allowNull:true
     },
     endGeoLongePonto:{
         type: Sequelize.DECIMAL(11, 8),
-        allowNull:false
+        allowNull:true
     },
     profilePicPonto:{
         type: Sequelize.STRING,

@@ -2,6 +2,7 @@
     --colorStandart: #2760E6;
     --colorSecond: #6827E6;
     --colorThird: #0C1E47;
+    --colorFourth: #1A4099;
     --colorBtns: #E6AD27;
     --colorBtnsHover: #E62774;
     --colorBtnsActive: #27E631;
@@ -224,7 +225,7 @@ legend {
     height: 40%;
 }
 
-.modalCurrency {
+.modalCurrency, .modalNewPonto {
     display: none;
     position: fixed;
     z-index: 1;
@@ -238,9 +239,9 @@ legend {
     background-color: rgba(0,0,0,0.4);
 }
 
-.modal-currency-content {
+.modal-currency-content, .modal-newPonto-content {
     position: relative;
-    background-color: #fefefe;
+    background-color: var(--colorBackGround);
     margin: auto;
     padding: 0;
     border: 1px solid #888;
@@ -263,7 +264,7 @@ legend {
     to {top:0; opacity:1}
 }
 
-.close {
+.close, .closeModalPonto {
     color: white;
     float: right;
     font-size: 28px;
@@ -271,20 +272,22 @@ legend {
 }
 
 .close:hover,
-.close:focus {
+.close:focus,
+.closeModalPonto:hover,
+.closeModalPonto:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
 
-.modal-currency-header {
+.modal-currency-header, .modal-newPonto-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: var(--colorSecond);
     color: white;
     border-radius: 1rem 1rem 0 0;
 }
 
-.modal-currency-body {
+.modal-currency-body, .modal-newPonto-body {
     padding: 2px 16px;
     height: 10rem;
     display: grid;
@@ -296,9 +299,14 @@ legend {
     ;
 }
 
-.modal-currency-footer {
+.modal-newPonto-body {
+    display: flex;
+    height: 40rem;
+}
+
+.modal-currency-footer, .modal-newPonto-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: var(--colorThird);
     color: white;
     border-radius: 0 0 1rem 1rem;
 }
@@ -308,12 +316,17 @@ legend {
     justify-items: center;
 }
 
-.lang select, .lang label,
-.coin label, .coin select {
+.lang label, .coin label,
+.coin select, .lang select {
     width: 100%;
     height: 50%;
     font-size: 1.5rem;
     font-weight: bold;
+    color: #ffffff;
+}
+
+.coin select, .lang select {
+    color: #000000;
 }
 
 .lang {
@@ -342,7 +355,7 @@ legend {
     font-weight: bold;
     height: 70%;
     background: var(--colorBtns);
-    color: #ffffff;
+    color: #000000;
     border-radius: 1rem;
 }
 
@@ -432,13 +445,13 @@ legend {
 
 
 .loginBtn button:hover, #searchFormSubmit input:hover,
-.btnSelect:hover, .loginBtn a:hover, .btnAtt:hover {
+.btnSelect:hover, .loginBtn a:hover, .btnAtt:hover, .verMais:hover {
     background: var(--colorBtnsHover);
     color: #ffffff;
 }
 
 .loginBtn button:active, #searchFormSubmit input:active,
-.btnSelect:active, .loginBtn a:active, .btnAtt:active {
+.btnSelect:active, .loginBtn a:active, .btnAtt:active, .verMais:active {
     background: var(--colorBtnsActive);
 }
 
@@ -777,7 +790,7 @@ footer {
     font-weight: bold;
     text-align: center;
     align-content: center;
-    z-index: 1;
+    z-index: 0;
 }
 
 .demo_3 {
@@ -1502,9 +1515,140 @@ footer {
     color: var(--colorBtnsActive);
 }
 
+.cardHistory {
+    width: 100%;
+    height: 90%;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+}
+
+.newPonto {
+    width: 95%;
+    height: 10%;
+    align-content: center;
+    text-align: center;
+}
+
+.cardPontosCadastrados {
+    width: 95%;
+    height: 30%;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    background: var(--colorFourth);
+    display: grid;
+    grid-template: 
+        "imgDisplay imgDisplay bodyDisplay bodyDisplay bodyDisplay" 40%
+        "imgDisplay imgDisplay bodyDisplay bodyDisplay bodyDisplay" 40%
+        "imgDisplay imgDisplay . . verMais" 20%
+        / 10% 10% 1fr 1fr 1fr
+    ;
+}
+
+.imgPontosList {
+    grid-area: imgDisplay;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-align: center;
+}
+
+.imgPontosList img {
+    width: 100%;
+}
+
+.descPontosList {
+    grid-area: bodyDisplay;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff
+}
+
+.descPontosList textarea {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: no-repeat;
+    border: none;
+    width: 95%;
+    height: 60%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.descPontosList select {
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: no-repeat;
+    border: none;
+    width: 95%;
+    text-align: center;
+}
+
+.verMais {
+    grid-area: verMais;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-content: center;
+}
+
+.formcardVerMais {
+    height: 70%;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.verMaisFieldSet {
+    width: 95%;
+    height: 75%;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+.verMaisFieldSet label {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    text-align: end;
+    align-content: center;
+}
+
+.btnAttPontos {
+    width: 100%;
+    height: 15%;
+}
+
+.btnCadastroNew {
+    width: 25%;
+    height: 70%;
+    border-radius: 0.5rem;
+    background: var(--colorBtns);
+    font-weight: bold;
+}
+
 .cardProfileBody-Infos {
     width: 50%;
     height: 95%;
+    overflow: auto;
     border-radius: 1rem;
     background: var(--colorThird);
 }
@@ -1541,6 +1685,67 @@ footer {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
+}
+
+.pontosCadastrados {
+    color: #ffffff;
+}
+
+.formNewPonto {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.formNewPonto label {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    width: 100%;
+    height: 100%;
+}
+
+.formBloco1 {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+.formBloco2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.formBloco2 label {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    width: 55%;
+    height: 50%;
+}
+
+.formBloco2 input {
+    width: 55%;
+}
+
+.fieldNewPonto {
+    width: 95%;
+    height: 40%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    align-items: center;
+    justify-items: start;
+    align-content: center;
 }
 
 .cardSocialMedia {

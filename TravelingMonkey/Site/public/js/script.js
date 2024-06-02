@@ -87,10 +87,25 @@ document.getElementById('editBtnPersonal').addEventListener('click', function() 
     });
 });
 
+document.getElementById('editBtnInfos').addEventListener('click', function() {
+    // Seleciona todas as divs que contêm os inputs dos perfis
+    var profileDivs = document.querySelectorAll('.cardHistory');
+
+    profileDivs.forEach(function(div) {
+        // Seleciona apenas os inputs e o botão de submit com a classe 'editable' dentro da div atual
+        var editableElements = div.querySelectorAll('.editable');
+
+        editableElements.forEach(function(element) {
+            // Habilita o input ou botão de submit
+            element.disabled = false;
+        });
+    });
+});
+
 //EXPANDIR DIV
 function toggleDiv(divid){
     if(document.getElementById(divid).style.display == 'none'){
-        document.getElementById(divid).style.display = 'block';
+        document.getElementById(divid).style.display = 'flex';
     }else{
         document.getElementById(divid).style.display = 'none';
     }

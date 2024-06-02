@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(flash());
 app.use(session({
     secret: "Iwazaru",
-    cookie: {maxAge: 600000},
+    cookie: {maxAge: 86400000},
     saveUninitialized: false,
     resave: false
 }));

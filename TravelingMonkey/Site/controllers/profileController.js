@@ -4,8 +4,12 @@ import Turistas from "../models/turistas.js";
 import GuiasDeTurismo from "../models/guias.js";
 import Cidades from "../models/cidades.js";
 import PontosTuristicos from "../models/pontos.js";
+import CategoriasPontos from "../models/categoriaXponto.js";
+import HorarioFuncionamento from "../models/horarioFunc.js";
+import HorarioPonto from "../models/horarioXponto.js";
 import Atracoes from "../models/atracoes.js";
 import Auth from "../middleware/auth.js";
+
 const router = express.Router();
 
 function formatDate(date) {
@@ -15,7 +19,6 @@ function formatDate(date) {
     const utcDay = String(d.getUTCDate()).padStart(2, '0');
     return `${utcYear}-${utcMonth}-${utcDay}`;
 }
-
 
 router.get("/profileUser", (req, res) => {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;

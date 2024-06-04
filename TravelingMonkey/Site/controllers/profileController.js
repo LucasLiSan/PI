@@ -1,5 +1,6 @@
 import express from "express";
 import session from "express-session";
+import { Op } from "sequelize";
 import Turistas from "../models/turistas.js";
 import GuiasDeTurismo from "../models/guias.js";
 import Cidades from "../models/cidades.js";
@@ -40,7 +41,7 @@ router.get("/profileUser", (req, res) => {
     }).catch(err => {
         console.error("Erro ao buscar Pontos Turisticos:", err);
         req.flash('danger', 'Erro ao carregar os pontos turísticos.');
-        res.redirect("/");
+        res.redirect("/profileUser");
     });
 });
 

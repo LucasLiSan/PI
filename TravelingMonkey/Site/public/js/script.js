@@ -111,6 +111,15 @@ function toggleDiv(divid){
     }
 }
 
+//PERFIL - SETTINGS
+function toggleProfile(divid){
+    if(document.getElementById(divid).style.display == 'none'){
+        document.getElementById(divid).style.display = 'flex';
+    }else{
+        document.getElementById(divid).style.display = 'none';
+    }
+}
+
 //MODAL FORM CADASTRO NOVO PONTO
 var modalPonto = document.getElementById("myModalNewPonto");
 var btnNewPonto = document.getElementById("btnNewPonto");

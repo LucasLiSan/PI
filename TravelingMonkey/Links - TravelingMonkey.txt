@@ -1,0 +1,5 @@
+FIGMA: https://www.figma.com/design/ft5IgSWsfa2Ja2bUN9QfVA/TravelingMonkey?node-id=0-1&t=EuBn7QsGC2Ynktlg-1
+GITHUB: https://github.com/LucasLiSan/travelingMonkey.git
+Artigo: https://pt.overleaf.com/read/hvspywjhzwhd#212aea
+Artefatos: https://www.overleaf.com/read/vjfyygpngkwz#1943b0
+LOGBOOK: https://github.com/users/LucasLiSan/projects/1/views/1

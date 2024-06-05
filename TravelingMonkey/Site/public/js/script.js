@@ -131,25 +131,66 @@ window.onclick = function(event) {
 }
 
 //MERGESORT
-function sortTable(columnIndex) {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.querySelector('.cidadesTable');
-    switching = true;
-    while (switching) {
-        switching = false;
-        rows = table.rows;
-        for (i = 1; i < (rows.length - 1); i++) {
-            shouldSwitch = false;
-            x = rows[i].getElementsByTagName('td')[columnIndex];
-            y = rows[i + 1].getElementsByTagName('td')[columnIndex];
-            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                shouldSwitch = true;
-                break;
-            }
-        }
-        if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
+function mergeSort(arr, compare) {
+    if (arr.length < 2) {
+        return arr;
+    }
+
+    const middle = Math.floor(arr.length / 2);
+    const left = arr.slice(0, middle);
+    const right = arr.slice(middle);
+
+    return merge(mergeSort(left, compare), mergeSort(right, compare), compare);
+}
+
+function merge(left, right, compare) {
+    const result = [];
+
+    while (left.length && right.length) {
+        if (compare(left[0], right[0]) <= 0) {
+            result.push(left.shift());
+        } else {
+            result.push(right.shift());
         }
     }
+
+    return result.concat(left.slice()).concat(right.slice());
 }
+
+function compare(a, b, columnIndex, isNumeric) {
+    let aValue = a.cells[columnIndex].innerText;
+    let bValue = b.cells[columnIndex].innerText;
+
+    if (isNumeric) {
+        aValue = parseFloat(aValue) || 0;
+        bValue = parseFloat(bValue) || 0;
+    }
+
+    if (aValue < bValue) {
+        return -1;
+    }
+    if (aValue > bValue) {
+        return 1;
+    }
+    return 0;
+}
+
+function sortTable(columnIndex, isNumeric) {
+    const table = document.querySelector('.cidadesTable tbody');
+    const rows = Array.from(table.rows);
+
+    const sortedRows = mergeSort(rows, (a, b) => compare(a, b, columnIndex, isNumeric));
+
+    while (table.firstChild) {
+        table.removeChild(table.firstChild);
+    }
+
+    sortedRows.forEach(row => table.appendChild(row));
+}
+
+document.querySelectorAll('.material-symbols-outlined').forEach((icon, index) => {
+    icon.addEventListener('click', () => {
+        const isNumeric = index === 2; // Supondo que apenas a terceira coluna (valorEntrada) é numérica
+        sortTable(index, isNumeric);
+    });
+});

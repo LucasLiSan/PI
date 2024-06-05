@@ -4,6 +4,7 @@
 import express from "express";
 import connection from "./config/sequelize-config.js";
 import session from "express-session";
+import multer from 'multer';
 import flash from "express-flash";
 import PontosTuristicos from "./models/pontos.js";
 import HorarioFuncionamento from "./models/horarioFunc.js";

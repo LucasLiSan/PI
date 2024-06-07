@@ -5,6 +5,7 @@ import express from "express";
 import connection from "./config/sequelize-config.js";
 import session from "express-session";
 import flash from "express-flash";
+import multer from "multer";
 import PontosTuristicos from "./models/pontos.js";
 import HorarioFuncionamento from "./models/horarioFunc.js";
 import HorarioPonto from "./models/horarioXponto.js";
@@ -43,6 +44,9 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }));
+
+const uploadPics = multer({dest: "public/imgs/pics"});
+
 
 //IMPORTANDO OS CONTROLLERS E DEFININDO O USO DAS ROTAS
 import buscaRapidaController from "./controllers/buscaRapidaController.js";

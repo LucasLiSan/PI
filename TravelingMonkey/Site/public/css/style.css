@@ -1,12 +1,11 @@
 :root {
-    --colorStandart: #2760E6;
-    --colorSecond: #6827E6;
-    --colorThird: #0C1E47;
-    --colorFourth: #1A4099;
+    --colorStandart: #13B3F2;
+    --colorSecond: #F2C185;
+    --colorThird: #D96B0B;
+    --colorShadow: #169EF2;
     --colorBtns: #E6AD27;
     --colorBtnsHover: #E62774;
     --colorBtnsActive: #27E631;
-    --colorBackGround: #495E91;
     --fontTitles: "Bebas Neue", sans-serif;
     --fontBodyText: "Comfortaa", sans-serif;
 }
@@ -31,20 +30,16 @@
 }
 
 /* Customiza a faixa de rolagem quando está ativa (quando está sendo rolada) */
-::-webkit-scrollbar-track-piece {
-    background: var(--colorStandart);
-}
+::-webkit-scrollbar-track-piece { background: var(--colorStandart); }
 
 /* Customiza os botões de incremento/decremento da barra de rolagem (não visível na maioria dos navegadores) */
-::-webkit-scrollbar-button {
+::-webkit-scrollbar-button { 
     background-color: var(--colorBtns);
     border-radius: 1rem;
 }
 
 /* Customiza a barra de rolagem quando está em modo "hover" (quando o mouse está sobre ela) */
-::-webkit-scrollbar-thumb:hover {
-    background: var(--colorBtnsHover); /* Cor do polegar em modo hover */
-}
+::-webkit-scrollbar-thumb:hover { background: var(--colorBtnsHover); /* Cor do polegar em modo hover */ }
 
 /* ESTILIZAÇÃO DA BARRA DE SCROLL */
 
@@ -82,23 +77,6 @@ input[type="submit"].editable.btnAtualizar:enabled:active {
 
 /*ESTILIZAÇÃO DE SUBMIT BUTTON COM DISABLED-ENABLED*/
 
-
-
-
-body {
-    background-color: var(--colorBackGround);
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    font-family: var(--fontBodyText);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-content: space-between;
-}
-
 .alertDanger {
     position: absolute;
     width: 80%;
@@ -126,6 +104,16 @@ body {
     font-weight: bold;
 }
 
+body {
+    position: absolute;
+    background-color: var(--colorStandart);
+    margin: 0;
+    padding: 0;
+    width: 99vw;
+    height: auto;
+    font-family: var(--fontBodyText);
+}
+
 legend {
     font-family: var(--fontTitles);
     color: #ffffff;
@@ -133,19 +121,19 @@ legend {
 }
 
 .navTopMenu {
+    position: relative;
+    top: 0.2rem;
+    left: 0.2rem;
     width: 95%;
     height: 5rem;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
     display: grid;
-    grid-template:
-        "logo navbar" 100%
-        /30% 2fr
-    ;
+    grid-template: "logo navbar" 100% / 15% 2fr;
     font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: var(--colorSecond);
-    border-radius: 1rem;
-    z-index: 1;
+    background: var(--colorThird);
+    box-shadow: 4px 4px 6px 4px var(--colorSecond);
+    z-index: 9;
 }
 
 .topMenu {
@@ -156,7 +144,7 @@ legend {
     padding: 0;
     display: inline-flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
 }
@@ -191,7 +179,7 @@ legend {
 
 .logo a {
     height: 100%;
-    width: 25%;
+    width: 50%;
     align-content: center;
     text-align: center;
 }
@@ -222,11 +210,9 @@ legend {
     align-items: center;
 }
 
-.currency { justify-content: center;}
+.currency { justify-content: center; }
 
-.language img, .currency img {
-    height: 40%;
-}
+.language img, .currency img { height: 40%; }
 
 .modalCurrency, .modalNewPonto {
     display: none;
@@ -328,9 +314,7 @@ legend {
     color: #ffffff;
 }
 
-.coin select, .lang select {
-    color: #000000;
-}
+.coin select, .lang select { color: #000000; }
 
 .lang {
     grid-area: lang;
@@ -454,41 +438,63 @@ legend {
 }
 
 .loginBtn button:active, #searchFormSubmit input:active,
-.btnSelect:active, .loginBtn a:active, .btnAtt:active, .verMais:active {
-    background: var(--colorBtnsActive);
-}
+.btnSelect:active, .loginBtn a:active,
+.btnAtt:active, .verMais:active { background: var(--colorBtnsActive); }
 
 .liHome {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .liHome a {
-    width: 100%;
-    height: 100%;
-    align-content: center;
-    text-align: center;
     text-decoration: none;
     color: #ffffff;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    width: 30%;
+    height: 100%;
+    background-image: url(/imgs/icons/homeIcon.webp);
+    background-size: 5rem;
+    background-repeat: no-repeat;
+    background-position: right;
+    align-content: center;
 }
 
 .liHome a > img { width: 15%; }
-.liHome a > span { width: 25%; }
+
+.liHome a > span {
+    color: var(--colorSecond);
+    font-weight: bolder;
+    -webkit-text-stroke: var(--colorSecond);
+    -webkit-text-stroke-width: 1px;
+    text-shadow: 4px 2px 5px black;
+}
+
+#homeIconImage {
+    width: 3%;
+    position: absolute;
+    right: 185px;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.liHome:hover #homeIconImage {
+    animation: bounce 0.7s infinite;
+}
 
 .headerBody {
-    width: 100vw;
-    height: 20vh;
+    position: relative;
+    width: 99%;
+    height: 25vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .searchSection {
@@ -671,6 +677,7 @@ legend {
 }
 
 .indexBody {
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
@@ -683,12 +690,14 @@ legend {
 
 .indexBody section {
     width: 80%;
-    height: 60%;
+    margin-bottom: 3rem;
     border-radius: 1rem;
     background: var(--colorStandart);
+    box-shadow: 4px 4px 0px 10px var(--colorShadow);
 }
 
 .quickSearch {
+    height: 35rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -715,6 +724,10 @@ legend {
 }
 
 .quickSearch img { width: 40%;}
+
+.bestRewiews {
+    height: 10rem;
+}
 
 .cidadesBody {
     width: 80%;
@@ -754,15 +767,21 @@ legend {
 }
 
 footer {
-    width: 100%;
-    background: var(--colorThird);
+    position: relative;
     height: 7rem;
     color: #ffffff;
     font-size: 1.3rem;
     font-weight: bold;
     text-align: center;
     align-content: center;
-    z-index: 0;
+    top: 0.2rem;
+    left: 0.2rem;
+    width: 95%;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    background: var(--colorThird);
+    box-shadow: 4px 4px 6px 4px var(--colorSecond);
+    z-index: 9;
 }
 
 .demo_3 {
@@ -821,7 +840,7 @@ footer {
     margin: 0 10px;
     cursor: pointer;
     color: #2c3e50;
-    box-shadow: inset 0 0 0 3px var(--colorThird);
+    box-shadow: inset 0px -8px 13px 13px var(--colorShadow);
 	-webkit-transition: background 0.4s 0.5s;
 	-ms-transition: background 0.4s 0.5s;
 	transition: background 0.4s 0.5s;
@@ -1109,11 +1128,7 @@ footer {
 }
 
 .box img {
-    font-family: 'Dancing Script', cursive;
-    font-size: 180px;
-    line-height: 370px;
-    margin: 0;
-    font-weight: 400;
+
     width: 100%;
 }
 
@@ -1149,7 +1164,7 @@ footer {
 
 .box svg line {
     stroke-width: 3;
-    stroke: var(--colorBtnsHover);
+    stroke: var(--colorShadow);
     fill: none;
     -webkit-transition: all .8s ease-in-out;
 	-ms-transition: all .8s ease-in-out;
@@ -1207,7 +1222,7 @@ footer {
 
 .demo_3 .box:hover,
 .quickSearch .box:hover {
-    background: var(--colorThird);
+    background: var(--colorShadow);
 }
 
 .demo_3 .box h3, .demo_3 .box span,
@@ -1286,7 +1301,7 @@ footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: var(--colorSecond);
+    background-color: var(--colorThird);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);

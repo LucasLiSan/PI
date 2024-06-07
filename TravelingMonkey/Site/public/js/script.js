@@ -1,3 +1,16 @@
+//HOME BUTTON
+function flyAway() {
+    var icon = document.getElementById("homeIcon");
+    icon.style.transition = "all 1s ease-in-out";
+    icon.style.transform = "translate(-100%, -100%)";
+
+    setTimeout(function() {
+        icon.style.transition = "none";
+        icon.style.transform = "translate(-50%, -50%)";
+    }, 1000);
+}
+
+
 //MODAL MOEDA E IDIOMA
 var modal = document.getElementById("myModalCurrency");
 var btn = document.getElementById("myBtnCurrency");

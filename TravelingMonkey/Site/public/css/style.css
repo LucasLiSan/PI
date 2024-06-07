@@ -172,14 +172,13 @@ legend {
 }
 
 .liHover:hover, .liHover a:hover,
-.searchDivHover:hover, .quickSearch a:hover {
+.searchDivHover:hover {
     background: var(--colorBtnsHover);
     color: #000000;
     border-radius: 1rem;
 }
 
-.liHover:active, .liHover a:active,
-.quickSearch a:active {
+.liHover:active, .liHover a:active {
     background: var(--colorBtnsActive);
 }
 
@@ -462,9 +461,9 @@ legend {
 .liHome {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .liHome a {
@@ -475,7 +474,15 @@ legend {
     text-decoration: none;
     color: #ffffff;
     border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
+
+.liHome a > img { width: 15%; }
+.liHome a > span { width: 25%; }
 
 .headerBody {
     width: 100vw;
@@ -682,13 +689,15 @@ legend {
 }
 
 .quickSearch {
-    display: grid;
+    display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .quickSearch h1 {
-    grid-area: titleQSearch;
+    width: 100%;
     font-family: var(--fontTitles);
     font-size: 3.5rem;
     color: #ffffff;
@@ -706,54 +715,6 @@ legend {
 }
 
 .quickSearch img { width: 40%;}
-
-.citySearch { grid-area: searchCity;}
-
-.citySearch a {
-    display: grid;
-    grid-template:
-        "imgCitySearch" 80%
-        "spanCitySearch" 20%
-        / 1fr
-    ;
-    align-items: center;
-    justify-items: center;
-}
-
-.citySearch img { grid-area: imgCitySearch;}
-.citySearch span { grid-area: spanCitySearch;}
-
-.localSearch { grid-area: searchLocal;}
-
-.localSearch a {
-    display: grid;
-    grid-template:
-        "imgLocalSearch" 80%
-        "spanLocalSearch" 20%
-        / 1fr
-    ;
-    align-items: center;
-    justify-items: center;
-}
-
-.localSearch img { grid-area: imgLocalSearch;}
-.localSearch span { grid-area: spanLocalSearch;}
-
-.guideSearch { grid-area: searchGuide;}
-
-.guideSearch a {
-    display: grid;
-    grid-template:
-        "imgGuideSearch" 80%
-        "spanGuideSearch" 20%
-        / 1fr
-    ;
-    align-items: center;
-    justify-items: center;
-}
-
-.guideSearch img { grid-area: imgGuideSearch;}
-.guideSearch span { grid-area: spanGuideSearch;}
 
 .cidadesBody {
     width: 80%;
@@ -856,7 +817,6 @@ footer {
     width: 300px;
     height: 460px;
     position: relative;
-    background: rgba(255,255,255,1);
     display: inline-block;
     margin: 0 10px;
     cursor: pointer;
@@ -868,6 +828,7 @@ footer {
 	margin-bottom:10px;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
+    text-align: center;
 }
 
 .box.expanded { width: 55%;}
@@ -1244,53 +1205,61 @@ footer {
 	transition: all .5s ease 0s;
 }
 
-.demo_3 .box:hover {
+.demo_3 .box:hover,
+.quickSearch .box:hover {
     background: var(--colorThird);
 }
 
-.demo_3 .box h3,
-.demo_3 .box span {
+.demo_3 .box h3, .demo_3 .box span,
+.quickSearch .box h3, .quickSearch .box span {
 	-webkit-transition: all .5s ease 0s;
 	-ms-transition: all .5s ease 0s;
 	transition: all .5s ease 0s;
 }
-.demo_3 .box:hover h3, .demo_3 .box:hover span {
+.demo_3 .box:hover h3, .demo_3 .box:hover span,
+.quickSearch .box:hover h3, .quickSearch .box:hover span {
 	-webkit-transform: scale(.8);
 	-ms-transform: scale(.8);
 		transform:scale(.8);
 }
-.demo_3 .box svg line {
+.demo_3 .box svg line,
+.quickSearch .box svg line {
 	-webkit-transition: all .5s;
 	-ms-transition: all .5s;
 	transition: all .5s;
 }
 
-.demo_3 .box:hover svg line {
+.demo_3 .box:hover svg line,
+.quickSearch .box:hover svg line {
 	stroke-width: 10;
 	-webkit-transition-delay: 0s;
 	-ms-transition-delay: 0s;
 	transition-delay: 0s;
 }
 
-.demo_3 .box:hover svg line.top {
+.demo_3 .box:hover svg line.top,
+.quickSearch .box:hover svg line.top {
 	-webkit-transform: translateX(-300px);
 	-ms-transform: translateX(-300px);
 	transform: translateX(-300px);
 }
 
-.demo_3 .box:hover svg line.bottom {
+.demo_3 .box:hover svg line.bottom,
+.quickSearch .box:hover svg line.bottom {
 	-webkit-transform: translateX(300px);
 	-ms-transform: translateX(300px);
 	transform: translateX(300px);
 }
 
-.demo_3 .box:hover svg line.left {
+.demo_3 .box:hover svg line.left,
+.quickSearch .box:hover svg line.left {
 	-webkit-transform: translateY(460px);
 	-ms-transform: translateY(460px);
 	transform: translateY(460px);
 }
 
-.demo_3 .box:hover svg line.right {
+.demo_3 .box:hover svg line.right,
+.quickSearch .box:hover svg line.right {
 	-webkit-transform: translateY(-460px);
 	transform: translateY(-460px);
 }

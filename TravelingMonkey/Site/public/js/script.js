@@ -29,12 +29,12 @@ function changeCountry() {
 
 
 //MENUS CADASTRO
-document.querySelectorAll('.box').forEach(box => {
+document.querySelectorAll('.boxExpand').forEach(box => {
     box.addEventListener('click', function(event) {
         event.stopPropagation(); // Impedir que o clique na caixa propague para o documento
 
         // Ocultar outras caixas
-        document.querySelectorAll('.box').forEach(otherBox => {
+        document.querySelectorAll('.boxExpand').forEach(otherBox => {
             if (otherBox !== box) {
                 otherBox.classList.add('hidden');
             }

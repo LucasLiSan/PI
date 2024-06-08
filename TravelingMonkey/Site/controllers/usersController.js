@@ -1,3 +1,5 @@
+//CONTROLLER PARA LOGIN, LOGOUT, CADASTRO E AUTENTICAÇÃO DE ENTRADA.
+
 import express from "express";
 import session from "express-session";
 import bcrypt from "bcrypt";

@@ -3,9 +3,6 @@
     --colorSecond: #F2C185;
     --colorThird: #D96B0B;
     --colorShadow: #169EF2;
-    --colorBtns: #E6AD27;
-    --colorBtnsHover: #E62774;
-    --colorBtnsActive: #27E631;
     --fontTitles: "Bebas Neue", sans-serif;
     --fontBodyText: "Comfortaa", sans-serif;
 }
@@ -20,7 +17,7 @@
 
 /* Customiza o "polegar" da barra de rolagem, que é a parte que se move */
 ::-webkit-scrollbar-thumb {
-    background-color: var(--colorBtns);  /* Cor do polegar */
+    background-color: var(--colorSecond);  /* Cor do polegar */
     border-radius: 1rem;      /* Bordas arredondadas */
 }
 
@@ -34,12 +31,12 @@
 
 /* Customiza os botões de incremento/decremento da barra de rolagem (não visível na maioria dos navegadores) */
 ::-webkit-scrollbar-button { 
-    background-color: var(--colorBtns);
+    background-color: var(--colorSecond);
     border-radius: 1rem;
 }
 
 /* Customiza a barra de rolagem quando está em modo "hover" (quando o mouse está sobre ela) */
-::-webkit-scrollbar-thumb:hover { background: var(--colorBtnsHover); /* Cor do polegar em modo hover */ }
+::-webkit-scrollbar-thumb:hover { background: var(--colorStandart); /* Cor do polegar em modo hover */ }
 
 /* ESTILIZAÇÃO DA BARRA DE SCROLL */
 
@@ -57,7 +54,7 @@ input[type="submit"].editable.btnAtualizar:disabled {
 /* Estilo para o botão ativado */
 input[type="submit"].btnAtt.editable:enabled,
 input[type="submit"].editable.btnAtualizar:enabled {
-    background-color: var(--colorBtns); /* Cor de fundo para o estado ativado */
+    background-color: var(--colorSecond); /* Cor de fundo para o estado ativado */
     color: #000000; /* Cor do texto para o estado ativado */
     cursor: pointer; /* Cursor indicando que é clicável */
     transition: background-color 0.3s ease; /* Transição suave ao mudar de estado */
@@ -66,13 +63,13 @@ input[type="submit"].editable.btnAtualizar:enabled {
 /* Estilo adicional ao passar o mouse sobre o botão ativado */
 input[type="submit"].btnAtt.editable:enabled:hover,
 input[type="submit"].btnAtualizar.editable:enabled:hover {
-    background-color: var(--colorBtnsHover); /* Cor de fundo ao passar o mouse */
+    background-color: var(--colorStandart); /* Cor de fundo ao passar o mouse */
     color: #ffffff; /* Cor do texto ao passar o mouse */
 }
 /* Estilo adicional click do mouse sobre o botão ativado */
 input[type="submit"].btnAtt.editable:enabled:active,
 input[type="submit"].editable.btnAtualizar:enabled:active {
-    background-color: var(--colorBtnsActive); /* Cor de fundo ao passar o mouse */
+    background-color: var(--colorShadow); /* Cor de fundo ao passar o mouse */
 }
 
 /*ESTILIZAÇÃO DE SUBMIT BUTTON COM DISABLED-ENABLED*/
@@ -83,7 +80,7 @@ input[type="submit"].editable.btnAtualizar:enabled:active {
     padding: 1rem;
     margin-bottom: 0.6rem;
     text-align: center;
-    color: var(--colorBtnsHover);
+    color: var(--colorStandart);
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: bold;
@@ -96,7 +93,7 @@ input[type="submit"].editable.btnAtualizar:enabled:active {
     width: 50%;
     padding: 0.4rem;
     text-align: center;
-    color: var(--colorBtnsActive);
+    color: var(--colorShadow);
     font-size: 1rem;
     text-transform: uppercase;
     background: var(--colorThird);
@@ -161,13 +158,13 @@ legend {
 
 .liHover:hover, .liHover a:hover,
 .searchDivHover:hover {
-    background: var(--colorBtnsHover);
+    background: var(--colorStandart);
     color: #000000;
     border-radius: 1rem;
 }
 
 .liHover:active, .liHover a:active {
-    background: var(--colorBtnsActive);
+    background: var(--colorShadow);
 }
 
 .logo {
@@ -341,7 +338,7 @@ legend {
     font-size: 1rem;
     font-weight: bold;
     height: 70%;
-    background: var(--colorBtns);
+    background: var(--colorSecond);
     color: #000000;
     border-radius: 1rem;
 }
@@ -376,7 +373,7 @@ legend {
 .buttonIn {
     width: 70%;
     height: 3rem;
-    background: var(--colorBtns);
+    background: var(--colorSecond);
     color: #ffffff;
     font-family: var(--fontBodyText);
     text-transform: uppercase;
@@ -390,7 +387,7 @@ legend {
 .buttonOut {
     width: 70%;
     height: 3rem;
-    background: var(--colorBtns);
+    background: var(--colorSecond);
     color: #ffffff;
     font-family: var(--fontBodyText);
     text-transform: uppercase;
@@ -433,13 +430,13 @@ legend {
 
 .loginBtn button:hover, #searchFormSubmit input:hover,
 .btnSelect:hover, .loginBtn a:hover, .btnAtt:hover, .verMais:hover {
-    background: var(--colorBtnsHover);
+    background: var(--colorStandart);
     color: #ffffff;
 }
 
 .loginBtn button:active, #searchFormSubmit input:active,
 .btnSelect:active, .loginBtn a:active,
-.btnAtt:active, .verMais:active { background: var(--colorBtnsActive); }
+.btnAtt:active, .verMais:active { background: var(--colorShadow); }
 
 .liHome {
     display: flex;
@@ -669,7 +666,7 @@ legend {
     grid-area: searchFormSubmit;
     height: 95%;
     width: 95%;
-    background: var(--colorBtns);
+    background: var(--colorSecond);
     color: #000000;
     font-weight: bold;
     border-radius: 1rem;
@@ -705,7 +702,7 @@ legend {
     flex-wrap: wrap;
 }
 
-.quickSearch h1 {
+.quickSearch h1, .bestRewiews h1 {
     width: 100%;
     font-family: var(--fontTitles);
     font-size: 3.5rem;
@@ -726,7 +723,81 @@ legend {
 .quickSearch img { width: 40%;}
 
 .bestRewiews {
-    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30rem;
+    padding: 50px 0px;
+    overflow: hidden;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+  
+.card{
+    width: 100%;
+}
+  
+.card:before{
+    content: '';
+    display: block;
+    padding-bottom: 150%;
+    width: 100%;
+}
+  
+.background{
+    background-position: center;
+    background-size: cover;
+    border-radius: 24px;
+    bottom: 0;
+    filter: brightness(0.75) saturate(1.2) contrast(0.85);
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 
+        filter 200ms linear,
+        transform 200ms linear;
+}
+  
+.card:hover .background{
+    transform: scale(1.05);
+    filter: none;
+}
+  
+.card-grid:hover > .card:not(:hover) .background{
+    filter: brightness(0.6) saturate(1)
+            contrast(1.2)   blur(5px);
+}
+  
+.card-grid:hover > .card:not(:hover) .content{
+    filter: brightness(0.8) blur(2px);
+}
+  
+.content{
+    padding: 24px;
+    position: absolute;
+    top: 0;
+}
+  
+.category{
+    color: #e1e1e1;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+  
+.heading{
+    color: #e1e1e1;
+    font-size: 1.8rem;
 }
 
 .cidadesBody {
@@ -763,7 +834,7 @@ legend {
 }
 
 #cidadesTableHead {
-    background: var(--colorBtnsHover);
+    background: var(--colorStandart);
 }
 
 footer {
@@ -774,7 +845,7 @@ footer {
     font-weight: bold;
     text-align: center;
     align-content: center;
-    top: 0.2rem;
+    bottom: 1rem;
     left: 0.2rem;
     width: 95%;
     border-top-right-radius: 2rem;
@@ -864,7 +935,7 @@ footer {
     background: var(--colorBackGround);
     padding: 20px;
     box-sizing: border-box;
-    border: solid 1px var(--colorBtnsActive);
+    border: solid 1px var(--colorShadow);
 }
 .box.expanded .specific-form {
     display: grid;
@@ -963,16 +1034,16 @@ footer {
     width: 40%;
     height: 80%;
     border-radius: 0.5rem;
-    background: var(--colorBtns);
+    background: var(--colorSecond);
     font-weight: bold;
 }
 
 .btnCadastro:hover{
-    background: var(--colorBtnsHover);
+    background: var(--colorStandart);
     color: #ffffff;
 }
 .btnCadastro:active{
-    background: var(--colorBtnsActive);
+    background: var(--colorShadow);
     color: #ffffff;
 }
 
@@ -1111,14 +1182,14 @@ footer {
     top: 10px;
     right: 10px;
     background: none;
-    color: var(--colorBtns);
+    color: var(--colorSecond);
     border: none;
     font-size: 24px;
     cursor: pointer;
     z-index: 1;
 }
-.close-btn:hover { color: var(--colorBtnsHover);}
-.close-btn:active { color: var(--colorBtnsActive);}
+.close-btn:hover { color: var(--colorStandart);}
+.close-btn:active { color: var(--colorShadow);}
 
 .box:hover {
     background: rgba(255,255,255,0);
@@ -1352,7 +1423,7 @@ footer {
 .cardLoginForm input:focus { border-color: #3498db;}
   
 .cardLoginForm button {
-    background-color: var(--colorBtns);
+    background-color: var(--colorSecond);
     color: #000000;
     font-weight: bolder;
     text-transform: uppercase;
@@ -1364,7 +1435,7 @@ footer {
 }
   
 .cardLoginForm button:hover {
-    background-color: var(--colorBtnsHover);
+    background-color: var(--colorStandart);
     color: #ffffff;
 }
 
@@ -1378,9 +1449,9 @@ footer {
     text-align: center;
 }
 
-.cardLoginForm a { color: var(--colorBtns);}
-.cardLoginForm a:hover { color: var(--colorBtnsHover);}
-.cardLoginForm a:active { color: var(--colorBtnsActive);}
+.cardLoginForm a { color: var(--colorSecond);}
+.cardLoginForm a:hover { color: var(--colorStandart);}
+.cardLoginForm a:active { color: var(--colorShadow);}
 
 .sidenav {
     background-color: var(--colorSecond);
@@ -1514,10 +1585,10 @@ footer {
     color: #ffffff;
 }
 .cardProfileTitle i:hover {
-    color: var(--colorBtnsHover);
+    color: var(--colorStandart);
 }
 .cardProfileTitle i:active {
-    color: var(--colorBtnsActive);
+    color: var(--colorShadow);
 }
 
 .cardHistory {
@@ -1675,7 +1746,7 @@ footer {
 
 .btnAtualizar {
     width: 25%;
-    background-color: var(--colorBtns);
+    background-color: var(--colorSecond);
     color: #000000;
     font-weight: bolder;
     text-transform: uppercase;
@@ -1690,7 +1761,7 @@ footer {
     width: 25%;
     height: 70%;
     border-radius: 0.5rem;
-    background: var(--colorBtns);
+    background: var(--colorSecond);
     font-weight: bold;
 }
 
@@ -1725,7 +1796,7 @@ footer {
 
 .btnAtt {
     width: 25%;
-    background-color: var(--colorBtns);
+    background-color: var(--colorSecond);
     color: #000000;
     font-weight: bolder;
     text-transform: uppercase;

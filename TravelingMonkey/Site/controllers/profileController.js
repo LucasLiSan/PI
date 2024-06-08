@@ -1,3 +1,5 @@
+//CONTROLLER PARA TRATAMENTO DOS DADOS DOS USUARIOS CADASTRADOS (CIDADES, GUIAS E TURISTAS) - CADASTRAR NOVO, DELETAR, UPDATE
+
 import express from "express";
 import session from "express-session";
 import { Op } from "sequelize";

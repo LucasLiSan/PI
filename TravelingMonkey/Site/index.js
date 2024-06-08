@@ -49,19 +49,19 @@ const uploadPics = multer({dest: "public/imgs/pics"});
 
 
 //IMPORTANDO OS CONTROLLERS E DEFININDO O USO DAS ROTAS
-import buscaRapidaController from "./controllers/buscaRapidaController.js";
 import buscaController from "./controllers/buscaController.js";
-import guiasController from "./controllers/guiasController.js";
-import usersController from "./controllers/usersController.js";
-import reservasController from "./controllers/reservasController.js";
+import buscaRapidaController from "./controllers/buscaRapidaController.js";
+import pontosController from "./controllers/pontosController.js"
 import profileController from "./controllers/profileController.js";
+import reservasController from "./controllers/reservasController.js";
+import usersController from "./controllers/usersController.js";
 
-app.use("/", buscaRapidaController);
 app.use("/", buscaController);
-app.use("/", guiasController);
-app.use("/", usersController);
-app.use("/", reservasController);
+app.use("/", buscaRapidaController);
+app.use("/", pontosController);
 app.use("/", profileController);
+app.use("/", reservasController);
+app.use("/", usersController);
 
 PontosTuristicos.belongsToMany(HorarioFuncionamento, {
     through: HorarioPonto,

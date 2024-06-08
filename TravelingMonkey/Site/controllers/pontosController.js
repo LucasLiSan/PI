@@ -1,3 +1,5 @@
+//CONTROLLER PARA TRATAMENTO DOS DADOS DE PONTOS TÚRISTICOS - CADASTRAR NOVO, DELETAR, UPDATE
+
 import express from "express";
 import session from "express-session";
 import bcrypt from "bcrypt";

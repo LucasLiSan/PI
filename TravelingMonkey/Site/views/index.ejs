@@ -57,7 +57,22 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
         </div>
     </section>
     <section class="bestRewiews">
-
+        <h1>DESTINOS COM MELHORES AVALIAÇÕES</h1>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <% pontos.forEach(ponto => { %>
+                        <div class="swiper-slide">
+                            <a class="card" href="/reserva/<%= ponto.id %>">
+                            <div class="background" style="background-image: url('<%= ponto.profilePicPonto %>')"></div>
+                            <div class="content">
+                                <p class="category">Category</p>
+                                <h3 class="heading"><%= ponto.nomePonto %></h3>
+                            </div>
+                            </a>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
     </section>
 </main>
 

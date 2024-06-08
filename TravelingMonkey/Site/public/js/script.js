@@ -1,15 +1,32 @@
-//HOME BUTTON
-function flyAway() {
-    var icon = document.getElementById("homeIcon");
-    icon.style.transition = "all 1s ease-in-out";
-    icon.style.transform = "translate(-100%, -100%)";
-
-    setTimeout(function() {
-        icon.style.transition = "none";
-        icon.style.transform = "translate(-50%, -50%)";
-    }, 1000);
-}
-
+//SLIDER
+var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+        delay: 10000,
+        disableOnInteraction: false,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        // Responsividade
+        640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+        },
+    }
+});
 
 //MODAL MOEDA E IDIOMA
 var modal = document.getElementById("myModalCurrency");

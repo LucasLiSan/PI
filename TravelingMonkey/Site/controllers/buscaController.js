@@ -1,3 +1,5 @@
+//CONTROLER PARA BUSCAS
+
 import express from "express";
 import bcrypt from "bcrypt";
 import session from "express-session";

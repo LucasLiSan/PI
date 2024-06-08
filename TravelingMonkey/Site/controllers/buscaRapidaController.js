@@ -1,3 +1,5 @@
+//CONTROLLER PARA A BUSCA RÁPIDA - LISTAGEM
+
 import express from "express";
 import session from "express-session";
 import Turistas from "../models/turistas.js";

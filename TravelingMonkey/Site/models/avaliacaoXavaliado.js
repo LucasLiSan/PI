@@ -16,7 +16,7 @@ const Avaliados = connection.define('avaliacaoXavaliado',
         },
         idGuia: {
             type: Sequelize.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: GuiasDeTurismo,
                 key: 'id'
@@ -24,7 +24,7 @@ const Avaliados = connection.define('avaliacaoXavaliado',
         },
         idPonto: {
             type: Sequelize.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: PontosTuristicos,
                 key: 'id'
@@ -32,10 +32,6 @@ const Avaliados = connection.define('avaliacaoXavaliado',
         }
     }
 );
-
-Avaliados.belongsTo(Feedback, { foreignKey: 'idAvaliacao'});
-Avaliados.belongsTo(GuiasDeTurismo, { foreignKey: 'idGuia'});
-Avaliados.belongsTo(PontosTuristicos, { foreignKey: 'idPonto'});
 
 Avaliados.sync({force:false});
 export default Avaliados;

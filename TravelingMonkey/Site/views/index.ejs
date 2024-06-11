@@ -67,6 +67,11 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
                             <div class="content">
                                 <p class="category">Category</p>
                                 <h3 class="heading"><%= ponto.nomePonto %></h3>
+                                <div class="classificacao">
+                                    <% for (let i = 0; i < ponto.media; i++) { %>
+                                        <i class="fas fa-star"></i>
+                                    <% } %>
+                                </div>
                             </div>
                             </a>
                         </div>

@@ -19,13 +19,15 @@ router.get('/home', async function(req, res) {
         const pontos = await PontosTuristicos.findAll({
             include: [{
                 model: PontosAvaliacoes,
-                include: [AvaliacoesPontos]
+                include: [AvaliacoesPontos],
             }]
         });
 
         const pontosComMedia = pontos.map(ponto => {
             const avaliacoes = ponto.avaliacaoPontos || []; // Verifica se avaliacoesPontos está definido, caso contrário, define como um array vazio
             const notas = avaliacoes.map(avaliacao => avaliacao.nota); // Se avaliacoesPontos estiver definido, mapeia as notas, caso contrário, retorna um array vazio
+            console.log("Notas do ponto:", notas);
+            console.log("Avaliacao do ponto:", avaliacoes);
             const media = notas.length ? (notas.reduce((a, b) => a + b, 0) / notas.length) : 0;
             return {
                 ...ponto.dataValues,

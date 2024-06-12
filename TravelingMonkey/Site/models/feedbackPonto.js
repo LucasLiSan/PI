@@ -22,7 +22,7 @@ const AvaliacoesPontos = connection.define('avaliacoesPontos',
             }
         },
         nota: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.DECIMAL(2,1),
             allowNull: false
         },
         comentario: {

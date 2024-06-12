@@ -68,18 +68,13 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
                                 <p class="category">Category</p>
                                 <h3 class="heading"><%= ponto.nomePonto %></h3>
                                 <div class="classificacao">
-                                    <% if (ponto.media > 0) { %>
-                                        <% for(let i = 0; i < ponto.media; i++) { %>
-                                            <i class="fas fa-star"></i>
-                                        <% } %>
-                                        <% for(let i = ponto.media; i < 5; i++) { %>
+                                    <% if (ponto.dataValues.media > 0) { %>
+                                        <% for(let i = 0; i < ponto.dataValues.media; i++) { %>
                                             <i class="fas fa-star"></i>
                                         <% } %>
                                     <% } else { %>
-                                        <% for(let i = 0; i < 5; i++) { %>
                                             <i class="far fa-star"></i>
                                         <% } %>
-                                    <% } %>
                                 </div>
                             </div>
                             </a>

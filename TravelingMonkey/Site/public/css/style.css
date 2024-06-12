@@ -744,9 +744,7 @@ legend {
     justify-content: center;
 }
   
-.card{
-    width: 100%;
-}
+.card{ width: 100%; }
   
 .card:before{
     content: '';
@@ -775,14 +773,9 @@ legend {
     filter: none;
 }
   
-.card-grid:hover > .card:not(:hover) .background{
-    filter: brightness(0.6) saturate(1)
-            contrast(1.2)   blur(5px);
-}
+.card-grid:hover > .card:not(:hover) .background{ filter: brightness(0.6) saturate(1) contrast(1.2)   blur(5px); }
   
-.card-grid:hover > .card:not(:hover) .content{
-    filter: brightness(0.8) blur(2px);
-}
+.card-grid:hover > .card:not(:hover) .content{ filter: brightness(0.8) blur(2px); }
   
 .content{
     padding: 24px;
@@ -803,7 +796,7 @@ legend {
 }
 
 .cidadesBody {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background: var(--colorStandart);
@@ -827,16 +820,18 @@ legend {
     width: 90%;
     text-align: center;
     color: #ffffff;
+    box-shadow: 0px 0px 0px 10px var(--colorShadow);
 }
 
 .cidadesTable tr { height: 2.5rem;}
-
-.cidadesTable tr:nth-child(odd) {
-    background: var(--colorFourth);
-}
+.cidadesTable tr:nth-child(odd) { background: var(--colorShadow); }
+.cidadesTable tr:hover { background: var(--colorSecond); }
 
 #cidadesTableHead {
-    background: var(--colorStandart);
+    background: var(--colorThird);
+    color: #000000;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 footer {

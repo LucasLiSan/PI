@@ -2,16 +2,17 @@
 
 import express from "express";
 import session from "express-session";
+import Auth from "../middleware/auth.js";
+/* ---------- TABLES ---------- */
 import Turistas from "../models/turistas.js";
 import GuiasDeTurismo from "../models/guias.js";
 import Cidades from "../models/cidades.js";
 import PontosTuristicos from "../models/pontos.js";
-import CategoriasPontos from "../models/categoriaXponto.js";
 import HorarioFuncionamento from "../models/horarioFunc.js";
-import HorarioPonto from "../models/horarioXponto.js";
 import Atracoes from "../models/atracoes.js";
-import Auth from "../middleware/auth.js";
-
+import CategoriasPontos from "../models/categoriaXponto.js";
+import HorarioPonto from "../models/horarioXponto.js";
+/* ---------- TABLES ---------- */
 const router = express.Router();
 
 //ROTA BUSCA RAPIDA CIDADES

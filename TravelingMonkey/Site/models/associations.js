@@ -9,11 +9,14 @@ import FotosGuias from "./fotosGuias.js";
 import FotosPontos from "./fotosPontos.js";
 
 // Associações para Avaliações de Pontos Turísticos
-PontosTuristicos.hasMany(PontosAvaliacoes, { foreignKey: 'idPonto' });
-PontosAvaliacoes.belongsTo(PontosTuristicos, { foreignKey: 'idPonto' });
+// PontosTuristicos and PontosAvaliacoes association
+PontosTuristicos.hasMany(PontosAvaliacoes, { foreignKey: 'idPonto', as: 'avaliacoesRelacionadas' });
+PontosAvaliacoes.belongsTo(PontosTuristicos, { foreignKey: 'idPonto', as: 'pontoRelacionado' });
 
-PontosAvaliacoes.belongsTo(AvaliacoesPontos, { foreignKey: 'idAvaliacao' });
-AvaliacoesPontos.hasMany(PontosAvaliacoes, { foreignKey: 'idAvaliacao' });
+// PontosAvaliacoes and AvaliacoesPontos association
+PontosAvaliacoes.belongsTo(AvaliacoesPontos, { foreignKey: 'idAvaliacao', as: 'detalheAvaliacao' });
+AvaliacoesPontos.hasMany(PontosAvaliacoes, { foreignKey: 'idAvaliacao', as: 'pontosAvaliados' });
+
 
 // Associações para Avaliações de Guias de Turismo
 GuiasDeTurismo.hasMany(GuiasAvaliacoes, { foreignKey: 'idGuia' });

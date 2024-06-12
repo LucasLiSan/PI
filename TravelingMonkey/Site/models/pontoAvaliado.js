@@ -24,8 +24,8 @@ const PontosAvaliacoes = connection.define('pontosAvaliados',
     }
 );
 
-PontosAvaliacoes.belongsTo(AvaliacoesPontos, { foreignKey: 'idAvaliacao' });
-PontosAvaliacoes.belongsTo(PontosTuristicos, { foreignKey: 'idPonto' });
+PontosAvaliacoes.belongsTo(AvaliacoesPontos, { foreignKey: 'idAvaliacao', as: 'avaliacaoDetalhe' });
+AvaliacoesPontos.hasMany(PontosAvaliacoes, { foreignKey: 'idAvaliacao', as: 'avaliacoesDePonto' });
 
 PontosAvaliacoes.sync({force:false});
 export default PontosAvaliacoes;

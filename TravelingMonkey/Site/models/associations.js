@@ -1,26 +1,44 @@
 import PontosTuristicos from "./pontos.js";
-import Feedback from "./comentarios.js";
-import Avaliados from "./avaliacaoXavaliado.js";
+import AvaliacoesPontos from "./feedbackPonto.js";
+import AvaliacoesGuias from "./feedbackGuia.js";
+import PontosAvaliacoes from "./pontoAvaliado.js";
+import GuiasAvaliacoes from "./guiaAvaliado.js";
 import GuiasDeTurismo from "./guias.js";
 import Turistas from "./turistas.js";
+import FotosGuias from "./fotosGuias.js";
+import FotosPontos from "./fotosPontos.js";
 
-// Associações
-PontosTuristicos.hasMany(Avaliados, { foreignKey: 'idPonto' });
-Avaliados.belongsTo(PontosTuristicos, { foreignKey: 'idPonto' });
+// Associações para Avaliações de Pontos Turísticos
+PontosTuristicos.hasMany(PontosAvaliacoes, { foreignKey: 'idPonto' });
+PontosAvaliacoes.belongsTo(PontosTuristicos, { foreignKey: 'idPonto' });
 
-Feedback.hasMany(Avaliados, { foreignKey: 'idAvaliacao' });
-Avaliados.belongsTo(Feedback, { foreignKey: 'idAvaliacao' });
+PontosAvaliacoes.belongsTo(AvaliacoesPontos, { foreignKey: 'idAvaliacao' });
+AvaliacoesPontos.hasMany(PontosAvaliacoes, { foreignKey: 'idAvaliacao' });
 
-GuiasDeTurismo.hasMany(Avaliados, { foreignKey: 'idGuia' });
-Avaliados.belongsTo(GuiasDeTurismo, { foreignKey: 'idGuia' });
+// Associações para Avaliações de Guias de Turismo
+GuiasDeTurismo.hasMany(GuiasAvaliacoes, { foreignKey: 'idGuia' });
+GuiasAvaliacoes.belongsTo(GuiasDeTurismo, { foreignKey: 'idGuia' });
 
-Turistas.hasMany(Feedback, { foreignKey: 'idAvaliador' });
-Feedback.belongsTo(Turistas, { foreignKey: 'idAvaliador' });
+AvaliacoesGuias.hasMany(GuiasAvaliacoes, { foreignKey: 'idAvaliacao' });
+GuiasAvaliacoes.belongsTo(AvaliacoesGuias, { foreignKey: 'idAvaliacao' });
 
-// Adicionar associação Feedback <-> PontosTuristicos
-PontosTuristicos.hasMany(Feedback, { foreignKey: 'idPontoAvaliado' });
-Feedback.belongsTo(PontosTuristicos, { foreignKey: 'idPontoAvaliado' });
+// Associações existentes
+Turistas.hasMany(AvaliacoesPontos, { foreignKey: 'idAvaliador' });
+AvaliacoesPontos.belongsTo(Turistas, { foreignKey: 'idAvaliador' });
 
-// Adicionar associação Feedback <-> GuiasDeTurismo
-GuiasDeTurismo.hasMany(Feedback, { foreignKey: 'idGuiaAvaliado' });
-Feedback.belongsTo(GuiasDeTurismo, { foreignKey: 'idGuiaAvaliado' });
+Turistas.hasMany(AvaliacoesGuias, { foreignKey: 'idAvaliador' });
+AvaliacoesGuias.belongsTo(Turistas, { foreignKey: 'idAvaliador' });
+
+// Associações para Fotos de Pontos Turísticos
+PontosTuristicos.hasMany(FotosPontos, { foreignKey: 'idPontoFotografado' });
+FotosPontos.belongsTo(PontosTuristicos, { foreignKey: 'idPontoFotografado' });
+
+Turistas.hasMany(FotosPontos, { foreignKey: 'idFotografo' });
+FotosPontos.belongsTo(Turistas, { foreignKey: 'idFotografo' });
+
+// Associações para Fotos de Guias de Turismo
+GuiasDeTurismo.hasMany(FotosGuias, { foreignKey: 'idGuiaFotografado' });
+FotosGuias.belongsTo(GuiasDeTurismo, { foreignKey: 'idGuiaFotografado' });
+
+Turistas.hasMany(FotosGuias, { foreignKey: 'idFotografo' });
+FotosGuias.belongsTo(Turistas, { foreignKey: 'idFotografo' });

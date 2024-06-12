@@ -1,10 +1,11 @@
 import Sequelize from "sequelize";
 import connection from "../config/sequelize-config.js";
 import Turistas from "./turistas.js";
+import GuiasDeTurismo from "./guias.js";
 
-const Feedback = connection.define('comentAvalia', 
+const AvaliacoesGuias = connection.define('avaliacoesGuias', 
     {
-        idAvaliador:{
+        idAvaliador: {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
@@ -12,29 +13,31 @@ const Feedback = connection.define('comentAvalia',
                 key: 'id'
             }
         },
-        idGuiaAvaliado:{
+        idGuiaAvaliado: {
             type: Sequelize.INTEGER,
-            allowNull: true
+            allowNull: false,
+            references: {
+                model: GuiasDeTurismo,
+                key: 'id'
+            }
         },
-        idPontoAvaliado:{
-            type: Sequelize.INTEGER,
-            allowNull: true
-        },
-        nota:{
+        nota: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        comentario:{
+        comentario: {
             type: Sequelize.STRING,
             allowNull: true
         },
-        dataAvaliacao:{
+        dataAvaliacao: {
             type: Sequelize.DATE,
             allowNull: false
         }
     }
 );
 
-Feedback.belongsTo(Turistas, { foreignKey: 'idAvaliador' });
-Feedback.sync({force:false});
-export default Feedback;
+AvaliacoesGuias.belongsTo(Turistas, { foreignKey: 'idAvaliador' });
+AvaliacoesGuias.belongsTo(GuiasDeTurismo, { foreignKey: 'idGuiaAvaliado' });
+
+AvaliacoesGuias.sync({force:false});
+export default AvaliacoesGuias;

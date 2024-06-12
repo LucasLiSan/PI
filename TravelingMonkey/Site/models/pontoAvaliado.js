@@ -1,30 +1,21 @@
 import Sequelize from "sequelize";
 import connection from "../config/sequelize-config.js";
+import AvaliacoesPontos from "./feedbackPonto.js";
 import PontosTuristicos from "./pontos.js";
-import GuiasDeTurismo from "./guias.js";
-import Feedback from "./comentarios.js";
 
-const Avaliados = connection.define('avaliacaoXavaliado',
+const PontosAvaliacoes = connection.define('pontosAvaliados', 
     {
         idAvaliacao: {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                model: Feedback,
-                key: 'id'
-            }
-        },
-        idGuia: {
-            type: Sequelize.INTEGER,
-            allowNull: true,
-            references: {
-                model: GuiasDeTurismo,
+                model: AvaliacoesPontos,
                 key: 'id'
             }
         },
         idPonto: {
             type: Sequelize.INTEGER,
-            allowNull: true,
+            allowNull: false,
             references: {
                 model: PontosTuristicos,
                 key: 'id'
@@ -33,5 +24,8 @@ const Avaliados = connection.define('avaliacaoXavaliado',
     }
 );
 
-Avaliados.sync({force:false});
-export default Avaliados;
+PontosAvaliacoes.belongsTo(AvaliacoesPontos, { foreignKey: 'idAvaliacao' });
+PontosAvaliacoes.belongsTo(PontosTuristicos, { foreignKey: 'idPonto' });
+
+PontosAvaliacoes.sync({force:false});
+export default PontosAvaliacoes;

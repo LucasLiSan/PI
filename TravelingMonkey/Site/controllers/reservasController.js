@@ -4,8 +4,10 @@ import express from "express";
 import session from "express-session";
 import bcrypt from "bcrypt";
 import PontosTuristicos from "../models/pontos.js";
-import Avaliados from "../models/avaliacaoXavaliado.js";
-import Feedback from "../models/comentarios.js";
+import AvaliacoesPontos from "../models/feedbackPonto.js";
+import PontosAvaliacoes from "../models/pontoAvaliado.js";
+import AvaliacoesGuias from "../models/feedbackGuia.js";
+import GuiasAvaliacoes from "../models/guiaAvaliado.js";
 import "../models/associations.js";
 
 const router = express.Router();
@@ -16,21 +18,23 @@ router.get('/home', async function(req, res) {
     try {
         const pontos = await PontosTuristicos.findAll({
             include: [{
-                model: Avaliados,
-                include: [Feedback]
+                model: PontosAvaliacoes,
+                include: [AvaliacoesPontos]
             }]
         });
 
-        const pontosComNota = pontos.map(ponto => {
-            const notas = ponto.avaliacaoXavaliados.map(avaliacao => avaliacao.comentAvalia.nota);
+        const pontosComMedia = pontos.map(ponto => {
+            const avaliacoes = ponto.avaliacaoPontos || []; // Verifica se avaliacoesPontos está definido, caso contrário, define como um array vazio
+            const notas = avaliacoes.map(avaliacao => avaliacao.nota); // Se avaliacoesPontos estiver definido, mapeia as notas, caso contrário, retorna um array vazio
             const media = notas.length ? (notas.reduce((a, b) => a + b, 0) / notas.length) : 0;
             return {
                 ...ponto.dataValues,
                 media: Math.round(media)
             };
         });
+
         res.render("index", {
-            pontos: pontosComNota,
+            pontos: pontosComMedia,
             loggedOut: loggedOut
         });
     } catch (error) {

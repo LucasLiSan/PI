@@ -34,19 +34,24 @@ INSERT INTO horarioXpontos (idHorario, idPontoTuristico) VALUES
 (8,13),(9,13),(10,13),(11,13),(12,13),(13,13),(14,13);
 
 INSERT INTO pontos (nomePonto, modalidade, valorEntrada, endRuaPonto, endBairroPonto, endNumPonto, endCidadePonto, endUfPonto, endCepPonto, endReferenciaPonto, endGeoLatPonto, endGeoLongePonto, profilePicPonto) VALUES
-('Parque Estadual Turístico do Alto Ribeira (PETAR)', 22, 30.00, 'Estrada do Ouro Grosso', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Próximo ao bairro da Serra', -24.5275, -48.6825, '/imgs/profilePics/petar.jpg'),
-('Caverna do Diabo', 41, 50.00, 'Rodovia SP-165', 'Eldorado', 'km 111', 'Eldorado', 'SP', '11960-000', 'Próximo ao Parque Estadual Caverna do Diabo', -24.6467, -48.4083, '/imgs/profilePics/caverna_diabo.jpg'),
-('Ilha do Cardoso', 18, 0.00, 'Acesso por barco', 'Cananéia', '', 'Cananéia', 'SP', '11990-000', 'Saída do Porto de Cananéia', -25.0253, -47.9208, '/imgs/profilePics/ilha_cardoso.jpg'),
-('Reserva Legado das Águas', 22, 40.00, 'Rodovia SP-079', 'Tapiraí', 'km 122', 'Miracatu', 'SP', '11850-000', 'Acesso pela Rodovia Régis Bittencourt', -24.2775, -47.5083, '/imgs/profilePics/legado_aguas.jpg'),
-('Parque Estadual Ilha do Cardoso', 22, 0.00, 'Ilha do Cardoso', 'Cananéia', '', 'Cananéia', 'SP', '11990-000', 'Acesso por barco a partir de Cananéia', -25.0270, -47.9156, '/imgs/profilePics/parque_ilha_cardoso.jpg'),
-('Centro Histórico de Iguape', 1, 0.00, 'Rua Major Rebelo', 'Centro', 's/n', 'Iguape', 'SP', '11920-000', 'Próximo à Praça da Basílica', -24.6980, -47.5538, '/imgs/profilePics/centro_historico_iguape.jpg'),
-('Quilombo Ivaporunduva', 5, 10.00, 'Estrada Municipal', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Próximo ao Rio Ribeira de Iguape', -24.5142, -48.5950, '/imgs/profilePics/quilombo_ivaporunduva.jpg'),
-('Cachoeira do Meu Deus', 21, 0.00, 'Estrada do Bairro da Serra', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Dentro do PETAR', -24.5300, -48.7050, '/imgs/profilePics/cachoeira_meu_deus.jpg'),
-('Museu Histórico e Arqueológico de Iguape', 2, 0.00, 'Rua XV de Novembro', 'Centro', 's/n', 'Iguape', 'SP', '11920-000', 'Próximo à Praça da Basílica', -24.6985, -47.5533, '/imgs/profilePics/museu_iguape.jpg'),
-('Mirante do Morro do Espia', 21, 0.00, 'Morro do Espia', 'Centro', 's/n', 'Cananéia', 'SP', '11990-000', 'Acesso por trilha', -25.0150, -47.9275, '/imgs/profilePics/mirante_morro_espia.jpg'),
+('Parque Estadual Turístico do Alto Ribeira (PETAR)', 22, 30.00, 'Estrada do Ouro Grosso', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Próximo ao bairro da Serra', -24.5275, -48.6825, 'petar.jpg'),
+('Caverna do Diabo', 41, 50.00, 'Rodovia SP-165', 'Eldorado', 'km 111', 'Eldorado', 'SP', '11960-000', 'Próximo ao Parque Estadual Caverna do Diabo', -24.6467, -48.4083, 'caverna_diabo.jpg'),
+('Ilha do Cardoso', 18, 0.00, 'Acesso por barco', 'Cananéia', '', 'Cananéia', 'SP', '11990-000', 'Saída do Porto de Cananéia', -25.0253, -47.9208, 'ilha_cardoso.jpg'),
+('Reserva Legado das Águas', 22, 40.00, 'Rodovia SP-079', 'Tapiraí', 'km 122', 'Miracatu', 'SP', '11850-000', 'Acesso pela Rodovia Régis Bittencourt', -24.2775, -47.5083, 'legado_aguas.jpg'),
+('Parque Estadual Ilha do Cardoso', 22, 0.00, 'Ilha do Cardoso', 'Cananéia', '', 'Cananéia', 'SP', '11990-000', 'Acesso por barco a partir de Cananéia', -25.0270, -47.9156, 'parque_ilha_cardoso.jpg'),
+('Centro Histórico de Iguape', 1, 0.00, 'Rua Major Rebelo', 'Centro', 's/n', 'Iguape', 'SP', '11920-000', 'Próximo à Praça da Basílica', -24.6980, -47.5538, 'centro_historico_iguape.jpg'),
+('Quilombo Ivaporunduva', 5, 10.00, 'Estrada Municipal', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Próximo ao Rio Ribeira de Iguape', -24.5142, -48.5950, 'quilombo_ivaporunduva.jpg'),
+('Cachoeira do Meu Deus', 21, 0.00, 'Estrada do Bairro da Serra', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Dentro do PETAR', -24.5300, -48.7050, 'cachoeira_meu_deus.jpg'),
+('Museu Histórico e Arqueológico de Iguape', 2, 0.00, 'Rua XV de Novembro', 'Centro', 's/n', 'Iguape', 'SP', '11920-000', 'Próximo à Praça da Basílica', -24.6985, -47.5533, 'museu_iguape.jpg'),
+('Mirante do Morro do Espia', 21, 0.00, 'Morro do Espia', 'Centro', 's/n', 'Cananéia', 'SP', '11990-000', 'Acesso por trilha', -25.0150, -47.9275, 'mirante_morro_espia.jpg'),
 ('Cachoeira da Usina', 21, 0.00, 'Estrada da Usina', 'Centro', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Usina Hidrelétrica', -24.4953, -47.8438, '/imgs/profilePics/cachoeira_usina.jpg'),
 ('Parque Turístico Rocha do Itapu', 22, 10.00, 'Estrada do Turvo', 'Jardim Caiçara', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Serra do Mar', -24.4987, -47.8332, '/imgs/profilePics/parque_rocha_itapu.jpg'),
 ('Praia do Meio', 18, 0.00, 'Avenida Beira-Mar', 'Vila Nova', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Ponte Tancredo Neves', -24.4921, -47.8269, '/imgs/profilePics/praia_meio.jpg');
+
+INSERT INTO cidadesxpontos (idCidade, idPonto) values
+(1,13),
+(1,12),
+(1,11);
 
 SELECT 
     pontos.nomePonto,
@@ -71,15 +76,8 @@ FROM
 JOIN 
     cidades ON pontos.endCidadePonto = cidades.nomeCidade;
 
-SELECT 
-    pontos.nomePonto,
-    cidades.nomeCidade
-FROM 
-    pontos
-JOIN 
-    cidades ON pontos.endCidadePonto = cidades.nomeCidade;
 
-select * from categoriasxpontos;
+select * from cidadesxpontos;
 
 INSERT INTO categoriasxpontos (modalidade, categoria) VALUES
 ('Locais históricos', 'Cultura'),
@@ -124,37 +122,57 @@ INSERT INTO categoriasxpontos (modalidade, categoria) VALUES
 ('Eventos religiosos', 'Eventos'),
 ('Caverna', 'Ecoturismo');
 
-select * from comentAvalia;
 
-INSERT INTO comentAvalia (idAvaliador, idGuiaAvaliado, idPontoAvaliado, nota, comentario, dataAvaliacao) VALUES
-(1, NULL, 1, 5, 'Ótimo lugar, muito bem conservado e com guias excelentes.', '2024-01-15'),
-(1, NULL, 2, 4, 'Experiência incrível, mas o acesso poderia ser melhor.', '2024-02-10'),
-(1, NULL, 3, 5, 'Maravilhoso! Perfeito para quem gosta de natureza.', '2024-03-05'),
-(1, NULL, 4, 3, 'Bom, mas esperava mais das instalações.', '2024-04-20'),
-(1, NULL, 5, 4, 'Ótimo passeio de barco, recomendo!', '2024-05-14'),
-(1, NULL, 6, 5, 'História fascinante e bem preservada.', '2024-06-11'),
-(1, NULL, 7, 4, 'Cultura rica e guias bem informados.', '2024-07-08'),
-(1, NULL, 8, 5, 'Cachoeira incrível, vale cada minuto!', '2024-08-21'),
-(1, NULL, 9, 4, 'Museu interessante, mas poderia ser maior.', '2024-09-17'),
-(1, NULL, 10, 5, 'Vista espetacular, acesso por trilha é um plus.', '2024-10-04'),
-(1, NULL, 11, 3, 'Lugar bonito, mas a manutenção deixa a desejar.', '2024-11-13'),
-(1, NULL, 12, 4, 'Parque muito agradável, ótima opção de lazer.', '2024-12-01'),
-(1, NULL, 13, 5, 'Praia tranquila e limpa, recomendo!', '2024-12-21');
+INSERT INTO avaliacoesGuias (idAvaliador, idGuiaAvaliado, nota, comentario, dataAvaliacao) VALUES
+(1, 1, 5, 'Guia muito experiente e atencioso.', '2024-01-15'),
+(2, 2, 4, 'Bom guia, mas poderia ser mais entusiasmado.', '2024-02-10'),
+(3, 1, 5, 'Excelente conhecimento local e ótimo relacionamento com os turistas.', '2024-03-05'),
+(2, 3, 3, 'Guia razoável, poderia melhorar nas explicações.', '2024-04-20'),
+(3, 2, 4, 'Bom guia, mas faltou um pouco de paciência.', '2024-05-14');
 
-select * from comentAvalia;
+INSERT INTO avaliacoesPontos (idAvaliador, idPontoAvaliado, nota, comentario, dataAvaliacao) VALUES
+(1, 1, 5, 'Ótimo lugar, muito bem conservado e com guias excelentes.', '2024-01-15'),
+(2, 2, 4, 'Experiência incrível, mas o acesso poderia ser melhor.', '2024-02-10'),
+(3, 3, 5, 'Maravilhoso! Perfeito para quem gosta de natureza.', '2024-03-05'),
+(2, 4, 3, 'Bom, mas esperava mais das instalações.', '2024-04-20'),
+(3, 5, 4, 'Ótimo passeio de barco, recomendo!', '2024-05-14'),
+(1, 6, 5, 'História fascinante e bem preservada.', '2024-06-11'),
+(1, 7, 4, 'Cultura rica e guias bem informados.', '2024-07-08'),
+(2, 8, 5, 'Cachoeira incrível, vale cada minuto!', '2024-08-21'),
+(3, 9, 4, 'Museu interessante, mas poderia ser maior.', '2024-09-17'),
+(3, 10, 5, 'Vista espetacular, acesso por trilha é um plus.', '2024-10-04'),
+(1, 11, 3, 'Lugar bonito, mas a manutenção deixa a desejar.', '2024-11-13'),
+(2, 12, 4, 'Parque muito agradável, ótima opção de lazer.', '2024-12-01'),
+(3, 13, 5, 'Praia tranquila e limpa, recomendo!', '2024-12-21');
 
-INSERT INTO avaliacaoXavaliados (idAvaliacao, idGuia, idPonto) VALUES
-(1, NULL, 1),
-(2, NULL, 2),
-(3, NULL, 3),
-(4, NULL, 4),
-(5, NULL, 5),
-(6, NULL, 6),
-(7, NULL, 7),
-(8, NULL, 8),
-(9, NULL, 9),
-(10, NULL, 10),
-(11, NULL, 11),
-(12, NULL, 12),
-(13, NULL, 13);
+select * from pontosAvaliados;
 
+INSERT INTO pontosAvaliados (idAvaliacao, idPonto) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(12, 12),
+(13, 13);
+
+CALL calcularMediaAvaliacoes();
+
+SELECT pontos.nomePonto, AVG(avaliacoesPontos.nota) AS media
+FROM pontos
+INNER JOIN pontosAvaliados ON pontos.id = pontosAvaliados.idPonto
+INNER JOIN avaliacoesPontos ON pontosAvaliados.idAvaliacao = avaliacoesPontos.id
+GROUP BY pontos.id, pontos.nomePonto;
+
+INSERT INTO guiasAvaliados (idAvaliacao, idGuia) VALUES
+(1, 1),
+(2, 2),
+(3, 1),
+(4, 3),
+(5, 2);

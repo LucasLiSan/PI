@@ -37,12 +37,18 @@ router.get('/cidades', function(req, res) {
 router.get('/pontos', function(req, res) {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
-    PontosTuristicos.findAll().then(pontos => {
-        res.render("pontos", {
-            pontos: pontos,
-            loggedOut: loggedOut
+
+    PontosTuristicos.findAll({
+        include: {
+            model: HorarioFuncionamento,
+            as: 'horarios' // Alias para os horários de funcionamento
+        }
+    }).then(pontos => {
+            res.render("pontos", {
+                pontos: pontos,
+                loggedOut: loggedOut
+            });
         });
-    });
 });
 
 //ROTA BUSCA RAPIDA GUIAS

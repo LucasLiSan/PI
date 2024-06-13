@@ -29,6 +29,7 @@
                         </div>
                         <h2>Login</h2>
                         <form action="/auth" method="POST">
+                            <input type="hidden" name="redirectTo" value="<%= redirectTo %>">
                             <div class="userPatch">
                                 <input type="radio" name="user" value="Cidade" required>Cidade
                                 <input type="radio" name="user" value="Guia" required>Guia

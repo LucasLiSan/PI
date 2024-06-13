@@ -152,6 +152,7 @@ router.post("/auth", (req, res) => {
     const profile = req.body.user;
     const LoginEmail = req.body.email;
     const LoginPassword = req.body.password;
+    const redirectTo = req.body.redirectTo || "/profileUser";  // Parâmetro de redirecionamento
 
     //BUSCA NO BANCO ESPECIFICO
     if (profile ==="Cidade"){
@@ -177,13 +178,13 @@ router.post("/auth", (req, res) => {
                   email : userCidade.emailOrgRespCidade,
                   pic: userCidade.profilePicCidade
                 }
-                req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userCidade['nome']}`);
-                res.redirect("/profileUser");
+                req.flash('success', `Login efetuado com sucesso! Bem-Vindo ${req.session.userCidade['nome']}`);
+                res.redirect(redirectTo);
               // SE A SENHA NÃO FOR VÁLIDA
               } else {
                 // EXIBE A MENSAGEM
                 req.flash('danger', 'Senha incorreta! Tente novamente.');
-                res.redirect("/login");
+                res.redirect(`/login?redirectTo=${redirectTo}`);
               }
             }
         });
@@ -205,13 +206,13 @@ router.post("/auth", (req, res) => {
                   nome : userGuia.nomeGuia,
                   pic: userGuia.profilePicGuia
                 }
-                req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userGuia['nome']}`);
-                res.redirect("/profileUser");
+                req.flash('success', `Login efetuado com sucesso! Bem-Vindo ${req.session.userGuia['nome']}`);
+                res.redirect(redirectTo);
               // SE A SENHA NÃO FOR VÁLIDA
               } else {
                 // EXIBE A MENSAGEM
                 req.flash('danger', 'Senha incorreta! Tente novamente.');
-                res.redirect("/login");
+                res.redirect(`/login?redirectTo=${redirectTo}`);
               }
             }
         });
@@ -239,15 +240,16 @@ router.post("/auth", (req, res) => {
                   cidade : userTurista.endCidadeTurista,
                   uf : userTurista.endUfTurista,
                   language : userTurista.idiomaTurista,
+                  telefone : userTurista.telTurista,
                   pic: userTurista.profilePicTurista
                 }
-                req.flash('success', `Login efetuado com suceeso! Bem-Vindo ${req.session.userTurista['nome']}`);
-                res.redirect("/profileUser");
+                req.flash('success', `Login efetuado com sucesso! Bem-Vindo ${req.session.userTurista['nome']}`);
+                res.redirect(redirectTo);
               // SE A SENHA NÃO FOR VÁLIDA
               } else {
                 // EXIBE A MENSAGEM
                 req.flash('danger', 'Senha incorreta! Tente novamente.');
-                res.redirect("/login");
+                res.redirect(`/login?redirectTo=${redirectTo}`);
               }
             }
         });
@@ -255,7 +257,7 @@ router.post("/auth", (req, res) => {
     } else {
         // EXIBE A MENSAGEM
         req.flash('danger', 'Usuario não cadastrado!')
-        res.redirect("/login")
+        res.redirect(`/login?redirectTo=${redirectTo}`);
     }
 });
   

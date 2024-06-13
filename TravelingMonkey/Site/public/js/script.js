@@ -215,7 +215,7 @@ function compare(a, b, columnIndex, isNumeric) {
 }
 
 function sortTable(columnIndex, isNumeric) {
-    const table = document.querySelector('.cidadesTable tbody');
+    const table = document.querySelector('.sortTable tbody');
     const rows = Array.from(table.rows);
 
     const sortedRows = mergeSort(rows, (a, b) => compare(a, b, columnIndex, isNumeric));

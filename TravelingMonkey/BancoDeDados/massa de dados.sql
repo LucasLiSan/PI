@@ -1,7 +1,7 @@
 use travelingmonkey;
 #drop database travelingmonkey;
 select * from pontos;
-select * from feedbackpontos;
+select * from turistas;
 
 ALTER TABLE feedbackpontos
 ADD CONSTRAINT FK_idPontoAvaliado
@@ -146,7 +146,7 @@ INSERT INTO avaliacoespontos (idAvaliador, idPontoAvaliado, nota, comentario, da
 (1, 12, 4, 'Parque muito agradável, ótima opção de lazer.', '2024-12-01'),
 (1, 13, 5, 'Praia tranquila e limpa, recomendo!', '2024-12-21');
 
-select * from avaliacaoXavaliados;
+select * from avaliacoespontos;
 
 INSERT INTO pontosavaliados (idAvaliacao, idPonto) VALUES
 (1, 1),

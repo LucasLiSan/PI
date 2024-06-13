@@ -4,6 +4,7 @@ import express from "express";
 import session from "express-session";
 import bcrypt from "bcrypt";
 import { Sequelize, Op, QueryTypes } from 'sequelize';
+import Auth from '../middleware/auth.js';
 import PontosTuristicos from "../models/pontos.js";
 import AvaliacoesPontos from "../models/feedbackPonto.js";
 import PontosAvaliacoes from "../models/pontoAvaliado.js";
@@ -44,12 +45,28 @@ router.get('/home', async function(req, res) {
     }
 });
 
-router.get('/reserva', function(req, res) {
-    const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
-    const loggedOut = !user;
-    res.render("reserva", {
-        loggedOut: loggedOut,
-    });
+router.get('/reserva/:id', Auth, async function(req, res) {
+    try {
+        const pontoId = req.params.id;
+        const ponto = await PontosTuristicos.findOne({ where: { id: pontoId } });
+
+        if (!ponto) {
+            return res.status(404).send('Ponto turístico não encontrado');
+        }
+
+        const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
+        const loggedOut = !user;
+        console.log("Rota /reserva/:id acessada. Usuário:", user ? "Logado" : "Deslogado");
+
+        res.render("reserva", {
+            loggedOut: loggedOut,
+            ponto: ponto, // Passa o ponto para a view
+            session: req.session
+        });
+    } catch (error) {
+        console.error("Erro ao buscar ponto turístico:", error);
+        res.status(500).send('Erro interno do servidor');
+    }
 });
 
 export default router;

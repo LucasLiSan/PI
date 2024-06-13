@@ -163,9 +163,7 @@ legend {
     border-radius: 1rem;
 }
 
-.liHover:active, .liHover a:active {
-    background: var(--colorShadow);
-}
+.liHover:active, .liHover a:active { background: var(--colorShadow); }
 
 .logo {
     grid-area: logo;
@@ -268,7 +266,7 @@ legend {
 
 .modal-currency-header, .modal-newPonto-header {
     padding: 2px 16px;
-    background-color: var(--colorSecond);
+    background-color: var(--colorThird);
     color: white;
     border-radius: 1rem 1rem 0 0;
 }
@@ -277,12 +275,9 @@ legend {
     padding: 2px 16px;
     height: 10rem;
     display: grid;
-    grid-template:
-        "lang" 35%
-        "coin" 35%
-        "btnSelect" 30%
-        /1fr
-    ;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    background: var(--colorStandart);
 }
 
 .modal-newPonto-body {
@@ -298,42 +293,36 @@ legend {
 }
 
 .lang, .coin {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
     align-items: center;
     justify-items: center;
 }
 
-.lang label, .coin label,
-.coin select, .lang select {
-    width: 100%;
-    height: 50%;
+.lang label, .coin label {
+    width: 90%;
+    height: 100%;
     font-size: 1.5rem;
     font-weight: bold;
     color: #ffffff;
+    align-content: center;
+    text-align: center;
 }
 
-.coin select, .lang select { color: #000000; }
-
-.lang {
-    grid-area: lang;
-    display: grid;
-    grid-template:
-        "langLabel langSelect" 100%
-        /1fr 1fr
-    ;
+.coin select, .lang select { 
+    color: #000000;
+    width: 95%;
+    height: 75%;
 }
 
 .select {
-    grid-area: btnSelect;
     display: grid;
-    grid-template:
-        ". . btn" 100%
-        /1fr 1fr 1fr
-    ;
+    grid-template-columns: 30%;
+    justify-content: end;
     align-items: center;
-    justify-items: center;
 }
 .btnSelect {
-    grid-area: btn;
     width: 70%;
     font-size: 1rem;
     font-weight: bold;
@@ -342,21 +331,6 @@ legend {
     color: #000000;
     border-radius: 1rem;
 }
-
-.lang label { grid-area: langLabel;}
-.lang select { grid-area: langSelect;}
-
-.coin {
-    grid-area: coin;
-    display: grid;
-    grid-template:
-        "coinLabel coinSelect" 100%
-        /1fr 1fr
-    ;
-}
-
-.coin label { grid-area: coinLabel;}
-.coin select { grid-area: coinSelect;}
 
 .loginBtn {
     height: 100%;
@@ -414,6 +388,7 @@ legend {
     align-content: center;
     text-decoration: none;
     color: #000000;
+    border-radius: 3rem;
 }
 
 .buttonIn a {
@@ -834,6 +809,34 @@ legend {
     text-align: center;
 }
 
+.pontosTable {
+    width: 90%;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0px 0px 0px 10px var(--colorShadow);
+}
+
+.pontosTable img {
+    width: 10rem;
+    border-radius: 1rem;
+}
+
+.pontosTable tr { height: 3rem;}
+.pontosTable tr:nth-child(odd) { background: var(--colorShadow); }
+.pontosTable tr:hover { background: var(--colorSecond); }
+
+.horariosFunc {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+}
+
+.horariosFunc span {
+    width: 100%;
+    text-align: end;
+}
+
 footer {
     position: relative;
     height: 7rem;
@@ -870,7 +873,6 @@ footer {
 	-ms-transition: color 0.3s, background-color 0.3s;
 	transition: color 0.3s, background-color 0.3s;
 }
-
 .related a:hover { background-color: rgba(0, 0, 0, 0.4);}
 
 .related a img {
@@ -880,11 +882,7 @@ footer {
     -ms-transition: opacity 0.3s;
 	transition: opacity 0.3s;
 }
-
-.related a:hover img,
-.related a:active img {
-    opacity: 1;
-}
+.related a:hover img, .related a:active img { opacity: 1; }
 
 .related a h3 {
     margin: 0;
@@ -1195,10 +1193,7 @@ footer {
 	transition-delay: 0s;
 }
 
-.box img {
-
-    width: 100%;
-}
+.box img { width: 100%; }
 
 .box span {
     display: block;
@@ -1245,15 +1240,9 @@ footer {
 	transition-delay: 0.1s;
 }
 
-.box svg line.top,
-.box svg line.bottom {
-	stroke-dasharray: 330 240; 
-}
+.box svg line.top, .box svg line.bottom { stroke-dasharray: 330 240; }
 
-.box svg line.left,
-.box svg line.right {
-	stroke-dasharray: 490 400;
-}
+.box svg line.left, .box svg line.right { stroke-dasharray: 490 400; }
 
 .box:hover svg line.top {
 	-webkit-transform: translateX(-600px);
@@ -1288,10 +1277,7 @@ footer {
 	transition: all .5s ease 0s;
 }
 
-.demo_3 .box:hover,
-.quickSearch .box:hover {
-    background: var(--colorShadow);
-}
+.demo_3 .box:hover, .quickSearch .box:hover { background: var(--colorShadow); }
 
 .demo_3 .box h3, .demo_3 .box span,
 .quickSearch .box h3, .quickSearch .box span {
@@ -1418,7 +1404,7 @@ footer {
     color: #000000;
 }
   
-.cardLoginForm input:focus { border-color: #3498db;}
+.cardLoginForm input:focus { border-color: #3498db; }
   
 .cardLoginForm button {
     background-color: var(--colorSecond);
@@ -1460,9 +1446,11 @@ footer {
     position: absolute;
     width: 15%;
     display: flex;
-    z-index: 0;
+    z-index: 10;
     flex-direction: row;
     flex-wrap: wrap;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 .profile {
@@ -1489,9 +1477,9 @@ footer {
     padding-top: 10px;
 }
 
-.sidenav-url { width: 100%;}
+.sidenav-url { width: 100%; }
 
-.url, hr { text-align: center;}
+.url, hr { text-align: center; }
 
 .url hr {
     margin-left: 20%;
@@ -1583,12 +1571,8 @@ footer {
     font-size: 1.5rem;
     color: #ffffff;
 }
-.cardProfileTitle i:hover {
-    color: var(--colorStandart);
-}
-.cardProfileTitle i:active {
-    color: var(--colorShadow);
-}
+.cardProfileTitle i:hover { color: var(--colorStandart); }
+.cardProfileTitle i:active { color: var(--colorShadow); }
 
 .cardHistory {
     width: 100%;
@@ -1631,9 +1615,7 @@ footer {
     text-align: center;
 }
 
-.imgPontosList img {
-    width: 100%;
-}
+.imgPontosList img { width: 100%; }
 
 .descPontosList {
     grid-area: bodyDisplay;
@@ -1807,9 +1789,7 @@ footer {
     transition: background-color 0.3s ease-in-out;
 }
 
-.pontosCadastrados {
-    color: #ffffff;
-}
+.pontosCadastrados { color: #ffffff; }
 
 .formNewPonto {
     display: flex;
@@ -1853,9 +1833,7 @@ footer {
     height: 50%;
 }
 
-.formBloco2 input {
-    width: 55%;
-}
+.formBloco2 input { width: 55%; }
 
 .fieldNewPonto {
     width: 95%;
@@ -1887,3 +1865,161 @@ footer {
     justify-content: space-between;
     align-items: center;
 }
+
+
+/*PAGE RESERVAS*/
+
+.section {
+	position: relative;
+	height: 80%;
+}
+
+.section .section-center {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.booking-form {
+    position: relative;
+    max-width: 642px;
+    width: 100%;
+    margin: auto;
+    background: var(--colorThird);
+    border-radius: 1rem;
+    box-shadow: 4px 4px 6px 4px var(--colorSecond);
+}
+
+.booking-form>.booking-bg {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	width: 250px;
+	background-size: cover;
+	background-position: center;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.booking-form>form {
+	margin-left: 250px;
+    padding: 30px;
+    border-left: 0px;
+}
+
+.booking-form .form-header { margin-bottom: 30px; }
+
+.booking-form .form-header h2 {
+    margin: 0;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-family: var(--fontTitles);
+}
+
+.row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.booking-form .form-group {
+	position: relative;
+    width: 100%;
+	margin-bottom: 20px;
+}
+
+.booking-form .form-control {
+	background-color: #ffffff;
+    width: 85%;
+	height: 40px;
+	padding: 0px 10px;
+	border-radius: 0px;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+	color: #000000;
+	border: 0px;
+	font-size: 16px;
+	font-weight: 700;
+	-webkit-box-shadow: inset 0 1px 4px rgba(181, 193, 204, 0.3);
+	box-shadow: inset 0 1px 4px rgba(181, 193, 204, 0.3);
+}
+
+.booking-form .form-control::-webkit-input-placeholder { color: #dde3e8; }
+.booking-form .form-control:-ms-input-placeholder { color: #dde3e8; }
+.booking-form .form-control::placeholder { color: #dde3e8; }
+
+.booking-form .form-control:focus {
+	-webkit-box-shadow: inset 0 1px 4px rgba(181, 193, 204, 0.3);
+	box-shadow: inset 0 1px 4px rgba(181, 193, 204, 0.3);
+}
+
+.booking-form input[type="date"].form-control:invalid { color: #dde3e8; }
+
+.booking-form select.form-control {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.booking-form select.form-control+.select-arrow {
+	position: absolute;
+	right: 0px;
+	bottom: 4px;
+	width: 32px;
+	line-height: 32px;
+	height: 32px;
+	text-align: center;
+	pointer-events: none;
+}
+
+.booking-form select.form-control+.select-arrow:after {
+	content: '\279C';
+	display: block;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+	color: #dddee9;
+	font-size: 14px;
+}
+
+.booking-form .form-label {
+    color: #ffffff;
+    font-weight: bold;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    text-transform: uppercase;
+    line-height: 24px;
+    height: 24px;
+    font-size: 1rem;
+    z-index: 1;
+}
+
+.booking-form .form-btn { margin-top: 10px; }
+
+.booking-form .submit-btn {
+	color: #000000;
+    background-color: var(--colorSecond);
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 13px 35px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 1rem;
+    width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+	.booking-form>.booking-bg {
+		display: none;
+	}
+	.booking-form>form {
+		margin-left: 0px;
+	}
+}
+/*PAGE RESERVAS*/

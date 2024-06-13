@@ -3,10 +3,12 @@
 import express from "express";
 import session from "express-session";
 import bcrypt from "bcrypt";
+import Auth from "../middleware/auth.js";
+/* ---------- TABLES ---------- */
 import Cidades from "../models/cidades.js";
 import PontosTuristicos from "../models/pontos.js";
 import Atracoes from "../models/atracoes.js";
-import Auth from "../middleware/auth.js";
+/* ---------- TABLES ---------- */
 const router = express.Router();
 
 router.post("/profileUser/ponto/new", (req, res) => {

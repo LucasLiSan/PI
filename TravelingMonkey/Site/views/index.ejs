@@ -61,24 +61,55 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <% pontos.forEach(ponto => { %>
-                        <div class="swiper-slide">
-                            <a class="card" href="/reserva/<%= ponto.id %>">
-                            <div class="background" style="background-image: url('<%= ponto.profilePicPonto %>')"></div>
-                            <div class="content">
-                                <p class="category">Category</p>
-                                <h3 class="heading"><%= ponto.nomePonto %></h3>
-                                <div class="classificacao">
-                                    <% if (ponto.dataValues.media > 0) { %>
-                                        <% for(let i = 0; i < ponto.dataValues.media; i++) { %>
-                                            <i class="fas fa-star"></i>
-                                        <% } %>
-                                    <% } else { %>
-                                            <i class="far fa-star"></i>
-                                        <% } %>
-                                </div>
+                        <% if (ponto.dataValues.media > 3) { %>
+                            <div class="swiper-slide">
+                                <a class="card" href="/reserva/<%= ponto.id %>">
+                                    <div class="background" style="background-image: url('<%= ponto.profilePicPonto %>')"></div>
+                                    <div class="content">
+                                        <p class="category"><%= ponto.categoria ? ponto.categoria.categoria : 'Sem Categoria' %></p>
+                                        <h3 class="heading"><%= ponto.nomePonto %></h3>
+                                        <div class="classificacao">
+                                            <% if (ponto.dataValues.media > 0) { %>
+                                                <% for(let i = 0; i < ponto.dataValues.media; i++) { %>
+                                                    <i class="fas fa-star"></i>
+                                                <% } %>
+                                            <% } else { %>
+                                                    <i class="far fa-star"></i>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            </a>
-                        </div>
+                        <% } %>
+                    <% }) %>
+                </div>
+            </div>
+    </section>
+    <section class="bestRewiews">
+        <h1>GUIAS COM MELHORES AVALIAÇÕES</h1>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <% pontos.forEach(ponto => { %>
+                        <% if (ponto.dataValues.media > 3) { %>
+                            <div class="swiper-slide">
+                                <a class="card" href="/reserva/<%= ponto.id %>">
+                                    <div class="background" style="background-image: url('<%= ponto.profilePicPonto %>')"></div>
+                                    <div class="content">
+                                        <p class="category"><%= ponto.categoria ? ponto.categoria.categoria : 'Sem Categoria' %></p>
+                                        <h3 class="heading"><%= ponto.nomePonto %></h3>
+                                        <div class="classificacao">
+                                            <% if (ponto.dataValues.media > 0) { %>
+                                                <% for(let i = 0; i < ponto.dataValues.media; i++) { %>
+                                                    <i class="fas fa-star"></i>
+                                                <% } %>
+                                            <% } else { %>
+                                                    <i class="far fa-star"></i>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        <% } %>
                     <% }) %>
                 </div>
             </div>

@@ -57,6 +57,24 @@ function changeCountry() {
     moedaAtual.innerHTML = moedaNova.value;
 }
 
+//MODAL FORM CADASTRO NOVO PONTO
+var modalPonto = document.getElementById("myModalNewPonto");
+var btnNewPonto = document.getElementById("btnNewPonto");
+var spanNewPonto = document.getElementsByClassName("closeModalPonto")[0];
+
+btnNewPonto.onclick = function() {
+    modalPonto.style.display = "block";
+}
+
+spanNewPonto.onclick = function() {
+    modalPonto.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modalPonto) {
+        modalPonto.style.display = "none";
+    }
+}
 
 //MENUS CADASTRO
 document.querySelectorAll('.boxExpand').forEach(box => {
@@ -147,25 +165,6 @@ function toggleProfile(divid){
         document.getElementById(divid).style.display = 'flex';
     }else{
         document.getElementById(divid).style.display = 'none';
-    }
-}
-
-//MODAL FORM CADASTRO NOVO PONTO
-var modalPonto = document.getElementById("myModalNewPonto");
-var btnNewPonto = document.getElementById("btnNewPonto");
-var spanNewPonto = document.getElementsByClassName("closeModalPonto")[0];
-
-btnNewPonto.onclick = function() {
-    modalPonto.style.display = "block";
-}
-
-spanNewPonto.onclick = function() {
-    modalPonto.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target == modalPonto) {
-        modalPonto.style.display = "none";
     }
 }
 

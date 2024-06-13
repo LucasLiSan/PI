@@ -7,9 +7,8 @@
     --fontBodyText: "Comfortaa", sans-serif;
 }
 
-/* ESTILIZAÇÃO DA BARRA DE SCROLL */
+/* ----- ESTILIZAÇÃO DA BARRA DE SCROLL ----- */
 
-/* Customiza a barra de rolagem inteira */
 ::-webkit-scrollbar {
     width: 12px;  /* Largura da barra de rolagem vertical */
     height: 12px; /* Altura da barra de rolagem horizontal */
@@ -38,9 +37,9 @@
 /* Customiza a barra de rolagem quando está em modo "hover" (quando o mouse está sobre ela) */
 ::-webkit-scrollbar-thumb:hover { background: var(--colorStandart); /* Cor do polegar em modo hover */ }
 
-/* ESTILIZAÇÃO DA BARRA DE SCROLL */
+/* ----- ESTILIZAÇÃO DA BARRA DE SCROLL ----- */
 
-/*ESTILIZAÇÃO DE SUBMIT BUTTON COM DISABLED-ENABLED*/
+/* ----- ESTILIZAÇÃO DE SUBMIT BUTTON COM DISABLED-ENABLED ----- */
 
 /* Estilo para o botão desativado */
 input[type="submit"].btnAtt.editable:disabled, 
@@ -72,7 +71,7 @@ input[type="submit"].editable.btnAtualizar:enabled:active {
     background-color: var(--colorShadow); /* Cor de fundo ao passar o mouse */
 }
 
-/*ESTILIZAÇÃO DE SUBMIT BUTTON COM DISABLED-ENABLED*/
+/* ----- ESTILIZAÇÃO DE SUBMIT BUTTON COM DISABLED-ENABLED ----- */
 
 .alertDanger {
     position: absolute;
@@ -209,8 +208,7 @@ legend {
 
 .language img, .currency img { height: 40%; }
 
-.modalCurrency, .modalNewPonto {
-    display: none;
+.modalCurrency, .modalNewPonto, .modalReservas {
     position: fixed;
     z-index: 1;
     padding-top: 100px;
@@ -223,7 +221,8 @@ legend {
     background-color: rgba(0,0,0,0.4);
 }
 
-.modal-currency-content, .modal-newPonto-content {
+.modal-currency-content, .modal-newPonto-content,
+.modal-reservas-content {
     position: relative;
     background-color: var(--colorBackGround);
     margin: auto;
@@ -248,7 +247,7 @@ legend {
     to {top:0; opacity:1}
 }
 
-.close, .closeModalPonto {
+.close, .closeModalPonto, .closeModalReservas {
     color: white;
     float: right;
     font-size: 28px;
@@ -258,20 +257,24 @@ legend {
 .close:hover,
 .close:focus,
 .closeModalPonto:hover,
-.closeModalPonto:focus {
+.closeModalPonto:focus,
+.closeModalReservas:hover,
+.closeModalReservas:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
 
-.modal-currency-header, .modal-newPonto-header {
+.modal-currency-header, .modal-newPonto-header,
+.modal-reservas-header {
     padding: 2px 16px;
     background-color: var(--colorThird);
     color: white;
     border-radius: 1rem 1rem 0 0;
 }
 
-.modal-currency-body, .modal-newPonto-body {
+.modal-currency-body, .modal-newPonto-body,
+.modal-reservas-body {
     padding: 2px 16px;
     height: 10rem;
     display: grid;
@@ -285,7 +288,8 @@ legend {
     height: 40rem;
 }
 
-.modal-currency-footer, .modal-newPonto-footer {
+.modal-currency-footer, .modal-newPonto-footer,
+.modal-reservas-footer {
     padding: 2px 16px;
     background-color: var(--colorThird);
     color: white;
@@ -404,14 +408,17 @@ legend {
 
 
 .loginBtn button:hover, #searchFormSubmit input:hover,
-.btnSelect:hover, .loginBtn a:hover, .btnAtt:hover, .verMais:hover {
+.btnSelect:hover, .loginBtn a:hover,
+.btnAtt:hover, .verMais:hover,
+.form-btn > button:hover {
     background: var(--colorStandart);
     color: #ffffff;
 }
 
 .loginBtn button:active, #searchFormSubmit input:active,
 .btnSelect:active, .loginBtn a:active,
-.btnAtt:active, .verMais:active { background: var(--colorShadow); }
+.form-btn > button:active, .btnAtt:active, 
+.verMais:active { background: var(--colorShadow); }
 
 .liHome {
     display: flex;
@@ -719,12 +726,16 @@ legend {
     justify-content: center;
 }
   
-.card{ width: 100%; }
+.card {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: var(--colorStandart);
+}
   
 .card:before{
     content: '';
     display: block;
-    padding-bottom: 150%;
     width: 100%;
 }
   
@@ -759,15 +770,20 @@ legend {
 }
   
 .category{
-    color: #e1e1e1;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+    font-family: var(--fontTitles);
+    color: var(--colorSecond);
+    text-shadow: 4px 1px 5px black;
+    font-size: 1.4rem;
+    margin: 0;
     text-transform: uppercase;
 }
   
 .heading{
-    color: #e1e1e1;
+    font-family: var(--fontTitles);
+    color: var(--colorSecond);
+    margin: 0;
     font-size: 1.8rem;
+    text-shadow: 4px 1px 5px black;
 }
 
 .cidadesBody {

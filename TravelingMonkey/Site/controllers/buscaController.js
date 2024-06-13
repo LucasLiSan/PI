@@ -3,9 +3,11 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import session from "express-session";
+/* ---------- TABLES ---------- */
 import Turistas from "../models/turistas.js";
 import PontosTuristicos from "../models/pontos.js";
 import Cidades from "../models/cidades.js";
+/* ---------- TABLES ---------- */
 const router = express.Router();
 
 router.get('/busca', function(req, res) {

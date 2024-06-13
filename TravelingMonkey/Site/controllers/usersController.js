@@ -3,12 +3,14 @@
 import express from "express";
 import session from "express-session";
 import bcrypt from "bcrypt";
+import Auth from "../middleware/auth.js";
+/* ---------- TABLES ---------- */
 import Turistas from "../models/turistas.js";
 import GuiasDeTurismo from "../models/guias.js";
 import Cidades from "../models/cidades.js";
 import PontosTuristicos from "../models/pontos.js";
 import Atracoes from "../models/atracoes.js";
-import Auth from "../middleware/auth.js";
+/* ---------- TABLES ---------- */
 const router = express.Router();
 
 function formatDate(date) {
@@ -34,11 +36,13 @@ function calculateAge(dateOfBirth) {
 router.get('/login', function(req,res){
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
+    const redirectTo = req.query.redirectTo || '/profileUser';
         res.render("login", {
             session: req.session, // Passando a sessão para a view
             user: user,
             loggedOut: loggedOut,
-            messages: req.flash()
+            messages: req.flash(),
+            redirectTo: redirectTo
         });
 });
 

@@ -63,7 +63,7 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
                     <% pontos.forEach(ponto => { %>
                         <% if (ponto.dataValues.media > 3) { %>
                             <div class="swiper-slide">
-                                <a class="card" href="/reserva/<%= ponto.id %>">
+                                <a class="card" data-id="<%= ponto.id %>">
                                     <div class="background" style="background-image: url('<%= ponto.profilePicPonto %>')"></div>
                                     <div class="content">
                                         <p class="category"><%= ponto.categoria ? ponto.categoria.categoria : 'Sem Categoria' %></p>
@@ -115,5 +115,19 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
             </div>
     </section>
 </main>
-
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-heading"></h2>
+        <p id="modal-category"></p>
+        <div id="modal-stars"></div>
+        <div class="modal-body">
+            <div class="modal-galerie">
+                <img src="" alt="">
+            </div>
+            <div class="pontos-infos"></div>
+        </div>
+    </div>
+</div>
+  
 <%- include ('partials/footer.ejs') %>

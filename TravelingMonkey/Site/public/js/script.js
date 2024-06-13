@@ -4,7 +4,7 @@ var swiper = new Swiper('.swiper-container', {
     spaceBetween: 30,
     loop: true,
     autoplay: {
-        delay: 60000,
+        delay: 6000,
         disableOnInteraction: false,
     },
     navigation: {

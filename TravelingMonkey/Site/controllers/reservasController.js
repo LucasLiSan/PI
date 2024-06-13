@@ -54,6 +54,51 @@ router.get('/home', async function(req, res) {
     }
 });
 
+router.get('/ponto/:id', async function(req, res) {
+    try {
+        const pontoId = req.params.id;
+        const ponto = await PontosTuristicos.findOne({
+            where: { id: pontoId },
+            include: [
+                {
+                    model: PontosAvaliacoes,
+                    as: 'avaliacoesRelacionadas',
+                    include: [{
+                        model: AvaliacoesPontos,
+                        as: 'avaliacaoDetalhe',
+                        attributes: ['nota', 'comentario']
+                    }]
+                },
+                {
+                    model: CategoriasPontos,
+                    as: 'categoria',
+                    attributes: ['categoria']
+                }
+            ],
+            group: ['pontos.id', 'categoria.id', 'categoria.categoria']
+        });
+
+        if (!ponto) {
+            return res.status(404).send("Ponto not found");
+        }
+
+        // Calcula a média de avaliações
+        const avaliacoes = ponto.avaliacoesRelacionadas.map(a => a.avaliacaoDetalhe.nota);
+        const media = avaliacoes.length ? avaliacoes.reduce((acc, val) => acc + val, 0) / avaliacoes.length : 0;
+        
+        // Adiciona a média ao objeto ponto
+        const pontoComMedia = {
+            ...ponto.toJSON(),
+            media
+        };
+
+        res.json(pontoComMedia);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal error");
+    }
+});
+
 router.get('/reserva/:id', Auth, async function(req, res) {
     try {
         const pontoId = req.params.id;

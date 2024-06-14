@@ -1,12 +1,18 @@
 //CONTROLLER PARA AS RESERVAS
-
+/* ---------- MODULES ---------- */
 import express from "express";
 import session from "express-session";
 import bcrypt from "bcrypt";
 import { Sequelize, Op, QueryTypes } from 'sequelize';
 import Auth from '../middleware/auth.js';
+import multer from "multer";
+/* ---------- MODULES ---------- */
+/* ---------- SERCICES ---------- */
+import PicService from "../services/PicService.js";
+/* ---------- SERCICES ---------- */
 /* ---------- TABLES ---------- */
 import PontosTuristicos from "../models/pontos.js";
+import FotosPontos from "../models/fotosPontos.js";
 import AvaliacoesPontos from "../models/feedbackPonto.js";
 import PontosAvaliacoes from "../models/pontoAvaliado.js";
 import AvaliacoesGuias from "../models/feedbackGuia.js";
@@ -15,6 +21,28 @@ import CategoriasPontos from "../models/categoriaXponto.js";
 import "../models/associations.js";
 /* ---------- TABLES ---------- */
 const router = express.Router();
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/imgs/uploads');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });
+
+router.post('/upload', upload.single('photo'), async (req, res) => {
+    const { idPontoFotografado, idFotografo } = req.body;
+    try {
+        await PicService.SavePonto(req.file.filename, idPontoFotografado, idFotografo);
+        res.redirect('/home');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao salvar a foto");
+    }
+});
 
 router.get('/home', async function(req, res) {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
@@ -78,9 +106,14 @@ router.get('/ponto/:id', async function(req, res) {
                     model: CategoriasPontos,
                     as: 'categoria',
                     attributes: ['categoria']
+                },
+                {
+                    model: FotosPontos,
+                    as: 'fotosPontos',
+                    attributes: ['fotos']
                 }
             ],
-            group: ['pontos.id', 'categoria.id', 'categoria.categoria']
+            group: ['pontos.id', 'categoria.id', 'categoria.categoria', 'fotosPontos.id']
         });
 
         if (!ponto) {

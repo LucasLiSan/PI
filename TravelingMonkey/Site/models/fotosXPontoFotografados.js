@@ -1,11 +1,10 @@
 import Sequelize from "sequelize";
 import connection from "../config/sequelize-config.js";
-import GuiasDeTurismo from "./guias.js";
 import Turistas from "./turistas.js";
 import PontosTuristicos from "./pontos.js";
-import Imagem from "./fotos.js";
+import FotosPontos from "./fotosPontos.js"
 
-const Fotografados = connection.define('fotosXfotografados',
+const PontosFotografados = connection.define('fotosXPontoFotografados',
     {
         idFoto: {
             type: Sequelize.INTEGER,
@@ -23,14 +22,6 @@ const Fotografados = connection.define('fotosXfotografados',
                 key: 'id'
             }
         },
-        idGuia: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            references: {
-                model: GuiasDeTurismo,
-                key: 'id'
-            }
-        },
         idPonto: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -42,10 +33,9 @@ const Fotografados = connection.define('fotosXfotografados',
     }
 );
 
-Fotografados.belongsTo(Imagem, { foreignKey: 'idFoto'});
-Fotografados.belongsTo(Turistas, { foreignKey: 'idTurista'});
-Fotografados.belongsTo(GuiasDeTurismo, { foreignKey: 'idGuia'});
-Fotografados.belongsTo(PontosTuristicos, { foreignKey: 'idPonto'});
+PontosFotografados.belongsTo(Imagem, { foreignKey: 'idFoto'});
+PontosFotografados.belongsTo(Turistas, { foreignKey: 'idTurista'});
+PontosFotografados.belongsTo(PontosTuristicos, { foreignKey: 'idPonto'});
 
-Fotografados.sync({force:false});
-export default Fotografados;
+PontosFotografados.sync({force:false});
+export default PontosFotografados;

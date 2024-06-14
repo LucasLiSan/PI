@@ -6,10 +6,11 @@ import connection from "./config/sequelize-config.js";
 import session from "express-session";
 import flash from "express-flash";
 import multer from "multer";
+/* ---------- TABLES ---------- */
 import PontosTuristicos from "./models/pontos.js";
 import HorarioFuncionamento from "./models/horarioFunc.js";
 import HorarioPonto from "./models/horarioXponto.js";
-
+/* ---------- TABLES ---------- */
 //INICIANDO O EXPRESS
 const app = express();
 
@@ -25,7 +26,6 @@ connection.authenticate().then(() => {
 }).catch((error) => {
     console.log(error)
 });
-
 connection.query(`CREATE DATABASE IF NOT EXISTS travelingMonkey;`).then(() => {
     console.log("Banco de dados criado!")
 }).catch((error) => {
@@ -45,8 +45,15 @@ app.use(session({
     resave: false
 }));
 
-const uploadPics = multer({dest: "public/imgs/pics"});
-
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/imgs/uploads');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+const upload = multer({ storage: storage });
 
 //IMPORTANDO OS CONTROLLERS E DEFININDO O USO DAS ROTAS
 import buscaController from "./controllers/buscaController.js";
@@ -68,7 +75,6 @@ PontosTuristicos.belongsToMany(HorarioFuncionamento, {
     foreignKey: 'idPontoTuristico',
     as: 'horarios'
 });
-
 HorarioFuncionamento.belongsToMany(PontosTuristicos, {
     through: HorarioPonto,
     foreignKey: 'idHorario',

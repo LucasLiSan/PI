@@ -123,9 +123,11 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
         <div id="modal-stars"></div>
         <div class="modal-body">
             <div class="modal-galerie">
-                <img src="" alt="">
+                
             </div>
-            <div class="reservasInfos"></div>
+            <div class="reservasInfos">
+                
+            </div>
         </div>
     </div>
 </div>
@@ -147,7 +149,8 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
                 const media = Math.round(ponto.media);
                 document.getElementById('modal-stars').innerHTML = Array(media).fill('<i class="fas fa-star"></i>').join('');
         
-                document.querySelector('.modal-galerie img').src = ponto.profilePicPonto;
+                document.querySelector('.modal-galerie').innerHTML = ponto.fotosPontos.map(
+                    imagem => `<img src="/uploads/${imagem.fotos}" alt="Imagem do Ponto">`).join('');
         
                 const pontosInfos = document.querySelector('.reservasInfos');
                 pontosInfos.innerHTML = `

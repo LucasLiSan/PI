@@ -21,7 +21,12 @@ router.get('/home', async function(req, res) {
     const loggedOut = !user;
     try {
         const pontosComMedia = await PontosTuristicos.findAll({
-            attributes: ['id', 'nomePonto', 'modalidade', 'profilePicPonto', [Sequelize.fn('AVG', Sequelize.col('avaliacoesRelacionadas.avaliacaoDetalhe.nota')), 'media']],
+            attributes: [
+                'id', 'nomePonto', 'modalidade','valorEntrada',
+                'profilePicPonto', 'endRuaPonto', 'endBairroPonto',
+                'endNumPonto', 'endCidadePonto', 'endUfPonto',
+                'endCepPonto', 'endReferenciaPonto', 'endGeoLatPonto',
+                'endGeoLongePonto', [Sequelize.fn('AVG', Sequelize.col('avaliacoesRelacionadas.avaliacaoDetalhe.nota')), 'media']],
             include: [
                 {
                     model: PontosAvaliacoes,

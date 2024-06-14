@@ -1,47 +1,6 @@
             <footer>
                 <p>Traveling Monkey - Todos os direitos reservados -</p>
             </footer>
-            <script src="/js/script.js"></script>
-            <script>
-                document.addEventListener('DOMContentLoaded', (event) => {
-                    const modal = document.getElementById('myModal');
-                    const span = document.getElementsByClassName('close')[0];
-                    
-                    document.querySelectorAll('.card').forEach(card => {
-                        card.addEventListener('click', async function() {
-                            const pontoId = this.getAttribute('data-id');
-                            const response = await fetch(`/ponto/${pontoId}`);
-                            const ponto = await response.json();
-                    
-                            document.getElementById('modal-heading').innerText = ponto.nomePonto;
-                            document.getElementById('modal-category').innerText = ponto.categoria ? ponto.categoria.categoria : 'Sem Categoria';
-                            
-                            // Acessa a média das avaliações
-                            const media = Math.round(ponto.media);
-                            document.getElementById('modal-stars').innerHTML = Array(media).fill('<i class="fas fa-star"></i>').join('');
-                    
-                            document.querySelector('.modal-galerie img').src = ponto.profilePicPonto;
-                    
-                            const pontosInfos = document.querySelector('.pontos-infos');
-                            pontosInfos.innerHTML = `
-                            <p>${ponto.nomePonto}</p>
-                            <p>Modalidade: ${ponto.categoria.categoria}</p>
-                            `;
-                    
-                            modal.style.display = 'block';
-                        });
-                    });
-                
-                    span.onclick = function() {
-                        modal.style.display = 'none';
-                    }
-                
-                    window.onclick = function(event) {
-                        if (event.target == modal) {
-                            modal.style.display = 'none';
-                        }
-                    }
-                });
-            </script>                               
+            <script src="/js/script.js"></script>                               
         </body>
     </html>

@@ -92,7 +92,7 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
                     <% pontos.forEach(ponto => { %>
                         <% if (ponto.dataValues.media > 3) { %>
                             <div class="swiper-slide">
-                                <a class="card" href="/reserva/<%= ponto.id %>">
+                                <a class="card" href="#">
                                     <div class="background" style="background-image: url('<%= ponto.profilePicPonto %>')"></div>
                                     <div class="content">
                                         <p class="category"><%= ponto.categoria ? ponto.categoria.categoria : 'Sem Categoria' %></p>
@@ -125,9 +125,63 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
             <div class="modal-galerie">
                 <img src="" alt="">
             </div>
-            <div class="pontos-infos"></div>
+            <div class="reservasInfos"></div>
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const modal = document.getElementById('myModal');
+        const span = document.getElementsByClassName('close')[0];
+        
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', async function() {
+                const pontoId = this.getAttribute('data-id');
+                const response = await fetch(`/ponto/${pontoId}`);
+                const ponto = await response.json();
+        
+                document.getElementById('modal-heading').innerText = ponto.nomePonto;
+                document.getElementById('modal-category').innerText = ponto.categoria ? ponto.categoria.categoria : 'Sem Categoria';
+                
+                // Acessa a média das avaliações
+                const media = Math.round(ponto.media);
+                document.getElementById('modal-stars').innerHTML = Array(media).fill('<i class="fas fa-star"></i>').join('');
+        
+                document.querySelector('.modal-galerie img').src = ponto.profilePicPonto;
+        
+                const pontosInfos = document.querySelector('.reservasInfos');
+                pontosInfos.innerHTML = `
+                <div class = "infosPonto">
+                    <label>ENDEREÇO:</label>
+                    <span>${ponto.endRuaPonto}, ${ponto.endNumPonto} - ${ponto.endBairroPonto}</span>
+                    <label>REFERÊNCIA:</label>
+                    <span>${ponto.endReferenciaPonto}</span>
+                    <label>CIDADE:</label>
+                    <span>${ponto.endCidadePonto}/${ponto.endUfPonto} - ${ponto.endCepPonto}</span>
+                    <label>GEOLOCALIZAÇÃO:</label>
+                    <span>${ponto.endGeoLatPonto}, ${ponto.endGeoLongePonto}</span>
+                    <label>VALOR DA ENTRADA:</label>
+                    <span>${ponto.valorEntrada.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span>
+                </div>
+                <div class="btnReservarPonto">
+                    <a href="/reserva/${ponto.id}">RESERVAR</a>
+                </div>
+                `;
+        
+                modal.style.display = 'block';
+            });
+        });
+    
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+    
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    });
+</script>
   
 <%- include ('partials/footer.ejs') %>

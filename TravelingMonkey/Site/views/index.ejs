@@ -151,23 +151,27 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
         
                 const pontosInfos = document.querySelector('.reservasInfos');
                 pontosInfos.innerHTML = `
-                <div class = "infosPonto">
-                    <label>ENDEREÇO:</label>
-                    <span>${ponto.endRuaPonto}, ${ponto.endNumPonto} - ${ponto.endBairroPonto}</span>
-                    <label>REFERÊNCIA:</label>
-                    <span>${ponto.endReferenciaPonto}</span>
-                    <label>CIDADE:</label>
-                    <span>${ponto.endCidadePonto}/${ponto.endUfPonto} - ${ponto.endCepPonto}</span>
-                    <label>GEOLOCALIZAÇÃO:</label>
-                    <span>${ponto.endGeoLatPonto}, ${ponto.endGeoLongePonto}</span>
-                    <label>VALOR DA ENTRADA:</label>
-                    <span>${ponto.valorEntrada.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span>
-                </div>
-                <div class="btnReservarPonto">
-                    <a href="/reserva/${ponto.id}">RESERVAR</a>
-                </div>
-                `;
-        
+                    <div class = "infosPonto">
+                        <label>ENDEREÇO:</label>
+                        <span>${ponto.endRuaPonto}, ${ponto.endNumPonto} - ${ponto.endBairroPonto}</span>
+                        <label>REFERÊNCIA:</label>
+                        <span>${ponto.endReferenciaPonto}</span>
+                        <label>CIDADE:</label>
+                        <span>${ponto.endCidadePonto}/${ponto.endUfPonto} - ${ponto.endCepPonto}</span>
+                        <label>GEOLOCALIZAÇÃO:</label>
+                        <span>${ponto.endGeoLatPonto}, ${ponto.endGeoLongePonto}</span>
+                        <label>VALOR DA ENTRADA:</label>
+                        <span>${ponto.valorEntrada.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span>
+                    </div>
+                    <div class="infosAddPontos">
+                        <div class="benficios">
+                            
+                        </div>
+                        <div class="btnReservarPonto">
+                            <a href="/reserva/${ponto.id}">RESERVAR</a>
+                        </div>
+                    </div>
+                `;        
                 modal.style.display = 'block';
             });
         });

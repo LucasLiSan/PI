@@ -199,8 +199,15 @@ input[type="submit"].editable.btnAtualizar:enabled:active {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: space-around;
     justify-content: flex-start;
+}
+
+.infosAddPontos {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 80% 20%;
 }
 
 #modal-stars {
@@ -210,17 +217,17 @@ input[type="submit"].editable.btnAtualizar:enabled:active {
 
 .btnReservarPonto {
     display: flex;
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
-    align-content: flex-end;
-    justify-content: flex-end;
+    align-content: center;
+    justify-content: center;
 }
 
 .btnReservarPonto a {
     width: 50%;
-    height: 13%;
+    height: 55%;
     font-size: 1rem;
     color: #000000;
     font-weight: bold;
@@ -229,7 +236,7 @@ input[type="submit"].editable.btnAtualizar:enabled:active {
     text-align: center;
     align-content: center;
     border-radius: 1rem;
-    border: 3px solid #000000;
+    border: 2px solid #000000;
 }
   
 .close {

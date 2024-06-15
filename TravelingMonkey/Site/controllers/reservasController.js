@@ -6,6 +6,7 @@ import bcrypt from "bcrypt";
 import { Sequelize, Op, QueryTypes } from 'sequelize';
 import Auth from '../middleware/auth.js';
 import multer from "multer";
+import path from "path";
 /* ---------- MODULES ---------- */
 /* ---------- SERCICES ---------- */
 import PicService from "../services/PicService.js";
@@ -37,7 +38,7 @@ router.post('/upload', upload.single('photo'), async (req, res) => {
     const { idPontoFotografado, idFotografo } = req.body;
     try {
         await PicService.SavePonto(req.file.filename, idPontoFotografado, idFotografo);
-        res.redirect('/home');
+        res.redirect('/profileUser');
     } catch (error) {
         console.error(error);
         res.status(500).send("Erro ao salvar a foto");

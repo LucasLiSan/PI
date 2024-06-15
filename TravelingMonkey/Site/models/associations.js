@@ -33,8 +33,14 @@ Turistas.hasMany(AvaliacoesGuias, { foreignKey: 'idAvaliador' });
 AvaliacoesGuias.belongsTo(Turistas, { foreignKey: 'idAvaliador' });
 
 // Associações para Fotos de Pontos Turísticos
-PontosTuristicos.hasMany(FotosPontos, { foreignKey: 'idPontoFotografado' });
+/*PontosTuristicos.hasMany(FotosPontos, { foreignKey: 'idPontoFotografado' });
 FotosPontos.belongsTo(PontosTuristicos, { foreignKey: 'idPontoFotografado' });
+
+Turistas.hasMany(FotosPontos, { foreignKey: 'idFotografo' });
+FotosPontos.belongsTo(Turistas, { foreignKey: 'idFotografo' });*/
+
+PontosTuristicos.hasMany(FotosPontos, { foreignKey: 'idPontoFotografado', as: 'fotosPontos' });
+FotosPontos.belongsTo(PontosTuristicos, { foreignKey: 'idPontoFotografado', as: 'pontoFotografado' });
 
 Turistas.hasMany(FotosPontos, { foreignKey: 'idFotografo' });
 FotosPontos.belongsTo(Turistas, { foreignKey: 'idFotografo' });

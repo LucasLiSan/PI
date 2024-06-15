@@ -6,6 +6,7 @@ import connection from "./config/sequelize-config.js";
 import session from "express-session";
 import flash from "express-flash";
 import multer from "multer";
+import path from "path";
 /* ---------- TABLES ---------- */
 import PontosTuristicos from "./models/pontos.js";
 import HorarioFuncionamento from "./models/horarioFunc.js";

@@ -54,6 +54,10 @@
 						<hr align="center">
 					</div>
 					<div class="url">
+						<a href="#galeria">Galeria</a>
+						<hr align="center">
+					</div>
+					<div class="url">
 						<a href="#settings" >Configurações</a>
 						<hr align="center">
 					</div>
@@ -62,7 +66,38 @@
 			<div class="settingsContainer" style="display: none;">
 
 			</div>
-			<div class="profileContainer">
+			<div class="galerieContainer">
+				<h1>GALERIA DE FOTOS</h1>
+				<form class="upPics" action="/upload" method="POST" enctype="multipart/form-data">
+					<input type="file" name="photo" required>
+					<select name="idPontoFotografado" id="idPontoFotografado">
+						<% PontosTuristicos.forEach(pontos => { %>
+							<option value="<%= pontos.id %>"><%= pontos.nomePonto %></option>
+						<%}) %>
+					</select>
+					<input type="text" name="idFotografo" value="<%= session.userTurista.id %>" hidden>
+					<input type="submit" value="Enviar">
+				</form>
+				<table class="">
+					<thead>
+						<tr>
+							<th>HEAD 1</th>
+							<th>HEAD 2</th>
+							<th>HEAD 3</th>
+							<th>HEAD 4</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img src="" alt="1"></td>
+							<td><img src="" alt="2"></td>
+							<td><img src="" alt="3"></td>
+							<td><img src="" alt="4"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="profileContainer" style="display: none;">
 				<% if(messages.success) { %>
 					<div class="alertSuccess">
 						<%= messages.success %>

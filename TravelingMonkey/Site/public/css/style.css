@@ -153,12 +153,13 @@ input[type="submit"].editable.btnAtualizar:enabled:active {
     height: 100%;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    overflow-x: scroll;
+    justify-content: space-evenly;
 }
 
 .modal-galerie img {
-    width: 35%;
+    margin: 0 10px 0 10px;
+    width: 30%;
     height: 100%;
     border-radius: 2rem;
 }
@@ -1690,7 +1691,7 @@ footer {
     z-index: -1;
 }
 
-.profileContainer {
+.profileContainer, .galerieContainer {
     position: relative;
     width: 80%;
     height: 100%;
@@ -1701,6 +1702,34 @@ footer {
     flex-wrap: wrap;
     align-content: space-between;
     justify-content: flex-start;
+}
+
+.galerieContainer { align-content: center;}
+.galerieContainer h1 { text-align: center;}
+
+.upPics {
+    width: 25%;
+    height: 30%;
+    margin-bottom: 20px;
+    border-radius: 1rem;
+    background: var(--colorSecond);
+    display: grid;
+    grid-template-rows: 15% 20% 30%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.upPics select {
+    width: 80%;
+    height: 61%;
+    border-radius: 1rem;
+}
+
+.upPics input {
+    width: 90%;
+    height: 50%;
 }
 
 .profileContainer h2 {

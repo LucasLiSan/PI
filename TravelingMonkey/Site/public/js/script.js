@@ -72,6 +72,30 @@ window.onclick = function(event) {
     }
 }
 
+//PROFILE USER - CONFIG/GALERIA/CONFIGURAÇÕES
+function showPage(pageId, element) {
+    // Ocultar todas as páginas
+    document.querySelectorAll('.profileContainer, .galerieContainer, .settingsContainer').forEach(function(page) {
+      page.style.display = 'none';
+    });
+
+    // Remover a classe active de todos os links
+    document.querySelectorAll('.url a').forEach(function(link) {
+      link.classList.remove('active');
+    });
+
+    // Exibir a página selecionada
+    document.getElementById(pageId).style.display = pageId === 'galeriaPage' ? 'grid' : 'flex';
+
+    // Adicionar a classe active ao link clicado
+    element.classList.add('active');
+  }
+
+  // Exibir a página inicial (perfilPage) por padrão
+  document.getElementById('perfilPage').style.display = 'flex';
+
+
+
 //MENUS CADASTRO
 document.querySelectorAll('.boxExpand').forEach(box => {
     box.addEventListener('click', function(event) {

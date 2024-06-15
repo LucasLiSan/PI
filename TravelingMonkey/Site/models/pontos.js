@@ -63,5 +63,4 @@ const PontosTuristicos = connection.define('pontos',
 });
 
 PontosTuristicos.sync({force:false});
-
 export default PontosTuristicos;

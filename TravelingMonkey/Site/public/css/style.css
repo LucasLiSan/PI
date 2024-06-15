@@ -572,7 +572,8 @@ legend {
 .loginBtn button:hover, #searchFormSubmit input:hover,
 .btnSelect:hover, .loginBtn a:hover,
 .btnAtt:hover, .verMais:hover,
-.form-btn > button:hover, .btnReservarPonto a:hover {
+.form-btn > button:hover, .btnReservarPonto a:hover,
+.dados form > button:hover, .fotoSubmit:hover {
     background: var(--colorStandart);
     color: #ffffff;
 }
@@ -580,7 +581,8 @@ legend {
 .loginBtn button:active, #searchFormSubmit input:active,
 .btnSelect:active, .loginBtn a:active,
 .form-btn > button:active, .btnAtt:active, 
-.verMais:active, .btnReservarPonto a:active { background: var(--colorShadow); }
+.verMais:active, .btnReservarPonto a:active,
+.dados form > button:active, .fotoSubmit:active { background: var(--colorShadow); }
 
 .liHome {
     display: flex;
@@ -1674,21 +1676,21 @@ footer {
 }
 
 .url a:hover, .url .active {
-    background-color: #e8f5ff;
+    background-color: var(--colorStandart);
     border-radius: 28px;
-    color: #000;
+    color: #ffffff;
     margin-left: 14%;
     width: 65%;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .settingsContainer {
-    position: absolute;
-    top: 8%;
+    position: relative;
+    display: flex;
     left: 15%;
     width: 85%;
-    height: 80%;
-    background: yellow;
-    z-index: -1;
+    height: 100%;
 }
 
 .profileContainer {
@@ -1710,7 +1712,7 @@ footer {
     height: 100%;
     left: 15%;
     display: grid;
-    grid-template-rows: 10% 40% 50%;
+    grid-template-rows: 10% 50% 40%;
     justify-items: center;
     overflow-y: scroll;
 }
@@ -1726,33 +1728,92 @@ footer {
     align-content: center;
 }
 
-.upPics {
-    width: 50%;
+.galeria {
+    width: 99%;
     height: 100%;
-    margin-bottom: 20px;
-    border-radius: 1rem;
-    background: var(--colorSecond);
-    display: grid;
-    grid-template-rows: 15% 20% 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    align-content: center;
-    justify-items: center;
 }
 
-.upPics select {
-    width: 80%;
-    height: 61%;
+.pics {
+    width: 30%;
+    height: 40%;
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    margin: 0 10px 10px 0;
+}
+
+.pics:hover, .pics:nth-child(odd):hover {
+    background: var(--colorSecond);
+}
+
+.pics:nth-child(odd) {
+    background: var(--colorShadow);
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+}
+
+.thumb {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 1rem;
+    text-align: center;
+    align-content: center;
 }
 
-.upPics input {
-    width: 90%;
-    height: 50%;
+.thumb img {
+    width: 30px;
+    height: 30px;
 }
 
-.myPics {
-    width: 80%;
+.dados {
+    display: grid;
+    grid-template-rows: 1fr 25%;
+    justify-items: center;
+    align-items: center;
+}
+
+.dados form {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-align: center;
+}
+
+.dados form > button {
+    height: 75%;
+    width: 50%;
+    background: var(--colorSecond);
+    color: #000000;
+    font-weight: bold;
+    border-radius: 1rem;
+    border: solid 2px #000000;
+    text-transform: uppercase;
+}
+
+.dados > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.fotoSubmit {
+    height: 2rem;
+    width: 35%;
+    background: var(--colorSecond);
+    color: #000000;
+    font-weight: bold;
+    border-radius: 1rem;
+    border: solid 2px #000000;
+    text-transform: uppercase;
 }
 
 .profileContainer h2 {

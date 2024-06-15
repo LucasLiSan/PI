@@ -1,7 +1,7 @@
 use travelingmonkey;
 #drop database travelingmonkey;
 select * from pontos;
-select * from fotospontos;
+select * from turistas;
 
 ALTER TABLE feedbackpontos
 ADD CONSTRAINT FK_idPontoAvaliado

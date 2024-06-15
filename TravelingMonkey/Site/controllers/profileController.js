@@ -32,8 +32,8 @@ function formatDate(date) {
     return `${utcYear}-${utcMonth}-${utcDay}`;
 }
 
-/* \/---------- ROTAS PARA TRATAMENTO DAS FOTOS DAS GALERIAS DOS USUÁRIOS ----------\/ */
-//CARREGAR FOTOS
+/* \/---------- ROTAS PARA TRATAMENTO DAS INFORMAÇÕES DOS USUÁRIOS ----------\/ */
+//CARREGAR INFORMAÇÕES
 router.get("/profileUser", Auth, async (req, res) => {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
@@ -47,7 +47,12 @@ router.get("/profileUser", Auth, async (req, res) => {
         });
 
         const fotosPontos = await FotosPontos.findAll({
-            where: { idFotografo: user.id }
+            where: { idFotografo: user.id },
+            include: {
+                model: PontosTuristicos,
+                as: 'pontoFotografado', // Alias usado na associação
+                attributes: ['nomePonto'] // Atributo que você quer incluir
+            }
         });
 
         res.render("profileUser", {
@@ -80,7 +85,7 @@ router.post("/profileUser/deleteFoto/:id", async (req, res) => {
     }
     res.redirect("/profileUser");
 });
-/* /\---------- ROTAS PARA TRATAMENTO DAS FOTOS DAS GALERIAS DOS USUÁRIOS ----------/\ */
+/* /\---------- ROTAS PARA TRATAMENTO DAS INFORMAÇÕES DOS USUÁRIOS ----------/\ */
 
 /* \/---------- ROTAS PARA TRATAMENTO DE INFORMAÇÕES BÁSICAS DOS PERFIS ----------\/ */
 //UPDATE BANCO DE DADOS

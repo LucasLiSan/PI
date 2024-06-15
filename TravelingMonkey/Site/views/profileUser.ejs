@@ -50,59 +50,79 @@
 				</div>
 				<div class="sidenav-url">
 					<div class="url">
-						<a href="#profile" class="active">Perfil</a>
+						<a href="#profile" onclick="showPage('perfilPage', this)" class="active">Perfil</a>
 						<hr align="center">
 					</div>
 					<div class="url">
-						<a href="#galeria">Galeria</a>
+						<a href="#galeria" onclick="showPage('galeriaPage', this)">Galeria</a>
 						<hr align="center">
 					</div>
 					<div class="url">
-						<a href="#settings" >Configurações</a>
+						<a href="#settings" onclick="showPage('settingsPage', this)">Configurações</a>
 						<hr align="center">
 					</div>
 				</div>
 			</div>
-			<div class="settingsContainer" style="display: none;">
+			<div id="settingsPage" class="settingsContainer" style="display: none;">
 
 			</div>
-			<div class="galerieContainer">
+			<div id="galeriaPage" class="galerieContainer" style="display: none;">
 				<h1>GALERIA DE FOTOS</h1>
-				<form class="upPics" action="/upload" method="POST" enctype="multipart/form-data">
-					<input type="file" name="photo" required>
-					<select name="idPontoFotografado" id="idPontoFotografado">
-						<% PontosTuristicos.forEach(pontos => { %>
-							<option value="<%= pontos.id %>"><%= pontos.nomePonto %></option>
-						<%}) %>
-					</select>
-					<input type="text" name="idFotografo" value="<%= session.userTurista.id %>" hidden>
-					<input type="submit" value="Enviar">
-				</form>
-				<table class="myPics">
-					<thead>
-						<tr>
-							<th>HEAD 1</th>
-							<th>HEAD 2</th>
-							<th>HEAD 3</th>
-							<th>HEAD 4</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% FotosPontos.forEach(foto => { %>
-							<tr>
-								<td><img src="/imgs/uploads/<%= foto.fotos %>" alt="Foto" style="width: 100px;"></td>
-								<td><%= new Date(foto.dataFoto).toLocaleDateString() %></td>
-								<td>
-									<form action="/profileUser/deleteFoto/<%= foto.id %>" method="POST" style="display:inline;">
-										<button type="submit">Excluir</button>
-									</form>
-								</td>
-							</tr>
-						<% }); %>
-					</tbody>
-				</table>
+				<div class="section-center">
+                    <div>
+                        <div>
+                            <div class="booking-form">
+								<div class="booking-bg" style="background-image: url('/imgs/Logo1.webp');"></div>
+                                <form action="/upload" method="POST" enctype="multipart/form-data">
+                                    <div class="form-header">
+                                        <h2>Guarde suas recordações!</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <span class="form-label">Foto</span>
+                                            <input class="form-control" type="file" name="photo" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <span class="form-label">Local</span>
+                                            <select class="form-control" name="idPontoFotografado" id="idPontoFotografado">
+												<% PontosTuristicos.forEach(pontos => { %>
+													<option value="<%= pontos.id %>"><%= pontos.nomePonto %></option>
+												<%}) %>
+											</select>
+                                        </div>
+                                    </div>
+									<input type="text" name="idFotografo" value="<%= session.userTurista.id %>" hidden>
+                                    <div class="form-btn">
+                                        <input class="fotoSubmit" type="submit" value="Enviar">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="galeria">
+					<% FotosPontos.forEach(foto => { %>
+						<div class="pics">
+							<div class="thumbnail">
+								<div class="thumb" style="background-image: url('/imgs/uploads/<%= foto.fotos %>');">
+								</div>
+							</div>
+							<div class="dados">
+								<div>
+									<span>Lugar: <%= foto.pontoFotografado ? foto.pontoFotografado.nomePonto : 'Desconhecido' %></span>
+									<span>Data: <%= new Date(foto.dataFoto).toLocaleDateString() %></span>
+								</div>
+								<form action="/profileUser/deleteFoto/<%= foto.id %>" method="POST" style="display:inline;">
+									<button type="submit" onclick="return confirm('Tem certeza que deseja excluir a foto?')">Excluir</button>
+								</form>
+							</div>
+						</div>
+					<% }); %>
+				</div>
 			</div>
-			<div class="profileContainer" style="display: none;">
+			<div id="perfilPage" class="profileContainer">
 				<% if(messages.success) { %>
 					<div class="alertSuccess">
 						<%= messages.success %>

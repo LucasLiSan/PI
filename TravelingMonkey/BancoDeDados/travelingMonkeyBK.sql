@@ -228,7 +228,7 @@ CREATE TABLE `fotospontos` (
   KEY `idPontoFotografado` (`idPontoFotografado`),
   CONSTRAINT `fotospontos_ibfk_1` FOREIGN KEY (`idFotografo`) REFERENCES `turistas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fotospontos_ibfk_2` FOREIGN KEY (`idPontoFotografado`) REFERENCES `pontos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,8 +237,41 @@ CREATE TABLE `fotospontos` (
 
 LOCK TABLES `fotospontos` WRITE;
 /*!40000 ALTER TABLE `fotospontos` DISABLE KEYS */;
-INSERT INTO `fotospontos` VALUES (1,1,1,'photo-1718411014835.jpg','2024-06-14 21:23:34','2024-06-14 21:23:34','2024-06-14 21:23:34'),(2,1,1,'photo-1718411075553.jpg','2024-06-14 21:24:35','2024-06-14 21:24:35','2024-06-14 21:24:35'),(3,1,6,'photo-1718411299732.jpg','2024-06-14 21:28:19','2024-06-14 21:28:19','2024-06-14 21:28:19'),(4,1,1,'photo-1718411304746.jpg','2024-06-14 21:28:24','2024-06-14 21:28:24','2024-06-14 21:28:24'),(5,1,6,'photo-1718411314065.jpg','2024-06-14 21:28:34','2024-06-14 21:28:34','2024-06-14 21:28:34'),(6,1,8,'photo-1718411642913.jpg','2024-06-14 21:34:02','2024-06-14 21:34:02','2024-06-14 21:34:02'),(7,1,8,'photo-1718411648084.jpg','2024-06-14 21:34:08','2024-06-14 21:34:08','2024-06-14 21:34:08'),(8,1,8,'photo-1718411661884.jpg','2024-06-14 21:34:21','2024-06-14 21:34:21','2024-06-14 21:34:21'),(9,1,8,'photo-1718411671250.jpg','2024-06-14 21:34:31','2024-06-14 21:34:31','2024-06-14 21:34:31'),(10,1,8,'photo-1718411679130.jpg','2024-06-14 21:34:39','2024-06-14 21:34:39','2024-06-14 21:34:39'),(11,1,8,'photo-1718411686842.jpg','2024-06-14 21:34:46','2024-06-14 21:34:46','2024-06-14 21:34:46'),(12,1,8,'photo-1718411692443.jpg','2024-06-14 21:34:52','2024-06-14 21:34:52','2024-06-14 21:34:52'),(13,1,2,'photo-1718413643044.jpg','2024-06-14 22:07:23','2024-06-14 22:07:23','2024-06-14 22:07:23'),(14,1,2,'photo-1718413648484.jpg','2024-06-14 22:07:28','2024-06-14 22:07:28','2024-06-14 22:07:28'),(15,1,2,'photo-1718413655660.webp','2024-06-14 22:07:35','2024-06-14 22:07:35','2024-06-14 22:07:35');
+INSERT INTO `fotospontos` VALUES (2,1,1,'photo-1718411075553.jpg','2024-06-14 21:24:35','2024-06-14 21:24:35','2024-06-14 21:24:35'),(3,1,6,'photo-1718411299732.jpg','2024-06-14 21:28:19','2024-06-14 21:28:19','2024-06-14 21:28:19'),(4,1,1,'photo-1718411304746.jpg','2024-06-14 21:28:24','2024-06-14 21:28:24','2024-06-14 21:28:24'),(5,1,6,'photo-1718411314065.jpg','2024-06-14 21:28:34','2024-06-14 21:28:34','2024-06-14 21:28:34'),(7,1,8,'photo-1718411648084.jpg','2024-06-14 21:34:08','2024-06-14 21:34:08','2024-06-14 21:34:08'),(8,1,8,'photo-1718411661884.jpg','2024-06-14 21:34:21','2024-06-14 21:34:21','2024-06-14 21:34:21'),(9,1,8,'photo-1718411671250.jpg','2024-06-14 21:34:31','2024-06-14 21:34:31','2024-06-14 21:34:31'),(10,1,8,'photo-1718411679130.jpg','2024-06-14 21:34:39','2024-06-14 21:34:39','2024-06-14 21:34:39'),(11,1,8,'photo-1718411686842.jpg','2024-06-14 21:34:46','2024-06-14 21:34:46','2024-06-14 21:34:46'),(12,1,8,'photo-1718411692443.jpg','2024-06-14 21:34:52','2024-06-14 21:34:52','2024-06-14 21:34:52'),(14,1,2,'photo-1718413648484.jpg','2024-06-14 22:07:28','2024-06-14 22:07:28','2024-06-14 22:07:28'),(15,1,2,'photo-1718413655660.webp','2024-06-14 22:07:35','2024-06-14 22:07:35','2024-06-14 22:07:35'),(17,1,3,'photo-1718414331957.jpg','2024-06-14 22:18:51','2024-06-14 22:18:51','2024-06-14 22:18:51'),(18,1,3,'photo-1718414337302.jpg','2024-06-14 22:18:57','2024-06-14 22:18:57','2024-06-14 22:18:57'),(19,1,5,'photo-1718461191223.jpg','2024-06-15 11:19:51','2024-06-15 11:19:51','2024-06-15 11:19:51'),(20,1,7,'photo-1718474604805.jpg','2024-06-15 15:03:24','2024-06-15 15:03:24','2024-06-15 15:03:24');
 /*!40000 ALTER TABLE `fotospontos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `fotosxpontofotografados`
+--
+
+DROP TABLE IF EXISTS `fotosxpontofotografados`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fotosxpontofotografados` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idFoto` int(11) NOT NULL,
+  `idTurista` int(11) NOT NULL,
+  `idPonto` int(11) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idFoto` (`idFoto`),
+  KEY `idTurista` (`idTurista`),
+  KEY `idPonto` (`idPonto`),
+  CONSTRAINT `fotosxpontofotografados_ibfk_1` FOREIGN KEY (`idFoto`) REFERENCES `fotospontos` (`id`),
+  CONSTRAINT `fotosxpontofotografados_ibfk_2` FOREIGN KEY (`idTurista`) REFERENCES `turistas` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `fotosxpontofotografados_ibfk_3` FOREIGN KEY (`idPonto`) REFERENCES `pontos` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fotosxpontofotografados`
+--
+
+LOCK TABLES `fotosxpontofotografados` WRITE;
+/*!40000 ALTER TABLE `fotosxpontofotografados` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fotosxpontofotografados` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -483,4 +516,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-14 22:16:10
+-- Dump completed on 2024-06-15 17:43:17

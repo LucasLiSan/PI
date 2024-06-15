@@ -39,7 +39,7 @@ FotosPontos.belongsTo(PontosTuristicos, { foreignKey: 'idPontoFotografado', as: 
 
 Turistas.hasMany(FotosPontos, { foreignKey: 'idFotografo' });
 FotosPontos.belongsTo(Turistas, { foreignKey: 'idFotografo' });
-/* \/--------- Associações para Fotos de Pontos Turísticos ---------\/ */
+/* /\--------- Associações para Fotos de Pontos Turísticos ---------/\ */
 
 /* \/--------- Associações para Fotos de Guias de Turismo ---------\/ */
 GuiasDeTurismo.hasMany(FotosGuias, { foreignKey: 'idGuiaFotografado' });

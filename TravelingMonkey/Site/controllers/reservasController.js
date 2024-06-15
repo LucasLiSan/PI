@@ -1,5 +1,9 @@
-//CONTROLLER PARA AS RESERVAS
-/* ---------- MODULES ---------- */
+/*
+CONTROLLER PARA AS RESERVAS
+Esse controller gerencias as rotas referentes a reservas. Desde os cards na tela inicial até o form de booking.
+*/
+
+/* \/---------- MODULES ----------\/ */
 import express from "express";
 import session from "express-session";
 import bcrypt from "bcrypt";
@@ -7,11 +11,11 @@ import { Sequelize, Op, QueryTypes } from 'sequelize';
 import Auth from '../middleware/auth.js';
 import multer from "multer";
 import path from "path";
-/* ---------- MODULES ---------- */
-/* ---------- SERCICES ---------- */
+/* /\---------- MODULES ----------/\ */
+/* \/---------- SERCICES ----------\/ */
 import PicService from "../services/PicService.js";
-/* ---------- SERCICES ---------- */
-/* ---------- TABLES ---------- */
+/* /\---------- SERCICES ----------/\ */
+/* \/---------- TABLES ----------\/ */
 import PontosTuristicos from "../models/pontos.js";
 import FotosPontos from "../models/fotosPontos.js";
 import AvaliacoesPontos from "../models/feedbackPonto.js";
@@ -20,20 +24,17 @@ import AvaliacoesGuias from "../models/feedbackGuia.js";
 import GuiasAvaliacoes from "../models/guiaAvaliado.js";
 import CategoriasPontos from "../models/categoriaXponto.js";
 import "../models/associations.js";
-/* ---------- TABLES ---------- */
+/* /\---------- TABLES ----------/\ */
 const router = express.Router();
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/imgs/uploads');
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
+    destination: function (req, file, cb) { cb(null, 'public/imgs/uploads'); },
+    filename: function (req, file, cb) { cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); }
 });
 
 const upload = multer({ storage: storage });
 
+//ROTA DE POSTAGEM DE FOTOS
 router.post('/upload', upload.single('photo'), async (req, res) => {
     const { idPontoFotografado, idFotografo } = req.body;
     try {
@@ -45,17 +46,31 @@ router.post('/upload', upload.single('photo'), async (req, res) => {
     }
 });
 
+//ROTA PARA CARREGAR OS PONTOS COM MELHORES AVALIAÇÕES E AS FOTOS TIRADAS PELOS USUÁRIOS NO CARROSSEL DA INDEX.EJS
 router.get('/home', async function(req, res) {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
     try {
         const pontosComMedia = await PontosTuristicos.findAll({
             attributes: [
-                'id', 'nomePonto', 'modalidade','valorEntrada',
-                'profilePicPonto', 'endRuaPonto', 'endBairroPonto',
-                'endNumPonto', 'endCidadePonto', 'endUfPonto',
-                'endCepPonto', 'endReferenciaPonto', 'endGeoLatPonto',
-                'endGeoLongePonto', [Sequelize.fn('AVG', Sequelize.col('avaliacoesRelacionadas.avaliacaoDetalhe.nota')), 'media']],
+                'id',
+                'nomePonto',
+                'modalidade',
+                'valorEntrada',
+                'profilePicPonto',
+                'endRuaPonto',
+                'endBairroPonto',
+                'endNumPonto',
+                'endCidadePonto',
+                'endUfPonto',
+                'endCepPonto',
+                'endReferenciaPonto',
+                'endGeoLatPonto',
+                'endGeoLongePonto',
+                [
+                    Sequelize.fn('AVG', Sequelize.col('avaliacoesRelacionadas.avaliacaoDetalhe.nota')),'media'
+                ]
+            ],
             include: [
                 {
                     model: PontosAvaliacoes,
@@ -75,9 +90,12 @@ router.get('/home', async function(req, res) {
                     attributes: ['categoria']
                 }
             ],
-            group: ['pontos.id', 'categoria.id', 'categoria.categoria']
+            group: [
+                'pontos.id',
+                'categoria.id',
+                'categoria.categoria'
+            ]
         });
-
         res.render("index", {
             pontos: pontosComMedia,
             loggedOut: loggedOut
@@ -88,6 +106,7 @@ router.get('/home', async function(req, res) {
     }
 });
 
+//ROTA PARA ABRIR O CARD E CARREGAR AS INFORMAÇÕES E A GALERIA DE FOTOS DOS PONTOS COM MELHORES AVALIAÇÕES NO CARROSSEL DA INDEX.EJS
 router.get('/ponto/:id', async function(req, res) {
     try {
         const pontoId = req.params.id;
@@ -100,7 +119,10 @@ router.get('/ponto/:id', async function(req, res) {
                     include: [{
                         model: AvaliacoesPontos,
                         as: 'avaliacaoDetalhe',
-                        attributes: ['nota', 'comentario']
+                        attributes: [
+                            'nota',
+                            'comentario'
+                        ]
                     }]
                 },
                 {
@@ -114,12 +136,15 @@ router.get('/ponto/:id', async function(req, res) {
                     attributes: ['fotos']
                 }
             ],
-            group: ['pontos.id', 'categoria.id', 'categoria.categoria', 'fotosPontos.id']
+            group: [
+                'pontos.id',
+                'categoria.id',
+                'categoria.categoria',
+                'fotosPontos.id'
+            ]
         });
 
-        if (!ponto) {
-            return res.status(404).send("Ponto not found");
-        }
+        if (!ponto) { return res.status(404).send("Ponto not found"); }
 
         // Calcula a média de avaliações
         const avaliacoes = ponto.avaliacoesRelacionadas.map(a => a.avaliacaoDetalhe.nota);
@@ -130,7 +155,6 @@ router.get('/ponto/:id', async function(req, res) {
             ...ponto.toJSON(),
             media
         };
-
         res.json(pontoComMedia);
     } catch (error) {
         console.error(error);
@@ -138,6 +162,7 @@ router.get('/ponto/:id', async function(req, res) {
     }
 });
 
+//ROTA PARA REDIRECIONAR PARA O BOOKING E CARREGAR INFORMAÇÕES NO FORM
 router.get('/reserva/:id', Auth, async function(req, res) {
     try {
         const pontoId = req.params.id;
@@ -162,5 +187,4 @@ router.get('/reserva/:id', Auth, async function(req, res) {
         res.status(500).send('Erro interno do servidor');
     }
 });
-
 export default router;

@@ -10,7 +10,7 @@ const PontosFotografados = connection.define('fotosXPontoFotografados',
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                model: Imagem,
+                model: FotosPontos,
                 key: 'id'
             }
         },
@@ -33,7 +33,7 @@ const PontosFotografados = connection.define('fotosXPontoFotografados',
     }
 );
 
-PontosFotografados.belongsTo(Imagem, { foreignKey: 'idFoto'});
+PontosFotografados.belongsTo(FotosPontos, { foreignKey: 'idFoto'});
 PontosFotografados.belongsTo(Turistas, { foreignKey: 'idTurista'});
 PontosFotografados.belongsTo(PontosTuristicos, { foreignKey: 'idPonto'});
 

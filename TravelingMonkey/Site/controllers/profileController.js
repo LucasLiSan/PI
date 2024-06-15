@@ -1,19 +1,27 @@
-//CONTROLLER PARA TRATAMENTO DOS DADOS DOS USUARIOS CADASTRADOS (CIDADES, GUIAS E TURISTAS) - CADASTRAR NOVO, DELETAR, UPDATE
+/*
+CONTROLLER PARA TRATAMENTO DOS DADOS DOS USUARIOS CADASTRADOS (CIDADES, GUIAS E TURISTAS) - CADASTRAR NOVO, DELETAR, UPDATE
+Diferente do pontosController.js, esse é pra gerenciar os perfis de usuários criados no geral.
+*/
 
+/* \/---------- MODULES ----------\/ */
 import express from "express";
 import session from "express-session";
 import { Op } from "sequelize";
 import Auth from "../middleware/auth.js";
-/* ---------- TABLES ---------- */
+/* /\---------- MODULES ----------/\ */
+/* \/---------- TABLES ----------\/ */
 import Turistas from "../models/turistas.js";
 import GuiasDeTurismo from "../models/guias.js";
 import Cidades from "../models/cidades.js";
 import PontosTuristicos from "../models/pontos.js";
 import HorarioFuncionamento from "../models/horarioFunc.js";
-import Atracoes from "../models/atracoes.js";
+import FotosPontos from "../models/fotosPontos.js";
+import Atracoes from "../models/cidadesXpontos.js";
+import PontosFotografados from "../models/fotosXPontoFotografados.js";
 import CategoriasPontos from "../models/categoriaXponto.js";
 import HorarioPonto from "../models/horarioXponto.js";
-/* ---------- TABLES ---------- */
+import "../models/associations.js";
+/* /\---------- TABLES ----------/\ */
 const router = express.Router();
 
 function formatDate(date) {
@@ -24,30 +32,58 @@ function formatDate(date) {
     return `${utcYear}-${utcMonth}-${utcDay}`;
 }
 
-router.get("/profileUser", (req, res) => {
+/* \/---------- ROTAS PARA TRATAMENTO DAS FOTOS DAS GALERIAS DOS USUÁRIOS ----------\/ */
+//CARREGAR FOTOS
+router.get("/profileUser", Auth, async (req, res) => {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
 
-    PontosTuristicos.findAll({
-        include: {
-            model: HorarioFuncionamento,
-            as: 'horarios' // Alias para os horários de funcionamento
-        }
-    }).then(pontosTuristicos => {
+    try {
+        const pontosTuristicos = await PontosTuristicos.findAll({
+            include: {
+                model: HorarioFuncionamento,
+                as: 'horarios' // Alias para os horários de funcionamento
+            }
+        });
+
+        const fotosPontos = await FotosPontos.findAll({
+            where: { idFotografo: user.id }
+        });
+
         res.render("profileUser", {
             session: req.session,
             user: user,
             loggedOut: loggedOut,
             messages: req.flash(),
-            PontosTuristicos: pontosTuristicos
+            PontosTuristicos: pontosTuristicos,
+            FotosPontos: fotosPontos
         });
-    }).catch(err => {
+    } catch (err) {
         console.error("Erro ao buscar Pontos Turisticos:", err);
         req.flash('danger', 'Erro ao carregar os pontos turísticos.');
         res.redirect("/profileUser");
-    });
+    }
 });
 
+//APAGAR FOTOS
+router.post("/profileUser/deleteFoto/:id", async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        await FotosPontos.destroy({
+            where: { id: id }
+        });
+        req.flash('success', 'Foto deletada com sucesso.');
+    } catch (err) {
+        console.error("Erro ao deletar Foto:", err);
+        req.flash('danger', 'Erro ao deletar a foto.');
+    }
+    res.redirect("/profileUser");
+});
+/* /\---------- ROTAS PARA TRATAMENTO DAS FOTOS DAS GALERIAS DOS USUÁRIOS ----------/\ */
+
+/* \/---------- ROTAS PARA TRATAMENTO DE INFORMAÇÕES BÁSICAS DOS PERFIS ----------\/ */
+//UPDATE BANCO DE DADOS
 router.post("/profileUser/update/:id", (req, res) => {
     const user = req.body.user;
     if (user === "cidade") {
@@ -159,5 +195,5 @@ router.post("/profileUser/update/:id", (req, res) => {
         res.redirect("/profileUser");
     }
 });
-
+/* /\---------- ROTAS PARA TRATAMENTO DE INFORMAÇÕES BÁSICAS DOS PERFIS ----------/\ */
 export default router;

@@ -1,21 +1,26 @@
-//CONTROLLER PARA A BUSCA RÁPIDA - LISTAGEM
+/*
+CONTROLLER PARA A BUSCA RÁPIDA - LISTAGEM
+Não tem um uso prático e efetivo dessas rotas, foi feita por exigencia da disciplina de matemática.
+*/
 
+/* \/---------- MODULES ----------\/ */
 import express from "express";
 import session from "express-session";
 import Auth from "../middleware/auth.js";
-/* ---------- TABLES ---------- */
+/* /\---------- MODULES ----------/\ */
+/* \/---------- TABLES ----------\/ */
 import Turistas from "../models/turistas.js";
 import GuiasDeTurismo from "../models/guias.js";
 import Cidades from "../models/cidades.js";
 import PontosTuristicos from "../models/pontos.js";
 import HorarioFuncionamento from "../models/horarioFunc.js";
-import Atracoes from "../models/atracoes.js";
+import Atracoes from "../models/cidadesXpontos.js";
 import CategoriasPontos from "../models/categoriaXponto.js";
 import HorarioPonto from "../models/horarioXponto.js";
-/* ---------- TABLES ---------- */
+/* /\---------- TABLES ----------/\ */
 const router = express.Router();
 
-//ROTA BUSCA RAPIDA CIDADES
+//ROTA BUSCA RAPIDA POR CIDADES
 router.get('/cidades', function(req, res) {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
@@ -33,7 +38,7 @@ router.get('/cidades', function(req, res) {
         });
 });
 
-//ROTA BUSCA RAPIDA PONTOS
+//ROTA BUSCA RAPIDA POR PONTOS
 router.get('/pontos', function(req, res) {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
@@ -51,7 +56,7 @@ router.get('/pontos', function(req, res) {
         });
 });
 
-//ROTA BUSCA RAPIDA GUIAS
+//ROTA BUSCA RAPIDA POR GUIAS
 router.get('/guias', function(req, res) {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
@@ -62,5 +67,4 @@ router.get('/guias', function(req, res) {
         });
     });
 });
-
 export default router;

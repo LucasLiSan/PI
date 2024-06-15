@@ -20,5 +20,4 @@ router.get('/busca', function(req, res) {
         });
     });
 });
-
 export default router;

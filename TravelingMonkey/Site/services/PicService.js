@@ -20,13 +20,8 @@ class PicService {
         });
     }
 
-    SelectPicturesGuias() {
-        return FotosGuias.findAll();
-    }
-
-    SelectPicturesPontos() {
-        return FotosPontos.findAll();
-    }
+    SelectPicturesGuias() { return FotosGuias.findAll(); }
+    SelectPicturesPontos() { return FotosPontos.findAll(); }
 }
 
 export default new PicService();

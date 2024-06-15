@@ -1,7 +1,9 @@
+//MIDDLWARE PARA AUTENTICAÇÃO E CONTROLE DE ORIGEM-DESTINO ROTAS
+
 import session from "express-session";
 
 function Auth (req, res, next) {
-    console.log("Middleware Auth: Verificando sessão...");
+    console.log("Middleware Auth: Verificando sessão..."); //DEBUG
     if(req.session.userCidade != undefined) {
         console.log("Usuário Cidade autenticado.");
         next();
@@ -20,5 +22,4 @@ function Auth (req, res, next) {
         });
     }
 }
-
 export default Auth;

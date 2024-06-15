@@ -78,7 +78,7 @@
 					<input type="text" name="idFotografo" value="<%= session.userTurista.id %>" hidden>
 					<input type="submit" value="Enviar">
 				</form>
-				<table class="">
+				<table class="myPics">
 					<thead>
 						<tr>
 							<th>HEAD 1</th>
@@ -88,12 +88,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><img src="" alt="1"></td>
-							<td><img src="" alt="2"></td>
-							<td><img src="" alt="3"></td>
-							<td><img src="" alt="4"></td>
-						</tr>
+						<% FotosPontos.forEach(foto => { %>
+							<tr>
+								<td><img src="/imgs/uploads/<%= foto.fotos %>" alt="Foto" style="width: 100px;"></td>
+								<td><%= new Date(foto.dataFoto).toLocaleDateString() %></td>
+								<td>
+									<form action="/profileUser/deleteFoto/<%= foto.id %>" method="POST" style="display:inline;">
+										<button type="submit">Excluir</button>
+									</form>
+								</td>
+							</tr>
+						<% }); %>
 					</tbody>
 				</table>
 			</div>

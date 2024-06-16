@@ -177,6 +177,62 @@ INSERT INTO `cidadesxpontos` VALUES (1,1,13,'0000-00-00 00:00:00','0000-00-00 00
 UNLOCK TABLES;
 
 --
+-- Table structure for table `comodidades`
+--
+
+DROP TABLE IF EXISTS `comodidades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `comodidades` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `comodidade` varchar(255) NOT NULL,
+  `tipoComodidade` varchar(255) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comodidades`
+--
+
+LOCK TABLES `comodidades` WRITE;
+/*!40000 ALTER TABLE `comodidades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comodidades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comodidadesxpontos`
+--
+
+DROP TABLE IF EXISTS `comodidadesxpontos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `comodidadesxpontos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idComodidade` int(11) NOT NULL,
+  `idPontoTuristico` int(11) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idComodidade` (`idComodidade`),
+  KEY `idPontoTuristico` (`idPontoTuristico`),
+  CONSTRAINT `comodidadesxpontos_ibfk_1` FOREIGN KEY (`idComodidade`) REFERENCES `comodidades` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `comodidadesxpontos_ibfk_2` FOREIGN KEY (`idPontoTuristico`) REFERENCES `pontos` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comodidadesxpontos`
+--
+
+LOCK TABLES `comodidadesxpontos` WRITE;
+/*!40000 ALTER TABLE `comodidadesxpontos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comodidadesxpontos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `fotosguias`
 --
 
@@ -516,4 +572,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-15 17:43:17
+-- Dump completed on 2024-06-16 19:01:53

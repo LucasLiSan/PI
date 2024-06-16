@@ -3,10 +3,6 @@ use travelingmonkey;
 select * from pontos;
 select * from turistas;
 
-ALTER TABLE feedbackpontos
-ADD CONSTRAINT FK_idPontoAvaliado
-FOREIGN KEY (idPontoAvaliado) REFERENCES pontos(id);
-
 INSERT INTO horarioFuncionas (diaDaSemana, situacao, horaAbre, horaAlmocoIda, horaAlmocoVolta, horaFecha) VALUES
 ('Segunda-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
 ('Terça-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
@@ -129,8 +125,6 @@ INSERT INTO categoriasxpontos (modalidade, categoria) VALUES
 ('Eventos religiosos', 'Eventos'),
 ('Caverna', 'Ecoturismo');
 
-select * from comentAvalia;
-
 INSERT INTO avaliacoespontos (idAvaliador, idPontoAvaliado, nota, comentario, dataAvaliacao) VALUES
 (1, 1, 5, 'Ótimo lugar, muito bem conservado e com guias excelentes.', '2024-01-15'),
 (1, 2, 4, 'Experiência incrível, mas o acesso poderia ser melhor.', '2024-02-10'),
@@ -145,8 +139,6 @@ INSERT INTO avaliacoespontos (idAvaliador, idPontoAvaliado, nota, comentario, da
 (1, 11, 3, 'Lugar bonito, mas a manutenção deixa a desejar.', '2024-11-13'),
 (1, 12, 4, 'Parque muito agradável, ótima opção de lazer.', '2024-12-01'),
 (1, 13, 5, 'Praia tranquila e limpa, recomendo!', '2024-12-21');
-
-select * from avaliacoespontos;
 
 INSERT INTO pontosavaliados (idAvaliacao, idPonto) VALUES
 (1, 1),
@@ -171,7 +163,7 @@ create table comodidades (
     tipoComodidade varchar(100) not null
 );
 
-select * from comodidades;
+select * from guias;
 
 INSERT INTO Comodidades (comodidade, tipoComodidade) VALUES
 ('Rampa de Acesso', 'Acessibilidade'),

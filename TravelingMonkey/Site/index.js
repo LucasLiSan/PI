@@ -7,11 +7,7 @@ import session from "express-session";
 import flash from "express-flash";
 import multer from "multer";
 import path from "path";
-/* ---------- TABLES ---------- */
-import PontosTuristicos from "./models/pontos.js";
-import HorarioFuncionamento from "./models/horarioFunc.js";
-import HorarioPonto from "./models/horarioXponto.js";
-/* ---------- TABLES ---------- */
+
 //INICIANDO O EXPRESS
 const app = express();
 
@@ -33,7 +29,7 @@ connection.query(`CREATE DATABASE IF NOT EXISTS travelingMonkey;`).then(() => {
     console.log(error)
 });
 
-//DEFINIÇÕES
+//DEFINIÇÕES BÁSICAS
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:false}));
@@ -46,13 +42,10 @@ app.use(session({
     resave: false
 }));
 
+//DEFININDO LOCAL DE ARMAZENAMENTO
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/imgs/uploads');
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
+    destination: function (req, file, cb) { cb(null, 'public/imgs/uploads'); },
+    filename: function (req, file, cb) { cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); }
 });
 const upload = multer({ storage: storage });
 
@@ -70,17 +63,6 @@ app.use("/", pontosController);
 app.use("/", profileController);
 app.use("/", reservasController);
 app.use("/", usersController);
-
-PontosTuristicos.belongsToMany(HorarioFuncionamento, {
-    through: HorarioPonto,
-    foreignKey: 'idPontoTuristico',
-    as: 'horarios'
-});
-HorarioFuncionamento.belongsToMany(PontosTuristicos, {
-    through: HorarioPonto,
-    foreignKey: 'idHorario',
-    as: 'pontos'
-});
 
 //ROTA PRINCIPAL
 app.get("/home", function(req,res){

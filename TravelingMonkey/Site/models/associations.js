@@ -3,11 +3,15 @@ import GuiasDeTurismo from "./guias.js";
 import Turistas from "./turistas.js";
 import FotosGuias from "./fotosGuias.js";
 import FotosPontos from "./fotosPontos.js";
+import HorarioFuncionamento from "./horarioFunc.js";
+import Comodidades from "./comodidades.js";
 import AvaliacoesPontos from "./feedbackPonto.js";
 import AvaliacoesGuias from "./feedbackGuia.js";
 import PontosAvaliacoes from "./pontoAvaliado.js";
 import GuiasAvaliacoes from "./guiaAvaliado.js";
 import CategoriasPontos from "./categoriaXponto.js";
+import HorarioPonto from "./horarioXponto.js";
+import ComodidadesPontos from "./comodidadesXponto.js";
 
 /* \/----- Associações para Avaliações de Pontos Turísticos -----\/ */
 PontosTuristicos.hasMany(PontosAvaliacoes, { foreignKey: 'idPonto', as: 'avaliacoesRelacionadas' });
@@ -52,3 +56,13 @@ FotosGuias.belongsTo(Turistas, { foreignKey: 'idFotografo' });
 /* \/--------- Associações para Pontos turisticos e suas Categorias ---------\/ */
 PontosTuristicos.belongsTo(CategoriasPontos, { foreignKey: 'modalidade', targetKey: 'id', as: 'categoria' });
 /* /\--------- Associações para Pontos turisticos e suas Categorias ---------/\ */
+
+/* \/--------- Associações para Pontos turisticos e seus Beneficios ---------\/ */
+PontosTuristicos.belongsToMany(Comodidades, { through: ComodidadesPontos, foreignKey: 'idPonto', otherKey: 'idComodidade', as: 'comodidades' });
+Comodidades.belongsToMany(PontosTuristicos, { through: ComodidadesPontos, foreignKey: 'idComodidade', otherKey: 'idPonto', as: 'pontosTuristicos' });
+/* /\--------- Associações para Pontos turisticos e seus Beneficios ---------/\ */
+
+/* \/--------- Associações para Pontos turisticos e seus Horários ---------\/ */
+PontosTuristicos.belongsToMany(HorarioFuncionamento, { through: HorarioPonto, foreignKey: 'idPontoTuristico', as: 'horarios' });
+HorarioFuncionamento.belongsToMany(PontosTuristicos, { through: HorarioPonto, foreignKey: 'idHorario', as: 'pontos' });
+/* /\--------- Associações para Pontos turisticos e seus Horários ---------/\ */

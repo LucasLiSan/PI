@@ -93,7 +93,13 @@
 											</select>
                                         </div>
                                     </div>
-									<input type="text" name="idFotografo" value="<%= session.userTurista.id %>" hidden>
+									<% if (session.userCidade) { %>
+										<input type="text" name="idFotografo" value="<%= session.userCidade.id %>" hidden>
+									<% } else if (session.userGuia) { %>
+										<input type="text" name="idFotografo" value="<%= session.userGuia.id %>" hidden>
+									<% } else if (session.userTurista) { %>
+										<input type="text" name="idFotografo" value="<%= session.userTurista.id %>" hidden>
+									<% } %>
                                     <div class="form-btn">
                                         <input class="fotoSubmit" type="submit" value="Enviar">
                                     </div>
@@ -103,22 +109,40 @@
                     </div>
                 </div>
 				<div class="galeria">
-					<% FotosPontos.forEach(foto => { %>
-						<div class="pics">
-							<div class="thumbnail">
-								<div class="thumb" style="background-image: url('/imgs/uploads/<%= foto.fotos %>');">
+					<% function groupByPonto(fotos) { %>
+						<% const groupedFotos = {}; %>
+						<% fotos.forEach(foto => { %>
+							<% const pontoId = foto.pontoFotografado ? foto.pontoFotografado.id : 'Desconhecido'; %>
+							<% const pontoNome = foto.pontoFotografado ? foto.pontoFotografado.nomePonto : 'Desconhecido'; %>
+							<% if (!groupedFotos[pontoId]) { %>
+								<% groupedFotos[pontoId] = { nome: pontoNome, fotos: [] }; %>
+							<% } %>
+							<% groupedFotos[pontoId].fotos.push(foto); %>
+						<% }); %>
+						<% return groupedFotos; %>
+					<% } %>
+				
+					<% const groupedFotos = groupByPonto(FotosPontos); %>
+					<% Object.keys(groupedFotos).forEach(pontoId => { %>
+						<fieldset>
+							<legend><%= groupedFotos[pontoId].nome %></legend>
+							<% groupedFotos[pontoId].fotos.forEach(foto => { %>
+								<div class="pics">
+									<div class="thumbnail">
+										<div class="thumb" style="background-image: url('/imgs/uploads/<%= foto.fotos %>');"></div>
+									</div>
+									<div class="dados">
+										<div>
+											<span>Lugar: <%= foto.pontoFotografado ? foto.pontoFotografado.nomePonto : 'Desconhecido' %></span>
+											<span>Data: <%= new Date(foto.dataFoto).toLocaleDateString() %></span>
+										</div>
+										<form action="/profileUser/deleteFoto/<%= foto.id %>" method="POST" style="display:inline;">
+											<button type="submit" onclick="return confirm('Tem certeza que deseja excluir a foto?')">Excluir</button>
+										</form>
+									</div>
 								</div>
-							</div>
-							<div class="dados">
-								<div>
-									<span>Lugar: <%= foto.pontoFotografado ? foto.pontoFotografado.nomePonto : 'Desconhecido' %></span>
-									<span>Data: <%= new Date(foto.dataFoto).toLocaleDateString() %></span>
-								</div>
-								<form action="/profileUser/deleteFoto/<%= foto.id %>" method="POST" style="display:inline;">
-									<button type="submit" onclick="return confirm('Tem certeza que deseja excluir a foto?')">Excluir</button>
-								</form>
-							</div>
-						</div>
+							<% }); %>
+						</fieldset>
 					<% }); %>
 				</div>
 			</div>

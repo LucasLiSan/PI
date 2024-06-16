@@ -51,7 +51,6 @@ router.get("/profileUser", Auth, async (req, res) => {
             include: {
                 model: PontosTuristicos,
                 as: 'pontoFotografado', // Alias usado na associação
-                attributes: ['nomePonto'] // Atributo que você quer incluir
             }
         });
 

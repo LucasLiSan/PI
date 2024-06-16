@@ -165,3 +165,52 @@ INSERT INTO pontosavaliados (idAvaliacao, idPonto) VALUES
 
 DESCRIBE pontos;
 
+create table comodidades (
+	id int auto_increment primary key not null,
+    comodidade varchar(100) not null,
+    tipoComodidade varchar(100) not null
+);
+
+select * from comodidades;
+
+INSERT INTO Comodidades (comodidade, tipoComodidade) VALUES
+('Rampa de Acesso', 'Acessibilidade'),
+('Banheiro Adaptado', 'Acessibilidade'),
+('Elevador Acessível', 'Acessibilidade'),
+('Sinalização em Braille', 'Acessibilidade'),
+('Áudio Descritivo', 'Acessibilidade'),
+('Estacionamento para Deficientes', 'Acessibilidade'),
+('Entrada Sem Degraus', 'Acessibilidade'),
+('Cadeiras de Rodas Disponíveis', 'Acessibilidade'),
+('Serviço de Atendimento para Surdos', 'Acessibilidade'),
+('Corrimão de Apoio', 'Acessibilidade'),
+('Portas Largas', 'Acessibilidade'),
+('Pisos Táteis', 'Acessibilidade'),
+('Telefones Adaptados', 'Acessibilidade'),
+('Academia ao ar livre adaptada', 'Acessibilidade'),
+('Parque Infantil', 'Crianças'),
+('Fraldário', 'Crianças'),
+('Cadeiras de Alimentação para Crianças', 'Crianças'),
+('Área para Animais', 'Pets'),
+('Bebedouro para Animais', 'Pets'),
+('Enfermaria', 'Saúde'),
+('Wi-Fi Gratuito', 'Serviços'),
+('Bicicletário', 'Infraestrutura'),
+('Estacionamento', 'Infraestrutura'),
+('Estacionamento coberto', 'Infraestrutura'),
+('Academia ao ar livre', 'Infraestrutura'),
+('Carregadores de Celular', 'Serviços'),
+('Cafeteria', 'Serviços'),
+('Área de Piquenique', 'Infraestrutura');
+
+
+
+
+
+
+
+
+
+
+
+

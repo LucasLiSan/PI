@@ -1,0 +1,532 @@
+esse é meu reservasController.js
+/*
+CONTROLLER PARA AS RESERVAS
+Esse controller gerencias as rotas referentes a reservas. Desde os cards na tela inicial até o form de booking.
+*/
+
+/* \/---------- MODULES ----------\/ */
+import express from "express";
+import session from "express-session";
+import bcrypt from "bcrypt";
+import { Sequelize, Op, QueryTypes } from 'sequelize';
+import Auth from '../middleware/auth.js';
+import multer from "multer";
+import path from "path";
+/* /\---------- MODULES ----------/\ */
+/* \/---------- SERCICES ----------\/ */
+import PicService from "../services/PicService.js";
+/* /\---------- SERCICES ----------/\ */
+/* \/---------- TABLES ----------\/ */
+import PontosTuristicos from "../models/pontos.js";
+import FotosPontos from "../models/fotosPontos.js";
+import AvaliacoesPontos from "../models/feedbackPonto.js";
+import PontosAvaliacoes from "../models/pontoAvaliado.js";
+import AvaliacoesGuias from "../models/feedbackGuia.js";
+import GuiasAvaliacoes from "../models/guiaAvaliado.js";
+import CategoriasPontos from "../models/categoriaXponto.js";
+import "../models/associations.js";
+import Comodidades from "../models/comodidades.js";
+/* /\---------- TABLES ----------/\ */
+const router = express.Router();
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) { cb(null, 'public/imgs/uploads'); },
+    filename: function (req, file, cb) { cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); }
+});
+
+const upload = multer({ storage: storage });
+
+//ROTA DE POSTAGEM DE FOTOS
+router.post('/upload', upload.single('photo'), async (req, res) => {
+    const { idPontoFotografado, idFotografo } = req.body;
+    try {
+        await PicService.SavePonto(req.file.filename, idPontoFotografado, idFotografo);
+        res.redirect('/profileUser');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao salvar a foto");
+    }
+});
+
+//ROTA PARA CARREGAR OS PONTOS COM MELHORES AVALIAÇÕES E AS FOTOS TIRADAS PELOS USUÁRIOS NO CARROSSEL DA INDEX.EJS
+router.get('/home', async function(req, res) {
+    const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
+    const loggedOut = !user;
+    try {
+        const pontosComMedia = await PontosTuristicos.findAll({
+            attributes: [
+                'id',
+                'nomePonto',
+                'modalidade',
+                'valorEntrada',
+                'profilePicPonto',
+                'endRuaPonto',
+                'endBairroPonto',
+                'endNumPonto',
+                'endCidadePonto',
+                'endUfPonto',
+                'endCepPonto',
+                'endReferenciaPonto',
+                'endGeoLatPonto',
+                'endGeoLongePonto',
+                [
+                    Sequelize.fn('AVG', Sequelize.col('avaliacoesRelacionadas.avaliacaoDetalhe.nota')),'media'
+                ]
+            ],
+            include: [
+                {
+                    model: PontosAvaliacoes,
+                    as: 'avaliacoesRelacionadas',
+                    attributes: [],
+                    include: [{
+                        model: AvaliacoesPontos,
+                        as: 'avaliacaoDetalhe',
+                        attributes: [],
+                        required: true
+                    }],
+                    required: true
+                },
+                {
+                    model: CategoriasPontos,
+                    as: 'categoria',
+                    attributes: ['categoria']
+                }
+            ],
+            group: [
+                'pontos.id',
+                'categoria.id',
+                'categoria.categoria'
+            ]
+        });
+        res.render("index", {
+            pontos: pontosComMedia,
+            loggedOut: loggedOut
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal error");
+    }
+});
+
+//ROTA PARA ABRIR O CARD E CARREGAR AS INFORMAÇÕES E A GALERIA DE FOTOS DOS PONTOS COM MELHORES AVALIAÇÕES NO CARROSSEL DA INDEX.EJS
+router.get('/ponto/:id', async function(req, res) {
+    try {
+        const pontoId = req.params.id;
+        const ponto = await PontosTuristicos.findOne({
+            where: { id: pontoId },
+            include: [
+                {
+                    model: PontosAvaliacoes,
+                    as: 'avaliacoesRelacionadas',
+                    include: [{
+                        model: AvaliacoesPontos,
+                        as: 'avaliacaoDetalhe',
+                        attributes: [
+                            'nota',
+                            'comentario'
+                        ]
+                    }]
+                },
+                {
+                    model: CategoriasPontos,
+                    as: 'categoria',
+                    attributes: ['categoria']
+                },
+                {
+                    model: FotosPontos,
+                    as: 'fotosPontos',
+                    attributes: ['fotos']
+                }
+            ],
+            group: [
+                'pontos.id',
+                'categoria.id',
+                'categoria.categoria',
+                'fotosPontos.id'
+            ]
+        });
+
+        if (!ponto) { return res.status(404).send("Ponto not found"); }
+
+        // Calcula a média de avaliações
+        const avaliacoes = ponto.avaliacoesRelacionadas.map(a => a.avaliacaoDetalhe.nota);
+        const media = avaliacoes.length ? avaliacoes.reduce((acc, val) => acc + val, 0) / avaliacoes.length : 0;
+        
+        // Adiciona a média ao objeto ponto
+        const pontoComMedia = {
+            ...ponto.toJSON(),
+            media
+        };
+        res.json(pontoComMedia);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal error");
+    }
+});
+
+//ROTA PARA REDIRECIONAR PARA O BOOKING E CARREGAR INFORMAÇÕES NO FORM
+router.get('/reserva/:id', Auth, async function(req, res) {
+    try {
+        const pontoId = req.params.id;
+        const ponto = await PontosTuristicos.findOne({ where: { id: pontoId } });
+
+        if (!ponto) {
+            return res.status(404).send('Ponto turístico não encontrado');
+        }
+
+        const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
+        const loggedOut = !user;
+        console.log("Rota /reserva/:id acessada. Usuário:", user ? "Logado" : "Deslogado");
+
+        res.render("reserva", {
+            loggedOut: loggedOut,
+            ponto: ponto, // Passa o ponto para a view
+            session: req.session,
+            redirectTo: `/reserva/${pontoId}`
+        });
+    } catch (error) {
+        console.error("Erro ao buscar ponto turístico:", error);
+        res.status(500).send('Erro interno do servidor');
+    }
+});
+export default router;
+
+model comodidades.js
+import Sequelize from "sequelize";
+import connection from "../config/sequelize-config.js";
+
+const Comodidades = connection.define('comodidades',
+{
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    comodidade: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    tipoComodidade: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+});
+
+Comodidades.sync({force:false});
+export default Comodidades;
+
+model comodidadeXponto.js
+import Sequelize from "sequelize";
+import connection from "../config/sequelize-config.js";
+import Comodidades from "./comodidades.js";
+import PontosTuristicos from "./pontos.js";
+
+const ComodidadesPontos = connection.define('comodidadesXpontos',
+{
+    idComodidade: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            model: Comodidades,
+            key: 'id'
+        }
+    },
+    idPontoTuristico: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            model: PontosTuristicos,
+            key: 'id'
+        }
+    }
+});
+
+ComodidadesPontos.belongsTo(Comodidades, { foreignKey: 'idComodidade' });
+ComodidadesPontos.belongsTo(PontosTuristicos, { foreignKey: 'idPontoTuristico' });
+
+ComodidadesPontos.sync({ force: false });
+export default ComodidadesPontos;
+
+model pontos.js
+import Sequelize from "sequelize";
+import connection from "../config/sequelize-config.js";
+
+const PontosTuristicos = connection.define('pontos', 
+{
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    nomePonto:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    modalidade:{
+        type: Sequelize.INTEGER,
+        allowNull:false
+    },
+    valorEntrada:{
+        type: Sequelize.REAL(6,2),
+        allowNull:false
+    },
+    endRuaPonto:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endBairroPonto:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endNumPonto:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endCidadePonto:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endUfPonto:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endCepPonto:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endReferenciaPonto:{
+        type: Sequelize.STRING,
+        allowNull:false
+    },
+    endGeoLatPonto:{
+        type: Sequelize.DECIMAL(10, 8),
+        allowNull:true
+    },
+    endGeoLongePonto:{
+        type: Sequelize.DECIMAL(11, 8),
+        allowNull:true
+    },
+    profilePicPonto:{
+        type: Sequelize.STRING,
+        allowNull:true
+    }
+});
+
+PontosTuristicos.sync({force:false});
+export default PontosTuristicos;
+
+associations.js
+import PontosTuristicos from "./pontos.js";
+import GuiasDeTurismo from "./guias.js";
+import Turistas from "./turistas.js";
+import FotosGuias from "./fotosGuias.js";
+import FotosPontos from "./fotosPontos.js";
+import HorarioFuncionamento from "./horarioFunc.js";
+import Comodidades from "./comodidades.js";
+import AvaliacoesPontos from "./feedbackPonto.js";
+import AvaliacoesGuias from "./feedbackGuia.js";
+import PontosAvaliacoes from "./pontoAvaliado.js";
+import GuiasAvaliacoes from "./guiaAvaliado.js";
+import CategoriasPontos from "./categoriaXponto.js";
+import HorarioPonto from "./horarioXponto.js";
+import ComodidadesPontos from "./comodidadesXponto.js";
+
+/* \/----- Associações para Avaliações de Pontos Turísticos -----\/ */
+PontosTuristicos.hasMany(PontosAvaliacoes, { foreignKey: 'idPonto', as: 'avaliacoesRelacionadas' });
+PontosAvaliacoes.belongsTo(PontosTuristicos, { foreignKey: 'idPonto', as: 'pontoRelacionado' });
+
+PontosAvaliacoes.belongsTo(AvaliacoesPontos, { foreignKey: 'idAvaliacao', as: 'detalheAvaliacao' });
+AvaliacoesPontos.hasMany(PontosAvaliacoes, { foreignKey: 'idAvaliacao', as: 'pontosAvaliados' });
+/* /\----- Associações para Avaliações de Pontos Turísticos -----/\ */
+
+/* \/----- Associações para Avaliações de Guias de Turismo -----\/ */
+GuiasDeTurismo.hasMany(GuiasAvaliacoes, { foreignKey: 'idGuia' });
+GuiasAvaliacoes.belongsTo(GuiasDeTurismo, { foreignKey: 'idGuia' });
+
+AvaliacoesGuias.hasMany(GuiasAvaliacoes, { foreignKey: 'idAvaliacao' });
+GuiasAvaliacoes.belongsTo(AvaliacoesGuias, { foreignKey: 'idAvaliacao' });
+/* /\----- Associações para Avaliações de Guias de Turismo -----/\ */
+
+/* \/--------- Associação das avaliações dos turistas ---------\/ */
+Turistas.hasMany(AvaliacoesPontos, { foreignKey: 'idAvaliador' });
+AvaliacoesPontos.belongsTo(Turistas, { foreignKey: 'idAvaliador' });
+
+Turistas.hasMany(AvaliacoesGuias, { foreignKey: 'idAvaliador' });
+AvaliacoesGuias.belongsTo(Turistas, { foreignKey: 'idAvaliador' });
+/* /\--------- Associação das avaliações dos turistas ---------/\ */
+
+/* \/--------- Associações para Fotos de Pontos Turísticos ---------\/ */
+PontosTuristicos.hasMany(FotosPontos, { foreignKey: 'idPontoFotografado', as: 'fotosPontos' });
+FotosPontos.belongsTo(PontosTuristicos, { foreignKey: 'idPontoFotografado', as: 'pontoFotografado' });
+
+Turistas.hasMany(FotosPontos, { foreignKey: 'idFotografo' });
+FotosPontos.belongsTo(Turistas, { foreignKey: 'idFotografo' });
+/* /\--------- Associações para Fotos de Pontos Turísticos ---------/\ */
+
+/* \/--------- Associações para Fotos de Guias de Turismo ---------\/ */
+GuiasDeTurismo.hasMany(FotosGuias, { foreignKey: 'idGuiaFotografado' });
+FotosGuias.belongsTo(GuiasDeTurismo, { foreignKey: 'idGuiaFotografado' });
+
+Turistas.hasMany(FotosGuias, { foreignKey: 'idFotografo' });
+FotosGuias.belongsTo(Turistas, { foreignKey: 'idFotografo' });
+/* /\--------- Associações para Fotos de Guias de Turismo ---------/\ */
+
+/* \/--------- Associações para Pontos turisticos e suas Categorias ---------\/ */
+PontosTuristicos.belongsTo(CategoriasPontos, { foreignKey: 'modalidade', targetKey: 'id', as: 'categoria' });
+/* /\--------- Associações para Pontos turisticos e suas Categorias ---------/\ */
+
+/* \/--------- Associações para Pontos turisticos e seus Beneficios ---------\/ */
+PontosTuristicos.belongsToMany(Comodidades, { through: ComodidadesPontos, foreignKey: 'idPonto', otherKey: 'idComodidade', as: 'comodidades' });
+Comodidades.belongsToMany(PontosTuristicos, { through: ComodidadesPontos, foreignKey: 'idComodidade', otherKey: 'idPonto', as: 'pontosTuristicos' });
+/* /\--------- Associações para Pontos turisticos e seus Beneficios ---------/\ */
+
+/* \/--------- Associações para Pontos turisticos e seus Horários ---------\/ */
+PontosTuristicos.belongsToMany(HorarioFuncionamento, { through: HorarioPonto, foreignKey: 'idPontoTuristico', as: 'horarios' });
+HorarioFuncionamento.belongsToMany(PontosTuristicos, { through: HorarioPonto, foreignKey: 'idHorario', as: 'pontos' });
+/* /\--------- Associações para Pontos turisticos e seus Horários ---------/\ */
+
+index.js
+//https://codepen.io/jpdevries/pen/MoROzK?editors=1000
+
+//IMPORTANDO OS MODULOS
+import express from "express";
+import connection from "./config/sequelize-config.js";
+import session from "express-session";
+import flash from "express-flash";
+import multer from "multer";
+import path from "path";
+
+//INICIANDO O EXPRESS
+const app = express();
+
+app.use((req, res, next) => {
+    //console.log("Middleware: Tornando a sessão disponível em todas as views...");
+    res.locals.session = req.session;
+    next();
+});
+
+//CRIANDO AS CONEXÕES E CRIANDO O BANCO
+connection.authenticate().then(() => {
+    console.log("Conexão com o banco realizada com sucesso!")
+}).catch((error) => {
+    console.log(error)
+});
+connection.query(`CREATE DATABASE IF NOT EXISTS travelingMonkey;`).then(() => {
+    console.log("Banco de dados criado!")
+}).catch((error) => {
+    console.log(error)
+});
+
+//DEFINIÇÕES BÁSICAS
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+app.use(flash());
+app.use(session({
+    secret: "Iwazaru",
+    cookie: {maxAge: 86400000},
+    saveUninitialized: false,
+    resave: false
+}));
+
+//DEFININDO LOCAL DE ARMAZENAMENTO
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) { cb(null, 'public/imgs/uploads'); },
+    filename: function (req, file, cb) { cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); }
+});
+const upload = multer({ storage: storage });
+
+//IMPORTANDO OS CONTROLLERS E DEFININDO O USO DAS ROTAS
+import buscaController from "./controllers/buscaController.js";
+import buscaRapidaController from "./controllers/buscaRapidaController.js";
+import pontosController from "./controllers/pontosController.js"
+import profileController from "./controllers/profileController.js";
+import reservasController from "./controllers/reservasController.js";
+import usersController from "./controllers/usersController.js";
+
+app.use("/", buscaController);
+app.use("/", buscaRapidaController);
+app.use("/", pontosController);
+app.use("/", profileController);
+app.use("/", reservasController);
+app.use("/", usersController);
+
+//ROTA PRINCIPAL
+app.get("/home", function(req,res){
+    const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
+    const loggedOut = !user;
+    res.render("index", {
+        loggedOut: loggedOut
+    });
+});
+
+//INICIANDO O SERVIDOR
+app.listen(8080, function(erro){
+    if(erro){
+        console.log("Ocorreu um erro!")
+    } else {
+        console.log("Servidor iniciado com sucesso!")
+    }
+});
+
+index.ejs
+document.addEventListener('DOMContentLoaded', (event) => {
+        const modal = document.getElementById('myModal');
+        const span = document.getElementsByClassName('close')[0];
+        
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', async function() {
+                const pontoId = this.getAttribute('data-id');
+                const response = await fetch(`/ponto/${pontoId}`);
+                const ponto = await response.json();
+        
+                document.getElementById('modal-heading').innerText = ponto.nomePonto;
+                document.getElementById('modal-category').innerText = ponto.categoria ? ponto.categoria.categoria : 'Sem Categoria';
+                
+                // Acessa a média das avaliações
+                const media = Math.round(ponto.media);
+                document.getElementById('modal-stars').innerHTML = Array(media).fill('<i class="fas fa-star"></i>').join('');
+        
+                document.querySelector('.modal-galerie').innerHTML = ponto.fotosPontos.map(
+                    imagem => `<img src="/imgs/uploads/${imagem.fotos}" alt="Imagem do Ponto">`).join('');
+        
+                const pontosInfos = document.querySelector('.reservasInfos');
+                pontosInfos.innerHTML = `
+                    <div class = "infosPonto">
+                        <label>ENDEREÇO:</label>
+                        <span>${ponto.endRuaPonto}, ${ponto.endNumPonto} - ${ponto.endBairroPonto}</span>
+                        <label>REFERÊNCIA:</label>
+                        <span>${ponto.endReferenciaPonto}</span>
+                        <label>CIDADE:</label>
+                        <span>${ponto.endCidadePonto}/${ponto.endUfPonto} - ${ponto.endCepPonto}</span>
+                        <label>GEOLOCALIZAÇÃO:</label>
+                        <span>${ponto.endGeoLatPonto}, ${ponto.endGeoLongePonto}</span>
+                        <label>VALOR DA ENTRADA:</label>
+                        <span>${ponto.valorEntrada.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span>
+                    </div>
+                    <div class="infosAddPontos">
+                        <div class="benficios">
+                            
+                        </div>
+                        <div class="btnReservarPonto">
+                            <a href="/reserva/${ponto.id}">RESERVAR</a>
+                        </div>
+                    </div>
+                `;        
+                modal.style.display = 'block';
+            });
+        });
+    
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+    
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    });
+
+eu gostaria de carregar a lista de comodidades referente a cada ponto turístico dentro da div "<div class="benficios"></div>"

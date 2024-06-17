@@ -163,7 +163,7 @@ create table comodidades (
     tipoComodidade varchar(100) not null
 );
 
-select * from guias;
+select * from comodidadesxpontos;
 
 INSERT INTO Comodidades (comodidade, tipoComodidade) VALUES
 ('Rampa de Acesso', 'Acessibilidade'),
@@ -195,6 +195,58 @@ INSERT INTO Comodidades (comodidade, tipoComodidade) VALUES
 ('Cafeteria', 'Serviços'),
 ('Área de Piquenique', 'Infraestrutura');
 
+#Associação para Parque Estadual Turístico do Alto Ribeira (PETAR)
+INSERT INTO ComodidadesXPontos (idComodidade, idPontoTuristico) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(5, 1),
+(8, 1),
+#Associação para Caverna do Diabo
+(1, 2),
+(4, 2),
+(6, 2),
+(10, 2),
+#Associação para Ilha do Cardoso
+(19, 3),
+(22, 3),
+(26, 3),
+#Associação para Reserva Legado das Águas
+(1, 4),
+(6, 4),
+(7, 4),
+(20, 4),
+#Associação para Parque Estadual Ilha do Cardoso
+(9, 5),
+(21, 5),
+(23, 5),
+#Associação para Centro Histórico de Iguape
+(11, 6),
+(13, 6),
+(25, 6),
+#Associação para Quilombo Ivaporunduva
+(3, 7),
+(5, 7),
+(16, 7),
+#Associação para Cachoeira do Meu Deus
+(12, 8),
+(14, 8),
+(17, 8),
+#Associação para Museu Histórico e Arqueológico de Iguape
+(4, 9),
+(18, 9),
+#Associação para Mirante do Morro do Espia
+(2, 10),
+(8, 10),
+#Associação para Cachoeira da Usina
+(22, 11),
+(24, 11),
+#Associação para Parque Turístico Rocha do Itapu
+(15, 12),
+(27, 12),
+#Associação para Praia do Meio
+(21, 13),
+(23, 13);
 
 
 

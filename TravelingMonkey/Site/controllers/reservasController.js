@@ -24,6 +24,7 @@ import AvaliacoesGuias from "../models/feedbackGuia.js";
 import GuiasAvaliacoes from "../models/guiaAvaliado.js";
 import CategoriasPontos from "../models/categoriaXponto.js";
 import "../models/associations.js";
+import Comodidades from "../models/comodidades.js";
 /* /\---------- TABLES ----------/\ */
 const router = express.Router();
 

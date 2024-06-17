@@ -735,9 +735,9 @@ legend {
 .dates {
     display: grid;
     grid-template:
-        "dateLabelIn dateLabelOut" 40%
-        "dateInputIn dateInputOut" 45%
-        / 1fr 1fr
+        "dateLabelIn" 40%
+        "dateInputIn" 45%
+        / 1fr
     ;
     border-right: dashed 1px;
     margin-right: 5px;

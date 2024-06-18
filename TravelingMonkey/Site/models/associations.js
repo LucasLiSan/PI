@@ -1,6 +1,7 @@
 import PontosTuristicos from "./pontos.js";
 import GuiasDeTurismo from "./guias.js";
 import Turistas from "./turistas.js";
+import Cidades from "./cidades.js";
 import FotosGuias from "./fotosGuias.js";
 import FotosPontos from "./fotosPontos.js";
 import HorarioFuncionamento from "./horarioFunc.js";
@@ -12,6 +13,7 @@ import GuiasAvaliacoes from "./guiaAvaliado.js";
 import CategoriasPontos from "./categoriaXponto.js";
 import HorarioPonto from "./horarioXponto.js";
 import ComodidadesPontos from "./comodidadesXponto.js";
+import Atracoes from "./cidadesXpontos.js";
 
 /* \/----- Associações para Avaliações de Pontos Turísticos -----\/ */
 PontosTuristicos.hasMany(PontosAvaliacoes, { foreignKey: 'idPonto', as: 'avaliacoesRelacionadas' });
@@ -58,11 +60,38 @@ PontosTuristicos.belongsTo(CategoriasPontos, { foreignKey: 'modalidade', targetK
 /* /\--------- Associações para Pontos turisticos e suas Categorias ---------/\ */
 
 /* \/--------- Associações para Pontos turisticos e seus Beneficios ---------\/ */
-PontosTuristicos.belongsToMany(Comodidades, { through: ComodidadesPontos, foreignKey: 'idPonto', otherKey: 'idComodidade', as: 'comodidades' });
-Comodidades.belongsToMany(PontosTuristicos, { through: ComodidadesPontos, foreignKey: 'idComodidade', otherKey: 'idPonto', as: 'pontosTuristicos' });
+PontosTuristicos.belongsToMany(Comodidades, { 
+    through: ComodidadesPontos,
+    foreignKey: 'idPontoTuristico',
+    otherKey: 'idComodidade',
+    as: 'comodidades'
+});
+
+Comodidades.belongsToMany(PontosTuristicos, {
+    through: ComodidadesPontos,
+    foreignKey: 'idComodidade',
+    otherKey: 'idPontoTuristico',
+    as: 'pontosTuristicos'
+});
 /* /\--------- Associações para Pontos turisticos e seus Beneficios ---------/\ */
 
 /* \/--------- Associações para Pontos turisticos e seus Horários ---------\/ */
 PontosTuristicos.belongsToMany(HorarioFuncionamento, { through: HorarioPonto, foreignKey: 'idPontoTuristico', as: 'horarios' });
 HorarioFuncionamento.belongsToMany(PontosTuristicos, { through: HorarioPonto, foreignKey: 'idHorario', as: 'pontos' });
 /* /\--------- Associações para Pontos turisticos e seus Horários ---------/\ */
+
+/* \/--------- Associações para Pontos turisticos com suas Cidades ---------\/ */
+PontosTuristicos.belongsToMany(Cidades, { 
+    through: Atracoes,
+    foreignKey: 'idPonto',
+    otherKey: 'idCidade',
+    as: 'atracoes'
+});
+
+Cidades.belongsToMany(PontosTuristicos, {
+    through: Atracoes,
+    foreignKey: 'idCidade',
+    otherKey: 'idPonto',
+    as: 'atracoesCidade'
+});
+/* /\--------- Associações para Pontos turisticos com suas Cidades ---------/\ */

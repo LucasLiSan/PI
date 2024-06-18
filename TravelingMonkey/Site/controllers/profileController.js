@@ -46,6 +46,15 @@ router.get("/profileUser", Auth, async (req, res) => {
             }
         });
 
+        const atracoesCulturais = await Atracoes.findAll({
+            where: { idCidade: user.id},
+            include: {
+                model: PontosTuristicos,
+                as: 'atracoes'
+            }
+            
+        });
+
         const fotosPontos = await FotosPontos.findAll({
             where: { idFotografo: user.id },
             include: {
@@ -60,7 +69,8 @@ router.get("/profileUser", Auth, async (req, res) => {
             loggedOut: loggedOut,
             messages: req.flash(),
             PontosTuristicos: pontosTuristicos,
-            FotosPontos: fotosPontos
+            FotosPontos: fotosPontos,
+            atracoesCulturais : Atracoes
         });
     } catch (err) {
         console.error("Erro ao buscar Pontos Turisticos:", err);

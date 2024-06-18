@@ -27,5 +27,4 @@ HorarioPonto.belongsTo(HorarioFuncionamento, { foreignKey: 'idHorario' });
 HorarioPonto.belongsTo(PontosTuristicos, { foreignKey: 'idPontoTuristico' });
 
 HorarioPonto.sync({ force: false });
-
 export default HorarioPonto;

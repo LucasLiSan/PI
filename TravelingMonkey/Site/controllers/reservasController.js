@@ -89,12 +89,22 @@ router.get('/home', async function(req, res) {
                     model: CategoriasPontos,
                     as: 'categoria',
                     attributes: ['categoria']
+                },
+                {
+                    model: Comodidades,
+                    as: 'comodidades',
+                    attributes: [
+                        'comodidade',
+                        'tipoComodidade'
+                    ],
+                    through: { attributes: [] }
                 }
             ],
             group: [
                 'pontos.id',
                 'categoria.id',
-                'categoria.categoria'
+                'categoria.categoria',
+                'comodidades.id'
             ]
         });
         res.render("index", {
@@ -135,13 +145,23 @@ router.get('/ponto/:id', async function(req, res) {
                     model: FotosPontos,
                     as: 'fotosPontos',
                     attributes: ['fotos']
+                },
+                {
+                    model: Comodidades,
+                    as: 'comodidades',
+                    attributes: [
+                        'comodidade',
+                        'tipoComodidade'
+                    ],
+                    through: { attributes: [] }
                 }
             ],
             group: [
                 'pontos.id',
                 'categoria.id',
                 'categoria.categoria',
-                'fotosPontos.id'
+                'fotosPontos.id',
+                'comodidades.id'
             ]
         });
 

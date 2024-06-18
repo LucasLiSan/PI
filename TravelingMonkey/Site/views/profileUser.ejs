@@ -9,8 +9,7 @@
             <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel+Decorative:wght@400;700;900&family=Eagle+Lake&family=Prata&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-            <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-            <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
             <script src="/js/script.js"></script>
 			<title>Traveling Monkey</title>
 		</head>
@@ -413,47 +412,47 @@
 										<div class="descPontosList">
 											<textarea rows="3" cols="10" class="editable" type="text" name="nomePonto" id="" value="<%= pontos.nomePonto %>" disabled><%= pontos.nomePonto %></textarea>
 											<select class="editable" name="modalidade" id="modalidadeTuristica" disabled>
-												<option value="1">Locais históricos</option>
-												<option value="2">Museus e galerias de arte</option>
-												<option selected value="3">Eventos culturais</option>
-												<option value="4">Arte pública</option>
-												<option value="5">Comunidades étnicas</option>
-												<option value="6">Turismo industrial</option>
-												<option value="7">Turismo criativo</option>
-												<option value="8">Edifícios e estruturas</option>
-												<option value="9">Castelos e fortes</option>
-												<option value="10">Templos antigos</option>
-												<option value="11">Pontes e arranha-céus</option>
-												<option value="12">Restaurantes e bares</option>
-												<option value="13">Feiras e mercados</option>
-												<option value="14">Eventos gastronômicos</option>
-												<option value="15">Parques temáticos</option>
-												<option value="16">Parques aquáticos</option>
-												<option value="17">Carnavais</option>
-												<option value="18">Praias</option>
-												<option value="19">Montanhas</option>
-												<option value="20">Desertos</option>
-												<option value="21">Florestas</option>
-												<option value="22">Parques nacionais</option>
-												<option value="23">Jardins botânicos</option>
-												<option value="24">Eventos esportivos</option>
-												<option value="25">Corrida de Fórmula 1</option>
-												<option value="26">Regatas de vela</option>
-												<option value="27">Centros comerciais</option>
-												<option value="28">Feiras de artesanato</option>
-												<option value="29">Mercados de rua</option>
-												<option value="30">Lojas de fábrica</option>
-												<option value="31">Trens históricos</option>
-												<option value="32">Zoológicos</option>
-												<option value="33">Aquários</option>
-												<option value="34">Bibliotecas</option>
-												<option value="35">Antigas prisões</option>
-												<option value="36">Museus de história viva</option>
-												<option value="37">Oficinas de artesanato</option>
-												<option value="38">Shows e concertos</option>
-												<option value="39">Feiras e exposições</option>
-												<option value="40">Eventos religiosos</option>
-												<option value="41">Turismo em cavernas</option>
+												<option value="1" <%= pontos.modalidade == 1 ? 'selected' : '' %>>Locais históricos</option>
+												<option value="2" <%= pontos.modalidade == 2 ? 'selected' : '' %>>Museus e galerias de arte</option>
+												<option value="3" <%= pontos.modalidade == 3 ? 'selected' : '' %>>Eventos culturais</option>
+												<option value="4" <%= pontos.modalidade == 4 ? 'selected' : '' %>>Arte pública</option>
+												<option value="5" <%= pontos.modalidade == 5 ? 'selected' : '' %>>Comunidades étnicas</option>
+												<option value="6" <%= pontos.modalidade == 6 ? 'selected' : '' %>>Turismo industrial</option>
+												<option value="7" <%= pontos.modalidade == 7 ? 'selected' : '' %>>Turismo criativo</option>
+												<option value="8" <%= pontos.modalidade == 8 ? 'selected' : '' %>>Edifícios e estruturas</option>
+												<option value="9" <%= pontos.modalidade == 9 ? 'selected' : '' %>>Castelos e fortes</option>
+												<option value="10" <%= pontos.modalidade == 10 ? 'selected' : '' %>>Templos antigos</option>
+												<option value="11" <%= pontos.modalidade == 11 ? 'selected' : '' %>>Pontes e arranha-céus</option>
+												<option value="12" <%= pontos.modalidade == 12 ? 'selected' : '' %>>Restaurantes e bares</option>
+												<option value="13" <%= pontos.modalidade == 13 ? 'selected' : '' %>>Feiras e mercados</option>
+												<option value="14" <%= pontos.modalidade == 14 ? 'selected' : '' %>>Eventos gastronômicos</option>
+												<option value="15" <%= pontos.modalidade == 15 ? 'selected' : '' %>>Parques temáticos</option>
+												<option value="16" <%= pontos.modalidade == 16 ? 'selected' : '' %>>Parques aquáticos</option>
+												<option value="17" <%= pontos.modalidade == 17 ? 'selected' : '' %>>Carnavais</option>
+												<option value="18" <%= pontos.modalidade == 18 ? 'selected' : '' %>>Praias</option>
+												<option value="19" <%= pontos.modalidade == 19 ? 'selected' : '' %>>Montanhas</option>
+												<option value="20" <%= pontos.modalidade == 20 ? 'selected' : '' %>>Desertos</option>
+												<option value="21" <%= pontos.modalidade == 21 ? 'selected' : '' %>>Florestas</option>
+												<option value="22" <%= pontos.modalidade == 22 ? 'selected' : '' %>>Parques nacionais</option>
+												<option value="23" <%= pontos.modalidade == 23 ? 'selected' : '' %>>Jardins botânicos</option>
+												<option value="24" <%= pontos.modalidade == 24 ? 'selected' : '' %>>Eventos esportivos</option>
+												<option value="25" <%= pontos.modalidade == 25 ? 'selected' : '' %>>Corrida de Fórmula 1</option>
+												<option value="26" <%= pontos.modalidade == 26 ? 'selected' : '' %>>Regatas de vela</option>
+												<option value="27" <%= pontos.modalidade == 27 ? 'selected' : '' %>>Centros comerciais</option>
+												<option value="28" <%= pontos.modalidade == 28 ? 'selected' : '' %>>Feiras de artesanato</option>
+												<option value="29" <%= pontos.modalidade == 29 ? 'selected' : '' %>>Mercados de rua</option>
+												<option value="30" <%= pontos.modalidade == 30 ? 'selected' : '' %>>Lojas de fábrica</option>
+												<option value="31" <%= pontos.modalidade == 31 ? 'selected' : '' %>>Trens históricos</option>
+												<option value="32" <%= pontos.modalidade == 32 ? 'selected' : '' %>>Zoológicos</option>
+												<option value="33" <%= pontos.modalidade == 33 ? 'selected' : '' %>>Aquários</option>
+												<option value="34" <%= pontos.modalidade == 34 ? 'selected' : '' %>>Bibliotecas</option>
+												<option value="35" <%= pontos.modalidade == 35 ? 'selected' : '' %>>Antigas prisões</option>
+												<option value="36" <%= pontos.modalidade == 36 ? 'selected' : '' %>>Museus de história viva</option>
+												<option value="37" <%= pontos.modalidade == 37 ? 'selected' : '' %>>Oficinas de artesanato</option>
+												<option value="38" <%= pontos.modalidade == 38 ? 'selected' : '' %>>Shows e concertos</option>
+												<option value="39" <%= pontos.modalidade == 39 ? 'selected' : '' %>>Feiras e exposições</option>
+												<option value="40" <%= pontos.modalidade == 40 ? 'selected' : '' %>>Eventos religiosos</option>
+												<option value="41" <%= pontos.modalidade == 41 ? 'selected' : '' %>>Turismo em cavernas</option>
 											</select>
 										</div>
 										<a class="verMais" href="javascript:;" onmousedown="toggleDiv('cardPontosCadastrados-<%= pontos.id %>');">Ver mais</a>
@@ -547,4 +546,92 @@
 					</div>
 				</div>
 			</div>
+			<script>
+				//PROFILE USER - CONFIG/GALERIA/CONFIGURAÇÕES
+				function showPage(pageId, element) {
+					// Ocultar todas as páginas
+					document.querySelectorAll('.profileContainer, .galerieContainer, .settingsContainer').forEach(function(page) {
+					page.style.display = 'none';
+					});
+
+					// Remover a classe active de todos os links
+					document.querySelectorAll('.url a').forEach(function(link) {
+					link.classList.remove('active');
+					});
+
+					// Exibir a página selecionada
+					document.getElementById(pageId).style.display = pageId === 'galeriaPage' ? 'grid' : 'flex';
+
+					// Adicionar a classe active ao link clicado
+					element.classList.add('active');
+				}
+
+				// Exibir a página inicial (perfilPage) por padrão
+				document.getElementById('perfilPage').style.display = 'flex';
+
+				//MODAL FORM CADASTRO NOVO PONTO
+				var modalPonto = document.getElementById("myModalNewPonto");
+				var btnNewPonto = document.getElementById("btnNewPonto");
+				var spanNewPonto = document.getElementsByClassName("closeModalPonto")[0];
+
+				btnNewPonto.onclick = function() {
+					modalPonto.style.display = "block";
+				}
+
+				spanNewPonto.onclick = function() {
+					modalPonto.style.display = "none";
+				}
+
+				window.onclick = function(event) {
+					if (event.target == modalPonto) {
+						modalPonto.style.display = "none";
+					}
+				}
+				document.addEventListener('DOMContentLoaded', function() {
+					var editBtnPersonal = document.getElementById('editBtnPersonal');
+					if (editBtnPersonal) {
+						editBtnPersonal.addEventListener('click', function() {
+							console.log('Botão de edição clicado');
+							// Seleciona todas as divs que contêm os inputs dos perfis
+							var profileDivs = document.querySelectorAll('.cardProfileTuristas');
+
+							profileDivs.forEach(function(div) {
+								// Seleciona apenas os inputs e o botão de submit com a classe 'editable' dentro da div atual
+								var editableElements = div.querySelectorAll('.editable');
+
+								editableElements.forEach(function(element) {
+									// Habilita o input ou botão de submit
+									element.disabled = false;
+								});
+							});
+						});
+					} else {
+						console.log('Botão de edição não encontrado');
+					}
+				});
+
+				document.getElementById('editBtnInfos').addEventListener('click', function() {
+					// Seleciona todas as divs que contêm os inputs dos perfis
+					var profileDivs = document.querySelectorAll('.cardHistory');
+
+					profileDivs.forEach(function(div) {
+						// Seleciona apenas os inputs e o botão de submit com a classe 'editable' dentro da div atual
+						var editableElements = div.querySelectorAll('.editable');
+
+						editableElements.forEach(function(element) {
+							// Habilita o input ou botão de submit
+							element.disabled = false;
+						});
+					});
+				});
+
+				//EXPANDIR DIV
+                function toggleDiv(divid){
+                    if(document.getElementById(divid).style.display == 'none'){
+                        document.getElementById(divid).style.display = 'flex';
+                    }else{
+                        document.getElementById(divid).style.display = 'none';
+                    }
+                }
+			</script>
 			<%- include ('partials/footer.ejs') %>

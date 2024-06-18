@@ -77,6 +77,14 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
                                                     <i class="far fa-star"></i>
                                                 <% } %>
                                         </div>
+                                        <div class="comodidade">
+                                            <i class="fas fa-wheelchair" title="Acessibilidade" style="display: <%= ponto.comodidades.some(c => c.tipoComodidade === 'Acessibilidade') ? 'block' : 'none' %>;"></i>
+                                            <i class="fas fa-child" title="Crianças" style="display: <%= ponto.comodidades.some(c => c.tipoComodidade === 'Crianças') ? 'block' : 'none' %>;"></i>
+                                            <i class="fas fa-paw" title="Pets" style="display: <%= ponto.comodidades.some(c => c.tipoComodidade === 'Pets') ? 'block' : 'none' %>;"></i>
+                                            <i class="fas fa-stethoscope" title="Saúde" style="display: <%= ponto.comodidades.some(c => c.tipoComodidade === 'Saúde') ? 'block' : 'none' %>;"></i>
+                                            <i class="fas fa-building" title="Infraestrutura" style="display: <%= ponto.comodidades.some(c => c.tipoComodidade === 'Infraestrutura') ? 'block' : 'none' %>;"></i>
+                                            <i class="fas fa-cogs" title="Serviços" style="display: <%= ponto.comodidades.some(c => c.tipoComodidade === 'Serviços') ? 'block' : 'none' %>;"></i>
+                                        </div>
                                     </div>
                                 </a>
                             </div>
@@ -167,8 +175,20 @@ welcome https://codepen.io/thebabydino/pen/DmVqBM
                         <span>${ponto.valorEntrada.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span>
                     </div>
                     <div class="infosAddPontos">
-                        <div class="benficios">
-                            
+                        <div class="beneficios">
+                            <div class="comodidades">
+                                <i class="fas fa-wheelchair" title="Acessibilidade" style="display: ${ponto.comodidades.some(c => c.tipoComodidade === 'Acessibilidade') ? 'block' : 'none'};"></i>
+                                <i class="fas fa-child" title="Crianças" style="display: ${ponto.comodidades.some(c => c.tipoComodidade === 'Crianças') ? 'block' : 'none'};"></i>
+                                <i class="fas fa-paw" title="Pets" style="display: ${ponto.comodidades.some(c => c.tipoComodidade === 'Pets') ? 'block' : 'none'};"></i>
+                                <i class="fas fa-stethoscope" title="Saúde" style="display: ${ponto.comodidades.some(c => c.tipoComodidade === 'Saúde') ? 'block' : 'none'};"></i>
+                                <i class="fas fa-building" title="Infraestrutura" style="display: ${ponto.comodidades.some(c => c.tipoComodidade === 'Infraestrutura') ? 'block' : 'none'};"></i>
+                                <i class="fas fa-cogs" title="Serviços" style="display: ${ponto.comodidades.some(c => c.tipoComodidade === 'Serviços') ? 'block' : 'none'};"></i>
+                            </div>
+                            <div class="comodidadesLista">
+                                <ul>
+                                    ${ponto.comodidades.map(c => `<li>${c.comodidade}</li>`).join('')}
+                                </ul>
+                            </div>
                         </div>
                         <div class="btnReservarPonto">
                             <a href="/reserva/${ponto.id}">RESERVAR</a>

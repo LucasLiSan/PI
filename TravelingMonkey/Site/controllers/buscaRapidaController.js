@@ -60,9 +60,9 @@ router.get('/pontos', function(req, res) {
 router.get('/guias', function(req, res) {
     const user = req.session.userCidade || req.session.userGuia || req.session.userTurista;
     const loggedOut = !user;
-    PontosTuristicos.findAll().then(pontos => {
+    GuiasDeTurismo.findAll().then(guias => {
         res.render("guias", {
-            pontos: pontos,
+            guias: guias,
             loggedOut: loggedOut
         });
     });

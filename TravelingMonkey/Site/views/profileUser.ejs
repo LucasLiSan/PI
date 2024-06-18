@@ -63,7 +63,36 @@
 				</div>
 			</div>
 			<div id="settingsPage" class="settingsContainer" style="display: none;">
-
+				<div class="cardProfileSettings">
+					<div class="cardProfileTitle">
+						<% if (session.userCidade) { %>
+							<h2>Configurações: <%= session.userCidade.nome %></h2>
+						<% } else if (session.userGuia) { %>
+							<h2>Configurações: <%= session.userGuia.nome %></h2>
+						<% } else if (session.userTurista) { %>
+							<h2>Configurações: <%= session.userTurista.nome %></h2>
+						<% } %>
+					</div>
+					<% Object.keys(session).forEach(key => { %>
+						<% if (key.startsWith('user')) { %>
+							<% if (session.userCidade) { %>
+								<form class="Settings" method="POST" action="/profileUser/deletePerfil/<%= session.userCidade.id %>">
+									<input type="text" name="user" value="cidade" hidden>
+									<input type="text" name="id" value="<%= session[key].id %>" hidden>
+							<% } else if (session.userGuia) { %>
+								<form class="Settings" method="POST" action="/profileUser/deletePerfil/<%= session.userGuia.id %>">
+									<input type="text" name="user" value="guia" hidden>
+									<input type="text" name="id" value="<%= session[key].id %>" hidden>
+							<% } else if (session.userTurista) { %>
+								<form class="Settings" method="POST" action="/profileUser/deletePerfil/<%= session.userTurista.id %>">
+									<input type="text" name="user" value="turista" hidden>
+									<input type="text" name="id" value="<%= session[key].id %>" hidden>
+							<% } %>
+									<input class="btnAtt editable" type="submit" value="EXCLUIR CONTA" onclick="return confirm('Tem certezaque deseja excluir sua conta?')">
+								</form>
+						<% } %>
+					<% }); %>
+				</div>
 			</div>
 			<div id="galeriaPage" class="galerieContainer" style="display: none;">
 				<h1>GALERIA DE FOTOS</h1>
@@ -86,8 +115,8 @@
                                         <div class="form-group">
                                             <span class="form-label">Local</span>
                                             <select class="form-control" name="idPontoFotografado" id="idPontoFotografado">
-												<% PontosTuristicos.forEach(pontos => { %>
-													<option value="<%= pontos.id %>"><%= pontos.nomePonto %></option>
+												<% ListaPontos.forEach(ponto => { %>
+													<option value="<%= ponto.id %>"><%= ponto.nomePonto %></option>
 												<%}) %>
 											</select>
                                         </div>
@@ -289,7 +318,7 @@
 									</div>
 								<% } %>
 							<% }); %>
-						</div>                     
+						</div>
 					</div>
 					<div class="cardProfileBody-Infos">
 						<div class="cardProfileTitle">
@@ -462,7 +491,7 @@
 											<fieldset class="verMaisFieldSetAdicionais">
 												<legend>ADICIONAIS: <%= pontos.nomePonto %></legend>
 													<label for="valorEntrada">VALOR DA ENTRADA:</label>
-													<input class="editable" type="text" name="valorEntrada" value="<%= pontos.valorEntrada %>" disabled>
+													<input class="editable" type="text" name="valorEntrada" value="<%= pontos.valorEntrada.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>" disabled>
 													<label for="endRuaPonto">Rua:</label>
 													<input class="editable"type="text" name="endRuaPonto" value="<%= pontos.endRuaPonto %>" disabled>
 													<label for="endBairroPonto">Bairro:</label>
@@ -502,6 +531,7 @@
 										</div>
 										<div class="btnAttPontos">
 											<input class="btnAtualizar editable" type="submit" value="ATUALIZAR" disabled>
+											<input class="btnDeletar editable" type="submit" value="EXCLUIR" disabled>
 										</div>
 									</form>
 								<% }) %>
@@ -587,37 +617,33 @@
 						modalPonto.style.display = "none";
 					}
 				}
-				document.addEventListener('DOMContentLoaded', function() {
-					var editBtnPersonal = document.getElementById('editBtnPersonal');
-					if (editBtnPersonal) {
-						editBtnPersonal.addEventListener('click', function() {
-							console.log('Botão de edição clicado');
-							// Seleciona todas as divs que contêm os inputs dos perfis
-							var profileDivs = document.querySelectorAll('.cardProfileTuristas');
 
-							profileDivs.forEach(function(div) {
-								// Seleciona apenas os inputs e o botão de submit com a classe 'editable' dentro da div atual
-								var editableElements = div.querySelectorAll('.editable');
-
-								editableElements.forEach(function(element) {
-									// Habilita o input ou botão de submit
-									element.disabled = false;
-								});
-							});
+				document.getElementById('editBtnPersonal').addEventListener('click', function() {
+					var profileDivs = document.querySelectorAll('.cardProfileTuristas');
+					profileDivs.forEach(function(div) {
+						var editableElements = div.querySelectorAll('.editable');
+						editableElements.forEach(function(element) {
+							// Habilita o input ou botão de submit
+							element.disabled = false;
 						});
-					} else {
-						console.log('Botão de edição não encontrado');
-					}
+					});
 				});
 
 				document.getElementById('editBtnInfos').addEventListener('click', function() {
-					// Seleciona todas as divs que contêm os inputs dos perfis
 					var profileDivs = document.querySelectorAll('.cardHistory');
-
 					profileDivs.forEach(function(div) {
-						// Seleciona apenas os inputs e o botão de submit com a classe 'editable' dentro da div atual
 						var editableElements = div.querySelectorAll('.editable');
+						editableElements.forEach(function(element) {
+							// Habilita o input ou botão de submit
+							element.disabled = false;
+						});
+					});
+				});
 
+				document.getElementById('editBtnSettings').addEventListener('click', function() {
+					var profileDivs = document.querySelectorAll('.Sets');
+					profileDivs.forEach(function(div) {
+						var editableElements = div.querySelectorAll('.editable');
 						editableElements.forEach(function(element) {
 							// Habilita o input ou botão de submit
 							element.disabled = false;

@@ -17,9 +17,6 @@ import PontosTuristicos from "../models/pontos.js";
 import HorarioFuncionamento from "../models/horarioFunc.js";
 import FotosPontos from "../models/fotosPontos.js";
 import Atracoes from "../models/cidadesXpontos.js";
-import PontosFotografados from "../models/fotosXPontoFotografados.js";
-import CategoriasPontos from "../models/categoriaXponto.js";
-import HorarioPonto from "../models/horarioXponto.js";
 import "../models/associations.js";
 /* /\---------- TABLES ----------/\ */
 const router = express.Router();
@@ -39,27 +36,25 @@ router.get("/profileUser", Auth, async (req, res) => {
     const loggedOut = !user;
 
     try {
-        const pontosTuristicos = await PontosTuristicos.findAll({
-            include: {
-                model: HorarioFuncionamento,
-                as: 'horarios' // Alias para os horários de funcionamento
-            }
-        });
+        const listagemPontos = await PontosTuristicos.findAll();
 
         const atracoesCulturais = await Atracoes.findAll({
-            where: { idCidade: user.id},
+            where: { idCidade: user.id },
             include: {
                 model: PontosTuristicos,
-                as: 'atracoes'
+                as: 'atracoes',
+                include: {
+                    model: HorarioFuncionamento,
+                    as: 'horarios'
+                }
             }
-            
         });
 
         const fotosPontos = await FotosPontos.findAll({
             where: { idFotografo: user.id },
             include: {
                 model: PontosTuristicos,
-                as: 'pontoFotografado', // Alias usado na associação
+                as: 'pontoFotografado',
             }
         });
 
@@ -68,9 +63,9 @@ router.get("/profileUser", Auth, async (req, res) => {
             user: user,
             loggedOut: loggedOut,
             messages: req.flash(),
-            PontosTuristicos: pontosTuristicos,
             FotosPontos: fotosPontos,
-            atracoesCulturais : Atracoes
+            ListaPontos : listagemPontos,
+            PontosTuristicos: atracoesCulturais.map(a => a.atracoes),
         });
     } catch (err) {
         console.error("Erro ao buscar Pontos Turisticos:", err);
@@ -208,6 +203,29 @@ router.post("/profileUser/update/:id", (req, res) => {
         req.flash('danger', 'Tipo de usuário inválido.');
         res.redirect("/profileUser");
     }
+});
+
+router.post("/profileUser/deletePerfil/:id", async (req, res) => {
+    const id = req.params.id;
+    const user = req.body.user;
+    if (user === "cidade") {
+        Cidades.destroy({
+            where: { id: id }
+        });
+        req.flash('success', 'Perfil deletado com sucesso.');
+    } else if (user === "guia") {
+        GuiasDeTurismo.destroy({
+            where: { id: id }
+        });
+        req.flash('success', 'Perfil deletado com sucesso.');
+
+    } else if (user === "turista") {
+        Turistas.destroy({
+            where: { id: id }
+        });
+        req.flash('success', 'Perfil deletado com sucesso.');
+    }
+    res.redirect("/login");
 });
 /* /\---------- ROTAS PARA TRATAMENTO DE INFORMAÇÕES BÁSICAS DOS PERFIS ----------/\ */
 export default router;

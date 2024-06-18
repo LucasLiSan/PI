@@ -241,6 +241,7 @@ router.post("/auth", (req, res) => {
                         uf : userCidade.ufCidade,
                         telefone : userCidade.telOrgRespCidade,
                         email : userCidade.emailOrgRespCidade,
+                        senha : userCidade.passwordCidade,
                         pic: userCidade.profilePicCidade
                     }
                     req.flash('success', `Login efetuado com sucesso! Bem-Vindo ${req.session.userCidade['nome']}`);
@@ -265,6 +266,7 @@ router.post("/auth", (req, res) => {
                     req.session.userGuia = {
                         id : userGuia.id,
                         email : userGuia.emailGuia,
+                        senha : userGuia.passwordGuia,
                         cadastro : userGuia.cadGuia,
                         motorista : userGuia.motorGuia,
                         language : userGuia.idiomaGuia,
@@ -306,6 +308,7 @@ router.post("/auth", (req, res) => {
                         uf : userTurista.endUfTurista,
                         language : userTurista.idiomaTurista,
                         telefone : userTurista.telTurista,
+                        senha : userTurista.passwordTurista,
                         pic: userTurista.profilePicTurista
                     }
                     req.flash('success', `Login efetuado com sucesso! Bem-Vindo ${req.session.userTurista['nome']}`);

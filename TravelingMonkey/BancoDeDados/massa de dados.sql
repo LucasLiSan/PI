@@ -2,6 +2,23 @@ use travelingmonkey;
 #drop database travelingmonkey;
 select * from pontos;
 select * from cidades;
+select * from cidadesxpontos;
+
+insert into cidadesxpontos (idCidade, idPonto) values
+#3	Cananéia
+#4	Eldorado
+#5	Iguape
+#6	Iporanga
+#7	Miracatu
+#8	Ribeirão Grande
+(3,3),(3,5),(3,10),(3,14),
+(4,2),(4,5),(4,10),
+(5,6),(5,9),
+(6,1),(6,7),(6,8),
+(7,4),
+(8,15);
+
+
 
 INSERT INTO horarioFuncionas (diaDaSemana, situacao, horaAbre, horaAlmocoIda, horaAlmocoVolta, horaFecha) VALUES
 ('Segunda-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
@@ -32,7 +49,9 @@ INSERT INTO horarioXpontos (idHorario, idPontoTuristico) VALUES
 (1, 10),(2, 10),(3, 10),(4, 10),(5, 10),(6, 10),(7, 10),
 (8,11),(9,11),(10,11),(11,11),(12,11),(13,11),(14,11),
 (8,12),(9,12),(10,12),(11,12),(12,12),(13,12),(14,12),
-(8,13),(9,13),(10,13),(11,13),(12,13),(13,13),(14,13);
+(8,13),(9,13),(10,13),(11,13),(12,13),(13,13),(14,13),
+(8,14),(9,14),(10,14),(11,14),(12,14),(13,14),(14,14),
+(8,15),(9,15),(10,15),(11,15),(12,15),(13,15),(14,15);
 
 INSERT INTO pontos (nomePonto, modalidade, valorEntrada, endRuaPonto, endBairroPonto, endNumPonto, endCidadePonto, endUfPonto, endCepPonto, endReferenciaPonto, endGeoLatPonto, endGeoLongePonto, profilePicPonto) VALUES
 ('Parque Estadual Turístico do Alto Ribeira (PETAR)', 22, 30.00, 'Estrada do Ouro Grosso', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Próximo ao bairro da Serra', -24.5275, -48.6825, '/imgs/profilePics/petar.jpg'),
@@ -47,7 +66,9 @@ INSERT INTO pontos (nomePonto, modalidade, valorEntrada, endRuaPonto, endBairroP
 ('Mirante do Morro do Espia', 21, 0.00, 'Morro do Espia', 'Centro', 's/n', 'Cananéia', 'SP', '11990-000', 'Acesso por trilha', -25.0150, -47.9275, '/imgs/profilePics/mirante_morro_espia.jpg'),
 ('Cachoeira da Usina', 21, 0.00, 'Estrada da Usina', 'Centro', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Usina Hidrelétrica', -24.4953, -47.8438, '/imgs/profilePics/cachoeira_usina.jpg'),
 ('Parque Turístico Rocha do Itapu', 22, 10.00, 'Estrada do Turvo', 'Jardim Caiçara', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Serra do Mar', -24.4987, -47.8332, '/imgs/profilePics/parque_rocha_itapu.jpg'),
-('Praia do Meio', 18, 0.00, 'Avenida Beira-Mar', 'Vila Nova', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Ponte Tancredo Neves', -24.4921, -47.8269, '/imgs/profilePics/praia_meio.jpg');
+('Praia do Meio', 18, 0.00, 'Avenida Beira-Mar', 'Vila Nova', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Ponte Tancredo Neves', -24.4921, -47.8269, '/imgs/profilePics/praia_meio.jpg'),
+('Cachoeira do Gato', 21, 0.00, 'Ilha do Cardoso', 'Cananéia', '', 'Cananéia', 'SP', '11990-000', 'Acesso por trilha a partir da Praia de Maruja', -25.0736, -47.9391, '/imgs/profilePics/cachoeira_gato.jpg'),
+('Parque Estadual Intervales', 22, 25.00, 'Estrada Municipal', 'Ribeirão Grande', 's/n', 'Ribeirão Grande', 'SP', '18315-000', 'Próximo ao bairro do Guapiara', -24.2886, -48.4136, '/imgs/profilePics/parque_intervales.jpg');
 
 SELECT 
     pontos.nomePonto,
@@ -138,7 +159,9 @@ INSERT INTO avaliacoespontos (idAvaliador, idPontoAvaliado, nota, comentario, da
 (1, 10, 5, 'Vista espetacular, acesso por trilha é um plus.', '2024-10-04'),
 (1, 11, 3, 'Lugar bonito, mas a manutenção deixa a desejar.', '2024-11-13'),
 (1, 12, 4, 'Parque muito agradável, ótima opção de lazer.', '2024-12-01'),
-(1, 13, 5, 'Praia tranquila e limpa, recomendo!', '2024-12-21');
+(1, 13, 5, 'Praia tranquila e limpa, recomendo!', '2024-12-21'),
+(1, 14, 4, 'Parque muito agradável, ótima opção de lazer.', '2024-12-01'),
+(1, 15, 5, 'Praia tranquila e limpa, recomendo!', '2024-12-21');
 
 INSERT INTO pontosavaliados (idAvaliacao, idPonto) VALUES
 (1, 1),
@@ -153,7 +176,9 @@ INSERT INTO pontosavaliados (idAvaliacao, idPonto) VALUES
 (10, 10),
 (11, 11),
 (12, 12),
-(13, 13);
+(13, 13),
+(14, 14),
+(15, 15);
 
 DESCRIBE pontos;
 
@@ -163,7 +188,7 @@ create table comodidades (
     tipoComodidade varchar(100) not null
 );
 
-select * from comodidadesxpontos;
+select * from comodidades;
 
 INSERT INTO Comodidades (comodidade, tipoComodidade) VALUES
 ('Rampa de Acesso', 'Acessibilidade'),
@@ -246,7 +271,16 @@ INSERT INTO ComodidadesXPontos (idComodidade, idPontoTuristico) VALUES
 (27, 12),
 #Associação para Praia do Meio
 (21, 13),
-(23, 13);
+(23, 13),
+(1, 14),
+(15, 14),
+(22, 14),
+(18, 14),
+(20, 14),
+(27, 14),
+(22, 15),
+(18, 15),
+(20, 15);
 
 
 

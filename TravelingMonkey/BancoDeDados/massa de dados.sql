@@ -1,7 +1,7 @@
 use travelingmonkey;
 #drop database travelingmonkey;
 select * from pontos;
-select * from turistas;
+select * from cidades;
 
 INSERT INTO horarioFuncionas (diaDaSemana, situacao, horaAbre, horaAlmocoIda, horaAlmocoVolta, horaFecha) VALUES
 ('Segunda-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),

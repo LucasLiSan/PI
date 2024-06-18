@@ -1,15 +1,15 @@
 CREATE DATABASE  IF NOT EXISTS `travelingmonkey` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `travelingmonkey`;
--- MariaDB dump 10.19  Distrib 10.4.27-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: travelingmonkey
 -- ------------------------------------------------------
--- Server version	10.4.27-MariaDB
+-- Server version	5.5.5-10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,7 +23,7 @@ USE `travelingmonkey`;
 
 DROP TABLE IF EXISTS `avaliacoesguias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `avaliacoesguias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAvaliador` int(11) NOT NULL,
@@ -57,7 +57,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `avaliacoespontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `avaliacoespontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAvaliador` int(11) NOT NULL,
@@ -90,7 +90,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `categoriasxpontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categoriasxpontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `modalidade` varchar(255) NOT NULL,
@@ -117,7 +117,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cidades`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cidades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomeCidade` varchar(255) NOT NULL,
@@ -155,7 +155,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cidadesxpontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cidadesxpontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idCidade` int(11) NOT NULL,
@@ -182,7 +182,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `comodidades`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comodidades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comodidade` varchar(255) NOT NULL,
@@ -209,7 +209,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `comodidadesxpontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comodidadesxpontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idComodidade` int(11) NOT NULL,
@@ -240,7 +240,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `fotosguias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fotosguias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idFotografo` int(11) NOT NULL,
@@ -272,7 +272,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `fotospontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fotospontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idFotografo` int(11) NOT NULL,
@@ -305,7 +305,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `fotosxpontofotografados`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fotosxpontofotografados` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idFoto` int(11) NOT NULL,
@@ -338,7 +338,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `guias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `guias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomeGuia` varchar(255) NOT NULL,
@@ -370,7 +370,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `guiasavaliados`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `guiasavaliados` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAvaliacao` int(11) NOT NULL,
@@ -401,7 +401,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `horariofuncionas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `horariofuncionas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `diaDaSemana` varchar(255) NOT NULL,
@@ -432,7 +432,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `horarioxpontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `horarioxpontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idHorario` int(11) NOT NULL,
@@ -463,7 +463,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomePonto` varchar(255) NOT NULL,
@@ -501,7 +501,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pontosavaliados`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pontosavaliados` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAvaliacao` int(11) NOT NULL,
@@ -532,7 +532,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `turistas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `turistas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomeTurista` varchar(255) NOT NULL,
@@ -574,4 +574,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-17 17:13:43
+-- Dump completed on 2024-06-17 22:40:20

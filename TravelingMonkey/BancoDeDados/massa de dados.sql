@@ -1,5 +1,5 @@
 use travelingmonkey;
-#drop database travelingmonkey;
+drop database travelingmonkey;
 select * from pontos;
 select * from cidades;
 select * from cidadesxpontos;
@@ -17,8 +17,6 @@ insert into cidadesxpontos (idCidade, idPonto) values
 (6,1),(6,7),(6,8),
 (7,4),
 (8,15);
-
-
 
 INSERT INTO horarioFuncionas (diaDaSemana, situacao, horaAbre, horaAlmocoIda, horaAlmocoVolta, horaFecha) VALUES
 ('Segunda-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
@@ -53,6 +51,8 @@ INSERT INTO horarioXpontos (idHorario, idPontoTuristico) VALUES
 (8,14),(9,14),(10,14),(11,14),(12,14),(13,14),(14,14),
 (8,15),(9,15),(10,15),(11,15),(12,15),(13,15),(14,15);
 
+select * from pontos;
+
 INSERT INTO pontos (nomePonto, modalidade, valorEntrada, endRuaPonto, endBairroPonto, endNumPonto, endCidadePonto, endUfPonto, endCepPonto, endReferenciaPonto, endGeoLatPonto, endGeoLongePonto, profilePicPonto) VALUES
 ('Parque Estadual Turístico do Alto Ribeira (PETAR)', 22, 30.00, 'Estrada do Ouro Grosso', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Próximo ao bairro da Serra', -24.5275, -48.6825, '/imgs/profilePics/petar.jpg'),
 ('Caverna do Diabo', 41, 50.00, 'Rodovia SP-165', 'Eldorado', 'km 111', 'Eldorado', 'SP', '11960-000', 'Próximo ao Parque Estadual Caverna do Diabo', -24.6467, -48.4083, '/imgs/profilePics/caverna_diabo.jpg'),
@@ -70,36 +70,10 @@ INSERT INTO pontos (nomePonto, modalidade, valorEntrada, endRuaPonto, endBairroP
 ('Cachoeira do Gato', 21, 0.00, 'Ilha do Cardoso', 'Cananéia', '', 'Cananéia', 'SP', '11990-000', 'Acesso por trilha a partir da Praia de Maruja', -25.0736, -47.9391, '/imgs/profilePics/cachoeira_gato.jpg'),
 ('Parque Estadual Intervales', 22, 25.00, 'Estrada Municipal', 'Ribeirão Grande', 's/n', 'Ribeirão Grande', 'SP', '18315-000', 'Próximo ao bairro do Guapiara', -24.2886, -48.4136, '/imgs/profilePics/parque_intervales.jpg');
 
-SELECT 
-    pontos.nomePonto,
-    horarioFuncionas.diaDaSemana,
-    horarioFuncionas.situacao,
-    horarioFuncionas.horaAbre,
-    horarioFuncionas.horaAlmocoIda,
-    horarioFuncionas.horaAlmocoVolta,
-    horarioFuncionas.horaFecha
-FROM 
-    pontos
-JOIN 
-    horarioXpontos ON pontos.id = horarioXpontos.idPontoTuristico
-JOIN 
-    horarioFuncionas ON horarioXpontos.idHorario = horarioFuncionas.id;
 
-SELECT 
-    pontos.nomePonto,
-    cidades.nomeCidade
-FROM 
-    pontos
-JOIN 
-    cidades ON pontos.endCidadePonto = cidades.nomeCidade;
+UPDATE `travelingmonkey`.`pontos` SET `nomePonto` = 'Parque Municipal Casa de Pedra', `modalidade` = '22', `valorEntrada` = '0', `endRuaPonto` = 'Rodovia SP-222', `endBairroPonto` = 'Pariquera-Açu', `endNumPonto` = '0', `endCidadePonto` = 'Pariquera-Açu', `endCepPonto` = '11930-000', `endReferenciaPonto` = 'Linha do Braço Magro', `endGeoLatPonto` = '-24.74809717932124', `endGeoLongePonto` = '-47.94910512717522', `profilePicPonto` = '/imgs/profilePics/casaDePedra.jpg' WHERE (`id` = '9');
+UPDATE `travelingmonkey`.`pontos` SET `nomePonto` = 'Cachoeira do Exorcismo', `modalidade` = '42', `valorEntrada` = '0', `endRuaPonto` = 'Rodovia SP-222', `endBairroPonto` = 'Pariquera-Açu', `endNumPonto` = '0', `endCidadePonto` = 'Pariquera-Açu', `endCepPonto` = '11930-000', `endReferenciaPonto` = 'Linha do Braço Magro', `endGeoLatPonto` = '-24.74809717932124', `endGeoLongePonto` = '-47.94910512717522', `profilePicPonto` = '/imgs/profilePics/cachoeiraDoExorcismo.jpg' WHERE (`id` = '10');
 
-SELECT 
-    pontos.nomePonto,
-    cidades.nomeCidade
-FROM 
-    pontos
-JOIN 
-    cidades ON pontos.endCidadePonto = cidades.nomeCidade;
 
 select * from categoriasxpontos;
 
@@ -144,7 +118,8 @@ INSERT INTO categoriasxpontos (modalidade, categoria) VALUES
 ('Shows e concertos', 'Eventos'),
 ('Feiras e exposições', 'Eventos'),
 ('Eventos religiosos', 'Eventos'),
-('Caverna', 'Ecoturismo');
+('Caverna', 'Ecoturismo'),
+('Cachoeira','Ecoturismo');
 
 INSERT INTO avaliacoespontos (idAvaliador, idPontoAvaliado, nota, comentario, dataAvaliacao) VALUES
 (1, 1, 5, 'Ótimo lugar, muito bem conservado e com guias excelentes.', '2024-01-15'),
@@ -219,6 +194,10 @@ INSERT INTO Comodidades (comodidade, tipoComodidade) VALUES
 ('Carregadores de Celular', 'Serviços'),
 ('Cafeteria', 'Serviços'),
 ('Área de Piquenique', 'Infraestrutura');
+
+select * from ComodidadesXPontos;
+
+DELETE FROM ComodidadesXPontos WHERE idPontoTuristico=10;
 
 #Associação para Parque Estadual Turístico do Alto Ribeira (PETAR)
 INSERT INTO ComodidadesXPontos (idComodidade, idPontoTuristico) VALUES

@@ -8,7 +8,12 @@ import express from "express";
 import session from "express-session";
 import { Op } from "sequelize";
 import Auth from "../middleware/auth.js";
+import multer from "multer";
+import path from "path";
 /* /\---------- MODULES ----------/\ */
+/* \/---------- SERCICES ----------\/ */
+import PicService from "../services/PicService.js";
+/* /\---------- SERCICES ----------/\ */
 /* \/---------- TABLES ----------\/ */
 import Turistas from "../models/turistas.js";
 import GuiasDeTurismo from "../models/guias.js";
@@ -17,6 +22,7 @@ import PontosTuristicos from "../models/pontos.js";
 import HorarioFuncionamento from "../models/horarioFunc.js";
 import FotosPontos from "../models/fotosPontos.js";
 import Atracoes from "../models/cidadesXpontos.js";
+import HorarioPonto from "../models/horarioXponto.js";
 import "../models/associations.js";
 /* /\---------- TABLES ----------/\ */
 const router = express.Router();
@@ -92,6 +98,97 @@ router.post("/profileUser/deleteFoto/:id", async (req, res) => {
 /* /\---------- ROTAS PARA TRATAMENTO DAS INFORMAÇÕES DOS USUÁRIOS ----------/\ */
 
 /* \/---------- ROTAS PARA TRATAMENTO DE INFORMAÇÕES BÁSICAS DOS PERFIS ----------\/ */
+//INSERIR NOVO PONTO TURÍSTICO
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const valorEntrada = req.body.valorEntrada;
+        const destinationPath = path.join('public/imgs/profilePics', valorEntrada.toString());
+        cb(null, destinationPath);
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+const upload = multer({ storage: storage });
+
+router.post("/newPonto", upload.single('profilePicPonto'), async (req, res) => {
+    const {
+        user,
+        nomePonto,
+        modalidade,
+        diaDaSemana,
+        situacao,
+        horaAbre,
+        horaFecha,
+        horaAlmocoIda,
+        horaAlmocoFecha,
+        endRuaPonto,
+        endBairroPonto,
+        endNumPonto,
+        endCidadePonto,
+        endUfPonto,
+        endCepPonto,
+        endReferenciaPonto,
+        endGeoLatPonto,
+        endGeoLongePonto,
+        valorEntrada
+    } = req.body;
+    
+    let profilePicPonto = req.file ? req.file.filename : null;
+
+    try {
+        // Criação do ponto turístico
+        const pontoTuristico = await PontosTuristicos.create({
+            nomePonto,
+            modalidade,
+            endRuaPonto,
+            endBairroPonto,
+            endNumPonto,
+            endCidadePonto,
+            endUfPonto,
+            endCepPonto,
+            endReferenciaPonto,
+            endGeoLatPonto,
+            endGeoLongePonto,
+            valorEntrada,
+            profilePicPonto
+        });
+        console.log("Ponto Turístico criado com sucesso:", pontoTuristico);
+
+        // Criação do horário de funcionamento
+        const horarioFunc = await HorarioFuncionamento.create({
+            diaDaSemana,
+            situacao,
+            horaAbre,
+            horaFecha,
+            horaAlmocoIda,
+            horaAlmocoFecha
+        });
+        console.log("Horário de Funcionamento criado com sucesso:", horarioFunc);
+
+        // Relacionamento entre o ponto turístico e o horário de funcionamento
+        await HorarioPonto.create({
+            idHorario: horarioFunc.id,
+            idPontoTuristico: pontoTuristico.id
+        });
+        console.log("Associação do Ponto Turístico com o Horário de Funcionamento realizada com sucesso");
+
+        // Relacionamento entre o ponto turístico e cidade
+        await Atracoes.create({
+            idCidade: user,
+            idPonto: pontoTuristico.id
+        });
+        console.log("Associação do Ponto Turístico com cidades");
+
+        req.flash('success', 'Ponto cadastrado.');
+        res.redirect("/profileUser");
+    } catch (error) {
+        console.error(error);
+        req.flash('error', 'Erro ao cadastrar ponto.');
+        res.redirect("/profileUser");
+    }
+});
+
 //UPDATE BANCO DE DADOS
 router.post("/profileUser/update/:id", (req, res) => {
     const user = req.body.user;
@@ -205,6 +302,7 @@ router.post("/profileUser/update/:id", (req, res) => {
     }
 });
 
+//DELETAR PERFIL DO USUÁRIO
 router.post("/profileUser/deletePerfil/:id", async (req, res) => {
     const id = req.params.id;
     const user = req.body.user;

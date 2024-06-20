@@ -1,5 +1,6 @@
 import FotosGuias from "../models/fotosGuias.js";
 import FotosPontos from "../models/fotosPontos.js";
+import PontosTuristicos from "../models/pontos.js";
 
 class PicService {
     SaveGuia(file, idGuiaFotografado, idFotografo) {
@@ -17,6 +18,12 @@ class PicService {
             idPontoFotografado: idPontoFotografado,
             idFotografo: idFotografo,
             dataFoto: new Date()
+        });
+    }
+
+    SaveProfilePic(file, profilePic) {
+        PontosTuristicos.create({
+            profilePic: file,
         });
     }
 

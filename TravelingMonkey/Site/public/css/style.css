@@ -2237,10 +2237,11 @@ footer {
 
 .formNewPonto {
     display: flex;
-    flex-direction: column;
-    align-content: center;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    overflow-y: scroll;
+    justify-content: center;
+    align-content: flex-start;
 }
 
 .formNewPonto label {
@@ -2254,7 +2255,7 @@ footer {
 
 .formBloco1 {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto;
     grid-gap: 10px;
     align-items: center;
 }

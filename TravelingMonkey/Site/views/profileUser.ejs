@@ -342,7 +342,8 @@
 												<h2>NOVO PONTO TURISTICO</h2>
 											</div>
 											<div class="modal-newPonto-body">
-												<form class="formNewPonto" action="">
+												<form method="POST" class="formNewPonto" action="/newPonto" enctype="multipart/form-data">
+													<input type="text" name="user" value="<%= session.userCidade.id %>" hidden>
 													<div class="formBloco1">
 														<label for="nomePonto">Nome</label>
 														<input type="text" name="nomePonto">
@@ -389,7 +390,15 @@
 															<option value="39">Feiras e exposições</option>
 															<option value="40">Eventos religiosos</option>
 															<option value="41">Turismo em cavernas</option>
+															<option value="42">Cachoeira</option>
 														</select>
+													</div>
+													<fieldset class="horarioDomingo">
+														<legend>Domingo</legend>
+														<label for="diaDaSemana">Dia da semana</label>
+														<input type="text" name="diaDaSemana">
+														<label for="situacao">Situação</label>
+														<input type="text" name="situacao" placeholder="Aberto/Fechado">
 														<label for="horaAbre">Horario Abertura</label>
 														<input type="text" name="horaAbre">
 														<label for="horaFecha">Horario Fecha</label>
@@ -398,7 +407,97 @@
 														<input type="text" name="horaAlmocoIda">
 														<label for="horaAlmocoFecha">Almoço (Volta)</label>
 														<input type="text" name="horaAlmocoFecha">
-													</div>
+													</fieldset>
+													<fieldset class="horarioSegunda">
+														<legend>Segunda</legend>
+														<label for="diaDaSemana">Dia da semana</label>
+														<input type="text" name="diaDaSemana">
+														<label for="situacao">Situação</label>
+														<input type="text" name="situacao" placeholder="Aberto/Fechado">
+														<label for="horaAbre">Horario Abertura</label>
+														<input type="text" name="horaAbre">
+														<label for="horaFecha">Horario Fecha</label>
+														<input type="text" name="horaFecha">
+														<label for="horaAlmocoIda">Almoço (Ida)</label>
+														<input type="text" name="horaAlmocoIda">
+														<label for="horaAlmocoFecha">Almoço (Volta)</label>
+														<input type="text" name="horaAlmocoFecha">
+													</fieldset>
+													<fieldset class="horarioTerca">
+														<legend>Terça</legend>
+														<label for="diaDaSemana">Dia da semana</label>
+														<input type="text" name="diaDaSemana">
+														<label for="situacao">Situação</label>
+														<input type="text" name="situacao" placeholder="Aberto/Fechado">
+														<label for="horaAbre">Horario Abertura</label>
+														<input type="text" name="horaAbre">
+														<label for="horaFecha">Horario Fecha</label>
+														<input type="text" name="horaFecha">
+														<label for="horaAlmocoIda">Almoço (Ida)</label>
+														<input type="text" name="horaAlmocoIda">
+														<label for="horaAlmocoFecha">Almoço (Volta)</label>
+														<input type="text" name="horaAlmocoFecha">
+													</fieldset>
+													<fieldset class="horarioQuarta">
+														<legend>Quarta</legend>
+														<label for="diaDaSemana">Dia da semana</label>
+														<input type="text" name="diaDaSemana">
+														<label for="situacao">Situação</label>
+														<input type="text" name="situacao" placeholder="Aberto/Fechado">
+														<label for="horaAbre">Horario Abertura</label>
+														<input type="text" name="horaAbre">
+														<label for="horaFecha">Horario Fecha</label>
+														<input type="text" name="horaFecha">
+														<label for="horaAlmocoIda">Almoço (Ida)</label>
+														<input type="text" name="horaAlmocoIda">
+														<label for="horaAlmocoFecha">Almoço (Volta)</label>
+														<input type="text" name="horaAlmocoFecha">
+													</fieldset>
+													<fieldset class="horarioQuinta">
+														<legend>Quinta</legend>
+														<label for="diaDaSemana">Dia da semana</label>
+														<input type="text" name="diaDaSemana">
+														<label for="situacao">Situação</label>
+														<input type="text" name="situacao" placeholder="Aberto/Fechado">
+														<label for="horaAbre">Horario Abertura</label>
+														<input type="text" name="horaAbre">
+														<label for="horaFecha">Horario Fecha</label>
+														<input type="text" name="horaFecha">
+														<label for="horaAlmocoIda">Almoço (Ida)</label>
+														<input type="text" name="horaAlmocoIda">
+														<label for="horaAlmocoFecha">Almoço (Volta)</label>
+														<input type="text" name="horaAlmocoFecha">
+													</fieldset>
+													<fieldset class="horarioSexta">
+														<legend>Sexta</legend>
+														<label for="diaDaSemana">Dia da semana</label>
+														<input type="text" name="diaDaSemana">
+														<label for="situacao">Situação</label>
+														<input type="text" name="situacao" placeholder="Aberto/Fechado">
+														<label for="horaAbre">Horario Abertura</label>
+														<input type="text" name="horaAbre">
+														<label for="horaFecha">Horario Fecha</label>
+														<input type="text" name="horaFecha">
+														<label for="horaAlmocoIda">Almoço (Ida)</label>
+														<input type="text" name="horaAlmocoIda">
+														<label for="horaAlmocoFecha">Almoço (Volta)</label>
+														<input type="text" name="horaAlmocoFecha">
+													</fieldset>
+													<fieldset class="horarioSabado">
+														<legend>Sábado</legend>
+														<label for="diaDaSemana">Dia da semana</label>
+														<input type="text" name="diaDaSemana">
+														<label for="situacao">Situação</label>
+														<input type="text" name="situacao" placeholder="Aberto/Fechado">
+														<label for="horaAbre">Horario Abertura</label>
+														<input type="text" name="horaAbre">
+														<label for="horaFecha">Horario Fecha</label>
+														<input type="text" name="horaFecha">
+														<label for="horaAlmocoIda">Almoço (Ida)</label>
+														<input type="text" name="horaAlmocoIda">
+														<label for="horaAlmocoFecha">Almoço (Volta)</label>
+														<input type="text" name="horaAlmocoFecha">
+													</fieldset>
 													<fieldset class="fieldNewPonto">
 														<legend>Endereço</legend>
 														<label for="endRuaPonto">Rua:</label>
@@ -419,6 +518,8 @@
 														<input type="text" name="endGeoLatPonto">
 														<label for="endGeoLongePonto">Longitude (opicional)</label>
 														<input type="text" name="endGeoLongePonto">
+														<label for="valorEntrada">Valor Entrada</label>
+														<input type="text" name="valorEntrada">
 													</fieldset>
 													<div class="formBloco2">
 														<label for="profilePicPonto">Foto perfil (opicional)</label>
@@ -482,6 +583,7 @@
 												<option value="39" <%= pontos.modalidade == 39 ? 'selected' : '' %>>Feiras e exposições</option>
 												<option value="40" <%= pontos.modalidade == 40 ? 'selected' : '' %>>Eventos religiosos</option>
 												<option value="41" <%= pontos.modalidade == 41 ? 'selected' : '' %>>Turismo em cavernas</option>
+												<option value="42" <%= pontos.modalidade == 42 ? 'selected' : '' %>>Cachoeiras</option>
 											</select>
 										</div>
 										<a class="verMais" href="javascript:;" onmousedown="toggleDiv('cardPontosCadastrados-<%= pontos.id %>');">Ver mais</a>

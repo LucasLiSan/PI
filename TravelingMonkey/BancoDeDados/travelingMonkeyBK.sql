@@ -1,15 +1,15 @@
 CREATE DATABASE  IF NOT EXISTS `travelingmonkey` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `travelingmonkey`;
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MariaDB dump 10.19  Distrib 10.4.27-MariaDB, for Win64 (AMD64)
 --
 -- Host: 127.0.0.1    Database: travelingmonkey
 -- ------------------------------------------------------
--- Server version	5.5.5-10.4.32-MariaDB
+-- Server version	10.4.27-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,7 +23,7 @@ USE `travelingmonkey`;
 
 DROP TABLE IF EXISTS `avaliacoesguias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `avaliacoesguias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAvaliador` int(11) NOT NULL,
@@ -57,7 +57,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `avaliacoespontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `avaliacoespontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAvaliador` int(11) NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE `avaliacoespontos` (
 
 LOCK TABLES `avaliacoespontos` WRITE;
 /*!40000 ALTER TABLE `avaliacoespontos` DISABLE KEYS */;
-INSERT INTO `avaliacoespontos` VALUES (1,1,1,5.0,'Ótimo lugar, muito bem conservado e com guias excelentes.','2024-01-15 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,2,4.0,'Experiência incrível, mas o acesso poderia ser melhor.','2024-02-10 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,3,3,5.0,'Maravilhoso! Perfeito para quem gosta de natureza.','2024-03-05 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,2,4,3.0,'Bom, mas esperava mais das instalações.','2024-04-20 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,3,5,4.0,'Ótimo passeio de barco, recomendo!','2024-05-14 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,1,6,5.0,'História fascinante e bem preservada.','2024-06-11 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,1,7,4.0,'Cultura rica e guias bem informados.','2024-07-08 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,2,8,5.0,'Cachoeira incrível, vale cada minuto!','2024-08-21 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,3,9,4.0,'Museu interessante, mas poderia ser maior.','2024-09-17 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,3,10,5.0,'Vista espetacular, acesso por trilha é um plus.','2024-10-04 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,1,11,3.0,'Lugar bonito, mas a manutenção deixa a desejar.','2024-11-13 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,2,12,4.0,'Parque muito agradável, ótima opção de lazer.','2024-12-01 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,3,13,5.0,'Praia tranquila e limpa, recomendo!','2024-12-21 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,1,14,4.0,'Parque muito agradável, ótima opção de lazer.','2024-12-01 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,1,15,5.0,'Praia tranquila e limpa, recomendo!','2024-12-21 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `avaliacoespontos` VALUES (1,1,1,5.0,'Ótimo lugar, muito bem conservado e com guias excelentes.','2024-01-15 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,2,4.0,'Experiência incrível, mas o acesso poderia ser melhor.','2024-02-10 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,3,3,5.0,'Maravilhoso! Perfeito para quem gosta de natureza.','2024-03-05 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,2,4,3.0,'Bom, mas esperava mais das instalações.','2024-04-20 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,3,5,4.0,'Ótimo passeio de barco, recomendo!','2024-05-14 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,1,6,5.0,'História fascinante e bem preservada.','2024-06-11 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,1,7,4.0,'Cultura rica e guias bem informados.','2024-07-08 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,2,8,5.0,'Cachoeira incrível, vale cada minuto!','2024-08-21 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,3,9,4.0,'Museu interessante, mas poderia ser maior.','2024-09-17 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,3,10,5.0,'Vista espetacular, acesso por trilha é um plus.','2024-10-04 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,3,13,5.0,'Praia tranquila e limpa, recomendo!','2024-12-21 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,1,14,4.0,'Parque muito agradável, ótima opção de lazer.','2024-12-01 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,1,15,5.0,'Praia tranquila e limpa, recomendo!','2024-12-21 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `avaliacoespontos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `categoriasxpontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `categoriasxpontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `modalidade` varchar(255) NOT NULL,
@@ -117,7 +117,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cidades`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cidades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomeCidade` varchar(255) NOT NULL,
@@ -136,7 +136,7 @@ CREATE TABLE `cidades` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +145,7 @@ CREATE TABLE `cidades` (
 
 LOCK TABLES `cidades` WRITE;
 /*!40000 ALTER TABLE `cidades` DISABLE KEYS */;
-INSERT INTO `cidades` VALUES (1,'Registro','SP','1234567890001','SECRETARIA DE TURISMO','9876543210001','RUA TURISMO','1','Bairro Turista','11900000','1338281000','registro@registro.com','$2b$10$31L1lA30vzOSaTi/nZUFiedns17A7hrcfNqAyjL/PeEI.8iiNgQsO','/imgs/iwazaru.webp','2024-06-11 19:59:07','2024-06-11 19:59:07'),(2,'CAJATI','SP','1122334455','SECRETARIA DE TURISMO DE CAJATI','9988776655','RUA TURISMO CAJATI','2','Bairro Turista 2','119922','1338291001','cajati@cajati.com.br','$2b$10$W1SvsKNfyPzgP.WmF977l.ByDABRpBvGR0Jk/EQ1VQNQHDFSc2dCa','/imgs/iwazaru.webp','2024-06-11 19:59:50','2024-06-11 19:59:50'),(3,'Cananéia','SP','12345678000195','Diretoria de Turismo de Cananéia','59100087654321','Rua do Turista de Cananeia','10','Bairro Beira Mar','11999000','1333881223','cananeia@cananeia.com','$2b$10$wyrr1yR6/EWIT5FPeprrwuZVusYaTKnZIuLBWGIKqndjnq/ppG9/W','/imgs/iwazaru.webp','2024-06-18 10:00:33','2024-06-18 11:26:23'),(4,'Eldorado','SP','23456789000168','Diretoria de Cultura','86100098765432','Rua Beira Rio','11','Bairro Ouro','18990000','1338319988','eldorado@eldorado.com','$2b$10$UN3dOjbqrHGg731GLKFUBOPiQYSPphEu5l/zWv4Pi7kU6xfodMNH2','/imgs/iwazaru.webp','2024-06-18 10:01:49','2024-06-18 10:01:49'),(5,'Iguape','SP','34567890000137','Diretoria de Turismo e Cultura de Iguape','45678901000106','Rua Central','12','Rocil','18765000','1338259988','iguape@iguape.com','$2b$10$I6ZSUhmOO1zbQYtaLJSLWOIHMAeif81vwVAxTa1EfCIQcXF754y5a','/imgs/iwazaru.webp','2024-06-18 10:03:20','2024-06-18 10:03:20'),(6,'Iporanga','SP','56789012000185','Secretaria de Administração Turistica','67890123000154','Rua do Morro','43','Bairro Vale Verde','17234000','1338764433','iporanga@iporanga.com','$2b$10$18dOHuhLh8Uo3oWv1wSxy.F1YseL3.rCZhpkIHwXxYdg8khYWl3Lq','/imgs/iwazaru.webp','2024-06-18 10:04:31','2024-06-18 10:04:31'),(7,'Miracatu','SP','78901234000123','Diretoria Turistica de Miracatu','89012345000192','Avenida Régis','19','Bairro Novo','11800000','1398765432','miracatu@miracatu.com','$2b$10$YGT3Ojwwy8AzWieaOKB21OIcrGosq2xc3mW9t8KMFE1yxp/quVoly','/imgs/iwazaru.webp','2024-06-18 10:05:34','2024-06-18 10:05:34'),(8,'Ribeirão Grande','SP','90123456000161','Secretaria de Turismo de Ribeirão Grande','01234567000130','Travessa Jequitiba','90','Bairro Alvorecer','87900000','1390807654','ribeiraogrande@ribeiraogrande.com','$2b$10$X9rEENqX8WLnWPrao73q1uQ/w.oTx7t4jMW5t5C8377NdtmduZJua','/imgs/iwazaru.webp','2024-06-18 10:06:48','2024-06-18 10:06:48');
+INSERT INTO `cidades` VALUES (1,'Registro','SP','1234567890001','SECRETARIA DE TURISMO','9876543210001','RUA TURISMO','1','Bairro Turista','11900000','1338281000','registro@registro.com','$2b$10$31L1lA30vzOSaTi/nZUFiedns17A7hrcfNqAyjL/PeEI.8iiNgQsO','/imgs/iwazaru.webp','2024-06-11 19:59:07','2024-06-11 19:59:07'),(4,'Eldorado','SP','23456789000168','Diretoria de Cultura','86100098765432','Rua Beira Rio','11','Bairro Ouro','18990000','1338319988','eldorado@eldorado.com','$2b$10$UN3dOjbqrHGg731GLKFUBOPiQYSPphEu5l/zWv4Pi7kU6xfodMNH2','/imgs/iwazaru.webp','2024-06-18 10:01:49','2024-06-18 10:01:49'),(9,'Sete Barras','SP','12345678991','Diretoria de Turismo','99887766554','Rua do Ouro','19','Vila Prata','18230-000','1398765432','setebarras@setebarras.com','$2b$10$EzdQp7q.Ht8rZtH8YUJQ9e7tBmfAWEI/PCoLcErQGpcYMTV60gJR6','/imgs/iwazaru.webp','2024-06-20 13:31:57','2024-06-20 13:31:57'),(10,'Pariquera-Açu','SP','9876543210','Diretoria de Turismo e Cultura de Pariquera-Açu','908070605040','Rua Principal','9','Centro','11920-000','1338280001','pariquera@pariquera.com','$2b$10$zOrK8v9rdojfC1KrkmY5ke.LRzjxAzc686F8kYg753rn2ceJ1Uwse','/imgs/iwazaru.webp','2024-06-20 13:33:08','2024-06-20 13:33:08'),(11,'Cananeia','SP','4578123690','Diretoria de Turismo e Cultura de Cananéia','87542136980','Rua do Mar','90','Centro','04952-100','13987654321','cananeia@cananeia.com','$2b$10$7b9yhr4sLYpLrr8np5NZ3OFk/3/uyyJfo22y/hfjHT7yAK9tH6lMC','/imgs/iwazaru.webp','2024-06-20 15:09:39','2024-06-20 15:09:39');
 /*!40000 ALTER TABLE `cidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +155,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cidadesxpontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cidadesxpontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idCidade` int(11) NOT NULL,
@@ -163,7 +163,7 @@ CREATE TABLE `cidadesxpontos` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `cidadesxpontos` (
 
 LOCK TABLES `cidadesxpontos` WRITE;
 /*!40000 ALTER TABLE `cidadesxpontos` DISABLE KEYS */;
-INSERT INTO `cidadesxpontos` VALUES (1,1,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,3,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,3,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,3,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,3,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,4,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,4,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,4,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,5,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,5,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,6,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,6,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,6,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,7,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(17,8,15,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `cidadesxpontos` VALUES (1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(18,4,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(19,4,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(20,9,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(21,9,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(22,9,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(23,10,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(24,10,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(25,11,16,'2024-06-20 16:33:30','2024-06-20 16:33:30');
 /*!40000 ALTER TABLE `cidadesxpontos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +182,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `comodidades`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comodidades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comodidade` varchar(255) NOT NULL,
@@ -209,7 +209,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `comodidadesxpontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comodidadesxpontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idComodidade` int(11) NOT NULL,
@@ -230,7 +230,7 @@ CREATE TABLE `comodidadesxpontos` (
 
 LOCK TABLES `comodidadesxpontos` WRITE;
 /*!40000 ALTER TABLE `comodidadesxpontos` DISABLE KEYS */;
-INSERT INTO `comodidadesxpontos` VALUES (1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,5,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,8,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,1,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,4,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,6,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,10,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,1,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,6,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,7,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,20,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(33,22,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(34,24,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(35,15,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(36,27,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(37,21,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(38,23,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(39,1,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(40,15,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(41,22,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(42,18,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(43,20,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(44,27,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(45,22,15,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(46,18,15,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(47,20,15,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `comodidadesxpontos` VALUES (1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,5,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,8,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,1,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,4,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,6,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,10,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,1,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,6,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,7,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,20,4,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `comodidadesxpontos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +240,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `fotosguias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fotosguias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idFotografo` int(11) NOT NULL,
@@ -272,7 +272,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `fotospontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fotospontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idFotografo` int(11) NOT NULL,
@@ -295,7 +295,6 @@ CREATE TABLE `fotospontos` (
 
 LOCK TABLES `fotospontos` WRITE;
 /*!40000 ALTER TABLE `fotospontos` DISABLE KEYS */;
-INSERT INTO `fotospontos` VALUES (21,2,14,'photo-1718715171971.webp','2024-06-18 09:52:51','2024-06-18 09:52:51','2024-06-18 09:52:51'),(22,2,15,'photo-1718715255696.jpg','2024-06-18 09:54:15','2024-06-18 09:54:15','2024-06-18 09:54:15');
 /*!40000 ALTER TABLE `fotospontos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,7 +304,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `fotosxpontofotografados`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fotosxpontofotografados` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idFoto` int(11) NOT NULL,
@@ -338,7 +337,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `guias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `guias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomeGuia` varchar(255) NOT NULL,
@@ -370,7 +369,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `guiasavaliados`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `guiasavaliados` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAvaliacao` int(11) NOT NULL,
@@ -401,7 +400,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `horariofuncionas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `horariofuncionas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `diaDaSemana` varchar(255) NOT NULL,
@@ -413,7 +412,7 @@ CREATE TABLE `horariofuncionas` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -422,7 +421,7 @@ CREATE TABLE `horariofuncionas` (
 
 LOCK TABLES `horariofuncionas` WRITE;
 /*!40000 ALTER TABLE `horariofuncionas` DISABLE KEYS */;
-INSERT INTO `horariofuncionas` VALUES (1,'Segunda-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Terça-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'Quarta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Quinta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'Sexta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'Sábado','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'Domingo','Fechado',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'Segunda-feira','Fechado',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'Terça-feira','Fechado',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'Quarta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,'Quinta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'Sexta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,'Sábado','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,'Domingo','Fechado',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `horariofuncionas` VALUES (1,'Segunda-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Terça-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'Quarta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Quinta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'Sexta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'Sábado','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'Domingo','Fechado',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'Segunda-feira','Fechado',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'Terça-feira','Fechado',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'Quarta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,'Quinta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'Sexta-feira','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,'Sábado','Aberto','08:00:00','12:00:00','13:00:00','18:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,'Domingo','Fechado',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,'Domingo','Aberto','08:00:00','12:00:00',NULL,'17:00:00','2024-06-20 16:33:30','2024-06-20 16:33:30');
 /*!40000 ALTER TABLE `horariofuncionas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -432,7 +431,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `horarioxpontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `horarioxpontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idHorario` int(11) NOT NULL,
@@ -444,7 +443,7 @@ CREATE TABLE `horarioxpontos` (
   KEY `idPontoTuristico` (`idPontoTuristico`),
   CONSTRAINT `horarioxpontos_ibfk_1` FOREIGN KEY (`idHorario`) REFERENCES `horariofuncionas` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `horarioxpontos_ibfk_2` FOREIGN KEY (`idPontoTuristico`) REFERENCES `pontos` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -453,7 +452,7 @@ CREATE TABLE `horarioxpontos` (
 
 LOCK TABLES `horarioxpontos` WRITE;
 /*!40000 ALTER TABLE `horarioxpontos` DISABLE KEYS */;
-INSERT INTO `horarioxpontos` VALUES (1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,3,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,4,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,5,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,6,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,7,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,1,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,2,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,3,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,4,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,5,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,6,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,7,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,1,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,2,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(17,3,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(18,4,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(19,5,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(20,6,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(21,7,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(22,1,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(23,2,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(24,3,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(25,4,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(26,5,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(27,6,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(28,7,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(29,1,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(30,2,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(31,3,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(32,4,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(33,5,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(34,6,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(35,7,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(36,1,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(37,2,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(38,3,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(39,4,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(40,5,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(41,6,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(42,7,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(43,1,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(44,2,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(45,3,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(46,4,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(47,5,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(48,6,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(49,7,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(50,1,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(51,2,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(52,3,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(53,4,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(54,5,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(55,6,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(56,7,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(57,1,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(58,2,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(59,3,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(60,4,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(61,5,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(62,6,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(63,7,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(64,1,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(65,2,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(66,3,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(67,4,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(68,5,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(69,6,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(70,7,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(71,8,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(72,9,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(73,10,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(74,11,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(75,12,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(76,13,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(77,14,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(78,8,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(79,9,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(80,10,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(81,11,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(82,12,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(83,13,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(84,14,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(85,8,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(86,9,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(87,10,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(88,11,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(89,12,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(90,13,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(91,14,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(92,8,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(93,9,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(94,10,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(95,11,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(96,12,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(97,13,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(98,14,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(99,8,15,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(100,9,15,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(101,10,15,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(102,11,15,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(103,12,15,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(104,13,15,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(105,14,15,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `horarioxpontos` VALUES (1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,3,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,4,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,5,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,6,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,7,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,1,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,2,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,3,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,4,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,5,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,6,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,7,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,1,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,2,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(17,3,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(18,4,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(19,5,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(20,6,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(21,7,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(22,1,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(23,2,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(24,3,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(25,4,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(26,5,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(27,6,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(28,7,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(29,1,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(30,2,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(31,3,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(32,4,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(33,5,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(34,6,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(35,7,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(36,1,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(37,2,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(38,3,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(39,4,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(40,5,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(41,6,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(42,7,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(43,1,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(44,2,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(45,3,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(46,4,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(47,5,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(48,6,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(49,7,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(50,1,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(51,2,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(52,3,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(53,4,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(54,5,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(55,6,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(56,7,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(57,1,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(58,2,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(59,3,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(60,4,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(61,5,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(62,6,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(63,7,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(64,1,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(65,2,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(66,3,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(67,4,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(68,5,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(69,6,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(70,7,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(106,15,16,'2024-06-20 16:33:30','2024-06-20 16:33:30');
 /*!40000 ALTER TABLE `horarioxpontos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -463,7 +462,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pontos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pontos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomePonto` varchar(255) NOT NULL,
@@ -482,7 +481,7 @@ CREATE TABLE `pontos` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -491,7 +490,7 @@ CREATE TABLE `pontos` (
 
 LOCK TABLES `pontos` WRITE;
 /*!40000 ALTER TABLE `pontos` DISABLE KEYS */;
-INSERT INTO `pontos` VALUES (1,'K.K.K.K. (Kaigai Kogyo Kabushiki Kaisha)',1,0.00,'Avenida Prefeito Jonas Banks Leite','Centro','57','Registro','SP','11900-000','Sesc Registro',-24.48758229,-47.84064403,'/imgs/profilePics/kkkk.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Catedral Católica Diocesana São Francisco Xavier',10,0.00,'Rua Pio Onze','Centro','78','Registro','SP','11900-000','',-24.48934229,-47.83938282,'/imgs/profilePics/igrejaMatriz.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'Templo Budista Honpa Hongwanji de Registro (Nishi-Hongwanji)',10,0.00,'Avenida Nelson Brihi Badur','Bairro Budista','50','Registro','SP','11900-000','',-24.50459234,-47.85619276,'/imgs/profilePics/temploBudista.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Cachoeira Queda do Meu Deus',42,0.00,'Rodovia Benedito Pascoal de França','Itapeúna','200','Eldorado','SP','11960-000','',-24.60265306,-48.38852385,'/imgs/profilePics/cachoeiraQuedaDoMeuDeus.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'Caverna do Diabo',41,12.00,'Rodovia SP-165','André Lopes','0','Eldorado','SP','11960-000','Km 111',-24.63581514,-48.40366472,'/imgs/profilePics/cavernaDoDiabo.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'Parque Estadual Carlos Botelho-Cachoeira do Quilombo',42,50.00,'Rodovia SP-139','Abaitinga','0','Sete Barras','SP','18230-000','km 78',-24.05627487,-47.99354283,'/imgs/profilePics/cachoeiraDoQuilombo.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'Parque Estadual Carlos Botelho-Pico da Pedra Maior',19,150.00,'Rodovia SP-139','Abaitinga','0','Sete Barras','SP','18230-000','km 78',-24.05627487,-47.99354283,'/imgs/profilePics/picoDaPedraMaior.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'Parque Estadual Intervales-Mirante do Cavalo Magro',22,70.00,'Rodovia SP-139','Abaitinga','0','Sete Barras','SP','18230-000','km 78',-24.05627487,-47.99354283,'/imgs/profilePics/miranteCavaloMagro.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'Parque Municipal Casa de Pedra',22,0.00,'Rodovia SP-222','Pariquera-Açu','0','Pariquera-Açu','SP','11930-000','Linha do Braço Magro',-24.74809718,-47.94910513,'/imgs/profilePics/casaDePedra.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'Cachoeira do Exorcismo',42,0.00,'Rodovia SP-222','Pariquera-Açu','0','Pariquera-Açu','SP','11930-000','Linha do Braço Magro',-24.74809718,-47.94910513,'/imgs/profilePics/cachoeiraDoExorcismo.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,'Cachoeira da Usina',21,0.00,'Estrada da Usina','Centro','s/n','Registro','SP','11900-000','Próximo à Usina Hidrelétrica',-24.49530000,-47.84380000,'/imgs/profilePics/cachoeira_usina.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'Parque Turístico Rocha do Itapu',22,10.00,'Estrada do Turvo','Jardim Caiçara','s/n','Registro','SP','11900-000','Próximo à Serra do Mar',-24.49870000,-47.83320000,'/imgs/profilePics/parque_rocha_itapu.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,'Praia do Meio',18,0.00,'Avenida Beira-Mar','Vila Nova','s/n','Registro','SP','11900-000','Próximo à Ponte Tancredo Neves',-24.49210000,-47.82690000,'/imgs/profilePics/praia_meio.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,'Cachoeira do Gato',21,0.00,'Ilha do Cardoso','Cananéia','','Cananéia','SP','11990-000','Acesso por trilha a partir da Praia de Maruja',-25.07360000,-47.93910000,'/imgs/profilePics/cachoeira_gato.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,'Parque Estadual Intervales',22,25.00,'Estrada Municipal','Ribeirão Grande','s/n','Ribeirão Grande','SP','18315-000','Próximo ao bairro do Guapiara',-24.28860000,-48.41360000,'/imgs/profilePics/parque_intervales.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `pontos` VALUES (1,'K.K.K.K. (Kaigai Kogyo Kabushiki Kaisha)',1,0.00,'Avenida Prefeito Jonas Banks Leite','Centro','57','Registro','SP','11900-000','Sesc Registro',-24.48758229,-47.84064403,'/imgs/profilePics/kkkk.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Catedral Católica Diocesana São Francisco Xavier',10,0.00,'Rua Pio Onze','Centro','78','Registro','SP','11900-000','',-24.48934229,-47.83938282,'/imgs/profilePics/igrejaMatriz.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'Templo Budista Honpa Hongwanji de Registro (Nishi-Hongwanji)',10,0.00,'Avenida Nelson Brihi Badur','Bairro Budista','50','Registro','SP','11900-000','',-24.50459234,-47.85619276,'/imgs/profilePics/temploBudista.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Cachoeira Queda do Meu Deus',42,0.00,'Rodovia Benedito Pascoal de França','Itapeúna','200','Eldorado','SP','11960-000','',-24.60265306,-48.38852385,'/imgs/profilePics/cachoeiraQuedaDoMeuDeus.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'Caverna do Diabo',41,12.00,'Rodovia SP-165','André Lopes','0','Eldorado','SP','11960-000','Km 111',-24.63581514,-48.40366472,'/imgs/profilePics/cavernaDoDiabo.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'Parque Estadual Carlos Botelho-Cachoeira do Quilombo',42,50.00,'Rodovia SP-139','Abaitinga','0','Sete Barras','SP','18230-000','km 78',-24.05627487,-47.99354283,'/imgs/profilePics/cachoeiraDoQuilombo.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'Parque Estadual Carlos Botelho-Pico da Pedra Maior',19,150.00,'Rodovia SP-139','Abaitinga','0','Sete Barras','SP','18230-000','km 78',-24.05627487,-47.99354283,'/imgs/profilePics/picoDaPedraMaior.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'Parque Estadual Intervales-Mirante do Cavalo Magro',22,70.00,'Rodovia SP-139','Abaitinga','0','Sete Barras','SP','18230-000','km 78',-24.05627487,-47.99354283,'/imgs/profilePics/miranteCavaloMagro.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'Parque Municipal Casa de Pedra',22,0.00,'Rodovia SP-222','Pariquera-Açu','0','Pariquera-Açu','SP','11930-000','Linha do Braço Magro',-24.74809718,-47.94910513,'/imgs/profilePics/casaDePedra.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'Cachoeira do Exorcismo',42,0.00,'Rodovia SP-222','Pariquera-Açu','0','Pariquera-Açu','SP','11930-000','Linha do Braço Magro',-24.74809718,-47.94910513,'/imgs/profilePics/cachoeiraDoExorcismo.jpg','0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,'Parque Estadual Ilha do Cardoso',22,0.00,'Rua Professor Vladimir Besnard','Morro São João','0','Cananéia','SP','04953-100','Acesso de Balsa',-25.13137716,-47.94234576,'/imgs/profilePics/profilePicPonto-1718912010074.jpg','2024-06-20 16:33:30','2024-06-20 16:33:30');
 /*!40000 ALTER TABLE `pontos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -501,7 +500,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pontosavaliados`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pontosavaliados` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAvaliacao` int(11) NOT NULL,
@@ -522,7 +521,7 @@ CREATE TABLE `pontosavaliados` (
 
 LOCK TABLES `pontosavaliados` WRITE;
 /*!40000 ALTER TABLE `pontosavaliados` DISABLE KEYS */;
-INSERT INTO `pontosavaliados` VALUES (1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,3,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,4,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,5,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,6,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,7,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,8,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,9,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,10,10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,11,11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,12,12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,13,13,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,14,14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,15,15,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `pontosavaliados` VALUES (1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,3,3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,4,4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,5,5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,6,6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,7,7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,8,8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,9,9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,10,10,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `pontosavaliados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -532,7 +531,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `turistas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `turistas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomeTurista` varchar(255) NOT NULL,
@@ -574,4 +573,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-19 22:01:58
+-- Dump completed on 2024-06-20 17:39:42

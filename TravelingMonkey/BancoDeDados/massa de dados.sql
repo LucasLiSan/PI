@@ -1,273 +1,48 @@
 use travelingmonkey;
-drop database travelingmonkey;
-select * from pontos;
-select * from cidades;
-select * from cidadesxpontos;
 
-insert into cidadesxpontos (idCidade, idPonto) values
-#3	Cananéia
-#4	Eldorado
-#5	Iguape
-#6	Iporanga
-#7	Miracatu
-#8	Ribeirão Grande
-(3,3),(3,5),(3,10),(3,14),
-(4,2),(4,5),(4,10),
-(5,6),(5,9),
-(6,1),(6,7),(6,8),
-(7,4),
-(8,15);
-
-INSERT INTO horarioFuncionas (diaDaSemana, situacao, horaAbre, horaAlmocoIda, horaAlmocoVolta, horaFecha) VALUES
-('Segunda-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Terça-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Quarta-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Quinta-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Sexta-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Sábado', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Domingo', 'Fechado', NULL, NULL, NULL, NULL),
-('Segunda-feira', 'Fechado', NULL, NULL, NULL, NULL),
-('Terça-feira', 'Fechado', NULL, NULL, NULL, NULL),
-('Quarta-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Quinta-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Sexta-feira', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Sábado', 'Aberto', '08:00:00', '12:00:00', '13:00:00', '18:00:00'),
-('Domingo', 'Fechado', NULL, NULL, NULL, NULL);
-
-INSERT INTO horarioXpontos (idHorario, idPontoTuristico) VALUES
-(1, 1),(2, 1),(3, 1),(4, 1),(5, 1),(6, 1),(7, 1),
-(1, 2),(2, 2),(3, 2),(4, 2),(5, 2),(6, 2),(7, 2),
-(1, 3),(2, 3),(3, 3),(4, 3),(5, 3),(6, 3),(7, 3),
-(1, 4),(2, 4),(3, 4),(4, 4),(5, 4),(6, 4),(7, 4),
-(1, 5),(2, 5),(3, 5),(4, 5),(5, 5),(6, 5),(7, 5),
-(1, 6),(2, 6),(3, 6),(4, 6),(5, 6),(6, 6),(7, 6),
-(1, 7),(2, 7),(3, 7),(4, 7),(5, 7),(6, 7),(7, 7),
-(1, 8),(2, 8),(3, 8),(4, 8),(5, 8),(6, 8),(7, 8),
-(1, 9),(2, 9),(3, 9),(4, 9),(5, 9),(6, 9),(7, 9),
-(1, 10),(2, 10),(3, 10),(4, 10),(5, 10),(6, 10),(7, 10),
-(8,11),(9,11),(10,11),(11,11),(12,11),(13,11),(14,11),
-(8,12),(9,12),(10,12),(11,12),(12,12),(13,12),(14,12),
-(8,13),(9,13),(10,13),(11,13),(12,13),(13,13),(14,13),
-(8,14),(9,14),(10,14),(11,14),(12,14),(13,14),(14,14),
-(8,15),(9,15),(10,15),(11,15),(12,15),(13,15),(14,15);
-
-select * from pontos;
-
-INSERT INTO pontos (nomePonto, modalidade, valorEntrada, endRuaPonto, endBairroPonto, endNumPonto, endCidadePonto, endUfPonto, endCepPonto, endReferenciaPonto, endGeoLatPonto, endGeoLongePonto, profilePicPonto) VALUES
-('Parque Estadual Turístico do Alto Ribeira (PETAR)', 22, 30.00, 'Estrada do Ouro Grosso', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Próximo ao bairro da Serra', -24.5275, -48.6825, '/imgs/profilePics/petar.jpg'),
-('Caverna do Diabo', 41, 50.00, 'Rodovia SP-165', 'Eldorado', 'km 111', 'Eldorado', 'SP', '11960-000', 'Próximo ao Parque Estadual Caverna do Diabo', -24.6467, -48.4083, '/imgs/profilePics/caverna_diabo.jpg'),
-('Ilha do Cardoso', 18, 0.00, 'Acesso por barco', 'Cananéia', '', 'Cananéia', 'SP', '11990-000', 'Saída do Porto de Cananéia', -25.0253, -47.9208, '/imgs/profilePics/ilha_cardoso.jpg'),
-('Reserva Legado das Águas', 22, 40.00, 'Rodovia SP-079', 'Tapiraí', 'km 122', 'Miracatu', 'SP', '11850-000', 'Acesso pela Rodovia Régis Bittencourt', -24.2775, -47.5083, '/imgs/profilePics/legado_aguas.jpg'),
-('Parque Estadual Ilha do Cardoso', 22, 0.00, 'Ilha do Cardoso', 'Cananéia', '', 'Cananéia', 'SP', '11990-000', 'Acesso por barco a partir de Cananéia', -25.0270, -47.9156, '/imgs/profilePics/parque_ilha_cardoso.jpg'),
-('Centro Histórico de Iguape', 1, 0.00, 'Rua Major Rebelo', 'Centro', 's/n', 'Iguape', 'SP', '11920-000', 'Próximo à Praça da Basílica', -24.6980, -47.5538, '/imgs/profilePics/centro_historico_iguape.jpg'),
-('Quilombo Ivaporunduva', 5, 10.00, 'Estrada Municipal', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Próximo ao Rio Ribeira de Iguape', -24.5142, -48.5950, '/imgs/profilePics/quilombo_ivaporunduva.jpg'),
-('Cachoeira do Meu Deus', 21, 0.00, 'Estrada do Bairro da Serra', 'Iporanga', 's/n', 'Iporanga', 'SP', '18330-000', 'Dentro do PETAR', -24.5300, -48.7050, '/imgs/profilePics/cachoeira_meu_deus.jpg'),
-('Museu Histórico e Arqueológico de Iguape', 2, 0.00, 'Rua XV de Novembro', 'Centro', 's/n', 'Iguape', 'SP', '11920-000', 'Próximo à Praça da Basílica', -24.6985, -47.5533, '/imgs/profilePics/museu_iguape.jpg'),
-('Mirante do Morro do Espia', 21, 0.00, 'Morro do Espia', 'Centro', 's/n', 'Cananéia', 'SP', '11990-000', 'Acesso por trilha', -25.0150, -47.9275, '/imgs/profilePics/mirante_morro_espia.jpg'),
-('Cachoeira da Usina', 21, 0.00, 'Estrada da Usina', 'Centro', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Usina Hidrelétrica', -24.4953, -47.8438, '/imgs/profilePics/cachoeira_usina.jpg'),
-('Parque Turístico Rocha do Itapu', 22, 10.00, 'Estrada do Turvo', 'Jardim Caiçara', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Serra do Mar', -24.4987, -47.8332, '/imgs/profilePics/parque_rocha_itapu.jpg'),
-('Praia do Meio', 18, 0.00, 'Avenida Beira-Mar', 'Vila Nova', 's/n', 'Registro', 'SP', '11900-000', 'Próximo à Ponte Tancredo Neves', -24.4921, -47.8269, '/imgs/profilePics/praia_meio.jpg'),
-('Cachoeira do Gato', 21, 0.00, 'Ilha do Cardoso', 'Cananéia', '', 'Cananéia', 'SP', '11990-000', 'Acesso por trilha a partir da Praia de Maruja', -25.0736, -47.9391, '/imgs/profilePics/cachoeira_gato.jpg'),
-('Parque Estadual Intervales', 22, 25.00, 'Estrada Municipal', 'Ribeirão Grande', 's/n', 'Ribeirão Grande', 'SP', '18315-000', 'Próximo ao bairro do Guapiara', -24.2886, -48.4136, '/imgs/profilePics/parque_intervales.jpg');
-
-
-UPDATE `travelingmonkey`.`pontos` SET `nomePonto` = 'Parque Municipal Casa de Pedra', `modalidade` = '22', `valorEntrada` = '0', `endRuaPonto` = 'Rodovia SP-222', `endBairroPonto` = 'Pariquera-Açu', `endNumPonto` = '0', `endCidadePonto` = 'Pariquera-Açu', `endCepPonto` = '11930-000', `endReferenciaPonto` = 'Linha do Braço Magro', `endGeoLatPonto` = '-24.74809717932124', `endGeoLongePonto` = '-47.94910512717522', `profilePicPonto` = '/imgs/profilePics/casaDePedra.jpg' WHERE (`id` = '9');
+UPDATE `travelingmonkey`.`pontos` SET `nomePonto` = 'Parque Estadual Ilha do Cardoso', `modalidade` = '22', `valorEntrada` = '0', `endRuaPonto` = 'Rodovia SP-222', `endBairroPonto` = 'Pariquera-Açu', `endNumPonto` = '0', `endCidadePonto` = 'Pariquera-Açu', `endCepPonto` = '11930-000', `endReferenciaPonto` = 'Linha do Braço Magro', `endGeoLatPonto` = '-24.74809717932124', `endGeoLongePonto` = '-47.94910512717522', `profilePicPonto` = '/imgs/profilePics/casaDePedra.jpg' WHERE (`id` = '9');
 UPDATE `travelingmonkey`.`pontos` SET `nomePonto` = 'Cachoeira do Exorcismo', `modalidade` = '42', `valorEntrada` = '0', `endRuaPonto` = 'Rodovia SP-222', `endBairroPonto` = 'Pariquera-Açu', `endNumPonto` = '0', `endCidadePonto` = 'Pariquera-Açu', `endCepPonto` = '11930-000', `endReferenciaPonto` = 'Linha do Braço Magro', `endGeoLatPonto` = '-24.74809717932124', `endGeoLongePonto` = '-47.94910512717522', `profilePicPonto` = '/imgs/profilePics/cachoeiraDoExorcismo.jpg' WHERE (`id` = '10');
 
 
+select * from avaliacoesguias;
+select * from avaliacoespontos;
 select * from categoriasxpontos;
-
-INSERT INTO categoriasxpontos (modalidade, categoria) VALUES
-('Locais históricos', 'Cultura'),
-('Museus e galerias de arte', 'Cultura'),
-('Eventos culturais', 'Cultura'),
-('Arte pública', 'Cultura'),
-('Comunidades étnicas', 'Cultura'),
-('Turismo industrial', 'Cultura'),
-('Turismo criativo', 'Cultura'),
-('Edifícios e estruturas', 'Arquitetura'),
-('Castelos e fortes', 'Arquitetura'),
-('Templos antigos', 'Arquitetura'),
-('Pontes e arranha-céus', 'Arquitetura'),
-('Restaurantes e bares', 'Gastronomia'),
-('Feiras e mercados', 'Gastronomia'),
-('Eventos gastronômicos', 'Gastronomia'),
-('Parques temáticos', 'Infraestrutura'),
-('Parques aquáticos', 'Infraestrutura'),
-('Carnavais', 'Infraestrutura'),
-('Praias', 'Paisagem'),
-('Montanhas', 'Paisagem'),
-('Desertos', 'Paisagem'),
-('Florestas', 'Paisagem'),
-('Parques nacionais', 'Paisagem'),
-('Jardins botânicos', 'Paisagem'),
-('Eventos esportivos', 'Eventos'),
-('Corrida de Fórmula 1', 'Eventos'),
-('Regatas de vela', 'Eventos'),
-('Centros comerciais', 'Compras'),
-('Feiras de artesanato', 'Compras'),
-('Mercados de rua', 'Compras'),
-('Lojas de fábrica', 'Compras'),
-('Trens históricos', 'Cultura'),
-('Zoológicos', 'Infraestrutura'),
-('Aquários', 'Infraestrutura'),
-('Bibliotecas', 'Infraestrutura'),
-('Antigas prisões', 'Infraestrutura'),
-('Museus de história viva', 'Infraestrutura'),
-('Oficinas de artesanato', 'Cultura'),
-('Shows e concertos', 'Eventos'),
-('Feiras e exposições', 'Eventos'),
-('Eventos religiosos', 'Eventos'),
-('Caverna', 'Ecoturismo'),
-('Cachoeira','Ecoturismo');
-
-INSERT INTO avaliacoespontos (idAvaliador, idPontoAvaliado, nota, comentario, dataAvaliacao) VALUES
-(1, 1, 5, 'Ótimo lugar, muito bem conservado e com guias excelentes.', '2024-01-15'),
-(1, 2, 4, 'Experiência incrível, mas o acesso poderia ser melhor.', '2024-02-10'),
-(1, 3, 5, 'Maravilhoso! Perfeito para quem gosta de natureza.', '2024-03-05'),
-(1, 4, 3, 'Bom, mas esperava mais das instalações.', '2024-04-20'),
-(1, 5, 4, 'Ótimo passeio de barco, recomendo!', '2024-05-14'),
-(1, 6, 5, 'História fascinante e bem preservada.', '2024-06-11'),
-(1, 7, 4, 'Cultura rica e guias bem informados.', '2024-07-08'),
-(1, 8, 5, 'Cachoeira incrível, vale cada minuto!', '2024-08-21'),
-(1, 9, 4, 'Museu interessante, mas poderia ser maior.', '2024-09-17'),
-(1, 10, 5, 'Vista espetacular, acesso por trilha é um plus.', '2024-10-04'),
-(1, 11, 3, 'Lugar bonito, mas a manutenção deixa a desejar.', '2024-11-13'),
-(1, 12, 4, 'Parque muito agradável, ótima opção de lazer.', '2024-12-01'),
-(1, 13, 5, 'Praia tranquila e limpa, recomendo!', '2024-12-21'),
-(1, 14, 4, 'Parque muito agradável, ótima opção de lazer.', '2024-12-01'),
-(1, 15, 5, 'Praia tranquila e limpa, recomendo!', '2024-12-21');
-
-INSERT INTO pontosavaliados (idAvaliacao, idPonto) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10),
-(11, 11),
-(12, 12),
-(13, 13),
-(14, 14),
-(15, 15);
-
-DESCRIBE pontos;
-
-create table comodidades (
-	id int auto_increment primary key not null,
-    comodidade varchar(100) not null,
-    tipoComodidade varchar(100) not null
-);
+select * from cidades;
 
 select * from comodidades;
+select * from comodidadesxpontos;
+select * from fotosguias;
+select * from fotospontos;
+select * from fotosxpontofotografados;
+select * from guias;
+select * from guiasavaliados;
+select * from horariofuncionas;
+select * from horarioxpontos;
+select * from pontos;
+select * from pontosavaliados;
+select * from turistas;
 
-INSERT INTO Comodidades (comodidade, tipoComodidade) VALUES
-('Rampa de Acesso', 'Acessibilidade'),
-('Banheiro Adaptado', 'Acessibilidade'),
-('Elevador Acessível', 'Acessibilidade'),
-('Sinalização em Braille', 'Acessibilidade'),
-('Áudio Descritivo', 'Acessibilidade'),
-('Estacionamento para Deficientes', 'Acessibilidade'),
-('Entrada Sem Degraus', 'Acessibilidade'),
-('Cadeiras de Rodas Disponíveis', 'Acessibilidade'),
-('Serviço de Atendimento para Surdos', 'Acessibilidade'),
-('Corrimão de Apoio', 'Acessibilidade'),
-('Portas Largas', 'Acessibilidade'),
-('Pisos Táteis', 'Acessibilidade'),
-('Telefones Adaptados', 'Acessibilidade'),
-('Academia ao ar livre adaptada', 'Acessibilidade'),
-('Parque Infantil', 'Crianças'),
-('Fraldário', 'Crianças'),
-('Cadeiras de Alimentação para Crianças', 'Crianças'),
-('Área para Animais', 'Pets'),
-('Bebedouro para Animais', 'Pets'),
-('Enfermaria', 'Saúde'),
-('Wi-Fi Gratuito', 'Serviços'),
-('Bicicletário', 'Infraestrutura'),
-('Estacionamento', 'Infraestrutura'),
-('Estacionamento coberto', 'Infraestrutura'),
-('Academia ao ar livre', 'Infraestrutura'),
-('Carregadores de Celular', 'Serviços'),
-('Cafeteria', 'Serviços'),
-('Área de Piquenique', 'Infraestrutura');
+DELETE FROM avaliacoespontos WHERE id=11;
+DELETE FROM avaliacoespontos WHERE id=12;
+DELETE FROM avaliacoespontos WHERE id=13;
+DELETE FROM avaliacoespontos WHERE id=14;
+DELETE FROM avaliacoespontos WHERE id=15;
 
-select * from ComodidadesXPontos;
-
-DELETE FROM ComodidadesXPontos WHERE idPontoTuristico=10;
-
-#Associação para Parque Estadual Turístico do Alto Ribeira (PETAR)
-INSERT INTO ComodidadesXPontos (idComodidade, idPontoTuristico) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(5, 1),
-(8, 1),
-#Associação para Caverna do Diabo
-(1, 2),
-(4, 2),
-(6, 2),
-(10, 2),
-#Associação para Ilha do Cardoso
-(19, 3),
-(22, 3),
-(26, 3),
-#Associação para Reserva Legado das Águas
-(1, 4),
-(6, 4),
-(7, 4),
-(20, 4),
-#Associação para Parque Estadual Ilha do Cardoso
-(9, 5),
-(21, 5),
-(23, 5),
-#Associação para Centro Histórico de Iguape
-(11, 6),
-(13, 6),
-(25, 6),
-#Associação para Quilombo Ivaporunduva
-(3, 7),
-(5, 7),
-(16, 7),
-#Associação para Cachoeira do Meu Deus
-(12, 8),
-(14, 8),
-(17, 8),
-#Associação para Museu Histórico e Arqueológico de Iguape
-(4, 9),
-(18, 9),
-#Associação para Mirante do Morro do Espia
-(2, 10),
-(8, 10),
-#Associação para Cachoeira da Usina
-(22, 11),
-(24, 11),
-#Associação para Parque Turístico Rocha do Itapu
-(15, 12),
-(27, 12),
-#Associação para Praia do Meio
-(21, 13),
-(23, 13),
-(1, 14),
-(15, 14),
-(22, 14),
-(18, 14),
-(20, 14),
-(27, 14),
-(22, 15),
-(18, 15),
-(20, 15);
+select * from cidadesxpontos;
+DELETE FROM cidadesxpontos WHERE idCidade=3;
+DELETE FROM cidadesxpontos WHERE idCidade=4;
+DELETE FROM cidadesxpontos WHERE idCidade=7;
+DELETE FROM cidadesxpontos WHERE idCidade=8;
 
 
+DELETE FROM cidades WHERE id=8;
+DELETE FROM pontos WHERE id=12;
+DELETE FROM pontos WHERE id=13;
+DELETE FROM pontos WHERE id=14;
+DELETE FROM pontos WHERE id=15;
 
-
-
-
-
-
-
-
-
+select * from pontos;
+select * from cidades;
+insert into cidadesxpontos (idCidade,idPonto) values 
+(9,6), (9,7), (9,8),
+(10,9), (10,10);
